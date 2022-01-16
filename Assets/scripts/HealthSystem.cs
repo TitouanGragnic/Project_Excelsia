@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 namespace scripts
 {
-    public class HealthSystem : MonoBehaviour
+    public class HealthSystem : NetworkBehaviour
     {
         [SerializeField]
         public float health; // = 1000f;
@@ -30,8 +31,9 @@ namespace scripts
         }
 
 
-        public void UpdateLife()
+        public void UpdateLife(float new_health)
         {
+            this.health = new_health;
             if (heath_UI != null)
                 heath_UI.health = this.health;
 
@@ -62,7 +64,6 @@ namespace scripts
                 default:
                     break;
             }
-            UpdateLife();
 
             return health;
         }

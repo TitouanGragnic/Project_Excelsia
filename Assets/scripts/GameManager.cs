@@ -1,16 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 
 namespace scripts
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : NetworkBehaviour
     {
+        public static GameManager instance;
         private const string playerIDPrefix = "Player";
         
-        private static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
+        [SerializeField]
+        public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
 
-
+        void Awake()
+        {
+            instance = this;
+        }
         public static void RegisterPlayer(string netID, Perso player)
         {
             string playerId = playerIDPrefix + netID;
