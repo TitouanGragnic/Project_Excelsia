@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
 
 namespace scripts
@@ -11,7 +10,6 @@ namespace scripts
         
         private static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
 
-        public static Dictionary<string, Perso>  Players => players;
 
         public static void RegisterPlayer(string netID, Perso player)
         {

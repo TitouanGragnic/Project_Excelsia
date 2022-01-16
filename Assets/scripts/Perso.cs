@@ -9,26 +9,26 @@ using Mirror;
 
 namespace scripts
 {
-    public class Perso : MonoBehaviour
+    public class Perso : NetworkBehaviour
     {
         public GameObject perso_object;
         public GameObject health_object;
-        public Posture pp = new Posture(500);
         [SerializeField]
         public HealthSystem healthSystem;
+        [SerializeField]
+        private Posture posture;
 
+        [SyncVar]
+        private float health;
 
-
-        void Update()
+        private void Awake()
         {
-            if (healthSystem != null)
-            {
-                if (Input.GetMouseButtonDown(1))
-                    healthSystem.TakeDamage(50f, "normal", pp);
-
-                healthSystem.UpdateLife();
-            }
+            health = 1000;
         }
+
+
+
+
         public void InitHs(GameObject target)
         {
             healthSystem.healthBar.target = target;
@@ -36,6 +36,20 @@ namespace scripts
 
             Camera cam = perso_object.GetComponentInChildren<Camera>();
             cam.cullingMask = ~(1<<health_object.layer); 
+        }
+
+        public void TakeDamage(float damage, string type)
+        {
+            health = healthSystem.TakeDamage(damage,type,posture)  ;
+            Debug.Log(transform.name + " a pv = " + health);
+        }
+        public void CmdPlayerAttack(string playerId)
+        {
+            Debug.Log(playerId + "tapé");
+            Perso player = GameManager.GetPlayer(playerId);
+
+            player.TakeDamage(100,"normal");
+
         }
 
 

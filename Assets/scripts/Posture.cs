@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 
 namespace scripts
 {
 
-    public class Posture
+    public class Posture : MonoBehaviour
     {
         private bool state;
         private int maxCooldown;
@@ -22,9 +22,9 @@ namespace scripts
 
 
 
-        public Posture(int maxCooldown)
+        public void Start()
         {
-            this.maxCooldown = maxCooldown;
+            this.maxCooldown = 100;
             this.cooldown = 0;
             this.state = false;
         }

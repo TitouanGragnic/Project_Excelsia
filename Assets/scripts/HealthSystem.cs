@@ -35,17 +35,12 @@ namespace scripts
             if (heath_UI != null)
                 heath_UI.health = this.health;
 
-            foreach (KeyValuePair<string, Perso> player_ex in GameManager.Players)
-            {
-                if (player_ex.Value.transform.name != nameId)
-                {
-                    healthBar.health = player_ex.Value.healthSystem.health;
-                }
-            }
+            healthBar.health = health;
+            
 
         }
 
-        public void TakeDamage(float damage, string type, Posture posture)
+        public float TakeDamage(float damage, string type, Posture posture)
         {
             switch (type)
             {
@@ -67,7 +62,9 @@ namespace scripts
                 default:
                     break;
             }
+            UpdateLife();
 
+            return health;
         }
     }
 }
