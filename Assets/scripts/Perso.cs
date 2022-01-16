@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 
@@ -17,9 +18,11 @@ namespace scripts
         public HealthSystem healthSystem;
         [SerializeField]
         private Posture posture;
+        [SerializeField]
+        public Slider slider;
 
-        [SyncVar]
-        private float health;
+        [SyncVar][SerializeField]
+        float health;
 
         private void Awake()
         {
@@ -27,7 +30,16 @@ namespace scripts
         }
 
 
+        private void Update()
+        {
+            healthSystem.UpdateLife(health);
+            SliderChange();
+        }
 
+        public void SliderChange()
+        {
+            slider.value = health;
+        }
 
         public void InitHs(GameObject target)
         {
