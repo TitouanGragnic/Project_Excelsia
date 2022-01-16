@@ -55,6 +55,8 @@ namespace scripts
             health = healthSystem.TakeDamage(damage,type,posture)  ;
             Debug.Log(transform.name + " a pv = " + health);
         }
+
+        [Command]
         public void CmdPlayerAttack(string playerId)
         {
             Debug.Log(playerId + "tapé");

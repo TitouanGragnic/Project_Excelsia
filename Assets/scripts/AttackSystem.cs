@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 
 namespace scripts
@@ -23,6 +24,8 @@ namespace scripts
                 Taper();
             }
         }
+
+        [Client]
         private void Taper()
         {
             RaycastHit hit;
