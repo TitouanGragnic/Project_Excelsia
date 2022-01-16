@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Mirror;
+
 namespace scripts
 {
-    public class Health_UI : NetworkBehaviour
+    public class Health_UI : MonoBehaviour
     {
         public Slider slider;
         public float health = 1000f;
