@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class POVcam : MonoBehaviour
 {
-    [SerializeField] Movement wallRun;
+    [SerializeField] Movement playerMove;
 
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
@@ -30,8 +30,10 @@ public class POVcam : MonoBehaviour
     {
         MyInput();
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, wallRun.tilt);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, playerMove.tilt);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        
+
     }
 
     void MyInput()
@@ -43,7 +45,6 @@ public class POVcam : MonoBehaviour
         xRotation -= mouseY * sensY * multiplier;
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
     }
 
 }

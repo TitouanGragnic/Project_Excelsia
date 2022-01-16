@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     float playerHeight = 2f;
 
     [SerializeField] Transform orientation;
-    [SerializeField] Grapple grp;
 
 
     [Header("Movement")]
@@ -16,9 +15,14 @@ public class Movement : MonoBehaviour
     [SerializeField] float airMultiplier = 0.5f;
 
     [Header("Sprinting")]
-    [SerializeField] float walkSpeed = 4f;
-    [SerializeField] float sprintSpeed = 6f;
+    [SerializeField] float walkSpeed = 50f;
+    [SerializeField] float sprintSpeed = 100f;
+
+    [Header("Crouching")]
+    [SerializeField] float crouchSpeed = 30f;
     [SerializeField] float acceleration = 10f;
+    [SerializeField] float camAcceleration = 10f;
+    [SerializeField] float slideMinSpeed = 5f;
 
 
 
@@ -30,9 +34,11 @@ public class Movement : MonoBehaviour
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpkey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode crouchKey = KeyCode.LeftControl;
 
     int doubleJump = 1;
     [SerializeField] float groundDrag = 6f;
+    [SerializeField] float slideDrag = 0.5f;
     [SerializeField] float airDrag = 0.5f;
     [SerializeField] float wallDrag = 1f;
     float horizontalMovement;
@@ -42,8 +48,13 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
+    bool isSprinting;
+    bool isSliding;
+    bool isCrouching;
+    int  moveVert = 1;
+    public float camTranslate = 0f;
     float groundDistance = 1f;
- 
+
 
     Vector3 moveDirection;
     Vector3 moveAirDirection;
@@ -78,6 +89,8 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isSprinting = Input.GetKey(sprintKey);
+        isCrouching = Input.GetKey(crouchKey);
 
         MyInput();
         ControlDrag();
@@ -93,7 +106,7 @@ public class Movement : MonoBehaviour
             doubleJump = 1;
         }
         rb.useGravity = true;
-          
+
         slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
 
         CheckWall();
@@ -114,11 +127,11 @@ public class Movement : MonoBehaviour
 
         }
 
-        if (isGrounded && Input.GetKey(sprintKey) && Input.GetAxisRaw("Vertical") > 0)
+        if (isGrounded && isSprinting && Input.GetAxisRaw("Vertical") > 0)
             animator.SetBool("Running", true);
         else
             animator.SetBool("Running", false);
-        if (isGrounded && !Input.GetKey(sprintKey) && Input.GetAxisRaw("Vertical") > 0)
+        if (isGrounded && !isSprinting && Input.GetAxisRaw("Vertical") > 0)
             animator.SetBool("Walking", true);
         else
             animator.SetBool("Walking", false);
@@ -126,55 +139,78 @@ public class Movement : MonoBehaviour
             animator.SetBool("Jumping", true);
         else
             animator.SetBool("Jumping", false);
+
+
+        if (isGrounded && isCrouching && rb.velocity.magnitude > slideMinSpeed)
+        {
+            isSliding = true;
+            moveVert = 0;
+        }
+        else
+        {
+            isSliding = false;
+            moveVert = 1;
+        }
     }
 
     void ControlSpeed()
     {
-        if (Input.GetKey(sprintKey) && isGrounded)
+        if (isSprinting)
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Runfov, RunfovTime * Time.deltaTime);
-            if (isGrounded)
-            {
-                moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
-            }
-            else
-            {
-                moveSpeed = Mathf.Lerp(moveSpeed, walkSpeed, acceleration * Time.deltaTime);
-            }
+            moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
+            camTranslate = Mathf.Lerp(camTranslate, 0, camAcceleration * Time.deltaTime);
+
+        }
+        else if (isGrounded && !isCrouching)
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, walkSpeed, acceleration * Time.deltaTime);
+            camTranslate = Mathf.Lerp(camTranslate, 0, camAcceleration * Time.deltaTime);
+        }
+        else if (isGrounded && isCrouching)
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, crouchSpeed, acceleration * Time.deltaTime);
+            camTranslate = Mathf.Lerp(camTranslate, 1, camAcceleration * Time.deltaTime);
         }
         else
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, RunfovTime * Time.deltaTime);
             moveSpeed = Mathf.Lerp(moveSpeed, walkSpeed, acceleration * Time.deltaTime);
+            camTranslate = Mathf.Lerp(camTranslate, 0, camAcceleration * Time.deltaTime);
         }
 
     }
-
 
     void MyInput()
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
-        moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
+        moveDirection = orientation.forward * verticalMovement * moveVert + orientation.right * horizontalMovement;
         moveAirDirection = orientation.right * horizontalMovement + (orientation.forward * verticalMovement) * 0.01f;
     }
 
     void Jump()
-        {
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        }
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
 
 
     void ControlDrag()
     {
         if (isGrounded)
         {
-            rb.drag = groundDrag;
+            if (isSliding)
+            {
+                rb.drag = slideDrag;
+            }
+            else 
+            {
+                rb.drag = groundDrag;
+            }
             rb.useGravity = true;
             StopWallRun();
-
         }
         else if (wallLeft | wallright)
         {
@@ -204,9 +240,9 @@ public class Movement : MonoBehaviour
     }
 
 
-  /// 
-  ///  Wall Running
-  ///
+    /// 
+    ///  Wall Running
+    ///
 
 
     [Header("Wall Running")]

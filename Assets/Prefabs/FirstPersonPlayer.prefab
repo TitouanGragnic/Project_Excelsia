@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 6485566138572003352}
+  playerMove: {fileID: 6485566139432838941}
 --- !u!1 &6485566138822538295
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,22 +375,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 6485566138899816203}
-  grp: {fileID: 0}
   moveSpeed: 50
   airMultiplier: 0.2
   walkSpeed: 50
   sprintSpeed: 100
+  crouchSpeed: 30
   acceleration: 10
+  camAcceleration: 10
+  slideMinSpeed: 7
   jumpForce: 15
   jumpkey: 32
   sprintKey: 304
+  crouchKey: 306
   groundDrag: 6
+  slideDrag: 0.7
   airDrag: 1
   wallDrag: 2
   groundCheck: {fileID: 6485566138822538296}
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  camTranslate: 0
   wallDistance: 1
   minimumJumpHeight: 2
   wallrunGravity: 0.5
@@ -414,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c716c54e3f10142bd07aed4a3dd686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallRun: {fileID: 6485566139432838941}
+  playerMove: {fileID: 6485566139432838941}
   sensX: 20
   sensY: 20
   cam: {fileID: 6485566138751721146}
