@@ -4,38 +4,45 @@ using UnityEngine;
 
 namespace scripts
 {
-    public class HealthSystem
+    public class HealthSystem : MonoBehaviour
     {
-        float health; // = 1000f;
+        [SerializeField]
+        public float health; // = 1000f;
         float maxHealth;
 
         float armor; // = 0.1f;
 
         float guard; //= 0f;
+        [SerializeField]
         float maxGuard; //= 200f; 
 
         public HealthBar healthBar;
         public Health_UI heath_UI;
+        public string nameId;
 
-        public HealthSystem(GameObject object_health,GameObject health_UI_object, float health, float armor, float maxGuard)
+        void start()
         {
-            healthBar = object_health.GetComponent(typeof(HealthBar)) as HealthBar;
+            maxHealth = health;
 
-            this.health = health;
-            this.maxHealth = health;
+            armor = 0.1f;
 
-            this.maxGuard = maxGuard;
-            this.guard = 0f;
-
-            this.armor = armor;
-
-           
+            guard = 0f;
         }
 
-        private void UpdateLife()
+
+        public void UpdateLife()
         {
-            //healthBar.health = this.health;
-            heath_UI.health = this.health;
+            if (heath_UI != null)
+                heath_UI.health = this.health;
+
+            foreach (KeyValuePair<string, Perso> player_ex in GameManager.Players)
+            {
+                if (player_ex.Value.transform.name != nameId)
+                {
+                    healthBar.health = player_ex.Value.healthSystem.health;
+                }
+            }
+
         }
 
         public void TakeDamage(float damage, string type, Posture posture)
@@ -60,8 +67,6 @@ namespace scripts
                 default:
                     break;
             }
-
-            UpdateLife();
 
         }
     }

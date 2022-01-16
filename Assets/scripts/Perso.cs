@@ -13,26 +13,26 @@ namespace scripts
     {
         public GameObject perso_object;
         public GameObject health_object;
-        public GameObject health_UI_object;
-
         public Posture pp = new Posture(500);
-        public HealthSystem hs;
+        [SerializeField]
+        public HealthSystem healthSystem;
 
 
-        void Start()
-        {
-            
-        }
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(1))
-                hs.TakeDamage(50f, "normal", pp);
+            if (healthSystem != null)
+            {
+                if (Input.GetMouseButtonDown(1))
+                    healthSystem.TakeDamage(50f, "normal", pp);
+
+                healthSystem.UpdateLife();
+            }
         }
         public void InitHs(GameObject target)
         {
-            hs = new HealthSystem(health_object, health_UI_object, 1000f, 0.1f, 200f);
-            hs.healthBar.target = target;
+            healthSystem.healthBar.target = target;
+            healthSystem.nameId = perso_object.transform.name;
 
             Camera cam = perso_object.GetComponentInChildren<Camera>();
             cam.cullingMask = ~(1<<health_object.layer); 
