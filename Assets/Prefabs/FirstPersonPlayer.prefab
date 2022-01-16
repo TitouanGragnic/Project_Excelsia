@@ -300,10 +300,14 @@ GameObject:
   - component: {fileID: 5818428227407732611}
   - component: {fileID: 9056059095646718349}
   - component: {fileID: 8760463332747061409}
+<<<<<<< HEAD
   - component: {fileID: 6625183415774760141}
   - component: {fileID: 274244379319485959}
   - component: {fileID: 322507713878789177}
   - component: {fileID: 5201842071542058528}
+=======
+  - component: {fileID: 548405150881312680}
+>>>>>>> 0dc114d911ebf7de7e78031884158739295a7499
   m_Layer: 8
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -511,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
+  clientAuthority: 1
   excludeOwnerUpdate: 1
   syncPosition: 1
   syncRotation: 1
@@ -669,7 +673,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< HEAD
 --- !u!114 &6625183415774760141
+=======
+--- !u!114 &548405150881312680
+>>>>>>> 0dc114d911ebf7de7e78031884158739295a7499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -678,12 +686,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6485566139432838940}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: f65214da13a861f4a8ae309d3daea1c6, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+>>>>>>> 0dc114d911ebf7de7e78031884158739295a7499
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
   clientAuthority: 1
+<<<<<<< HEAD
   excludeOwnerUpdate: 1
   syncPosition: 1
   syncRotation: 1
@@ -781,6 +794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 500
+=======
+  animator: {fileID: 1903494618344234216}
+>>>>>>> 0dc114d911ebf7de7e78031884158739295a7499
 --- !u!1 &6485566140024568851
 GameObject:
   m_ObjectHideFlags: 0
