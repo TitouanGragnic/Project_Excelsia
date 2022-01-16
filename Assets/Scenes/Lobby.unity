@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 496829831}
   - component: {fileID: 496829830}
   - component: {fileID: 496829829}
+  - component: {fileID: 496829832}
   m_Layer: 5
   m_Name: host
   m_TagString: Untagged
@@ -376,6 +377,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 496829832}
+        m_TargetAssemblyTypeName: autoconnect, Assembly-CSharp
+        m_MethodName: JoinLocal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &496829830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +427,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496829827}
   m_CullTransparentMesh: 1
+--- !u!114 &496829832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496829827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2a29933c266ab41aa037662568a655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkManager: {fileID: 3790208292906456734, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
 --- !u!1 &980938646
 GameObject:
   m_ObjectHideFlags: 0
