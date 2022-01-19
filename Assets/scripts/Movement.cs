@@ -23,12 +23,14 @@ public class Movement : MonoBehaviour
     [SerializeField] float acceleration = 10f;
     [SerializeField] float camAcceleration = 10f;
     [SerializeField] float slideMinSpeed = 5f;
-
-
+  
 
 
     [Header("Jumping")]
     public float jumpForce = 5f;
+    float slideJump;
+    [SerializeField] float slideJumpForce;
+
 
 
     [Header("Keybinds")]
@@ -127,35 +129,54 @@ public class Movement : MonoBehaviour
 
         }
 
-        if (isGrounded && isSprinting && Input.GetAxisRaw("Vertical") > 0)
+        if (isGrounded && isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") > 0)
             animator.SetBool("Running", true);
         else
             animator.SetBool("Running", false);
-        if (isGrounded && !isSprinting && Input.GetAxisRaw("Vertical") > 0)
+
+        if (isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") > 0)
             animator.SetBool("Walking", true);
         else
             animator.SetBool("Walking", false);
+
+        if (isGrounded && isCrouching && !isSliding && Input.GetAxisRaw("Vertical") > 0)
+            animator.SetBool("CrouchWalk", true);
+        else
+            animator.SetBool("CrouchWalk", false);
+
+        if (isGrounded &&  isCrouching && !isSliding)
+            animator.SetBool("Crouched", true);
+        else
+            animator.SetBool("Crouched", false);
+
         if (!isGrounded)
             animator.SetBool("Jumping", true);
         else
             animator.SetBool("Jumping", false);
+
+        if (isSliding)
+            animator.SetBool("Sliding", true);
+        else
+            animator.SetBool("Sliding", false);
 
 
         if (isGrounded && isCrouching && rb.velocity.magnitude > slideMinSpeed)
         {
             isSliding = true;
             moveVert = 0;
+            slideJump = slideJumpForce;
         }
         else
         {
             isSliding = false;
             moveVert = 1;
+            slideJump = 0;
         }
     }
 
     void ControlSpeed()
     {
-        if (isSprinting)
+        if (isSprinting && !isCrouching)
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Runfov, RunfovTime * Time.deltaTime);
             moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
@@ -186,14 +207,14 @@ public class Movement : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
-        moveDirection = orientation.forward * verticalMovement * moveVert + orientation.right * horizontalMovement;
+        moveDirection = orientation.forward * verticalMovement * moveVert + orientation.right * horizontalMovement * moveVert;
         moveAirDirection = orientation.right * horizontalMovement + (orientation.forward * verticalMovement) * 0.01f;
     }
 
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up * jumpForce + orientation.forward * slideJump * rb.velocity.magnitude, ForceMode.Impulse);
     }
 
 
@@ -297,7 +318,7 @@ public class Movement : MonoBehaviour
         rb.AddForce(Vector3.down * wallrunGravity, ForceMode.Force);
         if (firstTouch == false)
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.2f + 3, rb.velocity.z);
-        firstTouch = true;
+            firstTouch = true;
 
 
         if (Input.GetKeyDown(KeyCode.Space))
