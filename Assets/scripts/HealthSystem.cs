@@ -13,12 +13,13 @@ namespace scripts
 
         float armor; // = 0.1f;
 
-        float guard; //= 0f;
         [SerializeField]
+        public float guard; //= 0f;
         float maxGuard; //= 200f; 
 
         public HealthBar healthBar;
         public Health_UI heath_UI;
+        public Guard_UI guard_UI;
         public string nameId;
 
         void start()
@@ -27,22 +28,27 @@ namespace scripts
 
             armor = 0.1f;
 
-            guard = 0f;
+            maxGuard = guard;
         }
 
 
-        public void UpdateLife(float new_health)
+        public void UpdateLife(float new_health, float new_guard)
         {
             this.health = new_health;
+            this.guard = new_guard;
+
             if (heath_UI != null)
                 heath_UI.health = this.health;
+
+            if (guard_UI != null)
+                guard_UI.guard_value = this.guard;
 
             healthBar.health = health;
             
 
         }
 
-        public float TakeDamage(float damage, string type, Posture posture)
+        public (float,float) TakeDamage(float damage, string type, Posture posture)
         {
             switch (type)
             {
@@ -65,7 +71,7 @@ namespace scripts
                     break;
             }
 
-            return health;
+            return (health, guard);
         }
     }
 }

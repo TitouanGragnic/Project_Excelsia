@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1366429380033316374}
+  guard: {fileID: 0}
+  guard_value: 200
 --- !u!1 &3119603411606237699
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 4149886973869645602}
+  health: 1000
 --- !u!1 &4149886973892590298
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +787,7 @@ Canvas:
   m_GameObject: {fileID: 4149886974381675997}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -938,6 +941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 4482265605714068452}
+  guard: {fileID: 0}
+  guard_value: 200
 --- !u!1 &7436324240139060919
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ namespace scripts
 
     public class Posture : MonoBehaviour
     {
+        [SerializeField]
+        GameObject guard;
         private bool state;
         private int maxCooldown;
         public int cooldown;
@@ -21,12 +23,15 @@ namespace scripts
         }
 
 
-
         public void Start()
         {
             this.maxCooldown = 100;
             this.cooldown = 0;
             this.state = false;
+        }
+        void Update()
+        {
+            this.state = guard.activeSelf;
         }
 
         public void Break()

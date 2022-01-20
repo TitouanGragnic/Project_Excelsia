@@ -2,24 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-namespace PersoScripts
+namespace scripts
 {
     public class Guard_UI : MonoBehaviour
     {
         public Slider slider;
-        int guard_value = 200;
+        [SerializeField]
+        public GameObject guard;
+
+        public float guard_value = 200;
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.A))
             {
+                guard.SetActive(true);
                 SliderChange();
             }
+            else
+            {
+                guard.SetActive(false);
+            }
+            
         }
         public void SliderChange()
         {
-            guard_value -= 10;
             slider.value = guard_value;
         }
     }

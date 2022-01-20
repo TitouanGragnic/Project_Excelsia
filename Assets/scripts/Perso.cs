@@ -21,24 +21,35 @@ namespace scripts
         [SerializeField]
         public Slider slider;
 
+        [SerializeField]
+        public Slider sliderguard;
+        [SerializeField]
+        public Slider sliderguard1;
+
         [SyncVar][SerializeField]
         float health;
+
+        [SyncVar][SerializeField]
+        float guard;
 
         private void Awake()
         {
             health = 1000;
+            guard = 200;
         }
 
 
         private void Update()
         {
-            healthSystem.UpdateLife(health);
+            healthSystem.UpdateLife(health, guard);
             SliderChange();
         }
 
         public void SliderChange()
         {
             slider.value = health;
+            sliderguard.value = guard;
+            sliderguard1.value = guard;
         }
 
         public void InitHs(GameObject target)
@@ -52,7 +63,7 @@ namespace scripts
 
         public void TakeDamage(float damage, string type)
         {
-            health = healthSystem.TakeDamage(damage,type,posture)  ;
+            (health, guard) = healthSystem.TakeDamage(damage,type,posture)  ;
             Debug.Log(transform.name + " a pv = " + health);
         }
 
@@ -62,7 +73,7 @@ namespace scripts
             Debug.Log(playerId + "tapé");
             Perso player = GameManager.GetPlayer(playerId);
 
-            player.TakeDamage(100,"normal");
+            player.TakeDamage(25,"normal");
 
         }
 
