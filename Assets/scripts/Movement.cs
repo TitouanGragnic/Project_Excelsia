@@ -191,7 +191,10 @@ public class Movement : MonoBehaviour
         else if (isGrounded && isCrouching)
         {
             moveSpeed = Mathf.Lerp(moveSpeed, crouchSpeed, acceleration * Time.deltaTime);
-            camTranslate = Mathf.Lerp(camTranslate, 1, camAcceleration * Time.deltaTime);
+            if (isSliding)
+                camTranslate = Mathf.Lerp(camTranslate, 1.4f, camAcceleration * Time.deltaTime);
+            else
+                camTranslate = Mathf.Lerp(camTranslate, 1, camAcceleration * Time.deltaTime);
         }
         else
         {
