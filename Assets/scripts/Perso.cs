@@ -35,12 +35,14 @@ namespace scripts
         [SyncVar][SerializeField]
         public float guard;
         public float maxGuard;
+        public float atk;
 
         private void Awake()
         {
             maxHealth = 1000;
             maxGuard = 200;
             armor = 0.1f;
+            atk = 20;
         }
 
 

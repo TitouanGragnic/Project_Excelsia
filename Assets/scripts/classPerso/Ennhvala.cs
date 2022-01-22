@@ -6,16 +6,19 @@ namespace scripts
 {
     public class Ennhvala : Perso
     {
-        public float maxHealth = 1150f;
-        public float maxGuard = 230f;
-        public float atk = 25f;
-        public float armor = 0.1f;
-        public float health;
-        
         public float malus = 0f;
         public float bonus = 1f;
 
         public float vitesse;
+        private void Start()
+        {
+            maxHealth = 1150f;
+            maxGuard = 230f;
+
+            armor = 0.1f;
+            atk = 25f;
+        }
+
         private void Update()
         {
             this.health -= malus;
