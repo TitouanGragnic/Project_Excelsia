@@ -64,15 +64,11 @@ namespace scripts
 
         public void NewGard(bool state)
         {
-            if (state)
-                guard = 200;
+            if (guard != 200)
+                guard += 0.02f;
             else
-            {
-                if (guard != 200)
-                    guard += 0.02f;
-                else
-                    guard = 200;
-            }
+                guard = 200;
+            
 
         }
         public void TakeDamage(float damage, string type)
