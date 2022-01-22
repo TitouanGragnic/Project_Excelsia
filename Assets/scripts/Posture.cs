@@ -8,14 +8,14 @@ using Mirror;
 namespace scripts
 {
 
-    public class Posture : MonoBehaviour
+    public class Posture : NetworkBehaviour
     {
         [SerializeField]
         Guard_UI guard_UI;
 
         [SerializeField]
         Perso perso;
-        //[SyncVar]
+        [SyncVar]
         public bool state;
         private int maxCooldown;
         public int cooldown;
@@ -39,11 +39,12 @@ namespace scripts
         {
 
             CmdPostureSystem(Input.GetKey(KeyCode.A));
-            
+
+            GraphicGuard(Input.GetKey(KeyCode.A));
 
 
         }
-        //[Command(requiresAuthority = false)]
+        [Command]
         public void CmdPostureSystem(bool press)
         {
             if (press && cooldown <= 0)
@@ -51,7 +52,6 @@ namespace scripts
                 if (!state)
                     perso.NewGard();
                 state = true;
-                guard_UI.SetActive(true);
             }
             else
             {
@@ -65,8 +65,12 @@ namespace scripts
                     cooldown -= 1;
                 else
                     cooldown = 0;
-                guard_UI.SetActive(false);
             }
+        }
+        [Client]
+        public void GraphicGuard(bool press)
+        {
+            guard_UI.SetActive(press && cooldown <= 0);
         }
 
         public void Break()
