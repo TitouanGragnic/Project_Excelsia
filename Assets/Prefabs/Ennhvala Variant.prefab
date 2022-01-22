@@ -18,10 +18,14 @@ PrefabInstance:
     - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7461131345155107785}
     - target: {fileID: 5155161729422037007, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155161729422037007, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_AssetId
+      value: 5e3e1bbeb4d0a334994f5b905a2427d2
       objectReference: {fileID: 0}
     - target: {fileID: 6264136679664425721, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
@@ -33,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Name
-      value: Ennhvala
+      value: Ennhvala Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838942, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
@@ -90,11 +94,11 @@ PrefabInstance:
     - target: {fileID: 8800571309908556497, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7461131345155107785}
     - target: {fileID: 9056059095646718349, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7461131345155107785}
     m_RemovedComponents:
     - {fileID: 5818428227407732611, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
