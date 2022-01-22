@@ -61,14 +61,14 @@ namespace scripts
             Camera cam = perso_object.GetComponentInChildren<Camera>();
             cam.cullingMask = ~(1<<health_object.layer); 
         }
-        [Client]
+        
         public void TakeDamage(float damage, string type)
         {
             (this.health, this.guard) = healthSystem.TakeDamage(damage, type, posture);
             Debug.Log(transform.name + " a pv = " + health+guard);
         }
 
-        [Command]
+        [Command][Client]
         public void CmdPlayerAttack(string playerId)
         {
             Debug.Log(playerId + "tapé");

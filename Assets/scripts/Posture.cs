@@ -2,16 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 
 namespace scripts
 {
 
-    public class Posture : MonoBehaviour
+    public class Posture : NetworkBehaviour
     {
         [SerializeField]
         GameObject guard;
-        private bool state;
+        [SyncVar]
+        public bool state;
         private int maxCooldown;
         public int cooldown;
 
@@ -38,6 +40,7 @@ namespace scripts
         {
             this.state = false;
             this.cooldown = this.maxCooldown;
+            guard.SetActive(false);
         }
 
 

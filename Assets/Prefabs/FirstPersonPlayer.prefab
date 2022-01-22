@@ -469,6 +469,7 @@ MonoBehaviour:
   - {fileID: 2534374922002084206}
   - {fileID: 2554056335996328351}
   - {fileID: 2534374922002084206}
+  - {fileID: 8800571309908556497}
   name_layer: client
   nameHP_layer: HP_client
 --- !u!114 &-1428473637513941342
@@ -713,7 +714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9688e9bc51a2ef40af82eb166065f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   guard: {fileID: 1050821070381803612}
+  state: 0
   cooldown: 0
 --- !u!114 &2554056335996328351
 MonoBehaviour:
@@ -1396,8 +1400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 597356897776362150}
-  guard: {fileID: 1050821070381803612}
-  guard_value: 200
+  guard_value: {fileID: 1050821070381803612}
+  guard: 200
 --- !u!114 &8467873268026504003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,8 +1415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2632495222433785684}
-  guard: {fileID: 5099672392251967026}
-  guard_value: 200
+  guard_value: {fileID: 5099672392251967026}
+  guard: 200
 --- !u!1001 &2579607182766608240
 PrefabInstance:
   m_ObjectHideFlags: 0

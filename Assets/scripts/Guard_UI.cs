@@ -8,27 +8,27 @@ namespace scripts
     {
         public Slider slider;
         [SerializeField]
-        public GameObject guard;
+        public GameObject guard_value;
 
-        public float guard_value = 200;
+        public float guard = 200;
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.A) && guard_value > 0)
+            if (Input.GetKey(KeyCode.A) && guard > 0)
             {
-                guard.SetActive(true);
+                guard_value.SetActive(true);
                 SliderChange();
             }
             else
             {
-                guard.SetActive(false);
+                guard_value.SetActive(false);
             }
             
         }
         public void SliderChange()
         {
-            slider.value = guard_value;
+            slider.value = guard;
         }
     }
 }
