@@ -15,7 +15,7 @@ namespace scripts
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) && guard_value > 0)
             {
                 guard.SetActive(true);
                 SliderChange();
