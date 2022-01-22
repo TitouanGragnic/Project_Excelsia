@@ -62,7 +62,7 @@ namespace scripts
             cam.cullingMask = ~(1<<health_object.layer); 
         }
 
-        public void NewGard(bool state)
+        public void NewGard()
         {
             if (guard != 200)
                 guard += 0.02f;

@@ -48,7 +48,7 @@ namespace scripts
             if (press && cooldown <= 0)
             {
                 if (!state)
-                    perso.NewGard(true);
+                    perso.NewGard();
                 state = true;
                 guard_UI.SetActive(true);
             }
@@ -59,11 +59,12 @@ namespace scripts
                     cooldown = 500;
                 }
                 state = false;
-                perso.NewGard(false);
+                perso.NewGard();
                 if (cooldown > 0)
                     cooldown -= 1;
                 else
                     cooldown = 0;
+                guard_UI.SetActive(false);
             }
         }
 
