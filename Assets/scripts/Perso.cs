@@ -29,6 +29,7 @@ namespace scripts
         [SyncVar][SerializeField]
         float health;
 
+
         [SyncVar][SerializeField]
         float guard;
 
@@ -60,11 +61,11 @@ namespace scripts
             Camera cam = perso_object.GetComponentInChildren<Camera>();
             cam.cullingMask = ~(1<<health_object.layer); 
         }
-
+        [Client]
         public void TakeDamage(float damage, string type)
         {
-            (health, guard) = healthSystem.TakeDamage(damage,type,posture)  ;
-            Debug.Log(transform.name + " a pv = " + health);
+            (this.health, this.guard) = healthSystem.TakeDamage(damage, type, posture);
+            Debug.Log(transform.name + " a pv = " + health+guard);
         }
 
         [Command]

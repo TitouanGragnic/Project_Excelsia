@@ -22,7 +22,7 @@ namespace scripts
         public Guard_UI guard_UI;
         public string nameId;
 
-        void start()
+        void Start()
         {
             maxHealth = health;
 
