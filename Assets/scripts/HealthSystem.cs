@@ -41,9 +41,11 @@ namespace scripts
                 heath_UI.health = this.health;
 
             if (guard_UI != null)
-                guard_UI.guard = this.guard;
+                guard_UI.SliderChange(guard);
 
             healthBar.health = health;
+
+            
             
 
         }

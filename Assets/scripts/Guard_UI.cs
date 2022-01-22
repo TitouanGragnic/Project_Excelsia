@@ -6,29 +6,27 @@ namespace scripts
 {
     public class Guard_UI : MonoBehaviour
     {
-        public Slider slider;
+        public Slider slider1;
         [SerializeField]
-        public GameObject guard_value;
+        public GameObject guard_object1;
 
-        public float guard = 200;
+        public Slider slider2;
+        [SerializeField]
+        public GameObject guard_object2;
+
 
         // Update is called once per frame
-        void Update()
+       public void SetActive(bool state)
         {
-            if (Input.GetKey(KeyCode.A) && guard > 0)
-            {
-                guard_value.SetActive(true);
-                SliderChange();
-            }
-            else
-            {
-                guard_value.SetActive(false);
-            }
-            
+            guard_object1.SetActive(state);
+            guard_object2.SetActive(state);
         }
-        public void SliderChange()
+
+
+        public void SliderChange(float newguard)
         {
-            slider.value = guard;
+            slider1.value = newguard;
+            slider2.value = newguard;
         }
     }
 }

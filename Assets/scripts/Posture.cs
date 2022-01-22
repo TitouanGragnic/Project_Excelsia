@@ -11,7 +11,10 @@ namespace scripts
     public class Posture : NetworkBehaviour
     {
         [SerializeField]
-        GameObject guard;
+        Guard_UI guard_UI;
+
+        [SerializeField]
+        Perso perso;
         [SyncVar]
         public bool state;
         private int maxCooldown;
@@ -27,20 +30,39 @@ namespace scripts
 
         public void Start()
         {
-            this.maxCooldown = 100;
+            this.maxCooldown = 5000;
             this.cooldown = 0;
             this.state = false;
         }
         void Update()
         {
-            this.state = guard.activeSelf;
+
+
+            if (Input.GetKey(KeyCode.A) && cooldown<=0)
+            {
+                if (!state)
+                    perso.NewGard(true);
+                state = true;
+                guard_UI.SetActive(true);
+            }
+            else
+            {
+                state = false;
+                perso.NewGard(false);
+                if (cooldown > 0)
+                    cooldown -= 1;
+                else
+                    cooldown = 0;
+            }
+
+
         }
 
         public void Break()
         {
             this.state = false;
             this.cooldown = this.maxCooldown;
-            guard.SetActive(false);
+            guard_UI.SetActive(false);
         }
 
 
