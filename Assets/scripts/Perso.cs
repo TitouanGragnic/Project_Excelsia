@@ -67,7 +67,13 @@ namespace scripts
             if (state)
                 guard = 200;
             else
-                guard = 0;
+            {
+                if (guard != 200)
+                    guard += 0.02f;
+                else
+                    guard = 200;
+            }
+
         }
         public void TakeDamage(float damage, string type)
         {
