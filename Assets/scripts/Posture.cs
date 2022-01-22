@@ -8,14 +8,14 @@ using Mirror;
 namespace scripts
 {
 
-    public class Posture : NetworkBehaviour
+    public class Posture : MonoBehaviour
     {
         [SerializeField]
         Guard_UI guard_UI;
 
         [SerializeField]
         Perso perso;
-        [SyncVar]
+        //[SyncVar]
         public bool state;
         private int maxCooldown;
         public int cooldown;
@@ -34,6 +34,7 @@ namespace scripts
             this.cooldown = 0;
             this.state = false;
         }
+
         void Update()
         {
 
@@ -42,7 +43,7 @@ namespace scripts
 
 
         }
-        [Command]
+        //[Command(requiresAuthority = false)]
         public void CmdPostureSystem(bool press)
         {
             if (press && cooldown <= 0)

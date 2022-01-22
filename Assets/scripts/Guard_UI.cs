@@ -15,14 +15,12 @@ namespace scripts
         [SerializeField]
         public GameObject guard_object2;
 
-
         [Client]
        public void SetActive(bool state)
         {
             guard_object1.SetActive(state);
             guard_object2.SetActive(state);
         }
-
 
         public void SliderChange(float newguard)
         {
