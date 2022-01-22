@@ -8,14 +8,9 @@ namespace scripts
     public class HealthSystem : NetworkBehaviour
     {
         [SerializeField]
-        public float health; // = 1000f;
-        public float maxHealth;
+        Perso perso;
 
-        float armor; // = 0.1f;
-
-        [SerializeField]
-        public float guard; //= 0f;
-        float maxGuard; //= 200f; 
+        
 
         public HealthBar healthBar;
         public Health_UI heath_UI;
@@ -24,48 +19,41 @@ namespace scripts
 
         void Start()
         {
-            maxHealth = health;
-
-            armor = 0.1f;
-
-            maxGuard = guard;
+            perso.health = perso.maxHealth;
         }
 
 
-        public void UpdateLife(float new_health, float new_guard)
+        public void UpdateLife()
         {
-            this.health = new_health;
-            this.guard = new_guard;
-
             if (heath_UI != null)
-                heath_UI.health = this.health;
+                heath_UI.health = perso.health;
 
             if (guard_UI != null)
-                guard_UI.SliderChange(guard);
+                guard_UI.SliderChange(perso.guard);
 
-            healthBar.health = health;
+            healthBar.health = perso.health;
 
             
             
 
         }
 
-        public (float,float) TakeDamage(float damage, string type, Posture posture)
+        public void TakeDamage(float damage, string type, Posture posture)
         {
             switch (type)
             {
                 case "normal":
                     if (posture.State)
                     {
-                        guard -= damage;
-                        if (guard <= 0)
+                        perso.guard -= damage;
+                        if (perso.guard <= 0)
                         {
                             posture.Break();
                         }
                     }
                     else
                     {
-                        health -= damage * (1f - armor);
+                        perso.health -= damage * (1f - perso.armor);
                     }
                     break;
                 
@@ -73,7 +61,6 @@ namespace scripts
                     break;
             }
 
-            return (health, guard);
         }
     }
 }

@@ -27,26 +27,26 @@ namespace scripts
         public Slider sliderguard1;
 
         [SyncVar][SerializeField]
-        float health;
-        float maxHealth;
+        public float health;
+        public float maxHealth;
 
+        public float armor; // = 0.1f;
 
         [SyncVar][SerializeField]
-        float guard;
-        float maxGuard;
+        public float guard;
+        public float maxGuard;
 
         private void Awake()
         {
             maxHealth = 1000;
-            healthSystem.maxHealth = maxHealth;
             maxGuard = 200;
-
+            armor = 0.1f;
         }
 
 
         private void Update()
         {
-            healthSystem.UpdateLife(health, guard);
+            healthSystem.UpdateLife();
             SliderChange();
         }
 
@@ -77,7 +77,7 @@ namespace scripts
         }
         public void TakeDamage(float damage, string type)
         {
-            (this.health, this.guard) = healthSystem.TakeDamage(damage, type, posture);
+            healthSystem.TakeDamage(damage, type, posture);
             Debug.Log(transform.name + " a pv = " + health+guard);
         }
 

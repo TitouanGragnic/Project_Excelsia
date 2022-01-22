@@ -569,7 +569,10 @@ MonoBehaviour:
   sliderguard: {fileID: 597356897776362150}
   sliderguard1: {fileID: 2632495222433785684}
   health: 0
+  maxHealth: 0
+  armor: 0
   guard: 0
+  maxGuard: 0
 --- !u!114 &9056059095646718349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,8 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  health: 1000
-  guard: 200
+  perso: {fileID: 5818428227407732611}
   healthBar: {fileID: 2985151689025305718}
   heath_UI: {fileID: 227892654295556963}
   guard_UI: {fileID: 8467873268026504003}
