@@ -38,10 +38,13 @@ namespace scripts
 
         void Update()
         {
+            bool input = Input.GetKey(KeyCode.A);
+            if (input != null)
+            {
+                CmdPostureSystem(input);
 
-            CmdPostureSystem(Input.GetKey(KeyCode.A));
-
-            GraphicGuard(Input.GetKey(KeyCode.A));
+                GraphicGuard(input);
+            }
 
 
         }

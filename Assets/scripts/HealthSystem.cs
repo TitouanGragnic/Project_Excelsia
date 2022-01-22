@@ -17,7 +17,7 @@ namespace scripts
         public Guard_UI guard_UI;
         public string nameId;
 
-        void Start()
+        public void PersoStart()
         {
             perso.health = perso.maxHealth;
         }

@@ -39,10 +39,16 @@ namespace scripts
 
         private void Awake()
         {
+            
             maxHealth = 1000;
             maxGuard = 200;
             armor = 0.1f;
             atk = 20;
+        }
+
+        private void Start()
+        {
+            healthSystem.PersoStart();
         }
 
 
