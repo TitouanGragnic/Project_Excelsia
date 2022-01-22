@@ -28,15 +28,19 @@ namespace scripts
 
         [SyncVar][SerializeField]
         float health;
+        float maxHealth;
 
 
         [SyncVar][SerializeField]
         float guard;
+        float maxGuard;
 
         private void Awake()
         {
-            health = 1000;
-            guard = 200;
+            maxHealth = 1000;
+            healthSystem.maxHealth = maxHealth;
+            maxGuard = 200;
+
         }
 
 
@@ -64,10 +68,10 @@ namespace scripts
 
         public void NewGard()
         {
-            if (guard < 200)
+            if (guard < maxGuard)
                 guard += 0.02f;
             else
-                guard = 200;
+                guard = maxGuard;
             
 
         }

@@ -9,7 +9,7 @@ namespace scripts
     {
         [SerializeField]
         public float health; // = 1000f;
-        float maxHealth;
+        public float maxHealth;
 
         float armor; // = 0.1f;
 
