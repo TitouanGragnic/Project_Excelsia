@@ -61,7 +61,14 @@ namespace scripts
             Camera cam = perso_object.GetComponentInChildren<Camera>();
             cam.cullingMask = ~(1<<health_object.layer); 
         }
-        
+
+        public void NewGard(bool state)
+        {
+            if (state)
+                guard = 200;
+            else
+                guard = 0;
+        }
         public void TakeDamage(float damage, string type)
         {
             (this.health, this.guard) = healthSystem.TakeDamage(damage, type, posture);
