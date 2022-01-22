@@ -18,6 +18,7 @@ namespace scripts
         [SyncVar]
         public bool state;
         private int maxCooldown;
+        [SyncVar]
         public int cooldown;
 
 
