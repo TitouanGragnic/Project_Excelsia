@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 namespace scripts
 {
     public class Guard_UI : MonoBehaviour
@@ -15,7 +16,7 @@ namespace scripts
         public GameObject guard_object2;
 
 
-        // Update is called once per frame
+        [Client]
        public void SetActive(bool state)
         {
             guard_object1.SetActive(state);
