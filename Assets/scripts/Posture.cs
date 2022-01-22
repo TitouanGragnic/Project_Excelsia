@@ -47,6 +47,10 @@ namespace scripts
             }
             else
             {
+                if (state)
+                {
+                    cooldown = maxCooldown / 2;
+                }
                 state = false;
                 perso.NewGard(false);
                 if (cooldown > 0)
