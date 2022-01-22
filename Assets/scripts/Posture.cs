@@ -50,8 +50,7 @@ namespace scripts
         {
             if (press && cooldown <= 0)
             {
-                if (!state)
-                    perso.NewGard();
+                    
                 state = true;
             }
             else
@@ -61,12 +60,12 @@ namespace scripts
                     cooldown = 200;
                 }
                 state = false;
-                perso.NewGard();
                 if (cooldown > 0)
                     cooldown -= 1;
                 else
                     cooldown = 0;
             }
+            perso.NewGard();
         }
         [Client]
         public void GraphicGuard(bool press)

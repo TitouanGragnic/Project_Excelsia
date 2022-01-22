@@ -64,7 +64,7 @@ namespace scripts
 
         public void NewGard()
         {
-            if (guard != 200)
+            if (guard < 200)
                 guard += 0.02f;
             else
                 guard = 200;
