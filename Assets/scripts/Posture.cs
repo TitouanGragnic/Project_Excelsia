@@ -37,8 +37,15 @@ namespace scripts
         void Update()
         {
 
+            CmdPostureSystem(Input.GetKey(KeyCode.A));
+            
 
-            if (Input.GetKey(KeyCode.A) && cooldown<=0)
+
+        }
+        [Command]
+        public void CmdPostureSystem(bool press)
+        {
+            if (press && cooldown <= 0)
             {
                 if (!state)
                     perso.NewGard(true);
@@ -58,8 +65,6 @@ namespace scripts
                 else
                     cooldown = 0;
             }
-
-
         }
 
         public void Break()
