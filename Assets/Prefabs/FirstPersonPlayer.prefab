@@ -569,7 +569,7 @@ MonoBehaviour:
   sliderguard: {fileID: 597356897776362150}
   sliderguard1: {fileID: 2632495222433785684}
   health: 0
-  guard: 200
+  guard: 0
 --- !u!114 &9056059095646718349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +585,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   health: 1000
-  guard: 0
+  guard: 200
   healthBar: {fileID: 2985151689025305718}
   heath_UI: {fileID: 0}
   guard_UI: {fileID: 0}
@@ -1103,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4149886973108381351, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.1997375
+      objectReference: {fileID: 0}
     - target: {fileID: 4149886973600955085, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1114,6 +1118,10 @@ PrefabInstance:
     - target: {fileID: 4149886973869645600, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149886973869645602, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_Value
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4149886973869645603, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
       propertyPath: m_SizeDelta.x
