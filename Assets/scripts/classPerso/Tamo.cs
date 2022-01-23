@@ -12,7 +12,7 @@ namespace scripts
         void Start()
         {
             typeAtk = "poison";
-            attackSystem.range = 50f;
+            attackSystem.range = 5f;
         }
 
         // Update is called once per frame

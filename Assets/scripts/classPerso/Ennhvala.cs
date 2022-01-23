@@ -14,15 +14,17 @@ namespace scripts
         {
             maxHealth = 1150f;
             maxGuard = 230f;
-
+            health = maxHealth;
+            
             armor = 0.1f;
             atk = 25f;
         }
 
         private void Update()
         {
-            this.health -= malus;
-            this.atk = atk * (maxHealth / health) * bonus;
+
+            //this.health -= malus;
+            //this.atk = atk * (maxHealth / health) * bonus;
         }
         private void Ulti()
         {

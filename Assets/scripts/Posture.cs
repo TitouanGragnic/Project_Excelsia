@@ -39,12 +39,11 @@ namespace scripts
         void Update()
         {
             bool input = Input.GetKey(KeyCode.A);
-            if (input != null)
-            {
-                CmdPostureSystem(input);
+           
+            CmdPostureSystem(input);
 
-                GraphicGuard(input);
-            }
+            GraphicGuard(input);
+            
 
 
         }

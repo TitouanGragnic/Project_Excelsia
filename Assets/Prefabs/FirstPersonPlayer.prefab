@@ -389,6 +389,7 @@ MonoBehaviour:
   jumpkey: 32
   sprintKey: 304
   crouchKey: 306
+  nbJump: 0
   groundDrag: 6
   slideDrag: 0.7
   airDrag: 1
@@ -566,13 +567,13 @@ MonoBehaviour:
   healthSystem: {fileID: 9056059095646718349}
   posture: {fileID: 8800571309908556497}
   slider: {fileID: 2534374921440115602}
-  sliderguard: {fileID: 597356897776362150}
-  sliderguard1: {fileID: 2632495222433785684}
   health: 0
   maxHealth: 0
   armor: 0
   guard: 0
   maxGuard: 0
+  atk: 0
+  typeAtk: 
 --- !u!114 &9056059095646718349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,6 +740,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  range: 0
 --- !u!114 &-7429993528449836055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +1000,8 @@ MonoBehaviour:
   cam: {fileID: 6485566139138052759}
   player: {fileID: 6485566139432838942}
   grappleHole: {fileID: 2639596340234615233, guid: 47180cfd21654da49af2f9c2ea6dc5a3, type: 3}
+  grappleCooldown: 0
+  maxGrappleCooldown: 0
 --- !u!114 &1467614426043384325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,7 +1414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2534374921440115602}
-  health: 1000
+  perso: {fileID: 5818428227407732611}
 --- !u!114 &8467873268026504003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,6 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4f95f6e3d1ce84fb3566803c1aece9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perso: {fileID: 5818428227407732611}
   slider1: {fileID: 597356897776362150}
   guard_object1: {fileID: 1050821070381803612}
   slider2: {fileID: 2632495222433785684}
@@ -1885,6 +1890,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 1717323141183424215, guid: 1d224804000c8434f9496d3d0213d25b, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 5818428227407732611}
     - target: {fileID: 2883560442357822450, guid: 1d224804000c8434f9496d3d0213d25b, type: 3}
       propertyPath: m_Layer
       value: 13

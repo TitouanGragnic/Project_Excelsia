@@ -7,9 +7,10 @@ namespace scripts
 {
     public class HealthBar : MonoBehaviour
     {
-        public float health;
-        public float maxHealth;
+        [SerializeField]
+        Perso perso;
 
+        float maxHealth;
         
         public GameObject object_health;
 
@@ -22,7 +23,7 @@ namespace scripts
 
         void UptdateLife()
         {
-            int nb = (int)((health / maxHealth)*10);
+            int nb = (int)((perso.health / maxHealth) *10);
             int i = 0;
             while (i<10 && i <= nb) 
             {
@@ -51,7 +52,7 @@ namespace scripts
         // Start is called before the first frame update
         void Start()
         {
-            this.maxHealth = this.health+1;
+            this.maxHealth = perso.health + 1;
         }
 
         // Update is called once per frame

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227892654295556963, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 8049342609815884313}
     - target: {fileID: 2534374920594948631, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17,6 +21,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 8049342609815884313}
+    - target: {fileID: 2985151689025305718, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
       value: 
       objectReference: {fileID: 8049342609815884313}
     - target: {fileID: 3713347209123880766, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -91,6 +99,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8467873268026504003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 8049342609815884313}
     - target: {fileID: 8778975680791155342, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -164,28 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7305348743631574228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 597356897776362150, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 7866648446065145458}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5306211642504335654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2632495222433785684, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 7866648446065145458}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8049342609815884313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,12 +195,11 @@ MonoBehaviour:
   healthSystem: {fileID: 1190752200064811007}
   posture: {fileID: 1660170128148434083}
   slider: {fileID: 5620522593549274592}
-  sliderguard: {fileID: 7305348743631574228}
-  sliderguard1: {fileID: 5306211642504335654}
   health: 0
   maxHealth: 0
   armor: 0
   guard: 0
   maxGuard: 0
   atk: 0
+  typeAtk: 
   movement: {fileID: 3975182171683246447}

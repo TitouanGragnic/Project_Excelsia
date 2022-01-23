@@ -21,10 +21,6 @@ namespace scripts
         [SerializeField]
         public Slider slider;
 
-        [SerializeField]
-        public Slider sliderguard;
-        [SerializeField]
-        public Slider sliderguard1;
 
         [SyncVar][SerializeField]
         public float health;
@@ -40,8 +36,9 @@ namespace scripts
         public string typeAtk;
         private void Awake()
         {
-            
+            guard = 0;
             maxHealth = 1000;
+            health = maxHealth;
             maxGuard = 200;
             armor = 0.1f;
             atk = 20;
@@ -56,15 +53,12 @@ namespace scripts
 
         private void Update()
         {
-            healthSystem.UpdateLife();
-            SliderChange();
+            UpdateLife();
         }
-
-        public void SliderChange()
+        [Command]
+        private void UpdateLife()
         {
-            slider.value = health;
-            sliderguard.value = guard;
-            sliderguard1.value = guard;
+            healthSystem.UpdateLife();
         }
 
         public void InitHs(GameObject target)

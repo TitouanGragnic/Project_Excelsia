@@ -8,7 +8,8 @@ namespace scripts
     public class Health_UI : MonoBehaviour
     {
         public Slider slider;
-        public float health = 1000f;
+        [SerializeField]
+        public Perso perso;
 
         // Update is called once per frame
         void Update()
@@ -18,7 +19,7 @@ namespace scripts
         }
         public void SliderChange()
         {
-            slider.value = health;
+            slider.value = perso.health/perso.maxHealth * 1000f;
         }
     }
 }

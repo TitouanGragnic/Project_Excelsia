@@ -20,7 +20,7 @@ namespace scripts
 
         void Awake()
         {
-            range = 20f;
+            range = 2f;
         }
         void Update()
         {
