@@ -48,7 +48,7 @@ namespace scripts
 
 
         }
-        [Command]
+        [Command(requiresAuthority = false)]
         public void CmdPostureSystem(bool press)
         {
             if (press && cooldown <= 0)

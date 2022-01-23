@@ -13,16 +13,36 @@ public class Grapple : MonoBehaviour
     [SerializeField]
     private GameObject grappleHole;
 
+    public int grappleCooldown;
+    public int maxGrappleCooldown;
+    bool state;
 
+    private void Awake()
+    {
+        maxGrappleCooldown = 200;
+        grappleCooldown = 0;
+    }
+
+    void Cooldown()
+    {
+        if (grappleCooldown > 0)
+            grappleCooldown -= 1;
+        else
+            grappleCooldown = 0;
+
+    }
     void Update()
     {
- 
+
+        Cooldown();
+
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance))
         {
             
-            if (Input.GetKeyDown(KeyCode.E) && (distanceFromPoint > 5) && !IsGrappling() && Vector3.Distance(player.position, hit.point) > 5)
+            if (Input.GetKeyDown(KeyCode.E) && (distanceFromPoint > 5) && !IsGrappling() && Vector3.Distance(player.position, hit.point) > 5 && grappleCooldown ==0)
             {
+                state = true;
                 grapplePoint = hit.point;
                 joint = player.gameObject.AddComponent<SpringJoint>();
                 joint.autoConfigureConnectedAnchor = false;
@@ -35,9 +55,12 @@ public class Grapple : MonoBehaviour
             }
         }
         if (!Input.GetKey(KeyCode.E) || (distanceFromPoint <= 5))
-            {
-                Destroy(joint);
-            }
+        {
+            Destroy(joint);
+            if(state)
+                grappleCooldown = maxGrappleCooldown;
+            state = false;
+        }
         
 
         if (IsGrappling()) 

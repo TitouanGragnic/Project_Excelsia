@@ -16,7 +16,12 @@ namespace scripts
         [SerializeField]
         private LayerMask mask;
 
+        public float range;
 
+        void Awake()
+        {
+            range = 20f;
+        }
         void Update()
         {
             if (Input.GetMouseButtonDown(1))
@@ -30,7 +35,7 @@ namespace scripts
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 20f, mask))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, mask))
             {
 
                 player.CmdPlayerAttack(hit.collider.name);
