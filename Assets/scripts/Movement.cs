@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 
     [Header("Sprinting")]
     [SerializeField] float walkSpeed = 50f;
-    [SerializeField] float sprintSpeed = 100f;
+    [SerializeField] public float sprintSpeed; //= 100f
 
     [Header("Crouching")]
     [SerializeField] float crouchSpeed = 30f;
@@ -39,6 +39,7 @@ public class Movement : MonoBehaviour
     [SerializeField] KeyCode crouchKey = KeyCode.LeftControl;
 
     int doubleJump = 1;
+    public int nbJump;
     [SerializeField] float groundDrag = 6f;
     [SerializeField] float slideDrag = 0.5f;
     [SerializeField] float airDrag = 0.5f;
@@ -66,6 +67,8 @@ public class Movement : MonoBehaviour
 
     RaycastHit slopeHit;
 
+
+
     private bool onSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.5f))
@@ -81,15 +84,25 @@ public class Movement : MonoBehaviour
             return false;
     }
 
+    void Awake()
+    {
+        nbJump = 1;
+        sprintSpeed = 100f;
+        
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         animator = GetComponentInChildren<Animator>();
     }
-
+    
     private void Update()
     {
+
+       
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);
         isCrouching = Input.GetKey(crouchKey);
@@ -105,7 +118,7 @@ public class Movement : MonoBehaviour
         }
         if (isGrounded | wallLeft | wallright)
         {
-            doubleJump = 1;
+            doubleJump = nbJump;
         }
         rb.useGravity = true;
 

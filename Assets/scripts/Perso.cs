@@ -37,6 +37,7 @@ namespace scripts
         public float maxGuard;
         public float atk;
 
+        public string typeAtk;
         private void Awake()
         {
             
@@ -44,6 +45,7 @@ namespace scripts
             maxGuard = 200;
             armor = 0.1f;
             atk = 20;
+            typeAtk = "normal";
         }
 
         private void Start()
@@ -95,7 +97,7 @@ namespace scripts
             Debug.Log(playerId + "tapé");
             Perso player = GameManager.GetPlayer(playerId);
 
-            player.TakeDamage(25,"normal");
+            player.TakeDamage(atk,typeAtk);
 
         }
 
