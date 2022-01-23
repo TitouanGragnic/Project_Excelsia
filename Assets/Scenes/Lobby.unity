@@ -911,6 +911,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3790208292906456734, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/Scene_CharacterSelection.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
       propertyPath: m_RootOrder
       value: 3
