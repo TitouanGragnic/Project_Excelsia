@@ -364,7 +364,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611342692}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Mirror.NetworkManager, Mirror
         m_MethodName: StartHost
         m_Mode: 1
@@ -614,6 +614,67 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1403434448
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3790208292906456734, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: spawnPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3975182171683246446, guid: 9020b4074d5abb9489a610a6b7bdc29b, type: 3}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.9872127
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.079
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.517359
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790208292906456739, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+      propertyPath: m_Name
+      value: Network Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
 --- !u!1 &1515642971
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536410586
 GameObject:
@@ -746,10 +807,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1611342692 stripped
+--- !u!114 &1537425692 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3790208292906456734, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-  m_PrefabInstance: {fileID: 1868936136}
+  m_PrefabInstance: {fileID: 1403434448}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -903,80 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2a29933c266ab41aa037662568a655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 1611342692}
---- !u!1001 &1868936136
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3790208292906456734, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 141259556907378178, guid: 9bdfac433fa375f4a9e9648cb48af93b, type: 3}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.9872127
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.079
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -16.517359
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456735, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456736, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: offsetX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456736, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: offsetY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456737, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790208292906456739, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
-      propertyPath: m_Name
-      value: Network Manager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0fe76d8098ae9e846a103f0dc1ed05a5, type: 3}
+  networkManager: {fileID: 1537425692}
 --- !u!1 &1961247985
 GameObject:
   m_ObjectHideFlags: 0
