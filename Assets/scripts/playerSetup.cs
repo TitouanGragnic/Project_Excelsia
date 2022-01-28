@@ -11,6 +11,8 @@ namespace scripts
         private string name_layer = "client";
         [SerializeField]
         private string nameHP_layer = "HP_client";
+        [SerializeField]
+        private string body_layer = "body_client";
 
 
 
@@ -23,25 +25,29 @@ namespace scripts
                     componentsToDisable[i].enabled = false;
                 }
                 gameObject.layer = LayerMask.NameToLayer(name_layer);
-
-                if (GetComponent<Perso>() != null)
+                Perso perso = GetComponent<Perso>();
+                if ( perso != null)
                 {
                     GameObject hp_object = gameObject.transform.Find("HealthBar").gameObject;
                     hp_object.layer = LayerMask.NameToLayer(nameHP_layer);
 
-                    SetLayerRecursively(hp_object);
+                    SetLayerRecursively(hp_object, nameHP_layer);
+
+                    perso.body.layer = LayerMask.NameToLayer(body_layer);
+
+                    SetLayerRecursively(perso.body, body_layer);
                 }
 
             }
         }
 
-        private void SetLayerRecursively(GameObject obj)
+        private void SetLayerRecursively(GameObject obj,string layer)
         {
-            obj.layer = LayerMask.NameToLayer(nameHP_layer);
+            obj.layer = LayerMask.NameToLayer(layer);
 
             foreach (Transform child in obj.transform)
             {
-                SetLayerRecursively(child.gameObject);
+                SetLayerRecursively(child.gameObject, layer);
             }
         }
         public override void OnStartClient()

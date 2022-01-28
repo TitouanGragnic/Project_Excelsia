@@ -13,6 +13,7 @@ namespace scripts
     public class Perso : NetworkBehaviour
     {
         public GameObject perso_object;
+        public GameObject body;
         public GameObject health_object;
         [SerializeField]
         public HealthSystem healthSystem;

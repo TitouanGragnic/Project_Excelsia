@@ -201,7 +201,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 280567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -472,6 +472,7 @@ MonoBehaviour:
   - {fileID: 8800571309908556497}
   name_layer: client
   nameHP_layer: HP_client
+  body_layer: body_client
 --- !u!114 &-1428473637513941342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +563,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   perso_object: {fileID: 6485566139432838940}
+  body: {fileID: 0}
   health_object: {fileID: 8240095265415717969}
   healthSystem: {fileID: 9056059095646718349}
   posture: {fileID: 8800571309908556497}
@@ -739,7 +741,7 @@ MonoBehaviour:
   player: {fileID: 5818428227407732611}
   mask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 262656
   range: 0
 --- !u!114 &-7429993528449836055
 MonoBehaviour:
