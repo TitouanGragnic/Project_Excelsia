@@ -9,14 +9,28 @@ namespace scripts
     {
         public static GameManager instance;
         private const string playerIDPrefix = "Player";
-        
-        [SerializeField]
+        private const string choiceIDPrefix = "Choice";
+   
         public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
+       
+        public static Dictionary<string, choice> choices = new Dictionary<string, choice>();
 
         void Awake()
         {
             instance = this;
         }
+
+        public static bool GetStateSpawn()
+        {
+            bool spawnState = true;
+            foreach (KeyValuePair<string, choice> choice_ex in choices)
+            {
+                if (choice_ex.Value != null)
+                    spawnState &= choice_ex.Value.state;
+            }
+            return spawnState;
+        }
+
         public static void RegisterPlayer(string netID, Perso player)
         {
             string playerId = playerIDPrefix + netID;
@@ -25,7 +39,6 @@ namespace scripts
 
             foreach (KeyValuePair<string, Perso> player_ex in players)
             {
-                
 
                 if (player_ex.Value.transform.name != player.transform.name)
                 {
@@ -35,6 +48,17 @@ namespace scripts
                 }
             }
         }
+
+        public static void RegisterChoice(string netID, choice player)
+        {
+            string choiceId = choiceIDPrefix + netID;
+            choices.Add(choiceId, player);
+            player.transform.name = choiceId;
+
+            Debug.Log("add : "+ choiceId);
+
+        }
+
         public static void UnRegisterPlayer(string playerId)
         {
             players.Remove(playerId);

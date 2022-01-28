@@ -24,10 +24,13 @@ namespace scripts
                 }
                 gameObject.layer = LayerMask.NameToLayer(name_layer);
 
-                GameObject hp_object = gameObject.transform.Find("HealthBar").gameObject;
-                hp_object.layer = LayerMask.NameToLayer(nameHP_layer);
+                if (GetComponent<Perso>() != null)
+                {
+                    GameObject hp_object = gameObject.transform.Find("HealthBar").gameObject;
+                    hp_object.layer = LayerMask.NameToLayer(nameHP_layer);
 
-                SetLayerRecursively(hp_object);
+                    SetLayerRecursively(hp_object);
+                }
 
             }
         }
@@ -48,8 +51,10 @@ namespace scripts
             string netId = GetComponent<NetworkIdentity>().netId.ToString();
             Perso player = GetComponent<Perso>();
 
-
-            GameManager.RegisterPlayer(netId,player);
+            if (player != null)
+                GameManager.RegisterPlayer(netId, player);
+            else
+                GameManager.RegisterChoice(netId, GetComponent<choice>());
         }
 
         private void OnDisable()
