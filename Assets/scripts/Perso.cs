@@ -67,8 +67,6 @@ namespace scripts
             healthSystem.healthBar.target = target;
             healthSystem.nameId = perso_object.transform.name;
 
-            Camera cam = perso_object.GetComponentInChildren<Camera>();
-            cam.cullingMask = ~(1<<health_object.layer); 
         }
 
         public void NewGard()
