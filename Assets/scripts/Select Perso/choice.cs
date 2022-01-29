@@ -25,6 +25,8 @@ namespace scripts {
         [SyncVar]
         public bool state;
 
+        BodyLight select_light;
+
         private void Start()
         {
             Cursor.lockState = CursorLockMode.None;
@@ -50,7 +52,8 @@ namespace scripts {
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 50, mask))
                 {
-                    Cmd_choice_prefab(hit.collider.name);
+
+                    Cmd_Work_light(hit, hit.collider.gameObject);
                 }
 
 
@@ -59,9 +62,11 @@ namespace scripts {
         }
 
 
+        
+        
+
         [Command]
-        [Client]
-        void Cmd_choice_prefab(string name)
+        public void Cmd_Select_Prefab(string name)
         {
             switch (name)
             {
@@ -78,9 +83,23 @@ namespace scripts {
                     PlayerPrefab = Enhvala;
                     break;
             }
+        }
 
+        
+        public void Cmd_Work_light(RaycastHit hit, GameObject obj_collider)
+        {
 
+            BodyLight light_collider = obj_collider.GetComponent<BodyLight>();
 
+            if (!light_collider.choised)
+            {
+                light_collider.Select();
+                if (select_light != null)
+                    select_light.UnSelect();
+
+                select_light = light_collider;
+                Cmd_Select_Prefab(hit.collider.name);
+            }
         }
 
         [Command][Client]
