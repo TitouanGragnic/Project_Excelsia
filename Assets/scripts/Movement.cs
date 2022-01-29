@@ -50,6 +50,8 @@ public class Movement : MonoBehaviour
     [Header("Ground Detection")]
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundMask;
+    [SerializeField] LayerMask wallMask;
+
     bool isGrounded;
     bool isSprinting;
     bool isSliding;
@@ -101,7 +103,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
-       
+        Debug.Log(doubleJump);
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);
@@ -120,6 +122,8 @@ public class Movement : MonoBehaviour
         {
             doubleJump = nbJump;
         }
+        
+        
         rb.useGravity = true;
 
         slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
@@ -315,8 +319,8 @@ public class Movement : MonoBehaviour
 
     void CheckWall()
     {
-        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance);
-        wallright = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance);
+        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance, wallMask);
+        wallright = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance, wallMask);
     }
 
     void StartWallRun()

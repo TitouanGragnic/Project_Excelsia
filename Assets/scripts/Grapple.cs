@@ -71,6 +71,8 @@ public class Grapple : MonoBehaviour
         }
         else
         {
+            if (!player.GetComponent<Movement>().wallLeft && !player.GetComponent<Movement>().wallright)
+                player.GetComponent<Rigidbody>().useGravity = true;
             distanceFromPoint = 60f;
             grapplePoint = player.position;
         }
