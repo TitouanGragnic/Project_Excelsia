@@ -103,7 +103,6 @@ public class Movement : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log(doubleJump);
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);

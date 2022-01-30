@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class GrappleRope : MonoBehaviour
+public class GrappleRope : NetworkBehaviour
 {
+    [SerializeField]
     private LineRenderer lr;
     private Spring spring;
     private Vector3 currentGrapplePosition;
-    public Grapple grapple;
+    //public Grapple grapple;
     public int quality;
     public float damper;
     public float strength;
@@ -16,9 +18,13 @@ public class GrappleRope : MonoBehaviour
     public float waveHeight;
     public AnimationCurve affectCurve;
 
+
+    [SerializeField]
+    Grapple_Sync grapple_Sync;
+
     void Awake()
     {
-        lr = GetComponent<LineRenderer>();
+        //lr = GetComponent<LineRenderer>();
         spring = new Spring();
         spring.SetTarget(0);
     }
@@ -28,11 +34,13 @@ public class GrappleRope : MonoBehaviour
         DrawRope();
     }
 
-    void DrawRope()
+    
+    public void DrawRope()
     {
-        if (!grapple.IsGrappling())
+        if (!grapple_Sync.IsGrappling())
         {
-            currentGrapplePosition = grapple.grappleTip.position;
+            
+            currentGrapplePosition = grapple_Sync.grappleTip.position;
             spring.Reset();
             if (lr.positionCount > 0)
                 lr.positionCount = 0;
@@ -49,8 +57,8 @@ public class GrappleRope : MonoBehaviour
         spring.SetStrength(strength);
         spring.Update(Time.deltaTime);
 
-        var grapplePoint = grapple.GetGrapplePoint();
-        var grappleTipPos = grapple.grappleTip.position;
+        var grapplePoint = grapple_Sync.GetGrapplePoint();
+        var grappleTipPos = grapple_Sync.grappleTip.position;
         var up = Quaternion.LookRotation((grapplePoint - grappleTipPos).normalized) * Vector3.up;
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);

@@ -19,7 +19,7 @@ namespace scripts
         {
             instance = this;
         }
-
+    
         public static bool GetStateSpawn()
         {
             bool spawnState = true;

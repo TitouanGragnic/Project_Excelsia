@@ -381,6 +381,10 @@ PrefabInstance:
       propertyPath: componentsToDisable.Array.data[10]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -3461759766805281484, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_AssetId
+      value: 9bdfac433fa375f4a9e9648cb48af93b
+      objectReference: {fileID: 0}
     - target: {fileID: 227892654295556963, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
@@ -500,6 +504,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5818428227407732611, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
     - {fileID: 7483932309222031153, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+    - {fileID: 1467614426043384325, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+    - {fileID: -3461759766805281484, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
 --- !u!1 &141259556907378178 stripped
 GameObject:
@@ -544,6 +550,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc66f091270e7ce4788f572d7cf786b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5544550883471021828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1659213064479413786, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141259556907378178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e7a0eeffb5f84408e30418be9a8f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &141259557065577353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -585,6 +602,7 @@ MonoBehaviour:
   healthSystem: {fileID: 2763260870473681043}
   posture: {fileID: 2437975864008391631}
   slider: {fileID: 8709801472805403276}
+  grapple_rope: {fileID: 5544550883471021828}
   health: 0
   maxHealth: 0
   armor: 0

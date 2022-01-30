@@ -597,6 +597,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 6888114918195931008}
+    - target: {fileID: 1467614426043384325, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2534374920594948631, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -768,6 +772,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9688e9bc51a2ef40af82eb166065f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8803770262734299240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1659213064479413786, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 7866648446065145458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3975182171683246446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e7a0eeffb5f84408e30418be9a8f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3975182171910923493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -809,6 +824,7 @@ MonoBehaviour:
   healthSystem: {fileID: 1190752200064811007}
   posture: {fileID: 1660170128148434083}
   slider: {fileID: 5620522593549274592}
+  grapple_rope: {fileID: 8803770262734299240}
   health: 0
   maxHealth: 0
   armor: 0

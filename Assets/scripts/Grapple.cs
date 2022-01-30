@@ -1,21 +1,24 @@
 using UnityEngine;
-
+using Mirror;
 public class Grapple : MonoBehaviour
 {
 
-    public Vector3 grapplePoint;
+    //public Vector3 grapplePoint;
     public float grappleSpeed = 1f;
     public LayerMask Grappleable;
     public Transform grappleTip, cam, player;
     private float maxDistance = 100f;
-    private SpringJoint joint;
-    float distanceFromPoint = 100f;
+
+    public SpringJoint joint;
+    //float distanceFromPoint = 100f;
     [SerializeField]
     private GameObject grappleHole;
 
     public int grappleCooldown;
     public int maxGrappleCooldown;
-    bool state;
+    
+    [SerializeField]
+    Grapple_Sync grapple_Sync;
 
     private void Awake()
     {
@@ -31,6 +34,9 @@ public class Grapple : MonoBehaviour
             grappleCooldown = 0;
 
     }
+
+
+    
     void Update()
     {
 
@@ -40,53 +46,50 @@ public class Grapple : MonoBehaviour
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance))
         {
             
-            if (Input.GetKeyDown(KeyCode.E) && (distanceFromPoint > 5) && !IsGrappling() && Vector3.Distance(player.position, hit.point) > 5 && grappleCooldown ==0)
+            if (Input.GetKeyDown(KeyCode.E) && (grapple_Sync.distanceFromPoint > 5) && !grapple_Sync.IsGrappling() && Vector3.Distance(player.position, hit.point) > 5 && grappleCooldown ==0)
             {
-                state = true;
-                grapplePoint = hit.point;
                 joint = player.gameObject.AddComponent<SpringJoint>();
                 joint.autoConfigureConnectedAnchor = false;
-                joint.connectedAnchor = grapplePoint;
+                joint.connectedAnchor = grapple_Sync.grapplePoint;
 
-                joint.maxDistance = distanceFromPoint;
+                joint.maxDistance = grapple_Sync.distanceFromPoint;
                 joint.minDistance = 0;
-
-                Instantiate(grappleHole, grapplePoint, Quaternion.LookRotation(hit.normal));
+                grapple_Sync.Cmd_jointSync(hit.normal, hit.point);
+                
             }
         }
-        if (!Input.GetKey(KeyCode.E) || (distanceFromPoint <= 5))
+        if (!Input.GetKey(KeyCode.E) || (grapple_Sync.distanceFromPoint <= 5))
         {
             Destroy(joint);
-            if(state)
+            if (grapple_Sync.state)
                 grappleCooldown = maxGrappleCooldown;
-            state = false;
+            grapple_Sync.Cmd_stat(false);
         }
         
 
-        if (IsGrappling()) 
+        if (grapple_Sync.IsGrappling()) 
         {
-            player.GetComponent<Rigidbody>().AddForce((grapplePoint - player.position).normalized * grappleSpeed * 0.5f, ForceMode.Acceleration);
-            player.GetComponent<Rigidbody>().useGravity = false;           
-            distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+            player.GetComponent<Rigidbody>().AddForce((grapple_Sync.grapplePoint - player.position).normalized * grappleSpeed * 0.5f, ForceMode.Acceleration);
+            player.GetComponent<Rigidbody>().useGravity = false;
+            grapple_Sync.Cmd_Changed_dt(Vector3.Distance(player.position, grapple_Sync.grapplePoint));
+            
         }
         else
         {
             if (!player.GetComponent<Movement>().wallLeft && !player.GetComponent<Movement>().wallright)
                 player.GetComponent<Rigidbody>().useGravity = true;
-            distanceFromPoint = 60f;
-            grapplePoint = player.position;
+            
+
+            grapple_Sync.Cmd_Modified_GP(); 
+            grapple_Sync.Cmd_Changed_dt(60f);
+
+
         }
             
 
     }
 
-    public bool IsGrappling()
-    {
-        return joint != null;
-    }
+    
 
-    public Vector3 GetGrapplePoint()
-    {
-        return grapplePoint;
-    }
+    
 }

@@ -23,6 +23,7 @@ namespace scripts
         public Slider slider;
 
 
+
         [SyncVar][SerializeField]
         public float health;
         public float maxHealth;
@@ -50,7 +51,7 @@ namespace scripts
         {
             healthSystem.PersoStart();
         }
-
+       
 
         private void Update()
         {

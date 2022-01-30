@@ -163,22 +163,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9688e9bc51a2ef40af82eb166065f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7690429962740588334 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 3510759613686107577}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7690429963072926113 stripped
+--- !u!114 &2863739853407247267 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6485566140024568856, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1659213064479413786, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7690429962515278501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e7a0eeffb5f84408e30418be9a8f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2895716605792403831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1771919809437011150, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 3510759613686107577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690429962515278501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15efc631b6ecd624cb357e69d52347c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7690429962740588334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 3510759613686107577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4819427440369019368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8240095265415717969, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -215,6 +226,7 @@ MonoBehaviour:
   healthSystem: {fileID: 5554394646475146292}
   posture: {fileID: 5375417506898622312}
   slider: {fileID: 1410561082117125675}
+  grapple_rope: {fileID: 2863739853407247267}
   health: 0
   maxHealth: 0
   armor: 0
@@ -222,7 +234,7 @@ MonoBehaviour:
   maxGuard: 0
   atk: 0
   typeAtk: 
-  grapple: {fileID: 7690429963072926113}
+  grapple: {fileID: 2895716605792403831}
 --- !u!1001 &6979139548183171293
 PrefabInstance:
   m_ObjectHideFlags: 0
