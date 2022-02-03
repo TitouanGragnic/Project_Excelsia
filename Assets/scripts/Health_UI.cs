@@ -15,7 +15,6 @@ namespace scripts
         void Update()
         {
            SliderChange();
-           
         }
         public void SliderChange()
         {

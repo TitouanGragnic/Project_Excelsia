@@ -31,6 +31,36 @@ namespace scripts
             return spawnState;
         }
 
+        public static bool GetWinState(string playerID)
+        {
+            int i = 0;
+            bool winState = true;
+            foreach (KeyValuePair<string, Perso> player in players)
+            {
+                i++;
+                if (player.Key == playerID)
+                    winState &= player.Value.health > 0;
+                else
+                    winState &= player.Value.health <= 0;
+            }
+            return i==2 && winState;
+        }
+
+        public static bool GetLooseState(string playerID)
+        {
+            int i = 0;
+            bool looseState = true;
+            foreach (KeyValuePair<string, Perso> player in players)
+            {
+                i++;
+                if (player.Key != playerID)
+                    looseState &= player.Value.health > 0;
+                else
+                    looseState &= player.Value.health <= 0;
+            }
+            return i==2 &&looseState;
+        }
+
         public static void RegisterPlayer(string netID, Perso player)
         {
             string playerId = playerIDPrefix + netID;

@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 5694193259619108283}
+    - target: {fileID: 563301924402359145, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2534374920594948631, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -417,6 +421,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 3ecae28db8caae446a82e5734ec1e0dd, type: 2}
+    - target: {fileID: 5079179999345220315, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5155161729422037007, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: sceneId
       value: 0
@@ -550,17 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc66f091270e7ce4788f572d7cf786b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5544550883471021828 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1659213064479413786, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 6626069227908743454}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141259556907378178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8e7a0eeffb5f84408e30418be9a8f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &141259557065577353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -582,6 +579,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &61872637074384790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6570565002984908424, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6606748430339669863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 25724630457532025, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5722261126902313348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,12 +609,13 @@ MonoBehaviour:
   healthSystem: {fileID: 2763260870473681043}
   posture: {fileID: 2437975864008391631}
   slider: {fileID: 8709801472805403276}
-  grapple_rope: {fileID: 5544550883471021828}
   health: 0
   maxHealth: 0
   armor: 0
   guard: 0
   maxGuard: 0
   atk: 0
+  Win: {fileID: 61872637074384790}
+  Loose: {fileID: 6606748430339669863}
   typeAtk: 
   attackSystem: {fileID: 8684438095728236673}

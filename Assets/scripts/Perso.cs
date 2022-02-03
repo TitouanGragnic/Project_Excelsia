@@ -22,8 +22,6 @@ namespace scripts
         [SerializeField]
         public Slider slider;
 
-
-
         [SyncVar][SerializeField]
         public float health;
         public float maxHealth;
@@ -34,6 +32,13 @@ namespace scripts
         public float guard;
         public float maxGuard;
         public float atk;
+
+        [SerializeField]
+        GameObject Win;
+
+        [SerializeField]
+        GameObject Loose;
+
 
         public string typeAtk;
         private void Awake()
@@ -53,9 +58,11 @@ namespace scripts
         }
        
 
-        private void Update()
+        private void LateUpdate()
         {
             UpdateLife();
+            TestEnd();
+
         }
         [Command]
         private void UpdateLife()
@@ -92,8 +99,21 @@ namespace scripts
             Perso player = GameManager.GetPlayer(playerId);
 
             player.TakeDamage(atk,typeAtk);
+        }
+
+
+
+        private void TestEnd()
+        {
+            if (GameManager.GetWinState(name))
+                Win.SetActive(true);
+            else if (GameManager.GetLooseState(name))
+                Loose.SetActive(true);
+            
 
         }
+
+        
 
 
     }
