@@ -6,6 +6,9 @@ using Mirror;
 namespace scripts {
     public class choice : NetworkBehaviour
     {
+        [SerializeField][SyncVar]
+        public int Pnb;
+
         [SerializeField]
         GameObject PlayerPrefab;
         [SerializeField]
@@ -32,6 +35,7 @@ namespace scripts {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             state = false;
+            GameManager.CmdAtributPnb(name);
         }
         void Update()
         {
@@ -93,7 +97,7 @@ namespace scripts {
 
             if (!light_collider.choised)
             {
-                light_collider.Select();
+                light_collider.Select(Pnb);
                 if (select_light != null)
                     select_light.UnSelect();
 

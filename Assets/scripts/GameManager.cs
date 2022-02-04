@@ -14,12 +14,19 @@ namespace scripts
         public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
        
         public static Dictionary<string, choice> choices = new Dictionary<string, choice>();
-
+        static int Pnb=1;
         void Awake()
         {
             instance = this;
         }
-    
+        
+       
+        public static void CmdAtributPnb(string choiceId)
+        {
+            choices[choiceId].Pnb = Pnb;
+            Pnb += 1;
+        }
+
         public static bool GetStateSpawn()
         {
             bool spawnState = true;
@@ -87,6 +94,7 @@ namespace scripts
 
             Debug.Log("add : "+ choiceId);
 
+       
         }
 
         public static void UnRegisterPlayer(string playerId)
