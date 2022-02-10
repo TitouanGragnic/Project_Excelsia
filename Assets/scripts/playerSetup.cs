@@ -13,6 +13,8 @@ namespace scripts
         private string nameHP_layer = "HP_client";
         [SerializeField]
         private string body_layer = "body_client";
+        [SerializeField]
+        private string arm_layer = "Arm_client";
 
 
 
@@ -36,7 +38,13 @@ namespace scripts
                     perso.body.layer = LayerMask.NameToLayer(body_layer);
 
                     SetLayerRecursively(perso.body, body_layer);
+
+                    perso.arm.layer = LayerMask.NameToLayer(arm_layer);
+
+                    SetLayerRecursively(perso.arm, arm_layer);
+
                 }
+                
 
             }
         }

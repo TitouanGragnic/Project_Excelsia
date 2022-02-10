@@ -562,6 +562,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 355159175873801838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6840012810749645437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6485566140024568851, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8554435346980850239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8240095265415717969, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -604,6 +609,7 @@ MonoBehaviour:
   syncInterval: 0.1
   perso_object: {fileID: 6840012810158573938}
   body: {fileID: 1031509818720488544}
+  arm: {fileID: 6840012810749645437}
   health_object: {fileID: 8554435346980850239}
   healthSystem: {fileID: 8737074157270493155}
   posture: {fileID: 9136730078728311999}

@@ -14,6 +14,7 @@ namespace scripts
     {
         public GameObject perso_object;
         public GameObject body;
+        public GameObject arm;
         public GameObject health_object;
         [SerializeField]
         public HealthSystem healthSystem;
