@@ -26,7 +26,9 @@ namespace scripts {
         private LayerMask mask;
 
         [SyncVar]
-        public bool state;
+        public bool stateSpawn;
+
+        public bool stateStart;
 
         BodyLight select_light;
 
@@ -34,23 +36,33 @@ namespace scripts {
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            state = false;
+            stateSpawn = false;
             GameManager.CmdAtributPnb(name);
         }
         void Update()
         {
+            if (stateStart)
+                UpdateChoice();
+            else
+                stateStart = (Input.GetKeyDown(KeyCode.B) || GameManager.GetStateStart());
+                 
+           
+        }
 
+
+        void UpdateChoice()
+        {
             if (GameManager.GetStateSpawn())
                 Cmd_ReplacePlayer();
 
 
             if (Input.GetKeyDown(KeyCode.B))
-                state = true;
+                stateSpawn = true;
             if (Input.GetKeyDown(KeyCode.N))
-                state = false;
+                stateSpawn = false;
 
 
-            if (!state && Input.GetMouseButtonDown(0))
+            if (!stateSpawn && Input.GetMouseButtonDown(0))
             {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;

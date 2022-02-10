@@ -33,9 +33,25 @@ namespace scripts
             foreach (KeyValuePair<string, choice> choice_ex in choices)
             {
                 if (choice_ex.Value != null)
-                    spawnState &= choice_ex.Value.state;
+                    spawnState &= choice_ex.Value.stateSpawn;
             }
             return spawnState;
+        }
+        
+
+        public static bool GetStateStart()
+        {
+            int  start = 0;
+            foreach (KeyValuePair<string, choice> choice_ex in choices)
+            {
+                if (choice_ex.Value != null)
+                {
+                    start += 1;
+                    if (choice_ex.Value.stateStart)
+                        start += 1;
+                }
+            }
+            return start>=2;
         }
 
         public static bool GetWinState(string playerID)
