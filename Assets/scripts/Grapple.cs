@@ -39,27 +39,26 @@ public class Grapple : MonoBehaviour
     
     void Update()
     {
-
         Cooldown();
-
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance))
         {
-            grapple_Sync.Cmd_Changed_dt(Vector3.Distance(player.position, hit.point));
+           
             if (Input.GetKeyDown(KeyCode.E) && (grapple_Sync.distanceFromPoint > 5) && !grapple_Sync.IsGrappling() && Vector3.Distance(player.position, hit.point) > 5 && grappleCooldown ==0)
             {
+                grapple_Sync.Cmd_Changed_dt(Vector3.Distance(player.position, hit.point));
                 joint = player.gameObject.AddComponent<SpringJoint>();
                 joint.autoConfigureConnectedAnchor = false;
                 joint.connectedAnchor = grapple_Sync.grapplePoint;
 
 
-                joint.maxDistance = grapple_Sync.distanceFromPoint;
+                joint.maxDistance = grapple_Sync.distanceFromPoint + 1000;
                 joint.minDistance = 0;
                 grapple_Sync.Cmd_jointSync(hit.normal, hit.point);
                 
             }
         }
-        if (!Input.GetKey(KeyCode.E) || (grapple_Sync.distanceFromPoint <= 5))
+        if (Input.GetKeyUp("e") || (grapple_Sync.distanceFromPoint <= 5))
         {
             Destroy(joint);
             if (grapple_Sync.state)

@@ -39,7 +39,7 @@ namespace scripts
         {
             if (poisonState)
             {
-                perso.health -= 1f;
+                perso.health -= 0.01f;
                 poisonCooldown -= 1;
             }
             if (poisonCooldown < 0)
