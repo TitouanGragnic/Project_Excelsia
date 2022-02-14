@@ -89,6 +89,9 @@ namespace scripts
                         perso.health -= damage * (1f - perso.armor);
                     }
                     break;
+                case "electric":
+                    perso.health -= damage;
+                    break;
                 default:
                     break;
             }

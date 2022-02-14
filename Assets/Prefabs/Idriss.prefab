@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6364267630717975398, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: d0ab47a174fa96c4dbbbe5a6e5f98aaa, type: 2}
     - target: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Name
       value: Idriss
@@ -115,10 +119,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8153717764344483960, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d0ab47a174fa96c4dbbbe5a6e5f98aaa, type: 2}
     - target: {fileID: 8467873268026504003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
       objectReference: {fileID: 8451367018467903897}
+    - target: {fileID: 8699199338021638907, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d0ab47a174fa96c4dbbbe5a6e5f98aaa, type: 2}
     - target: {fileID: 8778975680791155342, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -249,6 +261,10 @@ MonoBehaviour:
   Loose: {fileID: 3522902526761006016}
   typeAtk: 
   grapple: {fileID: 2895716605792403831}
+  electricCooldown: 0
+  electricCooldownMax: 2000
+  electricState: 0
+  coolDownEState: 0
 --- !u!1001 &6979139548183171293
 PrefabInstance:
   m_ObjectHideFlags: 0
