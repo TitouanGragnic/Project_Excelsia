@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    Animator animator;
+    [SerializeField] Animator animator;
     float playerHeight = 2f;
 
     [SerializeField] Transform orientation;
@@ -97,7 +97,6 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        animator = GetComponentInChildren<Animator>();
     }
     
     private void Update()
