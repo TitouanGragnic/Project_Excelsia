@@ -640,6 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138941bd1cf7d7d49a009115758aa3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   orientation: {fileID: 6485566138899816203}
   moveSpeed: 50
   airMultiplier: 0.2
@@ -1741,6 +1742,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4149886973892590300, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149886973892590300, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc9b1aa65ca65a549ae89a515a1004e1, type: 3}
     - target: {fileID: 4149886974031472803, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1876,6 +1885,18 @@ PrefabInstance:
     - target: {fileID: 4149886974381675999, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482265605714068452, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482265605714068452, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482265605714068452, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 5499488572068691529, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
       propertyPath: m_AnchorMax.x
