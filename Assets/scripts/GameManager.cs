@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
 
 
 namespace scripts
@@ -10,6 +11,8 @@ namespace scripts
         public static GameManager instance;
         private const string playerIDPrefix = "Player";
         private const string choiceIDPrefix = "Choice";
+
+        //public GameOverScreen gameOverScreen;  
    
         public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
        
