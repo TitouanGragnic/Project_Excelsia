@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 8785509198776637030}
   - component: {fileID: 1771919809437011150}
   - component: {fileID: 4779195447659867005}
+  - component: {fileID: -6815659978342864316}
   m_Layer: 8
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -1190,6 +1191,20 @@ MonoBehaviour:
   grapplePoint: {x: 0, y: 0, z: 0}
   distanceFromPoint: 100
   state: 0
+--- !u!114 &-6815659978342864316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485566139432838940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d17e718851449a6879986e45c458fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &6485566140024568851
 GameObject:
   m_ObjectHideFlags: 0

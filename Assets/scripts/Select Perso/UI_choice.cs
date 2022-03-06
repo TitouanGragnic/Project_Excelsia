@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
+using System.Security.Cryptography;
 
 namespace scripts
 {
@@ -14,6 +18,8 @@ namespace scripts
         Text txt;
         [SerializeField]
         GameObject canvas;
+        [SerializeField]
+        NetworkManager networkManager;
 
         public string ip_local;
         public static string GetLocalIPAddress()
@@ -35,7 +41,9 @@ namespace scripts
         {
             state = true;
             ip_local = GetLocalIPAddress();
-            txt.text = "ip_local : " + ip_local;
+            string a = GetRandomMatchID();
+            networkManager.networkAddress = a;
+            txt.text = "ip_local : " + a;
         }
 
         // Update is called once per frame
@@ -48,6 +56,34 @@ namespace scripts
                 Exelcia.SetActive(false);
                 canvas.SetActive(false);
             }
+        }
+        public static string GetRandomMatchID()
+        {
+            string _id = string.Empty;
+            for (int i = 0; i < 5; i++)
+            {
+                int random = UnityEngine.Random.Range(0, 36);
+                if (random < 26)
+                {
+                    _id += (char)(random + 65);
+                }
+                else
+                {
+                    _id += (random - 26).ToString();
+                }
+            }
+            return _id;
+        }
+    }
+    public static class MatchExtensions
+    {
+        public static Guid ToGuid(this string id)
+        {
+            MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
+            byte[] inputBytes = Encoding.Default.GetBytes(id);
+            byte[] hashBytes = provider.ComputeHash(inputBytes);
+
+            return new Guid(hashBytes);
         }
     }
 }

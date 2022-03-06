@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 686382955708307697}
   - component: {fileID: 1508526231346885255}
   - component: {fileID: 7828942880869903310}
+  - component: {fileID: 2026277091526571531}
+  - component: {fileID: -9140671586934141431}
   m_Layer: 0
   m_Name: Choice prefab
   m_TagString: Untagged
@@ -65,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  Pnb: 0
   PlayerPrefab: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   Idriss: {fileID: 7690429962515278501, guid: 7a9fab3ccf112614c82a498c214c120d, type: 3}
   Gally: {fileID: 3975182171683246446, guid: 9020b4074d5abb9489a610a6b7bdc29b, type: 3}
@@ -74,7 +77,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 1024
-  state: 0
+  stateSpawn: 0
+  stateStart: 0
 --- !u!114 &7828942880869903310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +99,35 @@ MonoBehaviour:
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
+  arm_layer: Arm_client
+--- !u!114 &2026277091526571531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531504580044698355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d17e718851449a6879986e45c458fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+--- !u!114 &-9140671586934141431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531504580044698355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9482bcd477dd1184fba188e00e9f0583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &8394339380832342631
 GameObject:
   m_ObjectHideFlags: 0
