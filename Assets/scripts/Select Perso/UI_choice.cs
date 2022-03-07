@@ -41,8 +41,7 @@ namespace scripts
         {
             state = true;
             ip_local = GetLocalIPAddress();
-            string a = GetRandomMatchID();
-            networkManager.networkAddress = a;
+            string a = GetRandomMatchID(ip_local);
             txt.text = "ip_local : " + a;
         }
 
@@ -57,19 +56,21 @@ namespace scripts
                 canvas.SetActive(false);
             }
         }
-        public static string GetRandomMatchID()
+        public static string GetRandomMatchID(string ip)
         {
             string _id = string.Empty;
-            for (int i = 0; i < 5; i++)
+            for (int i = 5; i < ip.Length; i++)
             {
-                int random = UnityEngine.Random.Range(0, 36);
-                if (random < 26)
+                if((char)((int)ip[i]+65) != 'o')
                 {
-                    _id += (char)(random + 65);
-                }
-                else
-                {
-                    _id += (random - 26).ToString();
+                    if (i < 8)
+                    {
+                        _id += ((int)ip[i] % (ip.Length-i));
+                    }
+                    else
+                    {
+                        _id += (char)((int)ip[i] + 65 + ip.Length - i);
+                    }
                 }
             }
             return _id;
