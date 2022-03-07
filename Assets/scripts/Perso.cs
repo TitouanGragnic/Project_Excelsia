@@ -40,7 +40,7 @@ namespace scripts
         [SerializeField]
         GameObject Loose;
 
-
+        public bool end;
         public string typeAtk;
         private void Awake()
         {
@@ -51,6 +51,7 @@ namespace scripts
             armor = 0.1f;
             atk = 20;
             typeAtk = "normal";
+            end = false;
         }
 
         private void Start()
@@ -106,10 +107,8 @@ namespace scripts
 
         private void TestEnd()
         {
-            if (GameManager.GetWinState(name))
-                Win.SetActive(true);
-            else if (GameManager.GetLooseState(name))
-                Loose.SetActive(true);
+            if (GameManager.GetWinState(name) || GameManager.GetLooseState(name))
+                end = true;
             
 
         }

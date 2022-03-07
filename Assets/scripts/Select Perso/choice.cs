@@ -32,11 +32,14 @@ namespace scripts {
 
         BodyLight select_light;
 
+        public bool spawn;
+
         private void Start()
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             stateSpawn = false;
+            spawn = false;
             GameManager.CmdAtributPnb(name);
         }
         void Update()
@@ -121,6 +124,7 @@ namespace scripts {
         [Command][Client]
         public void Cmd_ReplacePlayer()
         {
+            spawn = true;
             GameObject oldPlayer = connectionToClient.identity.gameObject;
             NetworkServer.ReplacePlayerForConnection(connectionToClient, Instantiate(PlayerPrefab), true);
             NetworkServer.Destroy(oldPlayer);

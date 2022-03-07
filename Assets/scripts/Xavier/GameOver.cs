@@ -8,17 +8,15 @@ namespace scripts
 {
     public class GameOver : NetworkBehaviour
     {
-        [SyncVar]
-        public bool stateStart;
 
         [SerializeField]
         GameObject PlayerPrefab;
+
 
         private void Start()
         {
             Cursor.lockState = CursorLockMode.None;
             GameManager.CmdAtributPnb(name);
-            stateStart = true; 
         }
 
         void Update()
@@ -34,7 +32,7 @@ namespace scripts
         public void Cmd_ReplacePlayer()
         {
             GameObject SnewPlayer = Instantiate(PlayerPrefab);
-            SnewPlayer.transform.position = new Vector3(10f, 10f, 10f);// la camera dans le menu choice de titouan
+            SnewPlayer.transform.position = new Vector3(989.7f, 54f, -50.5f);// la camera dans le menu choice de titouan
             GameObject SoldPlayer = connectionToClient.identity.gameObject;
             NetworkServer.ReplacePlayerForConnection(connectionToClient, SnewPlayer, true);
             NetworkServer.Destroy(SoldPlayer);

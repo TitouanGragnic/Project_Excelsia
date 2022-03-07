@@ -22,8 +22,20 @@ namespace scripts
         {
             instance = this;
         }
-        
-       
+
+        private void Update()
+        {
+            //remove unused choice dico
+            foreach (KeyValuePair<string, choice> kv in choices)
+                if (kv.Value == null || kv.Value.spawn)
+                    choices.Remove(kv.Key);
+            //remove unused perso dico
+            foreach (KeyValuePair<string, Perso> kv in players)
+                if (kv.Value == null || kv.Value.end)
+                    players.Remove(kv.Key);
+        }
+
+
         public static void CmdAtributPnb(string choiceId)
         {
             choices[choiceId].Pnb = Pnb;
