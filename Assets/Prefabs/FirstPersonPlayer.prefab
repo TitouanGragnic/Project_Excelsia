@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 1771919809437011150}
   - component: {fileID: 4779195447659867005}
   - component: {fileID: -6815659978342864316}
+  - component: {fileID: 4605875982207753372}
   m_Layer: 8
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -741,6 +742,7 @@ MonoBehaviour:
   - {fileID: 2554056335996328351}
   - {fileID: 33009988711338952}
   - {fileID: 2350555623801663102}
+  - {fileID: 4605875982207753372}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -1205,6 +1207,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &4605875982207753372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485566139432838940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba93d4acc79261449663f3ebbe6605a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  PlayerPrefab: {fileID: 4596413195031861040, guid: f3317677f354aa242ad738e478677dd2, type: 3}
 --- !u!1 &6485566140024568851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,6 +2002,11 @@ PrefabInstance:
     - {fileID: 5611631721868591002, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
     - {fileID: 3268959317502213255, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+--- !u!1 &5099672392251967026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6663385309605421698, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
+  m_PrefabInstance: {fileID: 1926613370222273712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2632495222433785684 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4482265605714068452, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
@@ -2043,11 +2065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5099672392251967026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6663385309605421698, guid: 646a88aefc7223b49b01d720c637d901, type: 3}
-  m_PrefabInstance: {fileID: 1926613370222273712}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &227892654295556963
 MonoBehaviour:
   m_ObjectHideFlags: 0
