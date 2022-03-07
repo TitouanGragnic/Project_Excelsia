@@ -42,7 +42,7 @@ public class Match : MonoBehaviour
     public static string Decrypt(string ip, string name)
     {
         string _id = string.Empty;
-        for (int i = 0; i < ip.Length; i++)
+        for (int i = 0; i < name.Length+7; i++)
         {
             if (i < 8)
             {
