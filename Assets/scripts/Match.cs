@@ -56,7 +56,7 @@ public class Match : MonoBehaviour
                 }
                 else
                 {
-                    _id += (char)((int)name[i - 7] - ip.Length + i - 20);
+                    _id += (char)((int)name[i - 7] - name.Length-7 + i - 20);
                 }
             }
         }
