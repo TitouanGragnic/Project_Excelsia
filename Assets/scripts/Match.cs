@@ -50,17 +50,13 @@ public class Match : MonoBehaviour
             }
             else
             {
-                if (i == (ip.Length)-3)
+                if ((char)name[i-7] < 60)
                 {
                     _id += '.';
                 }
-                if(i > ip.Length - 4)
+                else
                 {
-                    _id += (char)((int)name[i - 7]-65-ip.Length+i);
-                }
-                if (i < ip.Length - 4)
-                {
-                    _id += (char)((int)name[i - 6] - 65 - ip.Length + i);
+                    _id += (char)((int)name[i - 7] - ip.Length + i - 20);
                 }
             }
         }
@@ -69,18 +65,17 @@ public class Match : MonoBehaviour
     public static string GetRandomMatchID(string ip)
     {
         string _id = string.Empty;
-        for (int i = 5; i < ip.Length; i++)
+        _id += (char)UnityEngine.Random.Range(64, 90);
+        int x = 0;
+        for (int i = 8; i < ip.Length; i++)
         {
-            if ((char)((int)ip[i] + 65) != 'o')
+            if (ip[i] == '.')
             {
-                if (i < 8)
-                {
-                    _id += ((int)ip[i] % (ip.Length - i));
-                }
-                else
-                {
-                    _id += (char)((int)ip[i] + 65 + ip.Length - i);
-                }
+                _id += UnityEngine.Random.Range(1, 9);
+            }
+            if (ip[i] != '.')
+            {
+                _id += (char)((int)ip[i] + ip.Length - i + 20);
             }
         }
         return _id;
