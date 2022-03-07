@@ -24,16 +24,14 @@ namespace scripts
         }
 
         private void Update()
-        {
-            //remove unused choice dico
-            foreach (KeyValuePair<string, choice> kv in choices)
-                if (kv.Value == null || kv.Value.spawn)
-                    choices.Remove(kv.Key);
+        {  
+            /*
             //remove unused perso dico
             foreach (KeyValuePair<string, Perso> kv in players)
                 if (kv.Value == null || kv.Value.end)
-                    players.Remove(kv.Key);
+                    players.Remove(kv.Key);*/
         }
+
 
 
         public static void CmdAtributPnb(string choiceId)
@@ -44,12 +42,21 @@ namespace scripts
 
         public static bool GetStateSpawn()
         {
+            List<string> rm = new List<string>();
             bool spawnState = true;
             foreach (KeyValuePair<string, choice> choice_ex in choices)
             {
                 if (choice_ex.Value != null)
                     spawnState &= choice_ex.Value.stateSpawn;
+                //remove unused choice dico
+                if (choice_ex.Value == null || choice_ex.Value.spawn)
+                    rm.Add(choice_ex.Key);
             }
+            foreach (string name in rm)
+                choices.Remove(name);
+
+            if (choices.Count == 0)
+                Pnb = 1;
             return spawnState;
         }
         
