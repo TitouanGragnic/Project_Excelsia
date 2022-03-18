@@ -899,6 +899,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6961949513819215784, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: tamo
+      value: 
+      objectReference: {fileID: 5722261126902313348}
+    - target: {fileID: 6961949513819215784, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
       objectReference: {fileID: 5722261126902313348}
@@ -987,6 +991,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &141259557065577351 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6485566139138052761, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3003395344967837007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8240095265415717969, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1044,4 +1053,8 @@ MonoBehaviour:
   Loose: {fileID: 6606748430339669863}
   end: 0
   typeAtk: 
+  mine: {fileID: 3922566111894429469, guid: 8be68b816ab0fdf428ece20b70ae5d6b, type: 3}
+  cam: {fileID: 141259557065577351}
   attackSystem: {fileID: 8684438095728236673}
+  actifCooldown: 0
+  actifState: 0
