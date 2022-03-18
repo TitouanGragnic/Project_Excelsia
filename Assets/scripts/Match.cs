@@ -53,16 +53,16 @@ public class Match : MonoBehaviour
             }
             j += 1;
         }
-        for (int i = j; i < name.Length+7; i++)
+        for (int i = 1; i < name.Length; i++)
         {
             
-            if ((char)name[i-j] < 60)
+            if ((char)name[i] < 60)
             {
                _id += '.';
             }
             else
             {
-               _id += (char)((int)name[i - j+1] - name.Length-j + i - 20);
+               _id += (char)((int)name[i] - name.Length + i - 20);
             }
             
         }
