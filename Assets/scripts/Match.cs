@@ -42,23 +42,29 @@ public class Match : MonoBehaviour
     public static string Decrypt(string ip, string name)
     {
         string _id = string.Empty;
-        for (int i = 0; i < name.Length+7; i++)
+        int x = 0;
+        int j = 0;
+        while (x < 2)
         {
-            if (i < 8)
+            _id += ip[j];
+            if (ip[j] == '.')
             {
-                _id += ip[i];
+                x += 1;
+            }
+            j += 1;
+        }
+        for (int i = j; i < name.Length+7; i++)
+        {
+            
+            if ((char)name[i-j] < 60)
+            {
+               _id += '.';
             }
             else
             {
-                if ((char)name[i-7] < 60)
-                {
-                    _id += '.';
-                }
-                else
-                {
-                    _id += (char)((int)name[i - 7] - name.Length-7 + i - 20);
-                }
+               _id += (char)((int)name[i - j+1] - name.Length-j + i - 20);
             }
+            
         }
         return _id;
     }

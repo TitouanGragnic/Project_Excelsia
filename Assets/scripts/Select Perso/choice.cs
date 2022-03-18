@@ -130,11 +130,5 @@ namespace scripts {
             NetworkServer.Destroy(oldPlayer);
             
         }
-
-
-
-
-
-
     } 
 }

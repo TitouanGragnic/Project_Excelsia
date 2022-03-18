@@ -61,7 +61,16 @@ namespace scripts
             string _id = string.Empty;
             _id += (char)UnityEngine.Random.Range(64, 90);
             int x = 0;
-            for (int i = 8; i < ip.Length; i++)
+            int j = 0;
+            while (x < 2)
+            {
+                if (ip[j] == '.')
+                {
+                    x += 1;
+                }
+                j += 1;
+            }
+            for (int i = j; i < ip.Length; i++)
             { 
                 if(ip[i] == '.')
                 {
