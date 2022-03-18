@@ -39,9 +39,13 @@ namespace scripts
         {
             CoolDown();
 
-            if (electricCooldown == 0 && Input.GetKey(KeyCode.C))
-                StartElectric();
 
+        }
+
+        public new void Actif()
+        {
+            if (electricCooldown == 0)
+                StartElectric();
         }
 
         private void CoolDown()

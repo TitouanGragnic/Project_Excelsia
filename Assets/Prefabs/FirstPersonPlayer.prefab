@@ -571,6 +571,7 @@ GameObject:
   - component: {fileID: 4779195447659867005}
   - component: {fileID: -6815659978342864316}
   - component: {fileID: 4605875982207753372}
+  - component: {fileID: 6961949513819215784}
   m_Layer: 8
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -743,6 +744,7 @@ MonoBehaviour:
   - {fileID: 33009988711338952}
   - {fileID: 2350555623801663102}
   - {fileID: 4605875982207753372}
+  - {fileID: 6961949513819215784}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -1223,6 +1225,19 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   PlayerPrefab: {fileID: 4596413195031861040, guid: f3317677f354aa242ad738e478677dd2, type: 3}
+--- !u!114 &6961949513819215784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485566139432838940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b80b6d98bf79bf4e9efad59a2584ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perso: {fileID: 5818428227407732611}
 --- !u!1 &6485566140024568851
 GameObject:
   m_ObjectHideFlags: 0

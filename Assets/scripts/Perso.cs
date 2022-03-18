@@ -112,6 +112,7 @@ namespace scripts
             
 
         }
+        public void Actif() { Debug.Log("2"); }
 
         
 

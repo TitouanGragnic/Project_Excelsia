@@ -25,10 +25,12 @@ namespace scripts
         void Update()
         {
             CoolDown();
-
-            if (dashCooldown == 0 && Input.GetKey(KeyCode.C))
+        }
+        public new void Actif() 
+        {
+            Debug.Log("Gally actif");
+            if (dashCooldown == 0)
                 Dash();
-
         }
 
         private void CoolDown()

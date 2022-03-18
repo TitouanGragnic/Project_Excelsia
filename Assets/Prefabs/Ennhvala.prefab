@@ -505,6 +505,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6961949513819215784, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 7461131345155107785}
+    - target: {fileID: 6961949513819215784, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: ennhvala
+      value: 
+      objectReference: {fileID: 7461131345155107785}
     - target: {fileID: 8467873268026504003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
@@ -577,6 +585,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 355159175873801838}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &6840012809981246711 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6485566139138052761, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8554435346980850239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8240095265415717969, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -634,6 +647,8 @@ MonoBehaviour:
   Loose: {fileID: 339638084197650455}
   end: 0
   typeAtk: 
+  knife: {fileID: 8723991220544333805, guid: a991f954776a1f24ba67cfb5b951b985, type: 3}
+  cam: {fileID: 6840012809981246711}
   malus: 0
   bonus: 1
   vitesse: 0
