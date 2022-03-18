@@ -14,7 +14,7 @@ namespace Mirror.Discovery
     {
         #region Server
 
-        public long ServerId { get; private set; }
+        public long ServerId { get; set; }
 
         [Tooltip("Transport to be advertised during discovery")]
         public Transport transport;

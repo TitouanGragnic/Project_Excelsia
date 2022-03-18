@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811068464665189552}
   - component: {fileID: 1811068464665189553}
-  - component: {fileID: 1811068464665189518}
   - component: {fileID: 2248210308954156838}
-  - component: {fileID: 1811068464665189519}
   m_Layer: 0
   m_Name: Network Manager 1
   m_TagString: Untagged
@@ -52,7 +50,7 @@ MonoBehaviour:
   serverTickRate: 30
   offlineScene: Assets/Scenes/Lobby.unity
   onlineScene: Assets/Scenes/Arena.unity
-  transport: {fileID: 1811068464665189518}
+  transport: {fileID: 0}
   networkAddress: localhost
   maxConnections: 100
   authenticator: {fileID: 0}
@@ -66,35 +64,6 @@ MonoBehaviour:
   - {fileID: 7690429962515278501, guid: 7a9fab3ccf112614c82a498c214c120d, type: 3}
   - {fileID: 141259556907378178, guid: 9bdfac433fa375f4a9e9648cb48af93b, type: 3}
   - {fileID: 2639596340234615233, guid: 47180cfd21654da49af2f9c2ea6dc5a3, type: 3}
---- !u!114 &1811068464665189518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811068464665189516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Port: 7777
-  DualMode: 1
-  NoDelay: 1
-  Interval: 10
-  Timeout: 10000
-  FastResend: 2
-  CongestionWindow: 0
-  SendWindowSize: 4096
-  ReceiveWindowSize: 4096
-  MaxRetransmit: 40
-  NonAlloc: 1
-  MaximizeSendReceiveBuffersToOSLimit: 1
-  ReliableMaxMessageSize: 298449
-  UnreliableMaxMessageSize: 1199
-  debugLog: 0
-  statisticsGUI: 0
-  statisticsLog: 0
 --- !u!114 &2248210308954156838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,17 +88,3 @@ MonoBehaviour:
   clientMaxReceivesPerTick: 1000
   clientSendQueueLimit: 10000
   clientReceiveQueueLimit: 10000
---- !u!114 &1811068464665189519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811068464665189516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 0
