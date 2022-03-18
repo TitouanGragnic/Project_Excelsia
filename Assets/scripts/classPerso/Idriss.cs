@@ -11,7 +11,7 @@ namespace scripts
         Grapple grapple;
 
         public int electricCooldown;
-        public int electricCooldownMax = 2000;
+        private int electricCooldownMax = 7000;
         public bool electricState;
         public bool coolDownEState;
 
@@ -46,7 +46,7 @@ namespace scripts
 
         private void CoolDown()
         {
-            if (electricCooldown <= 1500 && electricState)
+            if (electricCooldown <= 4* electricCooldownMax/5 && electricState)
                 EndElectric();
             if (electricCooldown <= 0 && coolDownEState)
                 EndECoolDown();

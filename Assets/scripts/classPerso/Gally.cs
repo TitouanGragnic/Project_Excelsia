@@ -8,16 +8,46 @@ namespace scripts
         [SerializeField]
         Movement movement;
         // Start is called before the first frame update
+        public int dashCooldown;
+        private int dashCooldownMax = 7000;
+        public bool dashState;
         void Start()
         {
+            //Passif
             movement.nbJump = 2;
             movement.sprintSpeed = 120f ;
+            //Actif
+            dashCooldown = dashCooldownMax;
+            dashState = false;
         }
 
         // Update is called once per frame
         void Update()
         {
+            CoolDown();
 
+            if (dashCooldown == 0 && Input.GetKey(KeyCode.C))
+                Dash();
+
+        }
+
+        private void CoolDown()
+        {
+            if (dashCooldown <= 0 && dashState)
+                EndDashCoolDown();
+            if (dashCooldown > 0)
+                dashCooldown -= 1;
+        }
+        private void EndDashCoolDown()
+        {
+            dashCooldown = 0;
+            dashState = false;
+        }
+        private void Dash()
+        {
+            movement.Dash();
+            dashCooldown = dashCooldownMax;
+            dashState = true;
         }
     }
 }
