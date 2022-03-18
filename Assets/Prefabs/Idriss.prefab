@@ -8,9 +8,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1104475412067733797}
     - target: {fileID: 227892654295556963, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
@@ -198,14 +202,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15efc631b6ecd624cb357e69d52347c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1104475412067733797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 3510759613686107577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690429962515278501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba93d4acc79261449663f3ebbe6605a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7690429962740588334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 3510759613686107577}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7690429963072926122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6485566140024568851, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4819427440369019368 stripped
@@ -250,7 +260,7 @@ MonoBehaviour:
   syncInterval: 0.1
   perso_object: {fileID: 7690429962515278501}
   body: {fileID: 7789973503055998348}
-  arm: {fileID: 7690429963072926122}
+  arm: {fileID: 8210151886836195016}
   health_object: {fileID: 4819427440369019368}
   healthSystem: {fileID: 5554394646475146292}
   posture: {fileID: 5375417506898622312}
@@ -267,7 +277,6 @@ MonoBehaviour:
   typeAtk: 
   grapple: {fileID: 2895716605792403831}
   electricCooldown: 0
-  electricCooldownMax: 2000
   electricState: 0
   coolDownEState: 0
 --- !u!1001 &6979139548183171293

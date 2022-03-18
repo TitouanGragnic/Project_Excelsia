@@ -785,7 +785,7 @@ PrefabInstance:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7214728217789914498}
     - target: {fileID: -3461759766805281484, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AssetId
       value: 9bdfac433fa375f4a9e9648cb48af93b
@@ -967,14 +967,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc66f091270e7ce4788f572d7cf786b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7214728217789914498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141259556907378178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba93d4acc79261449663f3ebbe6605a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &141259557065577353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 6626069227908743454}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &141259558505086221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6485566140024568851, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3003395344967837007 stripped
@@ -1019,7 +1025,7 @@ MonoBehaviour:
   syncInterval: 0.1
   perso_object: {fileID: 141259556907378178}
   body: {fileID: 3635017492593499162}
-  arm: {fileID: 141259558505086221}
+  arm: {fileID: 1123297920042817274}
   health_object: {fileID: 3003395344967837007}
   healthSystem: {fileID: 2763260870473681043}
   posture: {fileID: 2437975864008391631}

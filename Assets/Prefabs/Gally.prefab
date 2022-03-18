@@ -988,12 +988,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5962951554962582254}
     - target: {fileID: 227892654295556963, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
@@ -1526,14 +1526,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9688e9bc51a2ef40af82eb166065f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5962951554962582254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 7866648446065145458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3975182171683246446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba93d4acc79261449663f3ebbe6605a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3975182171910923493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 7866648446065145458}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3975182172274313825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6485566140024568851, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 7866648446065145458}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2265664558455329315 stripped
@@ -1578,7 +1584,7 @@ MonoBehaviour:
   syncInterval: 0.1
   perso_object: {fileID: 3975182171683246446}
   body: {fileID: 5571562491817396565}
-  arm: {fileID: 3975182172274313825}
+  arm: {fileID: 1108188600384481632}
   health_object: {fileID: 2265664558455329315}
   healthSystem: {fileID: 1190752200064811007}
   posture: {fileID: 1660170128148434083}
@@ -1594,3 +1600,5 @@ MonoBehaviour:
   end: 0
   typeAtk: 
   movement: {fileID: 3975182171683246447}
+  dashCooldown: 0
+  dashState: 0

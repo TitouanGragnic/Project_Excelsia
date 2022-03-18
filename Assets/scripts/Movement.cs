@@ -60,6 +60,7 @@ public class Movement : MonoBehaviour
     public float camTranslate = 0f;
     float groundDistance = 1f;
 
+    
 
     Vector3 moveDirection;
     Vector3 moveAirDirection;
@@ -276,6 +277,11 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(slopeMoveDirection.normalized * moveSpeed, ForceMode.Acceleration);
         }
+    }
+    //Actif dash Gally
+    public void Dash()
+    {
+        rb.AddForce(cam.transform.forward.normalized * 50, ForceMode.Impulse) ;
     }
 
 
