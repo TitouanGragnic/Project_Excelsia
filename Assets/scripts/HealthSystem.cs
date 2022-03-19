@@ -55,7 +55,7 @@ namespace scripts
         {
             if (bleedingState)
             {
-                Damage(0.02f, 0);
+                Damage(0.1f, 0);
                 bleedingCooldown -= 1;
             }
             if (bleedingCooldown < 0)

@@ -32,7 +32,7 @@ namespace scripts
         public new void Actif() 
         {
             Debug.Log("Gally actif");
-            if (dashCooldown == 0)
+            if (dashCooldown == 0||true)
                 Dash();
         }
 

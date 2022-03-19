@@ -105,9 +105,15 @@ namespace scripts
         public void CmdPlayerAttack(string playerId)
         {
             Debug.Log(playerId + "tapé");
-            Perso player = GameManager.GetPlayer(playerId);
+            try
+            {
+                Perso player = GameManager.GetPlayer(playerId);
+                player.TakeDamage(atk, typeAtk);
+            }
+            catch
+            {
 
-            player.TakeDamage(atk,typeAtk);
+            }
         }
 
 

@@ -876,6 +876,7 @@ MonoBehaviour:
   guard_UI: {fileID: 8467873268026504003}
   nameId: 
   poisonState: 0
+  bleedingState: 0
 --- !u!82 &8760463332747061409
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1024,6 +1025,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 262656
   range: 0
+  stateDash: 0
 --- !u!114 &-7429993528449836055
 MonoBehaviour:
   m_ObjectHideFlags: 0

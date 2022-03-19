@@ -46,21 +46,9 @@ namespace scripts
         {
             
             if (col.gameObject.layer == 9 && stateDash)
-                TaperDash();
+                player.CmdPlayerAttack(col.gameObject.name);
         }
 
-        [Client]
-        private void TaperDash()
-        {
-            Debug.Log("Col");
-            RaycastHit hit;
-
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, mask))
-            {
-
-                player.CmdPlayerAttack(hit.collider.name);
-            }
-        }
 
 
 
