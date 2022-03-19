@@ -67,6 +67,13 @@ namespace scripts
 
         }
         [Command]
+        public void ChangeTypeATK(string newType)
+        {
+            typeAtk = newType;
+        }
+
+
+        [Command]
         private void UpdateLife()
         {
             healthSystem.UpdateLife();

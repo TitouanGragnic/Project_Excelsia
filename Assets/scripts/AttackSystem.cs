@@ -17,6 +17,7 @@ namespace scripts
         private LayerMask mask;
 
         public float range;
+        public bool stateDash;
 
         void Awake()
         {
@@ -25,9 +26,8 @@ namespace scripts
         void Update()
         {
             if (Input.GetMouseButtonDown(1))
-            {
                 Taper();
-            }
+            
         }
 
         [Client]
@@ -41,5 +41,28 @@ namespace scripts
                 player.CmdPlayerAttack(hit.collider.name);
             }
         }
+
+        void OnCollisionEnter(Collision col)
+        {
+            
+            if (col.gameObject.layer == 9 && stateDash)
+                TaperDash();
+        }
+
+        [Client]
+        private void TaperDash()
+        {
+            Debug.Log("Col");
+            RaycastHit hit;
+
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, mask))
+            {
+
+                player.CmdPlayerAttack(hit.collider.name);
+            }
+        }
+
+
+
     }
 }

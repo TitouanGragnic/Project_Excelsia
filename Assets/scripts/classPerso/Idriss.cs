@@ -28,12 +28,7 @@ namespace scripts
 
         }
 
-        [Command]
-        void ChangeTypeATK(string newType)
-        {
-            typeAtk = newType;
-        }
-
+        
         // Update is called once per frame
         void Update()
         {

@@ -17,10 +17,15 @@ namespace scripts
         public Guard_UI guard_UI;
         public string nameId;
 
+        //poison
         public bool poisonState;
         int poisonCooldown;
         int poinsonMaxCooldown = 5000 ;
-        
+        //bleeding
+        public bool bleedingState;
+        int bleedingCooldown;
+        int bleedingMaxCooldown = 8000;
+
         public void PersoStart()
         {
             perso.health = perso.maxHealth;
@@ -29,17 +34,14 @@ namespace scripts
 
         public void UpdateLife()
         {
-
-
             DegatPoison();
-            
-
+            DegatBleeding();
         }
         private void DegatPoison()
         {
             if (poisonState)
             {
-                perso.health -= 0.01f;
+                Damage(0.01f,0);
                 poisonCooldown -= 1;
             }
             if (poisonCooldown < 0)
@@ -49,10 +51,32 @@ namespace scripts
             }
         }
 
-        private void TakePoison()
+        private void DegatBleeding()
         {
-            poisonCooldown = poinsonMaxCooldown;
+            if (bleedingState)
+            {
+                Damage(0.02f, 0);
+                bleedingCooldown -= 1;
+            }
+            if (bleedingCooldown < 0)
+            {
+                bleedingCooldown = 0;
+                bleedingState = false;
+            }
+        }
+
+        private void TakePoison(int cooldown)
+        {
+            if(cooldown>poisonCooldown)
+                poisonCooldown = cooldown ;
             poisonState = true;
+        }
+
+        private void TakeBleeding()
+        {
+            bleedingState = true;
+            bleedingCooldown = bleedingMaxCooldown;
+
         }
 
         public void TakeDamage(float damage, string type, Posture posture)
@@ -63,7 +87,7 @@ namespace scripts
                     if (posture.State)
                         QuardDamage(damage, posture);
                     else
-                        Damage(damage);
+                        Damage(damage, perso.armor);
                     break;
 
                 case "poison":
@@ -71,22 +95,39 @@ namespace scripts
                         QuardDamage(damage, posture);
                     else
                     {
-                        TakePoison();
-                        Damage(damage);
+                        TakePoison(poinsonMaxCooldown);
+                        Damage(damage, perso.armor);
                     }
                     break;
                 case "electric":
-                    perso.health -= damage;
+                    Damage(damage, 0);
                     break;
                 case "bleeding":
                     if(posture.State)
                         QuardDamage(damage, posture);
                     else
                     {
-                        TakePoison();
-                        Damage(damage);
+                        TakeBleeding();
+                        Damage(damage,perso.armor);
                     }
                     break;
+                case "actifTamo":
+                    if (posture.State)
+                        QuardDamage(damage, posture);
+                    else
+                    {
+                        TakePoison(poinsonMaxCooldown*2);
+                        Damage(damage, perso.armor);
+                    }
+                    break;
+                case "ultiTamo":
+                    if (posture.State)
+                        QuardDamage(damage, posture);
+                    else
+                    {
+                        TakePoison(poinsonMaxCooldown*3);
+                        Damage(damage, perso.armor);
+                    }
                     break;
                 default:
                     break;
@@ -94,9 +135,9 @@ namespace scripts
 
         }
 
-        void Damage(float damage)
+        void Damage(float damage,float armor)
         {
-            perso.health -= damage * (1f - perso.armor);
+            perso.health -= damage * (1f - armor);
         }
 
         void QuardDamage(float damage,Posture posture)
