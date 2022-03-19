@@ -745,6 +745,7 @@ MonoBehaviour:
   - {fileID: 2350555623801663102}
   - {fileID: 4605875982207753372}
   - {fileID: 6961949513819215784}
+  - {fileID: 1771919809437011150}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -1237,7 +1238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b80b6d98bf79bf4e9efad59a2584ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perso: {fileID: 5818428227407732611}
+  gally: {fileID: 0}
+  idriss: {fileID: 0}
+  ennhvala: {fileID: 0}
+  tamo: {fileID: 0}
 --- !u!1 &6485566140024568851
 GameObject:
   m_ObjectHideFlags: 0
