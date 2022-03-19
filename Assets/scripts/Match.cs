@@ -39,6 +39,32 @@ public class Match : MonoBehaviour
         networkManager.StartClient();
 
     }
+    public void Joinauto()
+    {
+        ip_local = GetLocalIPAddress();
+        string _id = string.Empty;
+        int x = 0;
+        int j = 0;
+        while (x < 2)
+        {
+            _id += ip_local[j];
+            if (ip_local[j] == '.')
+            {
+                x += 1;
+            }
+            j += 1;
+        }
+        for(int i = 0; i<256; i++)
+        {
+            for(int k = 0; k<256; k++)
+            {
+                Debug.Log(k);
+                networkManager.networkAddress = _id + i + '.' + k;
+                networkManager.StartClient();
+            }
+        }
+    }
+
     public static string Decrypt(string ip, string name)
     {
         string _id = string.Empty;
