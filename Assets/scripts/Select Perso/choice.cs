@@ -41,6 +41,7 @@ namespace scripts {
             stateSpawn = false;
             spawn = false;
             GameManager.CmdAtributPnb(name);
+            transform.rotation = Quaternion.Euler(0,-40,0);
         }
         void Update()
         {

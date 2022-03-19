@@ -61,39 +61,50 @@ namespace scripts
             {
                 case "normal":
                     if (posture.State)
-                    {
-                        perso.guard -= damage;
-                        if (perso.guard <= 0)
-                        {
-                            posture.Break();
-                        }
-                    }
+                        QuardDamage(damage, posture);
                     else
-                    {
-                        perso.health -= damage * (1f - perso.armor);
-                    }
+                        Damage(damage);
                     break;
 
                 case "poison":
                     if (posture.State)
-                    {
-                        perso.guard -= damage;
-                        if (perso.guard <= 0)
-                        {
-                            posture.Break();
-                        }
-                    }
+                        QuardDamage(damage, posture);
                     else
                     {
                         TakePoison();
-                        perso.health -= damage * (1f - perso.armor);
+                        Damage(damage);
                     }
                     break;
                 case "electric":
                     perso.health -= damage;
                     break;
+                case "bleeding":
+                    if(posture.State)
+                        QuardDamage(damage, posture);
+                    else
+                    {
+                        TakePoison();
+                        Damage(damage);
+                    }
+                    break;
+                    break;
                 default:
                     break;
+            }
+
+        }
+
+        void Damage(float damage)
+        {
+            perso.health -= damage * (1f - perso.armor);
+        }
+
+        void QuardDamage(float damage,Posture posture)
+        {
+            perso.guard -= damage;
+            if (perso.guard <= 0)
+            {
+                posture.Break();
             }
 
         }
