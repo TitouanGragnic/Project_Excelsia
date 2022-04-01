@@ -60,7 +60,11 @@ public class Match : MonoBehaviour
             {
                 Debug.Log(k);
                 networkManager.networkAddress = _id + i + '.' + k;
-                networkManager.StartClient();
+                if(networkManager.isNetworkActive)
+                {
+                    networkManager.StartClient();
+                    break;
+                } 
             }
         }
     }
