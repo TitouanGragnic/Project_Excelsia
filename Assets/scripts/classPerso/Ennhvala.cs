@@ -9,8 +9,6 @@ namespace scripts
     {
         [SerializeField]
         GameObject knife;
-        [SerializeField]
-        Camera cam;
 
         public int actifCooldown;
         private int actifCooldownMax = 7000;

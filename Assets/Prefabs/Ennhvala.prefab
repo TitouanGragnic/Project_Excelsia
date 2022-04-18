@@ -547,6 +547,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139432838942, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 355159175873801838}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6840012810158573939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840012810158573938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138941bd1cf7d7d49a009115758aa3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8737074157270493155 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9056059095646718349, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -580,6 +591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba93d4acc79261449663f3ebbe6605a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6840012809597923543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6485566138751721145, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6840012809981246713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139138052759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -631,6 +647,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   perso_object: {fileID: 6840012810158573938}
+  camHolder: {fileID: 6840012809597923543}
+  movement: {fileID: 6840012810158573939}
   body: {fileID: 1031509818720488544}
   arm: {fileID: 3263977164305404353}
   health_object: {fileID: 8554435346980850239}
@@ -649,6 +667,8 @@ MonoBehaviour:
   typeAtk: 
   knife: {fileID: 8723991220544333805, guid: a991f954776a1f24ba67cfb5b951b985, type: 3}
   cam: {fileID: 6840012809981246711}
+  actifCooldown: 0
+  actifState: 0
   malus: 0
   bonus: 1
   vitesse: 0

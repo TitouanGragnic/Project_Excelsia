@@ -9,8 +9,6 @@ namespace scripts
         [SerializeField]
         GameObject mine;
         [SerializeField]
-        Camera cam;
-        [SerializeField]
         AttackSystem attackSystem;
 
 

@@ -12,7 +12,12 @@ namespace scripts
 {
     public class Perso : NetworkBehaviour
     {
+        public POVcam povCam;
+        public Camera cam;
         public GameObject perso_object;
+        public GameObject orientation;
+        public GameObject camHolder;
+        public Movement  movement;
         public GameObject body;
         public GameObject arm;
         public GameObject health_object;
@@ -58,14 +63,32 @@ namespace scripts
         {
             healthSystem.PersoStart();
         }
-       
 
+       
         private void LateUpdate()
         {
             UpdateLife();
             TestEnd();
 
         }
+
+        public void Place(int pnb)
+        {
+            povCam.place = true;
+            if (pnb == 1)
+            {
+                perso_object.transform.position = new Vector3(0, 32, 394);
+                povCam.yRotation = 180;
+            }
+
+            else
+            {
+                perso_object.transform.position = new Vector3(0, 32, -394);
+                povCam.yRotation = 0;
+            }
+
+        }
+
         [Command]
         public void ChangeTypeATK(string newType)
         {

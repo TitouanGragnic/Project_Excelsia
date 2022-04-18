@@ -6,8 +6,6 @@ namespace scripts
     public class Gally : Perso
     {
         [SerializeField]
-        Movement movement;
-        [SerializeField]
         AttackSystem attackSystem;
         // Start is called before the first frame update
         public int dashCooldown;
