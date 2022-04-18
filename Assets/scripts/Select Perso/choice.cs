@@ -127,6 +127,7 @@ namespace scripts {
         {
             spawn = true;
             GameObject oldPlayer = connectionToClient.identity.gameObject;
+            GameObject newPlayer = Instantiate(PlayerPrefab);
             NetworkServer.ReplacePlayerForConnection(connectionToClient, Instantiate(PlayerPrefab), true);
             NetworkServer.Destroy(oldPlayer);
             
