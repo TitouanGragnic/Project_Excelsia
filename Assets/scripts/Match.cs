@@ -11,6 +11,51 @@ public class Match : MonoBehaviour
     public string ip_local;
     public string name;
 
+    public bool var = false;
+    public bool sec = false;
+    public bool update = false;
+    public string tryip;
+    public int i = 0;
+    public int prem = 10;
+    public int test = 14;
+
+    void Update()
+    {
+        if (update)
+        {
+            Debug.Log(networkManager.networkAddress);
+            if (var)
+            {
+                string adress = tryip + prem + '.' + i;
+                if (networkManager.networkAddress != adress)
+                {
+                    networkManager.networkAddress = adress;
+                    networkManager.StartClient();
+                } 
+            }
+            if (i == 255)
+            {
+                prem++;
+                i = 0;
+            }
+            if (prem == 255)
+            {
+                prem = 0;
+                i = 0;
+            }
+            if (sec)
+            {
+                sec = false;
+                i++;
+                networkManager.StopClient();
+            }
+            if (test % 9 == 0)
+            {
+                sec = true;
+            }
+            test++;
+        }
+    }
 
 
     public static string GetLocalIPAddress()
@@ -41,32 +86,23 @@ public class Match : MonoBehaviour
     }
     public void Joinauto()
     {
-        ip_local = GetLocalIPAddress();
+        string ip = GetLocalIPAddress();
         string _id = string.Empty;
         int x = 0;
-        int j = 0;
+        int jh = 0;
         while (x < 2)
         {
-            _id += ip_local[j];
-            if (ip_local[j] == '.')
+            _id += ip[jh];
+            if (ip[jh] == '.')
             {
                 x += 1;
             }
-            j += 1;
+            jh += 1;
         }
-        for(int i = 0; i<256; i++)
-        {
-            for(int k = 0; k<256; k++)
-            {
-                Debug.Log(k);
-                networkManager.networkAddress = _id + i + '.' + k;
-                if(networkManager.isNetworkActive)
-                {
-                    networkManager.StartClient();
-                    break;
-                } 
-            }
-        }
+        tryip = _id;
+        var = true;
+        update = true;
+        networkManager.networkAddress = tryip + prem + '.' + i;
     }
 
     public static string Decrypt(string ip, string name)
