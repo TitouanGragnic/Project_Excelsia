@@ -47,6 +47,7 @@ namespace scripts
 
         public bool end;
         public string typeAtk;
+        public bool alone;
         private void Awake()
         {
             guard = 0;
@@ -57,11 +58,17 @@ namespace scripts
             atk = 20;
             typeAtk = "normal";
             end = false;
+            alone = true;
         }
 
         private void Start()
         {
             healthSystem.PersoStart();
+            if(GameManager.players.Count == 2)
+                foreach (KeyValuePair<string, Perso> player in GameManager.players)
+                    player.Value.alone = false ;
+                
+            
         }
 
        
@@ -71,7 +78,7 @@ namespace scripts
             TestEnd();
 
         }
-
+        
         public void Place(int pnb)
         {
             povCam.place = true;
@@ -143,7 +150,7 @@ namespace scripts
 
         private void TestEnd()
         {
-            if (GameManager.GetWinState(name) || GameManager.GetLooseState(name))
+            if (!alone && (GameManager.GetWinState(name) || GameManager.GetLooseState(name)))
                 end = true;
             
 

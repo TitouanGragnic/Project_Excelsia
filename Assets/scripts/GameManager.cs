@@ -12,6 +12,7 @@ namespace scripts
         private const string playerIDPrefix = "Player";
         private const string choiceIDPrefix = "Choice";
 
+
         //public GameOverScreen gameOverScreen;  
    
         public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
@@ -88,7 +89,9 @@ namespace scripts
                 else
                     winState &= player.Value.health <= 0;
             }
-            return i==2 && winState;
+
+
+            return  winState;
         }
 
         public static bool GetLooseState(string playerID)
@@ -103,7 +106,7 @@ namespace scripts
                 else
                     looseState &= player.Value.health <= 0;
             }
-            return i==2 &&looseState;
+            return looseState;
         }
 
         public static void RegisterPlayer(string netID, Perso player)
