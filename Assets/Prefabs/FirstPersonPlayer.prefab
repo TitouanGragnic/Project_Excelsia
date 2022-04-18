@@ -671,7 +671,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   camTranslate: 0
-  rb: {fileID: 6485566139432838912}
   wallDistance: 1
   minimumJumpHeight: 2
   wallrunGravity: 0.5
@@ -702,6 +701,8 @@ MonoBehaviour:
   cam: {fileID: 6485566138751721146}
   orientation: {fileID: 6485566138899816203}
   multiplier: 0.1
+  yRotation: 0
+  place: 0
 --- !u!114 &5155161729422037007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,7 +841,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  povCam: {fileID: 6485566139432838943}
+  cam: {fileID: 6485566139138052761}
   perso_object: {fileID: 6485566139432838940}
+  orientation: {fileID: 6485566138899816202}
   camHolder: {fileID: 6485566138751721145}
   movement: {fileID: 6485566139432838941}
   body: {fileID: 0}
