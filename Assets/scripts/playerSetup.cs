@@ -64,11 +64,15 @@ namespace scripts
 
             string netId = GetComponent<NetworkIdentity>().netId.ToString();
             Perso player = GetComponent<Perso>();
+            choice Choice = GetComponent<choice>();
 
             if (player != null)
                 GameManager.RegisterPlayer(netId, player);
+            else if (Choice != null)
+                GameManager.RegisterChoice(netId, Choice);
             else
-                GameManager.RegisterChoice(netId, GetComponent<choice>());
+                GameManager.RegisterEnd(netId, GetComponent<GameOver>());
+
         }
 
         private void OnDisable()

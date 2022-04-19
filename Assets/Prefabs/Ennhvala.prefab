@@ -429,6 +429,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 8a21c11850d2a9a44979dffe437562aa, type: 2}
+    - target: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 7461131345155107785}
     - target: {fileID: 5079179999345220315, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -684,6 +688,7 @@ MonoBehaviour:
   Loose: {fileID: 339638084197650455}
   end: 0
   typeAtk: 
+  ended: {fileID: 4253259169275228914}
   knife: {fileID: 8723991220544333805, guid: a991f954776a1f24ba67cfb5b951b985, type: 3}
   actifCooldown: 0
   actifState: 0

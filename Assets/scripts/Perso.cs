@@ -44,10 +44,13 @@ namespace scripts
 
         [SerializeField]
         GameObject Loose;
-
+        [SyncVar][SerializeField]
         public bool end;
         public string typeAtk;
-        public bool alone;
+
+
+        [SerializeField]
+        endMenu ended;
         private void Awake()
         {
             guard = 0;
@@ -58,15 +61,11 @@ namespace scripts
             atk = 20;
             typeAtk = "normal";
             end = false;
-            alone = true;
         }
 
         private void Start()
         {
             healthSystem.PersoStart();
-            if(GameManager.players.Count == 2)
-                foreach (KeyValuePair<string, Perso> player in GameManager.players)
-                    player.Value.alone = false ;
                 
             
         }
@@ -77,6 +76,8 @@ namespace scripts
             UpdateLife();
             TestEnd();
 
+            if (end)
+                ended.Cmd_ReplacePlayer();
         }
         
         public void Place(int pnb)
@@ -103,7 +104,6 @@ namespace scripts
         }
 
 
-        [Command]
         private void UpdateLife()
         {
             healthSystem.UpdateLife();
@@ -147,11 +147,14 @@ namespace scripts
         }
 
 
-
+        public void CmdEnd()
+        {
+            end = true;
+        }
         private void TestEnd()
         {
-            if (!alone && (GameManager.GetWinState(name) || GameManager.GetLooseState(name)))
-                end = true;
+            if (GameManager.GetWinState(name) || GameManager.GetLooseState(name))
+                GameManager.End();
             
 
         }

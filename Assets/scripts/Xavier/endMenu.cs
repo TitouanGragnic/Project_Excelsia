@@ -9,16 +9,12 @@ namespace scripts
     {
         [SerializeField]
         GameObject PlayerPrefab;
+        [SerializeField]
+        Perso perso;
 
 
-        public static bool state = false;
         
-        void Update()
-        {
-            if (GameManager.GetWinState(name) || GameManager.GetLooseState(name))
-                Cmd_ReplacePlayer();
-
-        }
+        
 
 
         [Command][Client]

@@ -1187,6 +1187,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 8049342609815884313}
     - target: {fileID: 4611800175784893753, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Layer
       value: 15
@@ -1679,6 +1683,7 @@ MonoBehaviour:
   Loose: {fileID: 7885969520801695755}
   end: 0
   typeAtk: 
+  ended: {fileID: 5962951554962582254}
   attackSystem: {fileID: 5645868658458816493}
   dashCooldown: 0
   dashState: 0

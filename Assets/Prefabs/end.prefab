@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 4207390655471325794}
   - component: {fileID: 6286686700877362249}
   - component: {fileID: 8234152293016816135}
+  - component: {fileID: 2161948151863569002}
+  - component: {fileID: 5091726992782733167}
   m_Layer: 0
-  m_Name: End
+  m_Name: end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +109,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  stateSpawn: 0
-  stateStart: 0
   PlayerPrefab: {fileID: 4531504580044698355, guid: 24c908370eb10054fad60a976daf20e5, type: 3}
+--- !u!114 &2161948151863569002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596413195031861040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fc6a8ac6364ff43b6dfd188f519887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  componentsToDisable:
+  - {fileID: 8234152293016816135}
+  - {fileID: 4207390655471325794}
+  name_layer: client
+  nameHP_layer: HP_client
+  body_layer: body_client
+  arm_layer: Arm_client
+--- !u!114 &5091726992782733167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596413195031861040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d17e718851449a6879986e45c458fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
