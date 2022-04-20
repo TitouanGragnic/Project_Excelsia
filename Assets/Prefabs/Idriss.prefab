@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: c94b70bfdd090bf4e80b3cf406421c42, type: 2}
+    - target: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 8451367018467903897}
     - target: {fileID: 5079179999345220315, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -344,6 +348,7 @@ MonoBehaviour:
   Loose: {fileID: 3522902526761006016}
   end: 0
   typeAtk: 
+  ended: {fileID: 1104475412067733797}
   grapple: {fileID: 2895716605792403831}
   electricCooldown: 0
   electricState: 0

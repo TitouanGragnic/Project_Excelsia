@@ -47,7 +47,7 @@ namespace scripts
         private void Change()
         {
 
-            if (Vector3.Distance(wall.transform.position, persoList[0].transform.position) <= 4 || Vector3.Distance(wall.transform.position, persoList[persoList.Count-1].transform.position) <= 4)
+            if (Vector3.Distance(wall.transform.position, persoList[0].transform.position) <= 20 || Vector3.Distance(wall.transform.position, persoList[persoList.Count-1].transform.position) <= 20)
             {
                 time = 500;
                 change = true;
@@ -55,7 +55,7 @@ namespace scripts
         }
         public void ChangeWall()
         {
-            wall.SetActive(Close);
+            wall.SetActive(!Open);
             turret.SetActive(Turret);
         }
         public void ChangeState()

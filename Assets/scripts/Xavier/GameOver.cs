@@ -17,9 +17,6 @@ namespace scripts
         private void Start()
         {
             Cursor.lockState = CursorLockMode.None;
-            GameManager.CmdAtributPnb(name);
-
-
         }
 
         void Update()
@@ -45,8 +42,6 @@ namespace scripts
             NetworkServer.Destroy(SoldPlayer);
         }
 
-        [Command]
-        [Client]
         public void Rotatearound()
         {
             transform.LookAt(new Vector3(0f, 0f, 0f));

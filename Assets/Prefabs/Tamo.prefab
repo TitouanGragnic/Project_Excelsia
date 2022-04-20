@@ -826,6 +826,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 3ecae28db8caae446a82e5734ec1e0dd, type: 2}
+    - target: {fileID: 4605875982207753372, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: perso
+      value: 
+      objectReference: {fileID: 5722261126902313348}
     - target: {fileID: 5079179999345220315, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1090,6 +1094,7 @@ MonoBehaviour:
   Loose: {fileID: 6606748430339669863}
   end: 0
   typeAtk: 
+  ended: {fileID: 7214728217789914498}
   mine: {fileID: 3922566111894429469, guid: 8be68b816ab0fdf428ece20b70ae5d6b, type: 3}
   attackSystem: {fileID: 8684438095728236673}
   actifCooldown: 0

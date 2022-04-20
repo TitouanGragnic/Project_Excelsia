@@ -23,8 +23,8 @@ namespace scripts
         int poinsonMaxCooldown = 5000 ;
         //bleeding
         public bool bleedingState;
-        int bleedingCooldown;
-        int bleedingMaxCooldown = 8000;
+        public int bleedingCooldown;
+        int bleedingMaxCooldown = 5000;
 
         public void PersoStart()
         {
@@ -55,7 +55,7 @@ namespace scripts
         {
             if (bleedingState)
             {
-                Damage(0.1f, 0);
+                Damage(0.05f, 0);
                 bleedingCooldown -= 1;
             }
             if (bleedingCooldown < 0)

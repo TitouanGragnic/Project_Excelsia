@@ -44,9 +44,13 @@ namespace scripts
 
         [SerializeField]
         GameObject Loose;
-
+        [SyncVar][SerializeField]
         public bool end;
         public string typeAtk;
+
+
+        [SerializeField]
+        endMenu ended;
         private void Awake()
         {
             guard = 0;
@@ -62,6 +66,8 @@ namespace scripts
         private void Start()
         {
             healthSystem.PersoStart();
+                
+            
         }
 
        
@@ -70,8 +76,10 @@ namespace scripts
             UpdateLife();
             TestEnd();
 
+            if (end)
+                ended.Cmd_ReplacePlayer();
         }
-
+        
         public void Place(int pnb)
         {
             povCam.place = true;
@@ -96,7 +104,6 @@ namespace scripts
         }
 
 
-        [Command]
         private void UpdateLife()
         {
             healthSystem.UpdateLife();
@@ -140,11 +147,14 @@ namespace scripts
         }
 
 
-
+        public void CmdEnd()
+        {
+            end = true;
+        }
         private void TestEnd()
         {
             if (GameManager.GetWinState(name) || GameManager.GetLooseState(name))
-                end = true;
+                GameManager.End();
             
 
         }

@@ -10,26 +10,22 @@ namespace scripts
     {
         public static GameManager instance;
         private const string playerIDPrefix = "Player";
-        private const string choiceIDPrefix = "Choice";
+        private const string choiceIDPrefix = "Choice"; 
+        private const string endIDPrefix = "End";
+
 
         //public GameOverScreen gameOverScreen;  
-   
+
         public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
        
         public static Dictionary<string, choice> choices = new Dictionary<string, choice>();
+
+
+        public static Dictionary<string, GameOver> ends = new Dictionary<string, GameOver>();
         static int Pnb=1;
         void Awake()
         {
             instance = this;
-        }
-
-        private void Update()
-        {  
-            /*
-            //remove unused perso dico
-            foreach (KeyValuePair<string, Perso> kv in players)
-                if (kv.Value == null || kv.Value.end)
-                    players.Remove(kv.Key);*/
         }
 
 
@@ -88,6 +84,8 @@ namespace scripts
                 else
                     winState &= player.Value.health <= 0;
             }
+
+
             return i==2 && winState;
         }
 
@@ -103,7 +101,15 @@ namespace scripts
                 else
                     looseState &= player.Value.health <= 0;
             }
-            return i==2 &&looseState;
+            return i==2&&looseState;
+        }
+
+        public static void End()
+        {
+            foreach (KeyValuePair<string, Perso> player_ex in players)
+            {
+                player_ex.Value.CmdEnd();
+            }
         }
 
         public static void RegisterPlayer(string netID, Perso player)
@@ -133,6 +139,17 @@ namespace scripts
             Debug.Log("add : "+ choiceId);
 
        
+        }
+
+        public static void RegisterEnd(string netID, GameOver player)
+        {
+            string choiceId = endIDPrefix + netID;
+            ends.Add(choiceId, player);
+            player.transform.name = choiceId;
+
+            Debug.Log("add : " + choiceId);
+
+
         }
 
         public static void UnRegisterPlayer(string playerId)

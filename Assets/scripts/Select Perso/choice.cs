@@ -129,7 +129,7 @@ namespace scripts {
             GameObject oldPlayer = connectionToClient.identity.gameObject;
             GameObject newPlayer = Instantiate(PlayerPrefab);
             Perso script = newPlayer.GetComponent<Perso>();
-            script.Place(1);//Pnb);
+            script.Place(Pnb);
             NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
             NetworkServer.Destroy(oldPlayer);
             
