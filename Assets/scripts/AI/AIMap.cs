@@ -19,7 +19,7 @@ namespace scripts
         {
             foreach (var room in Rooms)
             {
-                room.ChangeState();
+                room.ChangeState(false);
             }
         }
     }

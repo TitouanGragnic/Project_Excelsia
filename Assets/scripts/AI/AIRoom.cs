@@ -12,10 +12,15 @@ namespace scripts
         [SerializeField]
         AIWall[] Walls;
 
-        public int time = 20000;
+        [SerializeField]
+        bool master = false;
+
+        public int time;
+        public int maxTime = 10000;
         private void Start()
         {
-            ChangeState();
+            time = maxTime * 2;
+            ChangeState(false);
         }
 
         void Update()
@@ -23,43 +28,50 @@ namespace scripts
             if (time>0)
                 time -= 1;
             else
-                ChangeState();
+                ChangeState(false);
+            if(master)
+                testOpen();
         }
 
-        public void ChangeState()
+        private void testOpen()
         {
-            time = 10000;
-            for (int i = 0; i < Walls.Length; i++)
-            {
-                if (i % 3 == 0)
-                {
-                    Walls[i].Open = true;
-                    Walls[i].Close = false;
-                    Walls[i].Turret = false;
-                }
-                if (i % 3 == 1)
-                {
-                    Walls[i].Open = false;
-                    Walls[i].Close = false;
-                    Walls[i].Turret = true;
-                }
-                if (i % 3 == 2)
-                {
-                    Walls[i].Open = false;
-                    Walls[i].Close = true;
-                    Walls[i].Turret = false;
-                }
-            }
+            int k = 0;
+            foreach(AIWall wall in Walls)
+                if (wall.Open)
+                    k++;
+            if (k < 2)
+                ChangeState(true);         
+        }
+
+        public void ChangeState(bool forced)
+        {
+            time = maxTime;
 
             List<AIWall> alpha = Walls.ToList();
             for (int i = 0; i < alpha.Count; i++)
             {
                 AIWall temp = alpha[i];
+                temp.Changed();
                 int randomIndex = Random.Range(i, alpha.Count);
                 alpha[i] = alpha[randomIndex];
                 alpha[randomIndex] = temp;
             }
             Walls = alpha.ToArray();
+
+            int op = 0;
+
+            for (int i = 0; i < Walls.Length; i++)
+            {
+                if (op <2 && i % 2 == 0 || op>=2 && i%4 == 3)
+                {
+                    op++;
+                    Walls[i].ChangeState("Open", forced);
+                }
+                if (op < 2 && i % 4 == 1 || op >= 2 && (i % 4 == 0 || i % 4 == 1))
+                    Walls[i].ChangeState("Turret",forced);
+                if (op < 2 && i % 4 ==3 || op >= 2 && i % 4 == 2)
+                    Walls[i].ChangeState("Close",forced);
+            }
         }
     }
 }
