@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] Animator animator;
+    [SerializeField] Animator arm;
     float playerHeight = 2f;
 
     [SerializeField] Transform orientation;
@@ -56,6 +57,7 @@ public class Movement : MonoBehaviour
     bool isSprinting;
     bool isSliding;
     bool isCrouching;
+    public bool isAttack;
     int  moveVert = 1;
     public float camTranslate = 0f;
     float groundDistance = 1f;
@@ -102,8 +104,6 @@ public class Movement : MonoBehaviour
     
     private void Update()
     {
-
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);
         isCrouching = Input.GetKey(crouchKey);
@@ -175,7 +175,7 @@ public class Movement : MonoBehaviour
         else
             animator.SetBool("Sliding", false);
 
-
+        
         if (isGrounded && isCrouching && rb.velocity.magnitude > slideMinSpeed)
         {
             isSliding = true;

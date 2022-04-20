@@ -1092,9 +1092,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: arm
+      value: 
+      objectReference: {fileID: 7890231139195495483}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 8049342609815884313}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 6888114918195931008}
     - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: mask.m_Bits
       value: 512
@@ -1275,6 +1283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gally
       objectReference: {fileID: 0}
+    - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: arm
+      value: 
+      objectReference: {fileID: 7890231139195495483}
     - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: animator
       value: 
