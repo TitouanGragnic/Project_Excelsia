@@ -12,13 +12,23 @@ namespace scripts
         [SerializeField]
         AIWall[] Walls;
 
+        public int time = 20000;
         private void Start()
         {
             ChangeState();
         }
 
+        void Update()
+        {
+            if (time>0)
+                time -= 1;
+            else
+                ChangeState();
+        }
+
         public void ChangeState()
         {
+            time = 10000;
             for (int i = 0; i < Walls.Length; i++)
             {
                 if (i % 3 == 0)
