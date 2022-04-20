@@ -59,7 +59,6 @@ namespace scripts
         public static string GetRandomMatchID(string ip)
         {
             string _id = string.Empty;
-            _id += (char)UnityEngine.Random.Range(64, 90);
             int x = 0;
             int j = 0;
             while (x < 2)
@@ -74,7 +73,7 @@ namespace scripts
             { 
                 if(ip[i] == '.')
                 {
-                    _id += UnityEngine.Random.Range(1, 9);
+                    _id += ip[i - 1];
                 }
                 if(ip[i] != '.')
                 {
