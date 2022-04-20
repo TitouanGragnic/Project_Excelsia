@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 namespace scripts
 {
     public class Gally : Perso
     {
         [SerializeField]
         AttackSystem attackSystem;
+        
+        [SerializeField] public Slider slider;
         // Start is called before the first frame update
         public int dashCooldown;
         private int dashCooldownMax = 7000;
@@ -25,6 +29,7 @@ namespace scripts
         // Update is called once per frame
         void Update()
         {
+            slider.value = dashCooldownMax - dashCooldown;
             CoolDown();
         }
         public new void Actif() 

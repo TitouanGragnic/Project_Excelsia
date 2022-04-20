@@ -1,5 +1,7 @@
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
+
 public class Grapple : MonoBehaviour
 {
 
@@ -13,6 +15,8 @@ public class Grapple : MonoBehaviour
     //float distanceFromPoint = 100f;
     [SerializeField]
     private GameObject grappleHole;
+
+    [SerializeField] public Slider slider;
 
     public int grappleCooldown;
     public int maxGrappleCooldown;
@@ -39,6 +43,8 @@ public class Grapple : MonoBehaviour
     
     void Update()
     {
+        slider.value = (maxGrappleCooldown - grappleCooldown);
+        Debug.Log(slider.value);
         Cooldown();
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance))
