@@ -9,8 +9,14 @@ namespace scripts
     {
         [SerializeField]
         Perso perso;
+        [SerializeField]
+        Transform groundCheck;
 
-        
+        [SerializeField]
+        LayerMask groundMask;
+
+
+
 
         public HealthBar healthBar;
         public Health_UI heath_UI;
@@ -36,6 +42,13 @@ namespace scripts
         {
             DegatPoison();
             DegatBleeding();
+            DegatLava();
+        }
+
+        private void DegatLava()
+        {
+            if (Physics.CheckSphere(groundCheck.position, 1, groundMask))
+                Damage(0.5f, perso.armor);
         }
         private void DegatPoison()
         {

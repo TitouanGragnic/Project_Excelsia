@@ -18,7 +18,7 @@ namespace scripts
         GameObject rocket;
 
 
-
+        int range = 40;
         public int maxCooldown = 200;
         private int cooldown;
         private bool shootState;
@@ -63,7 +63,7 @@ namespace scripts
             foreach (KeyValuePair<string, Perso> player_ex in GameManager.players)
                 if (target == null || Vector3.Distance(transform.position, player_ex.Value.transform.position) <= Vector3.Distance(transform.position, target.transform.position))
                     target = player_ex.Value.body;
-            if (target != null && Vector3.Distance(transform.position, target.transform.position) > 40)
+            if (target != null && Vector3.Distance(transform.position, target.transform.position) > range)
                 target = null;
 
             if (target != null)
@@ -75,10 +75,18 @@ namespace scripts
 
         private void FollowTarget()
         {
+
+            RaycastHit hit;
             head.transform.LookAt(target.transform.position + Vector3.up*1.5f);
 
-            lr.SetPosition(0, head.transform.position);
-            lr.SetPosition(1, target.transform.position+ Vector3.up*1.5f);
+
+            if (Physics.Raycast(head.transform.position + head.transform.forward *1.5f, head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11)
+            {
+                lr.SetPosition(0, head.transform.position);
+                lr.SetPosition(1, target.transform.position + Vector3.up * 1.5f);
+            }
+            else
+                ResetLr();
 
         }
         private void ResetLr()

@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: perso
       value: 
       objectReference: {fileID: 8451367018467903897}
+    - target: {fileID: 9056059095646718349, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 7690429962391517569}
+    - target: {fileID: 9056059095646718349, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 8388608
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5818428227407732611, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
     - {fileID: 7483932309222031153, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -269,6 +277,11 @@ MonoBehaviour:
 --- !u!1 &7690429961980646067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6485566138899816202, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 3510759613686107577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7690429962391517569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6485566138822538296, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7690429962319647488 stripped
