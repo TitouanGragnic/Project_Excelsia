@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7951492338101405527}
   - component: {fileID: 4338379100430273642}
   - component: {fileID: 6820028206101214598}
+  - component: {fileID: 5255723238974227457}
   m_Layer: 0
   m_Name: Wal
   m_TagString: Untagged
@@ -98,13 +99,31 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   wall: {fileID: 4976007258126764944}
-  turret: {fileID: 1102417026142047576}
+  turrets:
+  - {fileID: 8938553413909241756}
+  - {fileID: 3421462950351098331}
   Turret: 0
-  Close: 0
   Open: 0
   change: 0
   time: 500
   persoList: []
+--- !u!114 &5255723238974227457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932482238300676602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6205a6fec358bde459ff3011028cabdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorBase: {fileID: 2100000, guid: 95acc06e22faa1e4abe43dc51ad133d1, type: 2}
+  wall: {fileID: 4976007258126764944}
+  activ: 0
+  on: 0
+  disolve: 0
 --- !u!1 &4976007258126764944
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e0fa1e433432b74ca5fad67a567eeec, type: 2}
+  - {fileID: 2100000, guid: 95acc06e22faa1e4abe43dc51ad133d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -207,6 +226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8541412758782684813}
     m_Modifications:
+    - target: {fileID: 4956748473749941868, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d574da1dee13e24f941b3febc8d2dfa, type: 2}
     - target: {fileID: 5112197440874296851, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -251,6 +274,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7330699471733035801, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d574da1dee13e24f941b3febc8d2dfa, type: 2}
+    - target: {fileID: 7503251437966368646, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d574da1dee13e24f941b3febc8d2dfa, type: 2}
     - target: {fileID: 7938480619960481640, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
       propertyPath: m_Name
       value: Turret (1)
@@ -262,6 +293,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5112197440874296851, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
   m_PrefabInstance: {fileID: 2136358090340063661}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3421462950351098331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3665547680443402358, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
+  m_PrefabInstance: {fileID: 2136358090340063661}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6376becc0f1a2042b01e5eada5d1619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5679807454565390314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,3 +366,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5112197440874296851, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
   m_PrefabInstance: {fileID: 5679807454565390314}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8938553413909241756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3665547680443402358, guid: 90e5233b12555f64c986cf8917e7c7d8, type: 3}
+  m_PrefabInstance: {fileID: 5679807454565390314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6376becc0f1a2042b01e5eada5d1619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

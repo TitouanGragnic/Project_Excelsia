@@ -451,7 +451,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -627,7 +627,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 6ca98fc74b0b22f4695dbab7f8a513ed, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.8
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -1192,6 +1192,7 @@ MonoBehaviour:
   player: {fileID: 6485566139432838942}
   joint: {fileID: 0}
   grappleHole: {fileID: 2639596340234615233, guid: 47180cfd21654da49af2f9c2ea6dc5a3, type: 3}
+  slider: {fileID: 0}
   grappleCooldown: 0
   maxGrappleCooldown: 0
   grapple_Sync: {fileID: 4779195447659867005}

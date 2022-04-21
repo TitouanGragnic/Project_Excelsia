@@ -8,8 +8,9 @@ namespace scripts
     {
         [SerializeField]
         GameObject wall;
+        
         [SerializeField]
-        GameObject turret;
+        Turret[] turrets;
 
         public bool Turret = false;
         public bool Open = false;
@@ -40,7 +41,7 @@ namespace scripts
                 if (time == 0)
                 {
                     change = false;
-                    time = 2000;
+                    time = 500;
                     ChangeWall(false);
                 }
             }
@@ -61,8 +62,9 @@ namespace scripts
         {
             if (forced || !change)
             {
-                wall.SetActive(!Open);
-                turret.SetActive(Turret);
+                this.GetComponent<Wall>().activ  = !Open;
+                foreach (Turret turret in turrets)
+                    turret.activ = Turret;
             }
         }
         public void ChangeState(string new_state, bool forced)
