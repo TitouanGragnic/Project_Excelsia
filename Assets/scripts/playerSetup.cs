@@ -77,7 +77,12 @@ namespace scripts
 
         private void OnDisable()
         {
-            GameManager.UnRegisterPlayer(transform.name);
+            if (gameObject.GetComponent<Perso>() != null)
+                GameManager.UnRegisterPlayer(transform.name);
+            else if (gameObject.GetComponent<choice>() != null)
+                GameManager.UnRegisterChoice(transform.name);
+            else
+                GameManager.UnRegisterEnd(transform.name);
         }
     }
 }
