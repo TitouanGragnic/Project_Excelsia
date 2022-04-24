@@ -43,8 +43,11 @@ public class Grapple : MonoBehaviour
     
     void Update()
     {
-        slider.value = (maxGrappleCooldown - grappleCooldown);
-        Debug.Log(slider.value);
+        if (slider != null)
+        {
+            slider.value = (maxGrappleCooldown - grappleCooldown);
+            Debug.Log(slider.value);
+        }
         Cooldown();
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance))
