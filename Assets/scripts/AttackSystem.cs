@@ -32,8 +32,10 @@ namespace scripts
                 Taper();
             else
             {
-                animator.SetBool("Attack", false);
-                arm.SetBool("Attack", false);
+                if (animator != null)
+                    animator.SetBool("Attack", false);
+                if(arm != null)
+                    arm.SetBool("Attack", false);
             }
         }
 

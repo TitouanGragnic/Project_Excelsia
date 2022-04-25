@@ -117,7 +117,7 @@ namespace scripts
             string playerId = playerIDPrefix + netID;
             players.Add(playerId, player);
             player.transform.name = playerId;
-
+            /*
             foreach (KeyValuePair<string, Perso> player_ex in players)
             {
 
@@ -127,7 +127,7 @@ namespace scripts
                     player.InitHs(player_ex.Value.perso_object);
                      
                 }
-            }
+            }*/
         }
 
         public static void RegisterChoice(string netID, choice player)
@@ -136,9 +136,6 @@ namespace scripts
             choices.Add(choiceId, player);
             player.transform.name = choiceId;
 
-            Debug.Log("add : "+ choiceId);
-
-       
         }
 
         public static void RegisterEnd(string netID, GameOver player)
@@ -146,15 +143,19 @@ namespace scripts
             string choiceId = endIDPrefix + netID;
             ends.Add(choiceId, player);
             player.transform.name = choiceId;
-
-            Debug.Log("add : " + choiceId);
-
-
         }
 
         public static void UnRegisterPlayer(string playerId)
         {
             players.Remove(playerId);
+        }
+        public static void UnRegisterChoice(string playerId)
+        {
+            choices.Remove(playerId);
+        }
+        public static void UnRegisterEnd(string playerId)
+        {
+            ends.Remove(playerId);
         }
 
         public static Perso GetPlayer(string playerId)
