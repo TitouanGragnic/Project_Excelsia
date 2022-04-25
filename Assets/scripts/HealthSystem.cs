@@ -38,6 +38,7 @@ namespace scripts
         }
 
 
+        [Command]
         public void UpdateLife()
         {
             DegatPoison();
