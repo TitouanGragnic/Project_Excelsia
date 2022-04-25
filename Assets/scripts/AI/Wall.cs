@@ -13,6 +13,8 @@ namespace scripts
         GameObject wall;
         Material color;
 
+        
+         
         public bool activ;
         public bool on;
         public float disolve;

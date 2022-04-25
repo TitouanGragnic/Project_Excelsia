@@ -12,6 +12,10 @@ namespace scripts
         [SerializeField]
         Turret[] turrets;
 
+
+        public bool isWay;
+        public bool block;
+
         public bool Turret = false;
         public bool Open = false;
 
@@ -20,7 +24,13 @@ namespace scripts
 
         public List<Perso> persoList = new List<Perso> { };
 
+
         void Update()
+        {
+            if (!block)
+                NormalUpdate();
+        }
+        void NormalUpdate()
         {
             if (persoList.Count != GameManager.players.Count)
             {

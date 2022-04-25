@@ -15,21 +15,36 @@ namespace scripts
         [SerializeField]
         bool master = false;
 
+        [SerializeField]
+        public int level;
+
+        public bool close;
         public int time;
         public int maxTime = 10000;
         private void Start()
         {
+            close = false;
             time = maxTime * 2;
             ChangeState(false);
         }
 
         void Update()
         {
-            if (time>0)
+            if(!close)
+                NormalUpdate();
+            else if(level == 0)
+                if (GameManager.IsOnCenter())
+                    foreach (var wall in Walls)
+                        wall.ChangeState("Turret", true);
+        }
+
+        void NormalUpdate()
+        {
+            if (time > 0)
                 time -= 1;
             else
                 ChangeState(false);
-            if(master)
+            if (master)
                 testOpen();
         }
 
@@ -72,6 +87,29 @@ namespace scripts
                 if (op < 2 && i % 4 ==3 || op >= 2 && i % 4 == 2)
                     Walls[i].ChangeState("Close",forced);
             }
+        }
+
+
+        public void Close()
+        {
+            close = true;
+            if (level != 0)
+            {
+                foreach (var wall in Walls)
+                {
+                    if (!wall.isWay)
+                        wall.ChangeState("Turret", true);
+                    else
+                        wall.ChangeState("Open", true);
+                    wall.block = true;
+                }
+            }
+            else
+            {
+                foreach (var wall in Walls)
+                    wall.ChangeState("Open", true);
+            }
+
         }
     }
 }

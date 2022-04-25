@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Mirror;
 using UnityEngine.UI;
@@ -38,21 +39,23 @@ namespace scripts
 
         public static bool GetStateSpawn()
         {
-            List<string> rm = new List<string>();
+            //List<string> rm = new List<string>();
             bool spawnState = true;
+            
             foreach (KeyValuePair<string, choice> choice_ex in choices)
             {
                 if (choice_ex.Value != null)
                     spawnState &= choice_ex.Value.stateSpawn;
-                //remove unused choice dico
+                /*//remove unused choice dico
                 if (choice_ex.Value == null || choice_ex.Value.spawn)
-                    rm.Add(choice_ex.Key);
+                    rm.Add(choice_ex.Key);*/
             }
+            /*
             foreach (string name in rm)
                 choices.Remove(name);
 
             if (choices.Count == 0)
-                Pnb = 1;
+                Pnb = 1;*/
             return spawnState;
         }
         
@@ -162,6 +165,16 @@ namespace scripts
         public static Perso GetPlayer(string playerId)
         {
             return players[playerId];
+        }
+
+        public static bool IsOnCenter()
+        {
+            bool res = true;
+
+            foreach (KeyValuePair<string, Perso> player_ex in players)
+                res &= Math.Pow(player_ex.Value.transform.position.x,2) +  Math.Pow(player_ex.Value.transform.position.z,2)  <= 12.25;
+
+            return res;
         }
 
     } 
