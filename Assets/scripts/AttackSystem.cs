@@ -43,8 +43,8 @@ namespace scripts
         private void Taper()
         {
             RaycastHit hit;
-            animator.SetBool("Attack", true);
-            arm.SetBool("Attack", true);
+            //animator.SetBool("Attack", true);
+            //arm.SetBool("Attack", true);
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, mask))
             {
