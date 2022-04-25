@@ -152,6 +152,7 @@ namespace scripts
         public static void UnRegisterChoice(string playerId)
         {
             choices.Remove(playerId);
+            Pnb = choices.Keys.Count+1;
         }
         public static void UnRegisterEnd(string playerId)
         {

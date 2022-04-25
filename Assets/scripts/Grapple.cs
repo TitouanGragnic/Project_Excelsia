@@ -46,7 +46,6 @@ public class Grapple : MonoBehaviour
         if (slider != null)
         {
             slider.value = (maxGrappleCooldown - grappleCooldown);
-            Debug.Log(slider.value);
         }
         Cooldown();
         RaycastHit hit;

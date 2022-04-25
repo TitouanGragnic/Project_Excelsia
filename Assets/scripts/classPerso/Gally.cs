@@ -10,7 +10,6 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
         
-        [SerializeField] public Slider slider;
         // Start is called before the first frame update
         public int dashCooldown;
         private int dashCooldownMax = 7000;
