@@ -24,7 +24,9 @@ public class Movement : MonoBehaviour
     [SerializeField] float acceleration = 10f;
     [SerializeField] float camAcceleration = 10f;
     [SerializeField] float slideMinSpeed = 5f;
-  
+    public CapsuleCollider PlayerHeight;
+    public float normalHeight, crouchHeight;
+
 
 
     [Header("Jumping")]
@@ -156,15 +158,27 @@ public class Movement : MonoBehaviour
             animator.SetBool("Walking", false);
 
         if (isGrounded && isCrouching && !isSliding && Input.GetAxisRaw("Vertical") > 0)
+        {
             animator.SetBool("CrouchWalk", true);
+            PlayerHeight.height = crouchHeight;
+        }
         else
+        {
             animator.SetBool("CrouchWalk", false);
+            PlayerHeight.height = normalHeight;
+        }
+            
 
         if (isGrounded &&  isCrouching && !isSliding)
+        {
             animator.SetBool("Crouched", true);
+            PlayerHeight.height = crouchHeight;
+        }
         else
+        {
             animator.SetBool("Crouched", false);
-
+            PlayerHeight.height = normalHeight;
+        }
         if (!isGrounded)
             animator.SetBool("Jumping", true);
         else
