@@ -92801,6 +92801,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7745503160653801251, guid: 505d6e6181bb2164499a1993ac51d34a, type: 3}
+      propertyPath: sceneId
+      value: 2694706803
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505d6e6181bb2164499a1993ac51d34a, type: 3}
 --- !u!1 &1618091488
@@ -93611,6 +93615,7 @@ MonoBehaviour:
   - {fileID: 211068123}
   - {fileID: 352080520}
   - {fileID: 482193756}
+  inGame: 0
   time: 0
   stateRoom: 00000000
 --- !u!114 &2043454559
