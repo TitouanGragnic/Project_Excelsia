@@ -32,20 +32,45 @@ namespace scripts
         public int bleedingCooldown;
         int bleedingMaxCooldown = 5000;
 
+        [SyncVar]
+        public bool blurState;
+        public int blurCooldown;
+        int blurMaxCooldown = 2500;
+
         public void PersoStart()
         {
             perso.health = perso.maxHealth;
         }
 
+        private void Update()
+        {
+            changeBlur(blurState);
+        }
 
         [Command]
         public void UpdateLife()
         {
-            DegatPoison();
-            DegatBleeding();
+            if(poisonState)
+                DegatPoison();
+            if(bleedingState)
+                DegatBleeding();
             DegatLava();
+            if(blurState)
+                Blur();
         }
 
+        private void Blur()
+        {
+            if (blurState)
+                blurCooldown -= 1;
+            
+            if (poisonCooldown < 0)
+            {
+                blurCooldown = 0;
+                blurState = false;
+            }
+
+        }
         private void DegatLava()
         {
             if (Physics.CheckSphere(groundCheck.position, 1, groundMask))
@@ -77,6 +102,16 @@ namespace scripts
                 bleedingCooldown = 0;
                 bleedingState = false;
             }
+        }
+        private void TakeBlur()
+        {
+            blurState = true;
+            blurCooldown = blurMaxCooldown;
+
+        }
+        private void changeBlur(bool newState)
+        {
+            perso.blur.SetActive(newState);
         }
 
         private void TakePoison(int cooldown)
@@ -142,6 +177,13 @@ namespace scripts
                         TakePoison(poinsonMaxCooldown*3);
                         Damage(damage, perso.armor);
                     }
+                    break;
+                case "blur":
+                    TakeBlur();
+                    if (posture.State)
+                        QuardDamage(damage, posture);
+                    else
+                        Damage(damage, perso.armor);
                     break;
                 default:
                     break;

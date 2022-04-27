@@ -39,7 +39,7 @@ namespace scripts
         {
             CoolDown();
             //this.health -= malus;
-            //this.atk = atk * (maxHealth / health) * bonus;
+            this.atk = atk * (maxHealth / health) * bonus;
         }
         private void CoolDown()
         {
@@ -55,7 +55,7 @@ namespace scripts
         }
         public new void Actif()
         {
-            if (actifCooldown == 0) 
+            if (actifCooldown == 0 || true) 
             {
                 SpawnKnife();
                 actifState = true;

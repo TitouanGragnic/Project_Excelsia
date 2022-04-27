@@ -13,7 +13,7 @@ namespace scripts
         {
             if (col.gameObject.layer == 9  && !touche)// layer client
             {
-                col.gameObject.GetComponent<Perso>().TakeDamage(20, "normal");
+                col.gameObject.GetComponent<Perso>().TakeDamage(20, "blur");
                 touche = true;
             }
             NetworkServer.Destroy(this.gameObject);
