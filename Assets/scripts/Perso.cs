@@ -82,13 +82,13 @@ namespace scripts
             povCam.place = true;
             if (pnb == 1)
             {
-                perso_object.transform.position = new Vector3(0, -22, 296);
+                perso_object.transform.position = new Vector3(0, 23.5f, 296);
                 povCam.yRotation = 180;
             }
 
             else
             {
-                perso_object.transform.position = new Vector3(0, -22f, -296);
+                perso_object.transform.position = new Vector3(0, 23.5f, -296);
                 povCam.yRotation = 0;
             }
 
