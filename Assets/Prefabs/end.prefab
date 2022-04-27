@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5692445448779448284}
   - component: {fileID: 1868192907631004936}
   m_Layer: 5
-  m_Name: Text_stateloose
+  m_Name: Text_statewin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6126667839402179844}
   - component: {fileID: 1425355076773242936}
   m_Layer: 5
-  m_Name: Text_statewin
+  m_Name: Text_stateloose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,8 +817,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  Text_stateloose: {fileID: 5692445448779448284}
-  Text_statewin: {fileID: 6126667839402179844}
+  Text_stateloose: {fileID: 6126667839402179844}
+  Text_statewin: {fileID: 5692445448779448284}
   netId: 
 --- !u!1 &5949707329821854486
 GameObject:
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 1788063393034324825}
   - component: {fileID: 6143949403686971186}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 6836929666134619332}
   - component: {fileID: 7667403787804058498}
   m_Layer: 5
-  m_Name: Image
+  m_Name: image loose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
