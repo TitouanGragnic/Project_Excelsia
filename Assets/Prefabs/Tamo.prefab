@@ -794,6 +794,18 @@ PrefabInstance:
       propertyPath: perso
       value: 
       objectReference: {fileID: 5722261126902313348}
+    - target: {fileID: 312352054957553759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312352054957553759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 312352054957553759, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Color.r
+      value: 0.43125367
+      objectReference: {fileID: 0}
     - target: {fileID: 548405150881312680, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: animator
       value: 
@@ -814,6 +826,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5722261126902313348}
+    - target: {fileID: 2946217035984152591, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946217035984152591, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985151689025305718, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
