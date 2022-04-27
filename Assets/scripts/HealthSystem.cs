@@ -32,7 +32,6 @@ namespace scripts
         public int bleedingCooldown;
         int bleedingMaxCooldown = 5000;
 
-        [SyncVar]
         public bool blurState;
         public int blurCooldown;
         int blurMaxCooldown = 2500;
@@ -103,12 +102,15 @@ namespace scripts
                 bleedingState = false;
             }
         }
-        private void TakeBlur()
+        [Client]
+        public void TakeBlur()
         {
             blurState = true;
             blurCooldown = blurMaxCooldown;
 
         }
+
+
         private void changeBlur(bool newState)
         {
             perso.blur.SetActive(newState);

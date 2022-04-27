@@ -16,7 +16,9 @@ namespace scripts
         public bool isWay;
         public bool block;
 
+        [SyncVar]
         public bool Turret = false;
+        [SyncVar]
         public bool Open = false;
 
         public bool change = false;

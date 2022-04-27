@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 namespace scripts
 {
@@ -66,12 +67,17 @@ namespace scripts
 
         private void SpawnKnife()
         {
-            GameObject kn = Instantiate(knife);
-            kn.transform.position = arm.transform.position + cam.transform.forward.normalized*2;
-            kn.transform.forward = cam.transform.forward;
-            kn.GetComponent<Knife>().rotate = cam.transform.forward;
+            Cmd_SpawnK(arm.transform.position, cam.transform.forward);
+        }
+        [Command]
+        private void Cmd_SpawnK(Vector3 pos, Vector3 forward)
+        {
+            GameObject kn = Instantiate(knife, pos + forward.normalized * 2, new Quaternion(forward.x,forward.y,forward.z,0));
+            NetworkServer.Spawn(kn);
+            kn.GetComponent<Knife>().rotate = forward;
             Rigidbody rb = kn.GetComponent<Rigidbody>();
-            rb.AddForce(cam.transform.forward.normalized * 5, ForceMode.Impulse);
+            rb.AddForce(forward.normalized * 5, ForceMode.Impulse);
+
         }
 
         private void Ulti()
