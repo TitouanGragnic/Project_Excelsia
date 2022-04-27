@@ -12,13 +12,13 @@ namespace scripts
         bool touche = false;
         void OnCollisionEnter(Collision col)
         {
-            if (col.gameObject.layer == 9  && !touche)// layer client
+            if ((col.gameObject.layer == 9 || col.gameObject.layer == 8) && !touche && col.gameObject.GetComponent<Ennhvala>() == null)// layer client
             {
                 col.gameObject.GetComponent<Perso>().TakeDamage(20, "normal");
                 col.gameObject.GetComponent<HealthSystem>().blurState = true;
                 touche = true;
             }
-            //NetworkServer.Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
 
         void Update()
