@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fa8f2334e18e454d8ba83107bfbd3cf, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fa8f2334e18e454d8ba83107bfbd3cf, type: 3}
       propertyPath: m_LocalScale.x
@@ -806,14 +806,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7752928385739467569 stripped
+--- !u!1 &2260078679767359823 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6570565002984908424, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 3510759613686107577}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3522902526761006016 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 25724630457532025, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3451394286161751286, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8451367018467903897
@@ -848,10 +843,9 @@ MonoBehaviour:
   guard: 0
   maxGuard: 0
   atk: 0
-  Win: {fileID: 7752928385739467569}
-  Loose: {fileID: 3522902526761006016}
   end: 0
   typeAtk: 
+  blur: {fileID: 2260078679767359823}
   ended: {fileID: 1104475412067733797}
   grapple: {fileID: 2895716605792403831}
   electricCooldown: 0

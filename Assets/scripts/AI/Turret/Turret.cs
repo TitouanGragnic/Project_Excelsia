@@ -110,7 +110,7 @@ namespace scripts
             rk.transform.position = head.transform.position + head.transform.forward.normalized * 2;
             rk.transform.forward = head.transform.forward;
             Rigidbody rb = rk.GetComponent<Rigidbody>();
-            rb.AddForce(head.transform.forward.normalized * 10, ForceMode.Impulse);
+            rb.AddForce(head.transform.forward.normalized * 20, ForceMode.Impulse);
         }
         private void FindTaget()
         {

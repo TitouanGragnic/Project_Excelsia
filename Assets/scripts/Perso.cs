@@ -39,20 +39,17 @@ namespace scripts
         public float maxGuard;
         public float atk;
 
-        [SerializeField]
-        GameObject Win;
-
-        [SerializeField]
-        GameObject Loose;
         [SyncVar][SerializeField]
         public bool end;
         public string typeAtk;
 
-
+        [SerializeField]
+        public GameObject blur;
         [SerializeField]
         endMenu ended;
         private void Awake()
         {
+            blur.SetActive(false);
             guard = 0;
             maxHealth = 1000;
             health = maxHealth;
@@ -85,13 +82,13 @@ namespace scripts
             povCam.place = true;
             if (pnb == 1)
             {
-                perso_object.transform.position = new Vector3(0, 32, 394);
+                perso_object.transform.position = new Vector3(0, -22, 296);
                 povCam.yRotation = 180;
             }
 
             else
             {
-                perso_object.transform.position = new Vector3(0, 32, -394);
+                perso_object.transform.position = new Vector3(0, -22f, -296);
                 povCam.yRotation = 0;
             }
 

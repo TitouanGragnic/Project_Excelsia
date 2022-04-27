@@ -30,6 +30,7 @@ namespace scripts
                 Perso perso = GetComponent<Perso>();
                 if ( perso != null)
                 {
+                    perso.blur.SetActive(false);
                     GameObject hp_object = gameObject.transform.Find("HealthBar").gameObject;
                     hp_object.layer = LayerMask.NameToLayer(nameHP_layer);
 
@@ -39,9 +40,12 @@ namespace scripts
 
                     SetLayerRecursively(perso.body, body_layer);
 
+                    perso.blur.layer = LayerMask.NameToLayer(arm_layer);
                     perso.arm.layer = LayerMask.NameToLayer(arm_layer);
 
                     SetLayerRecursively(perso.arm, arm_layer);
+
+
 
                 }
                 
