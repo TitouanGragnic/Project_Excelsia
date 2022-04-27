@@ -41,15 +41,10 @@ namespace scripts
             perso.health = perso.maxHealth;
         }
 
-        private void Update()
-        {
-            changeBlur(blurState);
-        }
-
-        [Command]
         public void UpdateLife()
         {
-            if(poisonState)
+            changeBlur(blurState);
+            if (poisonState)
                 DegatPoison();
             if(bleedingState)
                 DegatBleeding();
@@ -63,7 +58,7 @@ namespace scripts
             if (blurState)
                 blurCooldown -= 1;
             
-            if (poisonCooldown < 0)
+            if (blurCooldown < 0)
             {
                 blurCooldown = 0;
                 blurState = false;

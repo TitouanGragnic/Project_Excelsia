@@ -15,10 +15,10 @@ namespace scripts
             if ((col.gameObject.layer == 9 || col.gameObject.layer == 8) && !touche && col.gameObject.GetComponent<Ennhvala>() == null)// layer client
             {
                 col.gameObject.GetComponent<Perso>().TakeDamage(20, "normal");
-                col.gameObject.GetComponent<HealthSystem>().blurState = true;
+                col.gameObject.GetComponent<HealthSystem>().TakeBlur(); 
                 touche = true;
             }
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
 
         void Update()

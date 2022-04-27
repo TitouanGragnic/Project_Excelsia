@@ -23,6 +23,12 @@ namespace scripts
         public int maxTime = 10000;
         private void Start()
         {
+            if (isServer)
+                ServerStart();
+        }
+        void ServerStart()
+        {
+
             close = false;
             time = maxTime * 2;
             ChangeState(false);
@@ -30,12 +36,18 @@ namespace scripts
 
         void Update()
         {
-            if(!close)
+            if (isServer)
+                ServerUpdate();
+        }
+        void ServerUpdate()
+        {
+            if (!close)
                 NormalUpdate();
-            else if(level == 0)
+            else if (level == 0)
                 if (GameManager.IsOnCenter())
                     foreach (var wall in Walls)
                         wall.ChangeState("Turret", true);
+
         }
 
         void NormalUpdate()
@@ -77,18 +89,17 @@ namespace scripts
 
             for (int i = 0; i < Walls.Length; i++)
             {
-                if (op <2 && i % 2 == 0 || op>=2 && i%4 == 3||true)
+                if (i % 2 == 0 )
                 {
                     op++;
                     Walls[i].ChangeState("Open", forced);
                 }
-                if (op < 2 && i % 4 == 1 || op >= 2 && (i % 4 == 0 || i % 4 == 1))
+                else if (i % 4 == 1 )
                     Walls[i].ChangeState("Turret",forced);
-                if (op < 2 && i % 4 ==3 || op >= 2 && i % 4 == 2)
+                else if (i % 4 ==3 )
                     Walls[i].ChangeState("Close",forced);
             }
         }
-
 
         public void Close()
         {

@@ -33,9 +33,12 @@ namespace scripts {
         BodyLight select_light;
 
         public bool spawn;
+        [SyncVar]
+        public bool minchoice;
 
         private void Start()
         {
+            minchoice = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             stateSpawn = false;
@@ -60,7 +63,7 @@ namespace scripts {
                 Cmd_ReplacePlayer();
 
 
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.B)&& minchoice)
                 stateSpawn = true;
             if (Input.GetKeyDown(KeyCode.N))
                 stateSpawn = false;
@@ -92,15 +95,19 @@ namespace scripts {
             {
                 case "Idriss":
                     PlayerPrefab = Idriss;
+                    minchoice = true;
                     break;
                 case "Gally":
                     PlayerPrefab = Gally;
+                    minchoice = true;
                     break;
                 case "Tamo":
                     PlayerPrefab = Tamo;
+                    minchoice = true;
                     break;
                 case "Enhvala":
                     PlayerPrefab = Enhvala;
+                    minchoice = true;
                     break;
             }
         }

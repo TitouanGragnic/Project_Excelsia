@@ -172,7 +172,7 @@ namespace scripts
             bool res = true;
 
             foreach (KeyValuePair<string, Perso> player_ex in players)
-                res &= Math.Pow(player_ex.Value.transform.position.x,2) +  Math.Pow(player_ex.Value.transform.position.z,2)  <= 12.25;
+                res &= Math.Pow(player_ex.Value.transform.position.x,2) +  Math.Pow(player_ex.Value.transform.position.z,2)  <= 12.25/9;
 
             return res;
         }
