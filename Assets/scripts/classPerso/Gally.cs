@@ -9,6 +9,8 @@ namespace scripts
     {
         [SerializeField]
         AttackSystem attackSystem;
+
+        [SerializeField] Slider sliderAc;
         
         // Start is called before the first frame update
         public int dashCooldown;
@@ -28,7 +30,7 @@ namespace scripts
         // Update is called once per frame
         void Update()
         {
-            slider.value = dashCooldownMax - dashCooldown;
+            sliderAc.value = dashCooldownMax - dashCooldown;
             CoolDown();
         }
         public new void Actif() 

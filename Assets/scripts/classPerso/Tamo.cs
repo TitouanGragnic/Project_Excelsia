@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace scripts
@@ -11,7 +12,7 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
 
-
+        [SerializeField] Slider sliderAc;
 
 
 
@@ -33,6 +34,7 @@ namespace scripts
         private void Update()
         {
             CoolDown();
+            sliderAc.value = actifCooldownMax - actifCooldown;
         }
         private void CoolDown()
         {

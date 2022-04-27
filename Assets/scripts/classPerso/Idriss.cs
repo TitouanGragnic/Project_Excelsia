@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 namespace scripts
@@ -9,6 +10,7 @@ namespace scripts
     {
         [SerializeField]
         Grapple grapple;
+        [SerializeField] Slider sliderAc;
 
         public int electricCooldown;
         private int electricCooldownMax = 7000;
@@ -33,7 +35,7 @@ namespace scripts
         void Update()
         {
             CoolDown();
-
+            sliderAc.value = electricCooldownMax - electricCooldown;
 
         }
 
