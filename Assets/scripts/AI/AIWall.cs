@@ -29,11 +29,6 @@ namespace scripts
 
         void Update()
         {
-            if (!block)
-                NormalUpdate();
-        }
-        void NormalUpdate()
-        {
             if (persoList.Count != GameManager.players.Count)
             {
                 if (persoList.Count < 2)
@@ -45,6 +40,12 @@ namespace scripts
                     }
                 }
             }
+            if (!block)
+                NormalUpdate();
+        }
+        void NormalUpdate()
+        {
+            
             
             Change();
             if (change)
@@ -67,7 +68,7 @@ namespace scripts
         }
         private void Change()
         {
-            if (persoList.Count>0 &&(  Vector3.Distance(wall.transform.position, persoList[0].transform.position) <= 20 || Vector3.Distance(wall.transform.position, persoList[persoList.Count - 1].transform.position) <= 20))
+            if (persoList.Count>0 &&((persoList[0] != null && Vector3.Distance(wall.transform.position, persoList[0].transform.position) <= 20 )|| (persoList[persoList.Count - 1] != null && Vector3.Distance(wall.transform.position, persoList[persoList.Count - 1].transform.position) <= 20)))
                 Changed();
         }
         public void ChangeWall(bool forced)

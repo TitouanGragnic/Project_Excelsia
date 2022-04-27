@@ -77,7 +77,7 @@ namespace scripts
 
             for (int i = 0; i < Walls.Length; i++)
             {
-                if (op <2 && i % 2 == 0 || op>=2 && i%4 == 3)
+                if (op <2 && i % 2 == 0 || op>=2 && i%4 == 3||true)
                 {
                     op++;
                     Walls[i].ChangeState("Open", forced);
