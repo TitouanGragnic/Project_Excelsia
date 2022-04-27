@@ -45,6 +45,11 @@ namespace scripts
                 object_health.transform.Rotate(90, 0, 0);
 
             }
+            else if (GameManager.players.Count != 1)
+                foreach (KeyValuePair<string, Perso> player in GameManager.players)
+                    if (player.Key != perso.name)
+                        target = player.Value.body;
+                            
         }
 
 

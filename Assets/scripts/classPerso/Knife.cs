@@ -7,6 +7,7 @@ namespace scripts
 {
     public class Knife : NetworkBehaviour
     {
+        [SyncVar]
         public Vector3 rotate;
         bool touche = false;
         void OnCollisionEnter(Collision col)
@@ -14,9 +15,10 @@ namespace scripts
             if (col.gameObject.layer == 9  && !touche)// layer client
             {
                 col.gameObject.GetComponent<Perso>().TakeDamage(20, "normal");
+                col.gameObject.GetComponent<HealthSystem>().blurState = true;
                 touche = true;
             }
-            NetworkServer.Destroy(this.gameObject);
+            //NetworkServer.Destroy(this.gameObject);
         }
 
         void Update()
