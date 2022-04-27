@@ -76,10 +76,10 @@ namespace scripts
         private void Cmd_SpawnK(Vector3 pos, Vector3 forward)
         {
             GameObject kn = Instantiate(knife, pos + forward.normalized * 2, new Quaternion(forward.x,forward.y,forward.z,0));
-            NetworkServer.Spawn(kn);
             kn.GetComponent<Knife>().rotate = forward;
             Rigidbody rb = kn.GetComponent<Rigidbody>();
             rb.AddForce(forward.normalized * 5, ForceMode.Impulse);
+            NetworkServer.Spawn(kn);
 
         }
 
