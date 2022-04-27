@@ -12,10 +12,10 @@ namespace scripts
         [SerializeField]
         Perso perso;
 
-
-        
-        
-
+        private void Start()
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
 
         [Command][Client]
         public void Cmd_ReplacePlayer()
