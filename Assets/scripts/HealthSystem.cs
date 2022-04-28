@@ -97,15 +97,22 @@ namespace scripts
                 bleedingState = false;
             }
         }
-        [Client]
-        public void TakeBlur()
+
+        [Command(requiresAuthority = false)]
+        public void CmdTakeBlur()
         {
+            blurState = true;
+            blurCooldown = blurMaxCooldown;
+            ClientTakeBlur();
+        }
+        [ClientRpc]
+        void ClientTakeBlur()
+        {
+
             blurState = true;
             blurCooldown = blurMaxCooldown;
 
         }
-
-
         private void changeBlur(bool newState)
         {
             perso.blur.SetActive(newState);
@@ -176,7 +183,7 @@ namespace scripts
                     }
                     break;
                 case "blur":
-                    TakeBlur();
+                    CmdTakeBlur();
                     if (posture.State)
                         QuardDamage(damage, posture);
                     else

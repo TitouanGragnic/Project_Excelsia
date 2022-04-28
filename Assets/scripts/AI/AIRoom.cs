@@ -122,6 +122,13 @@ namespace scripts
             }
 
         }
+
+        public void Open()
+        {
+            close = false;
+            foreach (var wall in Walls)
+                wall.block = false;
+        }
     }
 }
 

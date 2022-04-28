@@ -28,10 +28,14 @@ namespace scripts
             else
                 inGame = GameManager.players.Count > 0;
 
+
+            
+
         }
+
         void NormalUpdate()
         {
-
+            
             time += 1;
             if (!stateRoom[3] && time >= 5000)
                 BlockRoom(3);
@@ -41,8 +45,16 @@ namespace scripts
                 BlockRoom(1);
             else if (!stateRoom[0] && time >= 20000)
                 BlockRoom(0);
+
+            if (GameManager.players.Count == 0)
+                Restart();
         }
 
+        void Restart()
+        {
+            foreach (var room in Rooms)
+                    room.Open();
+        }
         public void BlockRoom(int level)
         {
             stateRoom[level] = true;

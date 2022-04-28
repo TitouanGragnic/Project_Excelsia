@@ -59,7 +59,7 @@ namespace scripts
         }
         public new void Actif()
         {
-            if (actifCooldown == 0 ) 
+            if (actifCooldown == 0|| true ) 
             {
                 SpawnKnife();
                 actifState = true;
