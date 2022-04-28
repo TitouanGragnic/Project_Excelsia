@@ -18,10 +18,16 @@ namespace scripts
 
         private void Update()
         {
+            if (isServer)
+                ServerUpdate();
+        }
+        void ServerUpdate()
+        {
             if (inGame)
                 NormalUpdate();
             else
                 inGame = GameManager.players.Count > 0;
+
         }
         void NormalUpdate()
         {
@@ -36,6 +42,7 @@ namespace scripts
             else if (!stateRoom[0] && time >= 20000)
                 BlockRoom(0);
         }
+
         public void BlockRoom(int level)
         {
             stateRoom[level] = true;

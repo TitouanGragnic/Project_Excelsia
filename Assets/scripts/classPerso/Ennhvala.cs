@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 
 namespace scripts
@@ -10,6 +11,7 @@ namespace scripts
     {
         [SerializeField]
         GameObject knife;
+        [SerializeField] Slider sliderAc;
 
         public int actifCooldown;
         private int actifCooldownMax = 7000;
@@ -40,6 +42,7 @@ namespace scripts
         {
             CoolDown();
             //this.health -= malus;
+            sliderAc.value = actifCooldownMax - actifCooldown;
             this.atk = atk * (maxHealth / health) * bonus;
         }
         private void CoolDown()
@@ -56,7 +59,7 @@ namespace scripts
         }
         public new void Actif()
         {
-            if (actifCooldown == 0 || true) 
+            if (actifCooldown == 0 ) 
             {
                 SpawnKnife();
                 actifState = true;

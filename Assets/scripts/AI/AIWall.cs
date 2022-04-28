@@ -14,20 +14,22 @@ namespace scripts
 
 
         public bool isWay;
-        public bool block;
-
-        [SyncVar]
-        public bool Turret = false;
-        [SyncVar]
-        public bool Open = false;
-
-        public bool change = false;
+        [SyncVar]public bool block;
+        [SyncVar]public bool Turret = false;
+        [SyncVar]public bool Open = false;
+        [SyncVar]public bool change = false;
         public int time = 500;
 
         public List<Perso> persoList = new List<Perso> { };
 
+        void Update() 
+        {
 
-        void Update()
+            ChangeWall(block);
+            if (isServer)
+                ServerUpdate();
+        }
+        void ServerUpdate()
         {
             if (persoList.Count != GameManager.players.Count)
             {
@@ -71,6 +73,7 @@ namespace scripts
             if (persoList.Count>0 &&((persoList[0] != null && Vector3.Distance(wall.transform.position, persoList[0].transform.position) <= 20 )|| (persoList[persoList.Count - 1] != null && Vector3.Distance(wall.transform.position, persoList[persoList.Count - 1].transform.position) <= 20)))
                 Changed();
         }
+
         public void ChangeWall(bool forced)
         {
             if (forced || !change)
@@ -98,8 +101,32 @@ namespace scripts
                     break;
             }
 
+            RcpChangeState(new_state, forced);
             ChangeWall(forced);
         }
+
+        [ClientRpc]
+        public void RcpChangeState(string new_state, bool forced)
+        {
+            switch (new_state)
+            {
+                case "Open":
+                    Open = true;
+                    Turret = false;
+                    break;
+                case "Close":
+                    Open = false;
+                    Turret = false;
+                    break;
+                case "Turret":
+                    Open = false;
+                    Turret = true;
+                    break;
+            }
+            ChangeWall(forced);
+
+        }
+
     }
 }
 
