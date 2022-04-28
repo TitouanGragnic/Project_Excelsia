@@ -8,10 +8,13 @@ namespace scripts
 {
     public class exitButton : NetworkBehaviour
     {
+        [SerializeField] 
+        NetworkManager networkManager;
+        
         public void exitGame() 
         {
-            print("ExitGame");
-            NetworkManager.singleton.StopHost();
+            Debug.Log("whola ca marche pas ");
+            networkManager.StopHost();
         }
     }
 }

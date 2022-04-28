@@ -687,6 +687,7 @@ MonoBehaviour:
   - {fileID: 8234152293016816135}
   - {fileID: 4207390655471325794}
   - {fileID: 9003304735610185175}
+  - {fileID: 0}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -960,6 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  networkManager: {fileID: 6723976159393044707, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
 --- !u!114 &8863953189413413734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,7 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  PlayerPrefab: {fileID: 0}
+  PlayerPrefab: {fileID: 6723976159393044702, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
 --- !u!1 &7447215581326380961
 GameObject:
   m_ObjectHideFlags: 0
