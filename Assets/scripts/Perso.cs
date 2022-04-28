@@ -73,7 +73,7 @@ namespace scripts
             UpdateLife();
             TestEnd();
 
-            if (end)
+            if (end && isServer)
                 ended.Cmd_ReplacePlayer();
         }
         
