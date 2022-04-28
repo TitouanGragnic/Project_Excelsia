@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Mirror;
 
 namespace scripts
 {
@@ -50,7 +51,7 @@ namespace scripts
         }
         public new void Actif()
         {
-            if (actifCooldown == 0)
+            if (actifCooldown == 0|| true)
             {
                 SpawnMine();
                 actifState = true;
@@ -60,12 +61,18 @@ namespace scripts
         }
         private void SpawnMine()
         {
-            GameObject mi = Instantiate(mine);
-            mi.transform.position = arm.transform.position + cam.transform.forward.normalized * 2;
-            mi.transform.forward = cam.transform.forward;
-            mi.GetComponent<Mine>().rotate = cam.transform.forward;
+            Cmd_SpawnM(arm.transform.position, cam.transform.forward);
+        }
+
+        [Command]
+        private void Cmd_SpawnM(Vector3 pos, Vector3 forward)
+        {
+            GameObject mi = Instantiate(mine, pos + forward.normalized * 2, new Quaternion(forward.x, forward.y, forward.z, 0));
+            mi.GetComponent<Mine>().rotate = forward;
             Rigidbody rb = mi.GetComponent<Rigidbody>();
-            rb.AddForce(cam.transform.forward.normalized * 5, ForceMode.Impulse);
+            rb.AddForce(forward.normalized * 5, ForceMode.Impulse);
+            NetworkServer.Spawn(mi);
+
         }
     }
 }
