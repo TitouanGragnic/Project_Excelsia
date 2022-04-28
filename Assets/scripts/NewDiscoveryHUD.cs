@@ -40,14 +40,14 @@ namespace Mirror.Discovery
 
         void DrawGUI()
         {
-            GUILayout.BeginArea(new Rect(1000, 500, 300, 500));
+            GUILayout.BeginArea(new Rect(1000, 500, 900, 1500));
             GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Find Servers"))
+            /*if (GUILayout.Button("Find Servers"))
             {
                 discoveredServers.Clear();
                 networkDiscovery.StartDiscovery();
-            }
+            }*/
 
             GUILayout.EndHorizontal();
 
