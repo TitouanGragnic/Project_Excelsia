@@ -6,27 +6,10 @@ using Mirror;
 
 namespace scripts
 {
-    public class GameOver : NetworkBehaviour
+    public class playAgainButton : NetworkBehaviour
     {
-
         [SerializeField]
         GameObject PlayerPrefab;
-
-
-        private void Start()
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        void Update()
-        {
-            Rotatearound();
-            if (Input.GetKeyDown(KeyCode.E))
-                NetworkManager.singleton.StopHost(); 
-
-            if (Input.GetKeyDown(KeyCode.V))
-                Cmd_ReplacePlayer();
-        }
 
         [Command][Client]
         public void Cmd_ReplacePlayer()
@@ -39,12 +22,6 @@ namespace scripts
             GameObject SoldPlayer = connectionToClient.identity.gameObject;
             NetworkServer.ReplacePlayerForConnection(connectionToClient, SnewPlayer, true);
             NetworkServer.Destroy(SoldPlayer);
-        }
-
-        public void Rotatearound()
-        {
-            transform.LookAt(new Vector3(0f, 0f, 0f));
-            transform.RotateAround(new Vector3(0,0,0), Vector3.up, 20 * Time.deltaTime); // on vas faire tourner les nouveaux prefab autour du nouveau game object qui est un prefab en (0,0,0)
         }
     }
 }
