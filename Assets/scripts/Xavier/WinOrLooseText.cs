@@ -24,6 +24,7 @@ namespace scripts
         {
             netId = GetComponent<NetworkIdentity>().netId.ToString();
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         // Update is called once per frame
@@ -31,6 +32,8 @@ namespace scripts
         {
             Text_statewin.text = "Vainqueur: " + Whowinner(netId);
             Text_stateloose.text = "Perdant: " + Whoolooser(netId);
+            Debug.Log(Whoolooser(netId));
+            Debug.Log("Vainqueur: " + Whowinner(netId));
         }
 
         
@@ -47,7 +50,6 @@ namespace scripts
             if (GameManager.GetLooseState(netId))
                 looser = netId;
             return looser;
-           
         }
     }
 }
