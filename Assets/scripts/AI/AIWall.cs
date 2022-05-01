@@ -22,6 +22,12 @@ namespace scripts
 
         public List<Perso> persoList = new List<Perso> { };
 
+        void Start()
+        {
+            foreach (var turret in turrets)
+                turret.isServer = isServer;
+        }
+
         void Update() 
         {
 

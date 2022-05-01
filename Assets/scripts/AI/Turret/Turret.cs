@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 namespace scripts
 {
@@ -21,6 +22,8 @@ namespace scripts
         [SerializeField]
         GameObject[] parts;
         Material color;
+
+        public bool isServer;
 
         public bool activ;
         public bool on;
@@ -53,7 +56,7 @@ namespace scripts
                 part.SetActive(activ || on);
 
             FindTaget();
-            if (activ && on)
+            if (activ && on && isServer)
                 Attack();
             if (!activ && on)
                 Desactivate();
@@ -111,6 +114,7 @@ namespace scripts
             rk.transform.forward = head.transform.forward;
             Rigidbody rb = rk.GetComponent<Rigidbody>();
             rb.AddForce(head.transform.forward.normalized * 20, ForceMode.Impulse);
+            NetworkServer.Spawn(rk);
         }
         private void FindTaget()
         {

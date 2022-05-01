@@ -9,8 +9,11 @@ namespace scripts
     {
         [SerializeField]
         Perso perso;
+
         [SerializeField]
         Transform groundCheck;
+        [SerializeField]
+        Posture posture;
 
         [SerializeField]
         LayerMask groundMask;
@@ -41,6 +44,7 @@ namespace scripts
             perso.health = perso.maxHealth;
         }
 
+        
         public void UpdateLife()
         {
             changeBlur(blurState);
@@ -131,8 +135,14 @@ namespace scripts
             bleedingCooldown = bleedingMaxCooldown;
 
         }
+        [Command]
+        public void CmdTakeDamage(int damage,string type)
+        {
+            TakeDamage(damage, type);
+        }
 
-        public void TakeDamage(float damage, string type, Posture posture)
+
+        public void TakeDamage(float damage, string type)
         {
             switch (type)
             {
@@ -198,6 +208,14 @@ namespace scripts
         void Damage(float damage,float armor)
         {
             perso.health -= damage * (1f - armor);
+            RpcHealth(perso.health);
+
+        }
+
+        [ClientRpc]
+        void RpcHealth(float newHealth)
+        {
+            perso.health = newHealth;
         }
 
         void QuardDamage(float damage,Posture posture)
