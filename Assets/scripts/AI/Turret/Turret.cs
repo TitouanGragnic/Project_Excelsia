@@ -113,7 +113,8 @@ namespace scripts
             rk.transform.position = head.transform.position + head.transform.forward.normalized * 2;
             rk.transform.forward = head.transform.forward;
             Rigidbody rb = rk.GetComponent<Rigidbody>();
-            rb.AddForce(head.transform.forward.normalized * 20, ForceMode.Impulse);
+            rb.AddForce(head.transform.forward.normalized *2, ForceMode.Impulse);
+            rk.GetComponent<Rocket>().target = target.transform;
             NetworkServer.Spawn(rk);
         }
         private void FindTaget()
@@ -137,7 +138,7 @@ namespace scripts
             head.transform.LookAt(target.transform.position + Vector3.up*1.5f);
 
 
-            if (Physics.Raycast(head.transform.position + head.transform.forward *1.5f, head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11)
+            if (Physics.Raycast(head.transform.position + head.transform.forward *1.5f, head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11 && hit.collider.gameObject.layer != 0 && hit.collider.gameObject.layer != 7)
             {
                 lr.SetPosition(0, head.transform.position);
                 lr.SetPosition(1, target.transform.position + Vector3.up * 1.5f);
