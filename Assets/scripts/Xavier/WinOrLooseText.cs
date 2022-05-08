@@ -15,6 +15,8 @@ namespace scripts
         [SerializeField]
         public Text Text_statewin;
 
+        public endMenu decide;
+
         public string netId; 
         string winner = "";
         string looser = "";
@@ -30,10 +32,12 @@ namespace scripts
         // Update is called once per frame
         void Update()
         {
-            Text_statewin.text = "Vainqueur: " + Whowinner(netId);
-            Text_stateloose.text = "Perdant: " + Whoolooser(netId);
-            Debug.Log(Whoolooser(netId));
-            Debug.Log("Vainqueur: " + Whowinner(netId));
+            if(decide.win)
+                Text_statewin.text = "Vainqueur: " + decide.name;//Whowinner(netId);
+            else
+                Text_stateloose.text = "Perdant: " + decide.name;//Whoolooser(netId);
+            //Debug.Log(Whoolooser(netId));
+            //Debug.Log("Vainqueur: " + Whowinner(netId));
         }
 
         
