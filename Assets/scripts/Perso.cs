@@ -12,8 +12,8 @@ namespace scripts
 {
     public class Perso : NetworkBehaviour
     {
-        public bool win;
-        public bool lose;
+        public bool win = false;
+        public bool lose = false;
         public POVcam povCam;
         public Camera cam;
         public GameObject perso_object;

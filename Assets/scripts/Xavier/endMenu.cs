@@ -13,11 +13,6 @@ namespace scripts
         [SerializeField]
         Perso perso;
 
-        [SerializeField]
-        public Text Text_stateloose;
-        [SerializeField]
-        public Text Text_statewin;
-
         public bool win;
         public string Name;
 
@@ -32,9 +27,10 @@ namespace scripts
             Name = name;
             newPlayer.transform.position = new Vector3(300f, 150f, 300f);
             newPlayer.transform.rotation = new Quaternion(20f, 0f, 0f,0f);
+            newPlayer.name = Name;
             NetworkServer.Spawn(newPlayer);
             NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
-            //NetworkServer.Destroy(oldPlayer);
+            NetworkServer.Destroy(oldPlayer);
         }
     }
 }
