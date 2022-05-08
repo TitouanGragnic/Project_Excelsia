@@ -30,7 +30,7 @@ namespace scripts
         public float disolve;
 
         int range = 40;
-        public int maxCooldown = 200;
+        public int maxCooldown = 50;
         private int cooldown;
         private bool shootState;
         void Start()
@@ -149,6 +149,7 @@ namespace scripts
         }
         private void ResetLr()
         {
+            target = null;
             lr.SetPosition(0, head.transform.position);
             lr.SetPosition(1, head.transform.position);
         }

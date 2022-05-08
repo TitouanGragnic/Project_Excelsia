@@ -8,6 +8,8 @@ namespace scripts
     public class Rocket : NetworkBehaviour
     {
         // Start is called before the first frame update
+        [SerializeField]
+        GameObject boom;
         bool touche = false;
         [SerializeField]
         public Transform target;
@@ -80,20 +82,28 @@ namespace scripts
 
         void OnCollisionEnter(Collision col)
         {
-            if (isServer)
+            if (isServer && col.gameObject.layer != 21)
             {
                 if ((col.gameObject.layer == 9 || col.gameObject.layer == 8) && !touche)// layer client
                 {
-                    col.gameObject.GetComponent<Perso>().TakeDamage(100, "normal");
+                    col.gameObject.GetComponent<Perso>().TakeDamage(20, "normal");
                     rocket.SetActive(false);
                 }
                 touche = true;
                 body.isKinematic = true;
                 CmdDetachParticles();
+                CmdSpawnBoom();
 
                 //NetworkServer.Destroy(this.gameObject);
             }
         }
+
+        void CmdSpawnBoom()
+        {
+            GameObject mi = Instantiate(boom, transform.position, new Quaternion(0,0,0,0));
+            NetworkServer.Spawn(mi);
+        }
+
         [ClientRpc]
         void CLientFixPos(Vector3 pos, Quaternion rot)
         {
