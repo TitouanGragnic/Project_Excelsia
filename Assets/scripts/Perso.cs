@@ -72,7 +72,8 @@ namespace scripts
        
         private void LateUpdate()
         {
-            UpdateLife();
+            if(isServer)
+                UpdateLife();
             TestEnd();
 
             if (end && isServer)
@@ -126,8 +127,8 @@ namespace scripts
         }
         public void TakeDamage(float damage, string type)
         {
-            healthSystem.TakeDamage(damage, type, posture);
-            Debug.Log(transform.name + " a pv = " + health+guard);
+            healthSystem.TakeDamage(damage, type);
+            Debug.Log(transform.name + " a pv = " + health);
         }
 
         [Command][Client]
