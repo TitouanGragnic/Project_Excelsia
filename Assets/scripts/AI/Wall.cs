@@ -45,22 +45,22 @@ namespace scripts
             disolve -= 0.01f;
             if (disolve <= 0)
             {
-                color.SetFloat("_Cutoff", 0);
+                color.SetFloat("_Dissolve", 0);
                 on = true;
             }
             else
-                color.SetFloat("_Cutoff", disolve);
+                color.SetFloat("_Dissolve", disolve);
         }
         void Desactivate()
         {
             disolve += 0.01f;
             if (disolve >= 1)
             {
-                color.SetFloat("_Cutoff", 1);
+                color.SetFloat("_Dissolve", 1);
                 on = false;
             }
             else
-                color.SetFloat("_Cutoff", disolve);
+                color.SetFloat("_Dissolve", disolve);
         }
     }
 }

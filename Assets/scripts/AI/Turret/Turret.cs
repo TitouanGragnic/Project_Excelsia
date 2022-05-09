@@ -69,21 +69,21 @@ namespace scripts
             disolve -= 0.01f;
             if (disolve <= 0)
             {
-                color.SetFloat("_Cutoff", 0);
+                color.SetFloat("_Dissolve", 0);
                 on = true;
                 lr.gameObject.SetActive(true);
                 foreach (GameObject part in parts)
                     part.SetActive(true);
             }
             else
-                color.SetFloat("_Cutoff", disolve);
+                color.SetFloat("_Dissolve", disolve);
         }
         void Desactivate()
         {
             disolve += 0.01f;
             if (disolve >= 1)
             {
-                color.SetFloat("_Cutoff", 1);
+                color.SetFloat("_Dissolve", 1);
                 on = false;
 
                 lr.gameObject.SetActive(false);
@@ -91,7 +91,7 @@ namespace scripts
                     part.SetActive(false);
             }
             else
-                color.SetFloat("_Cutoff", disolve);
+                color.SetFloat("_Dissolve", disolve);
         }
         void Attack()
         {
