@@ -42,10 +42,11 @@ namespace scripts
             lr.positionCount = 2;
             shootState = true;
             cooldown = maxCooldown;
+            /*
             color = new Material(colorBase);
 
             foreach (GameObject part in parts)
-                part.GetComponent<MeshRenderer>().material = color ;
+                part.GetComponent<MeshRenderer>().material = color ;*/
         }
 
         void Update()
@@ -69,29 +70,29 @@ namespace scripts
             disolve -= 0.01f;
             if (disolve <= 0)
             {
-                color.SetFloat("_Cutoff", 0);
+                //color.SetFloat("_Cutoff", 0);
                 on = true;
                 lr.gameObject.SetActive(true);
                 foreach (GameObject part in parts)
                     part.SetActive(true);
-            }
+            }/*
             else
-                color.SetFloat("_Cutoff", disolve);
+                color.SetFloat("_Cutoff", disolve);*/
         }
         void Desactivate()
         {
             disolve += 0.01f;
             if (disolve >= 1)
             {
-                color.SetFloat("_Cutoff", 1);
+                //color.SetFloat("_Cutoff", 1);
                 on = false;
 
                 lr.gameObject.SetActive(false);
                 foreach (GameObject part in parts)
                     part.SetActive(false);
-            }
+            }/*
             else
-                color.SetFloat("_Cutoff", disolve);
+                color.SetFloat("_Cutoff", disolve);*/
         }
         void Attack()
         {

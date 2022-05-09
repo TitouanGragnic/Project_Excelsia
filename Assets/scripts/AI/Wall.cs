@@ -25,9 +25,9 @@ namespace scripts
             activ = true;
             disolve = 0;
 
-            color = new Material(colorBase);
+            //color = new Material(colorBase);
 
-            wall.GetComponent<MeshRenderer>().material = color;
+            //wall.GetComponent<MeshRenderer>().material = color;
         }
 
         void Update()
@@ -45,22 +45,22 @@ namespace scripts
             disolve -= 0.01f;
             if (disolve <= 0)
             {
-                color.SetFloat("_Cutoff", 0);
+                //color.SetFloat("_Cutoff", 0);
                 on = true;
             }
-            else
-                color.SetFloat("_Cutoff", disolve);
+            //else
+                //color.SetFloat("_Cutoff", disolve);
         }
         void Desactivate()
         {
             disolve += 0.01f;
             if (disolve >= 1)
             {
-                color.SetFloat("_Cutoff", 1);
+                //color.SetFloat("_Cutoff", 1);
                 on = false;
             }
-            else
-                color.SetFloat("_Cutoff", disolve);
+            //else
+                //color.SetFloat("_Cutoff", disolve);
         }
     }
 }
