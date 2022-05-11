@@ -36,6 +36,7 @@ namespace scripts
             //actif
             actifCooldown = actifCooldownMax;
             actifState = false;
+            personnage = "Ennhvala";
         }
 
         private void Update()

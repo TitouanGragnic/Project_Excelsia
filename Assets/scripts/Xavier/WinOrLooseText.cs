@@ -15,11 +15,9 @@ namespace scripts
         [SerializeField]
         public Text Text_statewin;
 
-        public static Dictionary<string, Perso> players = GameManager.players;
-
-        public string netId; 
-        string winner = "";
-        string looser = "";
+        public string netId;
+        string winner = GameManager.winner;
+        string looser = GameManager.loser;
          
         // Start is called before the first frame update
         void Start()
@@ -27,27 +25,11 @@ namespace scripts
             netId = GetComponent<NetworkIdentity>().netId.ToString();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            foreach(var elt in players)
-            {
-                Debug.Log(elt.Key);
-                if (elt.Value.win)
-                {
-                    winner = elt.Key;
-                }
-                if (elt.Value.lose)
-                {
-                    looser = elt.Key;
-                }
-            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            foreach (var elt in players)
-            {
-                Debug.Log(elt.Key);
-            }
             Text_statewin.text = "Vainqueur: " + winner;//Whowinner(netId);
             Text_stateloose.text = "Perdant: " + looser;//Whoolooser(netId);
             //Debug.Log(Whoolooser(netId));

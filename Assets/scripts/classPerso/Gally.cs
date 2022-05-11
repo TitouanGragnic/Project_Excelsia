@@ -25,6 +25,7 @@ namespace scripts
             //Actif
             dashCooldown = dashCooldownMax;
             dashState = false;
+            personnage = "Gally";
         }
 
         // Update is called once per frame
