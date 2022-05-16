@@ -726,7 +726,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   componentsToDisable:
-  - {fileID: 7159187481896476859}
+  - {fileID: 9003304735610185175}
+  - {fileID: 8234152293016816135}
+  - {fileID: 4207390655471325794}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -856,6 +858,8 @@ RectTransform:
   m_Children:
   - {fileID: 8894424520655184937}
   - {fileID: 8182384626970084991}
+  - {fileID: 704084274321009137}
+  - {fileID: 2722474330813753966}
   m_Father: {fileID: 4822973313777649391}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -932,12 +936,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1334885812687301465}
-  m_Father: {fileID: 4822973313777649391}
-  m_RootOrder: 2
+  m_Father: {fileID: 4442536075924228261}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 323, y: 152}
+  m_AnchoredPosition: {x: 325, y: 152}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1788063393034324825
@@ -1154,8 +1158,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4442536075924228261}
-  - {fileID: 704084274321009137}
-  - {fileID: 2722474330813753966}
   m_Father: {fileID: 7392528021517143579}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1255,12 +1257,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4239722517856344027}
-  m_Father: {fileID: 4822973313777649391}
-  m_RootOrder: 1
+  m_Father: {fileID: 4442536075924228261}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -313, y: 148}
+  m_AnchoredPosition: {x: -311, y: 148}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6836929666134619332

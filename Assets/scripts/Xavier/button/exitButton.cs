@@ -10,11 +10,14 @@ namespace scripts
     {
         [SerializeField] 
         NetworkManager networkManager;
-        
+
+        [Command(requiresAuthority = false)]
         public void exitGame() 
         {
-            Debug.Log("whola ca marche pas ");
-            networkManager.StopHost();
+            if(NetworkServer.active)
+                NetworkManager.singleton.StopHost();
+            else
+                NetworkManager.singleton.StopClient();
         }
     }
 }

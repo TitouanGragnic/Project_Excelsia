@@ -1136,6 +1136,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   arm: {fileID: 0}
   orientation: {fileID: 6485566138899816203}
+  lecteur: {fileID: 8760463332747061409}
+  soundBoard:
+  - {fileID: 8300000, guid: de82470e7dd850545aadf6d32641e430, type: 3}
+  - {fileID: 8300000, guid: 2757d6b71862f4e41a3ccdedcd1a1b8e, type: 3}
   moveSpeed: 50
   airMultiplier: 0.2
   walkSpeed: 50
@@ -1333,6 +1337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  personnage: 
   povCam: {fileID: 6485566139432838943}
   cam: {fileID: 6485566139138052761}
   perso_object: {fileID: 6485566139432838940}
@@ -1391,11 +1396,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6485566139432838940}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e0033e3ad6784084b8d283712270babb, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

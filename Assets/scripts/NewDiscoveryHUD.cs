@@ -14,6 +14,8 @@ namespace Mirror.Discovery
 
         public NetworkDiscovery networkDiscovery;
 
+        public Texture Image;
+
 #if UNITY_EDITOR
         void OnValidate()
         {
@@ -59,8 +61,14 @@ namespace Mirror.Discovery
             scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);
 
             foreach (ServerResponse info in discoveredServers.Values)
-                if (GUILayout.Button(GetRandomMatchID(info.EndPoint.Address.ToString())))
+            {
+                if (GUILayout.Button(Image, GetRandomMatchID(info.EndPoint.Address.ToString()), GUILayout.Width(1000), GUILayout.Height(100)))
+                {
+
                     Connect(info);
+                }
+            }
+                
 
             GUILayout.EndScrollView();
             GUILayout.EndArea();

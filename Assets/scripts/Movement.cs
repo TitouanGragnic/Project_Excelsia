@@ -9,6 +9,10 @@ public class Movement : MonoBehaviour
     float playerHeight = 2f;
 
     [SerializeField] Transform orientation;
+    [SerializeField]
+    AudioSource lecteur;
+    [SerializeField]
+    AudioClip[] soundBoard;
 
 
     [Header("Movement")]
@@ -180,7 +184,9 @@ public class Movement : MonoBehaviour
             PlayerHeight.height = normalHeight;
         }
         if (!isGrounded)
+        {
             animator.SetBool("Jumping", true);
+        }  
         else
             animator.SetBool("Jumping", false);
 
@@ -206,6 +212,12 @@ public class Movement : MonoBehaviour
 
     void ControlSpeed()
     {
+        if(isSprinting && isGrounded)
+        {
+            lecteur.clip = soundBoard[1];
+            if (!lecteur.isPlaying)
+                lecteur.Play();
+        }
         if (isSprinting && !isCrouching)
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Runfov, RunfovTime * Time.deltaTime);
@@ -246,6 +258,8 @@ public class Movement : MonoBehaviour
 
     void Jump()
     {
+        lecteur.clip = soundBoard[0];
+        lecteur.Play();
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce + orientation.forward * slideJump * rb.velocity.magnitude, ForceMode.Impulse);
     }
