@@ -22,6 +22,8 @@ namespace scripts
         public float range;
         public bool stateDash;
 
+        public bool testBlood;
+
         void Awake()
         {
             range = 2f;
@@ -30,7 +32,7 @@ namespace scripts
         {
             if (Input.GetMouseButtonDown(1))
                 Taper();
-            if (Input.GetMouseButtonDown(0))
+            if (testBlood && Input.GetMouseButtonDown(0))
                 player.TakeDamage(0f,"normal");
             else
             {

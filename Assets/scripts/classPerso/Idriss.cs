@@ -27,7 +27,7 @@ namespace scripts
             electricCooldown = electricCooldownMax;
             electricState = false;
             coolDownEState = false;
-
+            personnage = "Idriss";
         }
 
         

@@ -31,6 +31,7 @@ namespace scripts
             //actif
             actifCooldown = actifCooldownMax;
             actifState = false;
+            personnage = "Tamo";
         }
         private void Update()
         {

@@ -20,6 +20,8 @@ namespace scripts {
         [SerializeField]
         GameObject Enhvala;
         [SerializeField]
+        GameObject image;
+        [SerializeField]
         Camera cam;
 
         [SerializeField]
@@ -38,6 +40,7 @@ namespace scripts {
 
         private void Start()
         {
+            image.SetActive(false);
             minchoice = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -49,19 +52,27 @@ namespace scripts {
         void Update()
         {
             if (stateStart)
+            {
                 UpdateChoice();
+            }
+                
             else
                 stateStart = (Input.GetKeyDown(KeyCode.B) || GameManager.GetStateStart());
                  
            
         }
-
+        public void Close()
+        {
+            image.SetActive(false);
+        }
 
         void UpdateChoice()
         {
             if (GameManager.GetStateSpawn())
+            {
                 Cmd_ReplacePlayer();
-
+                image.SetActive(false);
+            }
 
             if (Input.GetKeyDown(KeyCode.B)&& minchoice)
                 stateSpawn = true;
@@ -75,8 +86,14 @@ namespace scripts {
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 50, mask))
                 {
-
-                    Cmd_Work_light(hit, hit.collider.gameObject);
+                    if(hit.collider.name == "jukebox")
+                    {
+                        image.SetActive(true);
+                    }
+                    else
+                    {
+                        Cmd_Work_light(hit, hit.collider.gameObject);
+                    }
                 }
 
 

@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 2841376174848863401}
   - component: {fileID: 1121736210264858477}
   - component: {fileID: 3159915656475476130}
-  - component: {fileID: 6204466076083179692}
+  - component: {fileID: 2540807807214689699}
   m_Layer: 0
   m_Name: end
   m_TagString: Untagged
@@ -726,9 +726,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   componentsToDisable:
+  - {fileID: 9003304735610185175}
   - {fileID: 8234152293016816135}
   - {fileID: 4207390655471325794}
-  - {fileID: 9003304735610185175}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -794,7 +794,7 @@ MonoBehaviour:
   Text_stateloose: {fileID: 6126667839402179844}
   Text_statewin: {fileID: 5692445448779448284}
   netId: 
---- !u!114 &6204466076083179692
+--- !u!114 &2540807807214689699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

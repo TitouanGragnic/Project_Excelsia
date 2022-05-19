@@ -11,9 +11,11 @@ namespace scripts
         [SerializeField]
         GameObject PlayerPrefab;
 
-        [Command][Client]
+        [Command(requiresAuthority = false)]
+        //[Client]
         public void Cmd_ReplacePlayer()
         {
+
             GameObject SnewPlayer = Instantiate(PlayerPrefab);
             string netId = GetComponent<NetworkIdentity>().netId.ToString();
             GameManager.RegisterChoice(netId, SnewPlayer.GetComponent<choice>());

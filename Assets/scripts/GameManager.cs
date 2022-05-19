@@ -14,11 +14,13 @@ namespace scripts
         private const string choiceIDPrefix = "Choice"; 
         private const string endIDPrefix = "End";
 
-
+        public static string winner;
+        public static string loser;
         //public GameOverScreen gameOverScreen;  
 
         public static Dictionary<string, Perso> players = new Dictionary<string, Perso>();
-       
+        public static Dictionary<string, Perso> Winner = new Dictionary<string, Perso>();
+
         public static Dictionary<string, choice> choices = new Dictionary<string, choice>();
 
 
@@ -28,8 +30,6 @@ namespace scripts
         {
             instance = this;
         }
-
-
 
         public static void CmdAtributPnb(string choiceId)
         {
@@ -109,6 +109,13 @@ namespace scripts
 
         public static void End()
         {
+            foreach (KeyValuePair<string, Perso> elt in GameManager.players)
+            {
+                if (GameManager.GetLooseState(elt.Key))
+                    GameManager.loser = elt.Value.personnage;
+                else
+                    GameManager.winner = elt.Value.personnage;
+            }
             foreach (KeyValuePair<string, Perso> player_ex in players)
             {
                 player_ex.Value.CmdEnd();

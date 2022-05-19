@@ -12,8 +12,8 @@ namespace scripts
 {
     public class Perso : NetworkBehaviour
     {
-        public bool win = false;
-        public bool lose = false;
+        public string personnage;
+
         public POVcam povCam;
         public Camera cam;
         public GameObject perso_object;
@@ -168,6 +168,17 @@ namespace scripts
         {
             blood.SetActive(state);
         }
+        [ClientRpc]
+        public void Change()
+        {
+            foreach (KeyValuePair<string, Perso> elt in GameManager.players)
+            {
+                if (GameManager.GetLooseState(elt.Key))
+                    GameManager.loser = elt.Value.personnage;
+                else
+                    GameManager.winner = elt.Value.personnage;
+            }
+        }
         public void CmdEnd()
         {
             end = true;
@@ -175,8 +186,13 @@ namespace scripts
         private void TestEnd()
         {
             if (GameManager.GetWinState(name) || GameManager.GetLooseState(name))
+            {
+                if (isServer)
+                {
+                    Change();
+                }
                 GameManager.End();
-            
+            }
 
         }
         public void Actif() { Debug.Log("2"); }

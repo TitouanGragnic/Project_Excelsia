@@ -49,7 +49,9 @@ namespace scripts
         void Update()
         {
             if (state)
+            {
                 state = !GameManager.GetStateStart();
+            }  
             else
             {
                 Exelcia.SetActive(false);
