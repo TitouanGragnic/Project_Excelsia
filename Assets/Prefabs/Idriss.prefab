@@ -515,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1724422852677049705, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2534374920594948630, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.b
@@ -926,6 +926,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3451394286161751286, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8877118529514720951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5442992682128311054, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 3510759613686107577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8451367018467903897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +945,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  win: 0
+  lose: 0
   povCam: {fileID: 7690429962515278502}
   cam: {fileID: 7690429962740588320}
   perso_object: {fileID: 7690429962515278501}
@@ -962,6 +969,8 @@ MonoBehaviour:
   typeAtk: 
   blur: {fileID: 2260078679767359823}
   ended: {fileID: 1104475412067733797}
+  blood: {fileID: 8877118529514720951}
+  maxBloodC: 150
   grapple: {fileID: 2895716605792403831}
   sliderAc: {fileID: 2327494368872088303}
   electricCooldown: 0

@@ -49,6 +49,8 @@ namespace scripts
         public GameObject blur;
         [SerializeField]
         endMenu ended;
+        [SerializeField]
+        GameObject blood;
         private void Awake()
         {
             blur.SetActive(false);
@@ -61,15 +63,12 @@ namespace scripts
             typeAtk = "normal";
             end = false;
         }
-
         private void Start()
         {
             healthSystem.PersoStart();
                 
             
-        }
-
-       
+        }       
         private void LateUpdate()
         {
             if(isServer)
@@ -96,26 +95,27 @@ namespace scripts
             }
 
         }
-
         [Command]
         public void ChangeTypeATK(string newType)
         {
             typeAtk = newType;
         }
-
-
         private void UpdateLife()
         {
             healthSystem.UpdateLife();
-        }
 
+            if (bloodC > 0)
+                bloodC--;
+            else if (stateBlood)
+                CmdSpawnBlood(false);
+            
+        }
         public void InitHs(GameObject target)
         {
             healthSystem.healthBar.target = target;
             healthSystem.nameId = perso_object.transform.name;
 
         }
-
         public void NewGard()
         {
             if (guard < maxGuard)
@@ -129,8 +129,8 @@ namespace scripts
         {
             healthSystem.TakeDamage(damage, type);
             Debug.Log(transform.name + " a pv = " + health);
+            CmdSpawnBlood(true);
         }
-
         [Command][Client]
         public void CmdPlayerAttack(string playerId)
         {
@@ -146,7 +146,28 @@ namespace scripts
             }
         }
 
+        public int maxBloodC;
+        private int bloodC;
+        private bool stateBlood;
 
+        [Command(requiresAuthority = false)]
+        public void CmdSpawnBlood(bool state)//Vector3 pos, Quaternion forward)
+        {
+
+            stateBlood = state;
+            Debug.Log(state);
+            //NetworkServer.Spawn(Instantiate(blood, pos, forward));
+            blood.SetActive(state);
+            if (state)
+                bloodC = maxBloodC;
+            RcpBlood(state);
+        }
+
+        [ClientRpc]
+        private void RcpBlood(bool state)
+        {
+            blood.SetActive(state);
+        }
         public void CmdEnd()
         {
             end = true;

@@ -427,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 7461131345155107785}
     - target: {fileID: 2643050571351438924, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2985151689025305718, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
@@ -544,6 +544,14 @@ PrefabInstance:
     - target: {fileID: 6837823402855325811, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878248992129014031, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878248992129014031, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6961949513819215784, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
@@ -745,6 +753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5720875968757935456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5442992682128311054, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3100754399448154776 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3451394286161751286, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -764,6 +777,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  win: 0
+  lose: 0
   povCam: {fileID: 6840012810158573937}
   cam: {fileID: 6840012809981246711}
   perso_object: {fileID: 6840012810158573938}
@@ -786,6 +801,8 @@ MonoBehaviour:
   typeAtk: 
   blur: {fileID: 3100754399448154776}
   ended: {fileID: 4253259169275228914}
+  blood: {fileID: 5720875968757935456}
+  maxBloodC: 150
   knife: {fileID: 8723991220544333805, guid: a991f954776a1f24ba67cfb5b951b985, type: 3}
   sliderAc: {fileID: 1448353592069464376}
   actifCooldown: 0

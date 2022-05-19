@@ -30,6 +30,8 @@ namespace scripts
         {
             if (Input.GetMouseButtonDown(1))
                 Taper();
+            if (Input.GetMouseButtonDown(0))
+                player.TakeDamage(0f,"normal");
             else
             {
                 if (animator != null)
