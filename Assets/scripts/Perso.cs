@@ -107,7 +107,7 @@ namespace scripts
             if (bloodC > 0)
                 bloodC--;
             else if (stateBlood)
-                CmdSpawnBlood(false);
+                CmdSpawnBlood(false,new Vector3(0,1.6f,0));
             
         }
         public void InitHs(GameObject target)
@@ -125,20 +125,20 @@ namespace scripts
             
 
         }
-        public void TakeDamage(float damage, string type)
+        public void TakeDamage(float damage, string type,Vector3 pos)
         {
             healthSystem.TakeDamage(damage, type);
             Debug.Log(transform.name + " a pv = " + health);
-            CmdSpawnBlood(true);
+            CmdSpawnBlood(true,pos);
         }
         [Command][Client]
-        public void CmdPlayerAttack(string playerId)
+        public void CmdPlayerAttack(string playerId,Vector3 pos)
         {
             Debug.Log(playerId + "tapé");
             try
             {
                 Perso player = GameManager.GetPlayer(playerId);
-                player.TakeDamage(atk, typeAtk);
+                player.TakeDamage(atk, typeAtk,pos);
             }
             catch
             {
@@ -146,16 +146,16 @@ namespace scripts
             }
         }
 
-        public int maxBloodC;
+        public int maxBloodC = 100;
         private int bloodC;
         private bool stateBlood;
 
         [Command(requiresAuthority = false)]
-        public void CmdSpawnBlood(bool state)//Vector3 pos, Quaternion forward)
+        public void CmdSpawnBlood(bool state, Vector3 pos)//Vector3 pos, Quaternion forward)
         {
-
+            Debug.Log($"x{pos.x},y{pos.y},z{pos.z}");
+            blood.transform.TransformPoint(pos);
             stateBlood = state;
-            Debug.Log(state);
             //NetworkServer.Spawn(Instantiate(blood, pos, forward));
             blood.SetActive(state);
             if (state)
@@ -195,9 +195,11 @@ namespace scripts
             }
 
         }
-        public void Actif() { Debug.Log("2"); }
+        public void Actif() { Debug.Log("actif not impl"); }
+        public void Ulti() { Debug.Log("ulti not impl"); }
 
-        
+
+
 
 
     }

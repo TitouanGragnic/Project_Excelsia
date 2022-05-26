@@ -45,7 +45,7 @@ namespace scripts
         void CmdBoom(string name)
         {
             if(GameManager.players.ContainsKey(name))
-                GameManager.players[name].TakeDamage(500, "normal");
+                GameManager.players[name].TakeDamage(500, "normal",transform.position);
             touche = true;
             NetworkServer.Destroy(this.gameObject);
             ClientBoom();

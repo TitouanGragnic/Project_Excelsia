@@ -2530,7 +2530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6723976159393044707, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6723976159393044707, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
       propertyPath: spawnPrefabs.Array.data[6]
@@ -2556,6 +2556,10 @@ PrefabInstance:
       propertyPath: spawnPrefabs.Array.data[11]
       value: 
       objectReference: {fileID: 2215100304794324291, guid: d79d230bf0834984794a0153b2852f76, type: 3}
+    - target: {fileID: 6723976159393044707, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
+      propertyPath: spawnPrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 5587236633171304277, guid: 746cf1afcd9defb4f8c832e2af6f4fe8, type: 3}
     - target: {fileID: 7622864557341952685, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
       propertyPath: OnServerFound.m_PersistentCalls.m_Calls.Array.size
       value: 2

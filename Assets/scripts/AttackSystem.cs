@@ -33,7 +33,7 @@ namespace scripts
             if (Input.GetMouseButtonDown(1))
                 Taper();
             if (testBlood && Input.GetMouseButtonDown(0))
-                player.TakeDamage(0f,"normal");
+                player.TakeDamage(0f,"normal", transform.position + new Vector3(0,1.6f,0));
             else
             {
                 if (animator != null)
@@ -52,8 +52,7 @@ namespace scripts
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, mask))
             {
-
-                player.CmdPlayerAttack(hit.collider.name);
+                player.CmdPlayerAttack(hit.collider.name,hit.point);
             }
         }
 
@@ -61,7 +60,7 @@ namespace scripts
         {
             
             if (col.gameObject.layer == 9 && stateDash)
-                player.CmdPlayerAttack(col.gameObject.name);
+                player.CmdPlayerAttack(col.gameObject.name,transform.position + new Vector3(0,1.6f,0));
         }
 
 
