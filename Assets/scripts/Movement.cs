@@ -41,11 +41,11 @@ public class Movement : MonoBehaviour
 
 
     [Header("Keybinds")]
-    [SerializeField] KeyCode jumpkey = KeyCode.Space;
+    [SerializeField] public KeyCode jumpkey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] KeyCode crouchKey = KeyCode.LeftControl;
 
-    int doubleJump = 1;
+    public int doubleJump = 1;
     public int nbJump;
     [SerializeField] float groundDrag = 6f;
     [SerializeField] float slideDrag = 0.5f;
@@ -59,10 +59,10 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask wallMask;
 
-    bool isGrounded;
-    bool isSprinting;
-    bool isSliding;
-    bool isCrouching;
+    public bool isGrounded;
+    public bool isSprinting;
+    public bool isSliding;
+    public bool isCrouching;
     public bool isAttack;
     int  moveVert = 1;
     public float camTranslate = 0f;
@@ -212,12 +212,6 @@ public class Movement : MonoBehaviour
 
     void ControlSpeed()
     {
-        if(isSprinting && isGrounded)
-        {
-            lecteur.clip = soundBoard[1];
-            if (!lecteur.isPlaying)
-                lecteur.Play();
-        }
         if (isSprinting && !isCrouching)
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Runfov, RunfovTime * Time.deltaTime);
@@ -258,8 +252,6 @@ public class Movement : MonoBehaviour
 
     void Jump()
     {
-        lecteur.clip = soundBoard[0];
-        lecteur.Play();
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce + orientation.forward * slideJump * rb.velocity.magnitude, ForceMode.Impulse);
     }

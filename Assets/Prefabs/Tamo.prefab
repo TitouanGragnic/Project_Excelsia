@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e6105740ba704409465ac17b13af08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 8449246615919106225}
 --- !u!1001 &6626069227908743454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +529,10 @@ PrefabInstance:
       propertyPath: perso
       value: 
       objectReference: {fileID: 5722261126902313348}
+    - target: {fileID: 7842149352322506864, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5722261126902313348}
     - target: {fileID: 8022990363884579841, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.g
       value: 1
@@ -673,14 +677,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6485566138751721145, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2721518127650177637 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9092838610633606011, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+--- !u!4 &8449246615919106225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3365675310021499311, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &4868054897734591492 stripped
+--- !u!20 &4010356564075643437 stripped
 Camera:
-  m_CorrespondingSourceObject: {fileID: 1763802434397267226, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7805618687536743219, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3003395344967837007 stripped
@@ -736,9 +740,9 @@ MonoBehaviour:
   syncInterval: 0.1
   personnage: 
   povCam: {fileID: 141259556907378177}
-  cam: {fileID: 4868054897734591492}
+  cam: {fileID: 4010356564075643437}
   perso_object: {fileID: 141259556907378178}
-  orientation: {fileID: 2721518127650177637}
+  orientation: {fileID: 0}
   camHolder: {fileID: 141259557488615335}
   movement: {fileID: 141259556907378179}
   body: {fileID: 3635017492593499162}
