@@ -14,7 +14,11 @@ namespace Mirror.Discovery
 
         public NetworkDiscovery networkDiscovery;
 
-        public Texture Image;
+        public GUIContent Image;
+        public GUIStyle Image1;
+
+        public GUIContent Start;
+        public GUIStyle Start1;
 
 #if UNITY_EDITOR
         void OnValidate()
@@ -54,17 +58,17 @@ namespace Mirror.Discovery
             GUILayout.EndHorizontal();
 
             // show list of found server
-
-            GUILayout.Label($"Discovered Servers [{discoveredServers.Count}]:");
+            Start.text = $"Discovered Servers [{discoveredServers.Count}]:";
+            GUILayout.Label(Start, Start1, GUILayout.Width(400), GUILayout.Height(75));
 
             // servers
             scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);
 
             foreach (ServerResponse info in discoveredServers.Values)
             {
-                if (GUILayout.Button(Image, GetRandomMatchID(info.EndPoint.Address.ToString()), GUILayout.Width(1000), GUILayout.Height(100)))
+                Image.text = GetRandomMatchID(info.EndPoint.Address.ToString());
+                if (GUILayout.Button(Image, Image1, GUILayout.Width(500), GUILayout.Height(100)))
                 {
-
                     Connect(info);
                 }
             }
