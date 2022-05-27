@@ -538,8 +538,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1121736210264858477}
-        m_TargetAssemblyTypeName: scripts.playAgainButton, Assembly-CSharp
+      - m_Target: {fileID: 8234152293016816135}
+        m_TargetAssemblyTypeName: scripts.GameOver, Assembly-CSharp
         m_MethodName: Cmd_ReplacePlayer
         m_Mode: 1
         m_Arguments:
@@ -777,6 +777,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   PlayerPrefab: {fileID: 6723976159393044702, guid: ad437e42b2d407440a9c93e12418502b, type: 3}
+  network: {fileID: 0}
 --- !u!114 &3159915656475476130
 MonoBehaviour:
   m_ObjectHideFlags: 0

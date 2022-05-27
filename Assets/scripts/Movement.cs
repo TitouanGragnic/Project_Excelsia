@@ -161,6 +161,11 @@ public class Movement : MonoBehaviour
         else
             animator.SetBool("Walking", false);
 
+        if (isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") < 0)
+            animator.SetBool("Back", true);
+        else
+            animator.SetBool("Back", false);
+
         if (isGrounded && isCrouching && !isSliding && Input.GetAxisRaw("Vertical") > 0)
         {
             animator.SetBool("CrouchWalk", true);

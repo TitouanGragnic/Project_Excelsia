@@ -12,13 +12,6 @@ namespace scripts
         GameObject PlayerPrefab;
         [SerializeField]
         NetworkManager network;
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Cmd_ReplacePlayer();
-            }
-        }
 
         [Command(requiresAuthority = false)]
         [Client]
