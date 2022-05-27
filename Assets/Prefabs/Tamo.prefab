@@ -443,6 +443,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7805618687536743219, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6152412777722395762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1050820890101710188, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3003395344967837007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8240095265415717969, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -502,7 +507,7 @@ MonoBehaviour:
   camHolder: {fileID: 141259557488615335}
   movement: {fileID: 141259556907378179}
   body: {fileID: 1388565753928128755}
-  arm: {fileID: 0}
+  arm: {fileID: 6152412777722395762}
   health_object: {fileID: 3003395344967837007}
   healthSystem: {fileID: 2763260870473681043}
   posture: {fileID: 2437975864008391631}

@@ -33,7 +33,7 @@ namespace scripts
         //bleeding
         public bool bleedingState;
         public int bleedingCooldown;
-        int bleedingMaxCooldown = 5000;
+        int bleedingMaxCooldown = 2500;
 
         public bool blurState;
         public int blurCooldown;

@@ -107,7 +107,7 @@ namespace scripts
             if (bloodC > 0)
                 bloodC--;
             else if (stateBlood)
-                CmdSpawnBlood(false,new Vector3(0,1.6f,0));
+                CmdSpawnBlood(false);
             
         }
         public void InitHs(GameObject target)
@@ -125,11 +125,11 @@ namespace scripts
             
 
         }
-        public void TakeDamage(float damage, string type,Vector3 pos)
+        public void TakeDamage(float damage, string type)
         {
             healthSystem.TakeDamage(damage, type);
             Debug.Log(transform.name + " a pv = " + health);
-            CmdSpawnBlood(true,pos);
+            CmdSpawnBlood(true);
         }
         [Command][Client]
         public void CmdPlayerAttack(string playerId,Vector3 pos)
@@ -138,7 +138,7 @@ namespace scripts
             try
             {
                 Perso player = GameManager.GetPlayer(playerId);
-                player.TakeDamage(atk, typeAtk,pos);
+                player.TakeDamage(atk, typeAtk);
             }
             catch
             {
@@ -151,10 +151,8 @@ namespace scripts
         private bool stateBlood;
 
         [Command(requiresAuthority = false)]
-        public void CmdSpawnBlood(bool state, Vector3 pos)//Vector3 pos, Quaternion forward)
+        public void CmdSpawnBlood(bool state )//Vector3 pos, Quaternion forward)
         {
-            Debug.Log($"x{pos.x},y{pos.y},z{pos.z}");
-            blood.transform.TransformPoint(pos);
             stateBlood = state;
             //NetworkServer.Spawn(Instantiate(blood, pos, forward));
             blood.SetActive(state);

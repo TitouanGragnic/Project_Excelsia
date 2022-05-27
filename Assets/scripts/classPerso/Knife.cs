@@ -36,7 +36,7 @@ namespace scripts
         [Command(requiresAuthority = false)]
         void TargetBlur( string name)
         {
-            GameManager.players[name].TakeDamage(20, "normal",transform.position);
+            GameManager.players[name].TakeDamage(20, "normal");
             GameManager.players[name].healthSystem.CmdTakeBlur();
         }
 

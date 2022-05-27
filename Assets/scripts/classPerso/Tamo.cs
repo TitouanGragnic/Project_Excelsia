@@ -52,7 +52,7 @@ namespace scripts
         }
         public new void Actif()
         {
-            if (actifCooldown == 0)
+            if (actifCooldown == 0 ||true)
             {
                 SpawnMine();
                 actifState = true;

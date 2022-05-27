@@ -33,7 +33,7 @@ namespace scripts
             if (Input.GetMouseButtonDown(1))
                 Taper();
             if (testBlood && Input.GetMouseButtonDown(0))
-                player.TakeDamage(0f,"normal", transform.position + new Vector3(0,1.6f,0));
+                player.TakeDamage(0f,"normal");
             else
             {
                 if (animator != null)
