@@ -30,7 +30,7 @@ namespace scripts
             health = maxHealth;
             
             armor = 0.1f;
-            atk = 25f;
+            atk = 4;
 
 
             //actif

@@ -24,13 +24,17 @@ namespace scripts
 
         public bool testBlood;
 
+        public int[] atk = new int[] { 15, 20, 25, 15, 30 };
+        public int index = 0;
+        public int cool = 0;
+
         void Awake()
         {
             range = 2f;
         }
         void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && cool<10)
                 Taper();
             if (testBlood && Input.GetMouseButtonDown(0))
                 player.TakeDamage(0f,"normal", transform.position + new Vector3(0,1.6f,0));
@@ -41,6 +45,10 @@ namespace scripts
                 if(arm != null)
                     arm.SetBool("Attack", false);
             }
+            if (cool > 0)
+                cool--;
+            else
+                index = 0;
         }
 
         [Client]
@@ -52,15 +60,17 @@ namespace scripts
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, mask))
             {
-                player.CmdPlayerAttack(hit.collider.name,hit.point);
+                player.CmdPlayerAttack(hit.collider.name,hit.point,atk[index]);
             }
+            index = (index + 1) % 5;
+            cool = 20;
         }
 
         void OnCollisionEnter(Collision col)
         {
             
             if (col.gameObject.layer == 9 && stateDash)
-                player.CmdPlayerAttack(col.gameObject.name,transform.position + new Vector3(0,1.6f,0));
+                player.CmdPlayerAttack(col.gameObject.name,transform.position + new Vector3(0,1.6f,0),50);
         }
 
 
