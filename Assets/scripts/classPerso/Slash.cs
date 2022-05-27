@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.VFX;
 using UnityEngine;
 using Mirror;
 
@@ -7,13 +8,15 @@ public class Slash : NetworkBehaviour
 {
     public float speed = 30;
     public float slowDownRate = 0.01f;
-    public float detectingDistance = 0.1f;
-    public float destroyDelay = 1000;
+    public float detectingDistance = 1f;
+    public float destroyDelay = 100;
 
     [SerializeField]
     private Rigidbody rb;
     [SerializeField]
     LayerMask mask;
+    [SerializeField]
+    VisualEffect slashVFX;
     private bool stopped;
     float y = 0;
     void Start()
@@ -30,7 +33,8 @@ public class Slash : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        destroyDelay--;
+        if (stopped)
+            destroyDelay--;
         if (destroyDelay < 0)
             NetworkServer.Destroy(gameObject);
     }
@@ -40,11 +44,17 @@ public class Slash : NetworkBehaviour
         if (!stopped)
         {
             RaycastHit hit;
-            Vector3 distance = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
-            if(Physics.Raycast(distance, Vector3.down, out hit, 200f, mask))
-                y =hit.point.y;
+            Vector3 distance = new Vector3(transform.position.x, transform.position.y +1, transform.position.z);
+            if (Physics.Raycast(distance, transform.TransformDirection(Vector3.forward), out hit, detectingDistance, mask))
+                y = hit.point.y+1f;
+            else if (Physics.Raycast(distance, transform.TransformDirection(Vector3.down), out hit, 200f, mask))
+                y = hit.point.y;      
+
+
+
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
-            
+
+
         }
     }
 
