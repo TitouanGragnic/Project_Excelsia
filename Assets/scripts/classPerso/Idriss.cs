@@ -21,7 +21,7 @@ namespace scripts
         void Start()
         {
             //passif
-            atk = 30;
+            atk = 7;
             grapple.maxGrappleCooldown = 100;
             //actif
             electricCooldown = electricCooldownMax;

@@ -59,7 +59,7 @@ namespace scripts
             health = maxHealth;
             maxGuard = 200;
             armor = 0.1f;
-            atk = 20;
+            atk = 0;
             typeAtk = "normal";
             end = false;
         }
@@ -132,13 +132,16 @@ namespace scripts
             CmdSpawnBlood(true);
         }
         [Command][Client]
-        public void CmdPlayerAttack(string playerId,Vector3 pos)
+        public void CmdPlayerAttack(string playerId,Vector3 pos,int damage)
         {
             Debug.Log(playerId + "tapé");
             try
             {
                 Perso player = GameManager.GetPlayer(playerId);
+
                 player.TakeDamage(atk, typeAtk);
+
+                player.TakeDamage(damage+atk, typeAtk);
             }
             catch
             {
