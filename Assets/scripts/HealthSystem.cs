@@ -64,11 +64,14 @@ namespace scripts
             
             if (blurCooldown < 0)
             {
+                perso.blur.SetActive(false);
                 blurCooldown = 0;
                 blurState = false;
+                RpcBlur();
             }
 
         }
+        [ClientRpc]void RpcBlur() {perso.blur.SetActive(false);}
         private void DegatLava()
         {
             if (Physics.CheckSphere(groundCheck.position, 1, groundMask))
@@ -105,6 +108,7 @@ namespace scripts
         [Command(requiresAuthority = false)]
         public void CmdTakeBlur()
         {
+            perso.blur.SetActive(true);
             blurState = true;
             blurCooldown = blurMaxCooldown;
             ClientTakeBlur();
@@ -112,7 +116,7 @@ namespace scripts
         [ClientRpc]
         void ClientTakeBlur()
         {
-
+            perso.blur.SetActive(true);
             blurState = true;
             blurCooldown = blurMaxCooldown;
 
