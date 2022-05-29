@@ -47,7 +47,6 @@ namespace scripts
         
         public void UpdateLife()
         {
-            changeBlur(blurState);
             if (poisonState)
                 DegatPoison();
             if(bleedingState)
@@ -62,7 +61,7 @@ namespace scripts
             if (blurState)
                 blurCooldown -= 1;
             
-            if (blurCooldown < 0)
+            if (blurState && blurCooldown < 0)
             {
                 perso.blur.SetActive(false);
                 blurCooldown = 0;

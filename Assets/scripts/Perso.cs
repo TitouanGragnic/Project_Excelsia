@@ -63,13 +63,7 @@ namespace scripts
             atk = 0;
             typeAtk = "normal";
             end = false;
-        }
-        private void Start()
-        {
-            healthSystem.PersoStart();
-                
-            
-        }       
+        }  
         private void LateUpdate()
         {
             if(isServer)
@@ -128,8 +122,7 @@ namespace scripts
             if (guard < maxGuard)
                 guard += 0.02f;
             else
-                guard = maxGuard;
-            
+                guard = maxGuard;          
 
         }
 
