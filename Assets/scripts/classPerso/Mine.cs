@@ -19,6 +19,7 @@ namespace scripts
         [SyncVar]
         public bool boom = false;
 
+        public GameObject mine;
 
         public Transform target;
 
@@ -36,7 +37,7 @@ namespace scripts
             else
             {
                 foreach (KeyValuePair<string, Perso> ex in GameManager.players)
-                    if (ex.Value.GetType() != typeof(Tamo))
+                    if (ex.Value.GetType() != typeof(Tamo) || true)
                         target = ex.Value.transform;
             }
                        
@@ -49,19 +50,19 @@ namespace scripts
 
         void ServerUpdate()
         {
-            if (boom && DateTime.Now.Second - startBoomInt > 10)
+            if (boom && DateTime.Now.Subtract(startBoom).Seconds > 10)
                 EndBoom();
-            if (end && DateTime.Now.Second - startBoomInt > 20)
+            if (end && DateTime.Now.Subtract(startBoom).Seconds > 20)
                 Destroy();
             if (!stick)
-                transform.Rotate(rotate * 5);
-            CLientFixPos(transform.position, transform.rotation);
+                mine.transform.Rotate(rotate * 5);
+            CLientFixPos(transform.position, mine.transform.rotation);
             
             TestBoom();
         }
         void OnCollisionEnter(Collision col)
         {
-            if ((col.gameObject.layer == 7 || col.gameObject.layer == 11) && !stick && isServer)// layer wall or ground
+            if ((col.gameObject.layer == 7) && !stick && isServer)// layer wall or ground
                 CmdFreezePosition();
 
         }
@@ -71,6 +72,7 @@ namespace scripts
             boom = false;
             end = true;
             fogVFX.SetBool("Loop", false);
+            ClientEndBoom();
         }
         [ClientRpc]
         void ClientEndBoom()
@@ -82,16 +84,15 @@ namespace scripts
 
         void TestBoom()
         {
-            if (!boom && !end && target != null && Vector3.Distance(target.position, transform.position) < 20)
+            if (!boom && !end && target != null && Vector3.Distance(target.position, transform.position) < 10)
                 CmdBoom();
-            else if (target != null && Vector3.Distance(target.position, transform.position) < 40)
-                target.gameObject.GetComponent<Perso>().TakeDamage(2, "actifTamo");
+            else if (boom && target != null && Vector3.Distance(target.position, transform.position) < 15)
+                target.gameObject.GetComponent<Perso>().TakeDamage(0.1f, "actifTamo");
         }
 
         void CmdBoom()
         {
             startBoom = DateTime.Now;
-            startBoomInt = DateTime.Now.Second;
             fogVFX.SetBool("Loop", true);
             boom = true;
             touche = true;
@@ -102,8 +103,14 @@ namespace scripts
         void Destroy()
         {
             NetworkServer.Destroy(this.gameObject);
+            RcpDestroy();
         }
 
+        [ClientRpc]
+        void RcpDestroy()
+        {
+            NetworkServer.Destroy(this.gameObject);
+        }
 
         [ClientRpc]
         void ClientBoom()
@@ -122,7 +129,7 @@ namespace scripts
         void CLientFixPos(Vector3 pos, Quaternion rot)
         {
             transform.position = pos;
-            transform.rotation = rot;
+            mine.transform.rotation = rot;
         }
     }
 }

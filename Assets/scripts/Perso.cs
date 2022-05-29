@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using System;
 
 
 
@@ -99,6 +100,12 @@ namespace scripts
         public void ChangeTypeATK(string newType)
         {
             typeAtk = newType;
+            RpcChangeTypeATK(newType);
+        }
+        [ClientRpc]
+        void RpcChangeTypeATK(string newType)
+        {
+            typeAtk = newType;
         }
         private void UpdateLife()
         {
@@ -125,14 +132,16 @@ namespace scripts
             
 
         }
+
+        
         public void TakeDamage(float damage, string type)
         {
             healthSystem.TakeDamage(damage, type);
-            Debug.Log(transform.name + " a pv = " + health);
+            //Debug.Log(transform.name + " a pv = " + health);
             CmdSpawnBlood(true);
         }
         [Command][Client]
-        public void CmdPlayerAttack(string playerId,Vector3 pos,int damage)
+        public void CmdPlayerAttack(string playerId,Vector3 pos,float damage)
         {
             Debug.Log(playerId + "tapé");
             try
@@ -202,7 +211,7 @@ namespace scripts
 
 
 
-
+        public int GetTime() { return DateTime.Now.Second + 60 * DateTime.Now.Minute + 60 * 60 * DateTime.Now.Hour; }
     }
 }
 
