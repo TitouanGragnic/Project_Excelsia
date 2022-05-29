@@ -26,7 +26,8 @@ namespace scripts
         // Start is called before the first frame update
         void Start()
         {
-            startUlti = GetTime();
+            predSpawn = GameManager.GetTimeMili();
+            startUlti = GameManager.GetTime();
             //passif
             atk = 7;
             grapple.maxGrappleCooldown = 100;
@@ -67,14 +68,14 @@ namespace scripts
 
         public new void Ulti()
         {
-            if (GetTime() - startUlti > maxCooldownUlti)
+            if (GameManager.GetTime() - startUlti > maxCooldownUlti)
                 Lightning();
         }
 
         [Command]
         void Lightning()
         {
-            startUlti = GetTime();
+            startUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
             laserVFX.SetBool("Loop", true);
             ultiOn = true;
@@ -82,6 +83,7 @@ namespace scripts
         }
         void EndUlti()
         {
+            laserVFX.SetFloat("Lenght", 10);
             ChangeTypeATK("normal");
             laserVFX.SetBool("Loop", false);
             ultiOn = false;
@@ -97,21 +99,35 @@ namespace scripts
 
         [SerializeField]
         LayerMask mask;
+        int predSpawn;
         void MajLaser()
         {
             RaycastHit hit;
             float lenght = 200f;
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 200f, mask))
             {
+                Debug.Log(hit.collider.gameObject.layer);
                 lenght = hit.distance;
-                if (hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)
+                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null)
                     CmdPlayerAttack(hit.collider.name, hit.point, 0.5f);
+                else if ((hit.collider.gameObject.layer == 7 || hit.collider.gameObject.layer == 11 || hit.collider.gameObject.layer == 23) || GameManager.GetTimeMili() / 100 > predSpawn / 100)
+                    SpawnDebris(hit.point, hit.collider.gameObject.layer.Equals(11) );
             }
             laserVFX.SetFloat("Lenght", lenght);
-
-            if (GetTime() - startUlti > maxCooldownUlti)
+            RpcLenghtLaser(lenght);
+            if (GameManager.GetTime() - startUlti > maxCooldownUlti)
                 EndUlti();
         }
+        [SerializeField] GameObject debris;
+        void SpawnDebris(Vector3 pos,bool wall)
+        {
+            predSpawn = GameManager.GetTimeMili();
+            GameObject obj = Instantiate(debris, pos, new Quaternion(0, 0, 0, 0));
+            obj.GetComponent<DebrisElec>().WallSet(wall);
+            NetworkServer.Spawn(obj);
+        }
+
+
         [ClientRpc]
         void RpcLenghtLaser(float l)
         {

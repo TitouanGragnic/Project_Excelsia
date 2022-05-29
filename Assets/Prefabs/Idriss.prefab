@@ -94,6 +94,10 @@ PrefabInstance:
       value: Vfx_lightningLaser
       objectReference: {fileID: 0}
     - target: {fileID: 2795956403900529598, guid: e1d3e96401dca1b45b121355fca1889b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795956403900529598, guid: e1d3e96401dca1b45b121355fca1889b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -103,6 +107,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2795956403900529598, guid: e1d3e96401dca1b45b121355fca1889b, type: 3}
       propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795956403900529598, guid: e1d3e96401dca1b45b121355fca1889b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7001364807292471126, guid: e1d3e96401dca1b45b121355fca1889b, type: 3}
@@ -1144,3 +1152,4 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 12585856
+  debris: {fileID: 1852304551861187470, guid: e96e5fd21d16deb4faaf016c5cc4407d, type: 3}

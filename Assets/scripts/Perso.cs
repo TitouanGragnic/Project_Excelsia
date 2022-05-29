@@ -211,7 +211,6 @@ namespace scripts
 
 
 
-        public int GetTime() { return DateTime.Now.Second + 60 * DateTime.Now.Minute + 60 * 60 * DateTime.Now.Hour; }
     }
 }
 
