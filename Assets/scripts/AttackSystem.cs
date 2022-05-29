@@ -16,8 +16,14 @@ namespace scripts
         [SerializeField]
         private LayerMask mask;
 
-        [SerializeField] Animator animator;
+        [SerializeField] Animator anim;
         [SerializeField] Animator arm;
+
+        public float cooldownTime = 2f;
+        public float nextFireTime = 0f;
+        public static int noOfClicks = 0;
+        float lastClickedTime = 0;
+        float maxComboDelay = 1;
 
         public float range;
         public bool stateDash;
@@ -26,7 +32,6 @@ namespace scripts
 
         public int[] atk = new int[] { 15, 20, 25, 15, 30 };
         public int index = 0;
-        public int cool = 0;
 
         void Awake()
         {
@@ -34,21 +39,49 @@ namespace scripts
         }
         void Update()
         {
-            if (Input.GetMouseButtonDown(1) && cool<10)
-                Taper();
             if (testBlood && Input.GetMouseButtonDown(0))
                 player.TakeDamage(0f,"normal");
             else
             {
-                if (animator != null)
-                    animator.SetBool("Attack", false);
+                if (anim != null)
+                    anim.SetBool("Attack", false);
                 if(arm != null)
                     arm.SetBool("Attack", false);
             }
-            if (cool > 0)
-                cool--;
-            else
-                index = 0;
+            if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1")){
+                anim.SetBool("hit1", false); 
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
+            {
+                anim.SetBool("hit2", false);
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
+            {
+                anim.SetBool("hit3", false);
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit4"))
+            {
+                anim.SetBool("hit4", false);
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
+            {
+                anim.SetBool("hit5", false);
+                noOfClicks = 0;
+            }
+
+            if(Time.time - lastClickedTime > maxComboDelay)
+            {
+                noOfClicks = 0;
+            }
+            if(Time.time > nextFireTime)
+            {
+                if (Input.GetMouseButtonDown(1))
+                {
+                    index = noOfClicks;
+                    OnClick();
+                    Taper();
+                }
+            }
         }
 
         [Client]
@@ -62,8 +95,6 @@ namespace scripts
             {
                 player.CmdPlayerAttack(hit.collider.name,hit.point,atk[index]);
             }
-            index = (index + 1) % 5;
-            cool = 20;
         }
 
         void OnCollisionEnter(Collision col)
@@ -73,8 +104,36 @@ namespace scripts
                 player.CmdPlayerAttack(col.gameObject.name,transform.position + new Vector3(0,1.6f,0),50);
         }
 
+        void OnClick()
+        {
+            lastClickedTime = Time.time;
+            noOfClicks++;
+            if(noOfClicks == 1)
+            {
+                anim.SetBool("hit1", true);
+            }
+            noOfClicks = Mathf.Clamp(noOfClicks, 0, 5);
 
-
-
+            if(noOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            {
+                anim.SetBool("hit1", false);
+                anim.SetBool("hit2", true);
+            }
+            if (noOfClicks >= 3 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            {
+                anim.SetBool("hit2", false);
+                anim.SetBool("hit3", true);
+            }
+            if (noOfClicks >= 4 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            {
+                anim.SetBool("hit3", false);
+                anim.SetBool("hit4", true);
+            }
+            if (noOfClicks >= 5 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            {
+                anim.SetBool("hit4", false);
+                anim.SetBool("hit5", true);
+            }
+        }
     }
 }
