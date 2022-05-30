@@ -19,11 +19,9 @@ namespace scripts
         [SerializeField] Animator anim;
         [SerializeField] Animator arm;
 
-        public float cooldownTime = 2f;
-        public float nextFireTime = 0f;
-        public static int noOfClicks = 0;
-        float lastClickedTime = 0;
-        float maxComboDelay = 1;
+        bool comboPossible = false;
+        int comboStep = 0;
+        float lastTime = 0;
 
         public float range;
         public bool stateDash;
@@ -39,47 +37,28 @@ namespace scripts
         }
         void Update()
         {
+            index = comboStep;
+            Debug.Log(comboStep);
             if (testBlood && Input.GetMouseButtonDown(1))
                 player.TakeDamage(0f,"normal");
-            if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1")){
-                anim.SetBool("hit1", false); 
-            }
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
+            if (Input.GetMouseButtonDown(0))
             {
-                anim.SetBool("hit2", false);
-            }
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
-            {
-                anim.SetBool("hit3", false);
-            }
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit4"))
-            {
-                anim.SetBool("hit4", false);
-            }
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
-            {
-                anim.SetBool("hit5", false);
-                noOfClicks = 0;
-                index = 0;
-            }
-
-            if (Time.time - lastClickedTime > maxComboDelay)
-            {
-                noOfClicks = 0;
-                index = 0;
-            }
-
-            //cooldown time
-            if (Time.time > nextFireTime)
-            {
-                // Check for mouse input
-                if (Input.GetMouseButtonDown(0))
+                if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible)
                 {
-                    index = noOfClicks;
-                    OnClick();
-                    Taper();
+                    comboStep += 1;
+                    comboPossible = false;
+                }
+                else if(comboPossible || comboStep == 0 || comboStep > 5)
+                {
+                    ComboReset();
+                    Attack();
+                }
+                else if(!comboPossible && anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm"))
+                {
+                    Combo();
                 }
             }
+            
         }
 
         [Client]
@@ -102,41 +81,48 @@ namespace scripts
                 player.CmdPlayerAttack(col.gameObject.name,transform.position + new Vector3(0,1.6f,0),50);
         }
 
-        void OnClick()
+        public void Attack()
         {
-            lastClickedTime = Time.time;
-            noOfClicks++;
-            Debug.Log(noOfClicks);
-            if (noOfClicks == 1)
+            index = 0;
+            Taper();
+            if(comboStep == 0)
             {
-                anim.SetBool("hit1", true);
+                anim.Play("hit1");
+                comboStep = 1;
+                comboPossible = true;
+                return;
             }
-            noOfClicks = Mathf.Clamp(noOfClicks, 0, 5);
-
-            if (noOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+        }
+        public void ComboPossible()
+        {
+            comboPossible = true;
+        }
+        public void Combo()
+        {
+            index = comboStep - 1;
+            Taper();
+            comboPossible = true;
+            if (comboStep == 2)
             {
-                anim.SetBool("hit1", false);
-                anim.SetBool("hit2", true);
-                Debug.Log("hit2" + anim.GetBool("hit1") + anim.GetBool("hit2"));
+                anim.Play("hit2");
             }
-            if (noOfClicks >= 3 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
+            if (comboStep == 3)
             {
-                anim.SetBool("hit2", false);
-                anim.SetBool("hit3", true);
-                Debug.Log("hit3" + anim.GetBool("hit2") + anim.GetBool("hit3"));
+                anim.Play("hit3");
             }
-            if (noOfClicks >= 4 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
+            if (comboStep == 4)
             {
-                anim.SetBool("hit3", false);
-                anim.SetBool("hit4", true);
-                Debug.Log("hit4" + anim.GetBool("hit3") + anim.GetBool("hit4"));
+                anim.Play("hit4");
             }
-            if (noOfClicks >= 5 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit4"))
+            if (comboStep == 5)
             {
-                anim.SetBool("hit4", false);
-                anim.SetBool("hit5", true);
-                Debug.Log("hit5" + anim.GetBool("hit4") + anim.GetBool("hit5"));
+                anim.Play("hit5");
             }
+        }
+        public void ComboReset()
+        {
+            comboPossible = false;
+            comboStep = 0;
         }
     }
 }
