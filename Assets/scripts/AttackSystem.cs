@@ -38,9 +38,15 @@ namespace scripts
         void Update()
         {
             index = comboStep;
-            Debug.Log(comboStep);
+            //Debug.Log(comboStep);
             if (testBlood && Input.GetMouseButtonDown(1))
                 player.TakeDamage(0f,"normal");
+            if (anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.7 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
+            {
+                ComboReset();
+                comboPossible = true;
+            }
+                
             if (Input.GetMouseButtonDown(0))
             {
                 if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible)
@@ -48,12 +54,13 @@ namespace scripts
                     comboStep += 1;
                     comboPossible = false;
                 }
-                else if(comboPossible || comboStep == 0 || comboStep > 5)
+                else if(comboPossible || comboStep == 0 || comboStep >= 5)
                 {
                     ComboReset();
                     Attack();
+                    comboPossible = true;
                 }
-                else if(!comboPossible && anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm"))
+                else if(!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.7)
                 {
                     Combo();
                 }
