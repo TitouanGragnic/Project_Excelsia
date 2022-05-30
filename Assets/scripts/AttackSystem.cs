@@ -39,15 +39,8 @@ namespace scripts
         }
         void Update()
         {
-            if (testBlood && Input.GetMouseButtonDown(0))
+            if (testBlood && Input.GetMouseButtonDown(1))
                 player.TakeDamage(0f,"normal");
-            else
-            {
-                if (anim != null)
-                    anim.SetBool("Attack", false);
-                if(arm != null)
-                    arm.SetBool("Attack", false);
-            }
             if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1")){
                 anim.SetBool("hit1", false); 
             }
@@ -67,15 +60,20 @@ namespace scripts
             {
                 anim.SetBool("hit5", false);
                 noOfClicks = 0;
+                index = 0;
             }
 
-            if(Time.time - lastClickedTime > maxComboDelay)
+            if (Time.time - lastClickedTime > maxComboDelay)
             {
                 noOfClicks = 0;
+                index = 0;
             }
-            if(Time.time > nextFireTime)
+
+            //cooldown time
+            if (Time.time > nextFireTime)
             {
-                if (Input.GetMouseButtonDown(1))
+                // Check for mouse input
+                if (Input.GetMouseButtonDown(0))
                 {
                     index = noOfClicks;
                     OnClick();
@@ -108,31 +106,36 @@ namespace scripts
         {
             lastClickedTime = Time.time;
             noOfClicks++;
-            if(noOfClicks == 1)
+            Debug.Log(noOfClicks);
+            if (noOfClicks == 1)
             {
                 anim.SetBool("hit1", true);
             }
             noOfClicks = Mathf.Clamp(noOfClicks, 0, 5);
 
-            if(noOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            if (noOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
             {
                 anim.SetBool("hit1", false);
                 anim.SetBool("hit2", true);
+                Debug.Log("hit2" + anim.GetBool("hit1") + anim.GetBool("hit2"));
             }
-            if (noOfClicks >= 3 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            if (noOfClicks >= 3 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit2"))
             {
                 anim.SetBool("hit2", false);
                 anim.SetBool("hit3", true);
+                Debug.Log("hit3" + anim.GetBool("hit2") + anim.GetBool("hit3"));
             }
-            if (noOfClicks >= 4 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            if (noOfClicks >= 4 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit3"))
             {
                 anim.SetBool("hit3", false);
                 anim.SetBool("hit4", true);
+                Debug.Log("hit4" + anim.GetBool("hit3") + anim.GetBool("hit4"));
             }
-            if (noOfClicks >= 5 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+            if (noOfClicks >= 5 && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(0).IsName("hit4"))
             {
                 anim.SetBool("hit4", false);
                 anim.SetBool("hit5", true);
+                Debug.Log("hit5" + anim.GetBool("hit4") + anim.GetBool("hit5"));
             }
         }
     }
