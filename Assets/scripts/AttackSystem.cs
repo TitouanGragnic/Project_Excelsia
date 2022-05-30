@@ -58,9 +58,8 @@ namespace scripts
                 {
                     ComboReset();
                     Attack();
-                    comboPossible = true;
                 }
-                else if(!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.7)
+                else if(!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1)
                 {
                     Combo();
                 }
@@ -95,6 +94,7 @@ namespace scripts
             if(comboStep == 0)
             {
                 anim.Play("hit1");
+                arm.Play("hit1");
                 comboStep = 1;
                 comboPossible = true;
                 return;
@@ -112,18 +112,22 @@ namespace scripts
             if (comboStep == 2)
             {
                 anim.Play("hit2");
+                arm.Play("hit2");
             }
             if (comboStep == 3)
             {
                 anim.Play("hit3");
+                arm.Play("hit3");
             }
             if (comboStep == 4)
             {
                 anim.Play("hit4");
+                arm.Play("hit4");
             }
             if (comboStep == 5)
             {
                 anim.Play("hit5");
+                arm.Play("hit5");
             }
         }
         public void ComboReset()
