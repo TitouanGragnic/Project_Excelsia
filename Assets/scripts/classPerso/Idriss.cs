@@ -67,11 +67,12 @@ namespace scripts
             if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
                 Lightning();
         }
+        [SerializeField] POVcam povcam;
 
         [Command]
         void Lightning()
         {
-            
+            povcam.multiplier /= 10;
             startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
             laserVFX.SetBool("Loop", true);
@@ -80,6 +81,7 @@ namespace scripts
         }
         void EndUlti()
         {
+            povcam.multiplier *= 10;
             laserVFX.SetFloat("Lenght", 10);
             ChangeTypeATK("normal");
             laserVFX.SetBool("Loop", false);

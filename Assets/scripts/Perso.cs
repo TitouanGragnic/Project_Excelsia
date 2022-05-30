@@ -55,6 +55,7 @@ namespace scripts
 
 
         [SerializeField] Slider sliderAc;
+        [SerializeField] Slider sliderUl;
 
 
         // [COULDOWN] 
@@ -87,6 +88,10 @@ namespace scripts
             //Actif
             if(sliderAc != null)
                 sliderAc.value = GameManager.GetTime() - startCooldownActif > maxCooldownActif ? 1 : (float)(GameManager.GetTime() - startCooldownActif)/(float)maxCooldownActif ;
+            //Ulti
+
+            if (sliderUl != null)
+                sliderUl.value = GameManager.GetTime() - startCooldownUlti > maxCooldownUlti ? 1 : (float)(GameManager.GetTime() - startCooldownUlti) / (float)maxCooldownUlti;
         }
         
         public void Place(int pnb)
