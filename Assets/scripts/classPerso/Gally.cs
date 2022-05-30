@@ -11,71 +11,57 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
 
-        [SerializeField] Slider sliderAc;
         
-        // Start is called before the first frame update
-        public int dashCooldown;
-        private int dashCooldownMax = 7000;
-        public bool dashState;
-        public bool coolDownDState;
+        public bool actifState;
+        public bool ultiState;
         void Start()
         {
+            startCooldownActif = GameManager.GetTime();
+            startCooldownUlti = GameManager.GetTime();
             //Passif
             movement.nbJump = 2;
             movement.sprintSpeed = 120f ;
             //Actif
-            dashCooldown = dashCooldownMax;
-            dashState = false;
+            actifState = false;
             personnage = "Gally";
         }
 
         // Update is called once per frame
         void Update()
         {
-            sliderAc.value = dashCooldownMax - dashCooldown;
             CoolDown();
         }
         public new void Actif() 
         {
             Debug.Log("Gally actif");
-            if (dashCooldown == 0||true)
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true)
                 Dash();
         }
         public new void Ulti()
         {
-            Debug.Log("Gally actif");
-            if (dashCooldown == 0 || true)
+            Debug.Log("Gally Ulti");
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti || true)
                 Slash();
         }
 
         private void CoolDown()
         {
-            if (dashCooldown <= 4 * dashCooldownMax / 5 && dashState)
+            if (startCooldownActif <= 4 * maxCooldownActif / 5 && actifState)
                 EndDash();
-            if (dashCooldown <= 0 && coolDownDState)
-                EndDashCoolDown(); 
-            if (dashCooldown > 0)
-                dashCooldown -= 1;
-        }
-        private void EndDashCoolDown()
-        {
-            dashCooldown = 0;
-            coolDownDState = false;
         }
 
         private void EndDash()
         {
             attackSystem.stateDash = false;
-            dashState = false;
+            actifState = false;
             ChangeTypeATK("normal");
         }
         private void Dash()
         {
             movement.Dash();
             ChangeTypeATK("bleeding");
-            dashCooldown = dashCooldownMax;
-            dashState = true;
-            coolDownDState = true;
+            startCooldownActif = GameManager.GetTime();
+            actifState = true;
             attackSystem.stateDash = true;
         }
 
@@ -85,6 +71,7 @@ namespace scripts
 
         void Slash()
         {
+            startCooldownUlti = GameManager.GetTime();
             Cmd_SpawnSlash(cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0)).GetPoint(1000));
         }
 

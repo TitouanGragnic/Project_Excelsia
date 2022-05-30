@@ -13,8 +13,6 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
 
-        [SerializeField] Slider sliderAc;
-
 
 
         public int actifCooldown;
@@ -36,7 +34,6 @@ namespace scripts
         private void Update()
         {
             CoolDown();
-            sliderAc.value = actifCooldownMax - actifCooldown;
         }
         private void CoolDown()
         {
@@ -68,7 +65,7 @@ namespace scripts
         [Command]
         private void Cmd_SpawnM(Vector3 pos, Vector3 forward)
         {
-            GameObject mi = Instantiate(mine, pos + forward.normalized * 2, new Quaternion(forward.x, forward.y, forward.z, 0));
+            GameObject mi = Instantiate(mine, pos + forward.normalized * 2, new Quaternion(0,0,0, 0));
             mi.GetComponent<Mine>().rotate = forward;
             Rigidbody rb = mi.GetComponent<Rigidbody>();
             rb.AddForce(forward.normalized * 5, ForceMode.Impulse);

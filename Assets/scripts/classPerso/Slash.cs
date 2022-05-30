@@ -82,7 +82,7 @@ namespace scripts
 
         void OnCollisionEnter(Collision col)
         {
-            if (col.gameObject.layer == 9 || col.gameObject.layer == 8 && !touche)
+            if (col.gameObject.layer == 9 || col.gameObject.layer == 8&& col.gameObject.GetComponent<Gally>()== null && !touche)
                 col.gameObject.GetComponent<Perso>().TakeDamage(200f, "bleeding");
             else
                 Explosion();

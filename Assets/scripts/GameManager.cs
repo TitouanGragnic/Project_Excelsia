@@ -184,7 +184,7 @@ namespace scripts
             return res;
         }
 
-        public static int GetTime() { return DateTime.Now.Second + 60 * DateTime.Now.Minute + 60 * 60 * DateTime.Now.Hour; }
-        public static int GetTimeMili() { return DateTime.Now.Millisecond+(DateTime.Now.Second + 60 * DateTime.Now.Minute + 3600 * DateTime.Now.Hour)*1000; }
+        public static int GetTime() { return DateTime.Now.Second + 60 * DateTime.Now.Minute + 60 * 60 * DateTime.Now.Hour + DateTime.Now.Day*3600*24; }
+        public static int GetTimeMili() { return DateTime.Now.Millisecond+(DateTime.Now.Second + 60 * DateTime.Now.Minute + 3600 * DateTime.Now.Hour + DateTime.Now.Day * 3600 * 24) *1000; }
     } 
 }

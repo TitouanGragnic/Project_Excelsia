@@ -27,9 +27,9 @@ namespace scripts
         [SerializeField]
         public HealthSystem healthSystem;
         [SerializeField]
-        private Posture posture;
+        private Posture posture;/*
         [SerializeField]
-        public Slider slider;
+        public Slider slider;*/
 
         [SyncVar][SerializeField]
         public float health;
@@ -52,6 +52,18 @@ namespace scripts
         endMenu ended;
         [SerializeField]
         GameObject blood;
+
+
+        [SerializeField] Slider sliderAc;
+        [SerializeField] Slider sliderUl;
+
+
+        // [COULDOWN] 
+        public int startCooldownUlti;
+        public int maxCooldownUlti = 60;
+        public int startCooldownActif;
+        public int maxCooldownActif = 20;
+
         private void Awake()
         {
             blur.SetActive(false);
@@ -72,6 +84,14 @@ namespace scripts
 
             if (end && isServer)
                 ended.Cmd_ReplacePlayer();
+
+            //Actif
+            if(sliderAc != null)
+                sliderAc.value = GameManager.GetTime() - startCooldownActif > maxCooldownActif ? 1 : (float)(GameManager.GetTime() - startCooldownActif)/(float)maxCooldownActif ;
+            //Ulti
+
+            if (sliderUl != null)
+                sliderUl.value = GameManager.GetTime() - startCooldownUlti > maxCooldownUlti ? 1 : (float)(GameManager.GetTime() - startCooldownUlti) / (float)maxCooldownUlti;
         }
         
         public void Place(int pnb)
@@ -90,7 +110,7 @@ namespace scripts
             }
 
         }
-        [Command]
+        [Command(requiresAuthority = false)]
         public void ChangeTypeATK(string newType)
         {
             typeAtk = newType;

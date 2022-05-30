@@ -12,39 +12,42 @@ namespace scripts
     {
         [SerializeField]
         Grapple grapple;
-        [SerializeField] Slider sliderAc;
 
         [SerializeField] GameObject lightning;
 
 
+        //[ACTIF]
+        int maxCooldownActifON = 10;
+        bool electricState;
+        //[ULTI]
+        int maxCooldownUltiON = 5;
+        [SerializeField]
+        VisualEffect laserVFX;
+        bool ultiOn;
+        [SerializeField]
+        LayerMask mask;
+        int predSpawn;
+        [SerializeField] GameObject debris;
 
-        public int electricCooldown;
-        private int electricCooldownMax = 7000;
-        public bool electricState;
-        public bool coolDownEState;
-
-        // Start is called before the first frame update
         void Start()
         {
             predSpawn = GameManager.GetTimeMili();
-            startUlti = GameManager.GetTime();
+            startCooldownActif = GameManager.GetTime();
+            startCooldownUlti = GameManager.GetTime();
+
             //passif
             atk = 7;
             grapple.maxGrappleCooldown = 100;
             //actif
-            electricCooldown = electricCooldownMax;
             electricState = false;
-            coolDownEState = false;
             personnage = "Idriss";
             ultiOn = false;
         }
 
         
-        // Update is called once per frame
         void Update()
         {
             CoolDown();
-            sliderAc.value = electricCooldownMax - electricCooldown;
             if(isServer)
                 ServerUpdate();
         }
@@ -56,26 +59,21 @@ namespace scripts
 
         public new void Actif()
         {
-            if (electricCooldown == 0)
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif)
                 StartElectric();
         }
-
-        int startUlti;
-        int maxCooldownUlti=10;
-        [SerializeField]
-        VisualEffect laserVFX;
-        bool ultiOn;
-
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startUlti > maxCooldownUlti)
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
                 Lightning();
         }
+        [SerializeField] POVcam povcam;
 
         [Command]
         void Lightning()
         {
-            startUlti = GameManager.GetTime();
+            povcam.multiplier /= 10;
+            startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
             laserVFX.SetBool("Loop", true);
             ultiOn = true;
@@ -83,6 +81,7 @@ namespace scripts
         }
         void EndUlti()
         {
+            povcam.multiplier *= 10;
             laserVFX.SetFloat("Lenght", 10);
             ChangeTypeATK("normal");
             laserVFX.SetBool("Loop", false);
@@ -90,16 +89,10 @@ namespace scripts
             RpcLightning(false);
 
         }
-
-        [ClientRpc]
-        void RpcLightning(bool state)
+        [ClientRpc]void RpcLightning(bool state)
         {
             laserVFX.SetBool("Loop", state);
         }
-
-        [SerializeField]
-        LayerMask mask;
-        int predSpawn;
         void MajLaser()
         {
             RaycastHit hit;
@@ -108,17 +101,14 @@ namespace scripts
             {
                 Debug.Log(hit.collider.gameObject.layer);
                 lenght = hit.distance;
-                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null)
+                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                     CmdPlayerAttack(hit.collider.name, hit.point, 0.5f);
-                else if ((hit.collider.gameObject.layer == 7 || hit.collider.gameObject.layer == 11 || hit.collider.gameObject.layer == 23) || GameManager.GetTimeMili() / 100 > predSpawn / 100)
+                else if ((hit.collider.gameObject.layer == 7 || hit.collider.gameObject.layer == 11 || hit.collider.gameObject.layer == 23) && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                     SpawnDebris(hit.point, hit.collider.gameObject.layer.Equals(11) );
             }
             laserVFX.SetFloat("Lenght", lenght);
             RpcLenghtLaser(lenght);
-            if (GameManager.GetTime() - startUlti > maxCooldownUlti)
-                EndUlti();
         }
-        [SerializeField] GameObject debris;
         void SpawnDebris(Vector3 pos,bool wall)
         {
             predSpawn = GameManager.GetTimeMili();
@@ -126,28 +116,19 @@ namespace scripts
             obj.GetComponent<DebrisElec>().WallSet(wall);
             NetworkServer.Spawn(obj);
         }
-
-
         [ClientRpc]
         void RpcLenghtLaser(float l)
         {
             laserVFX.SetFloat("Lenght", l);
         }
-
-
         private void CoolDown()
         {
-            if (electricCooldown <= 4* electricCooldownMax/5 && electricState)
+            //actif
+            if (electricState && GameManager.GetTime() - startCooldownActif > maxCooldownActifON)
                 EndElectric();
-            if (electricCooldown <= 0 && coolDownEState)
-                EndECoolDown();
-            if (electricCooldown>0)
-                electricCooldown -= 1;
-        }
-        private void EndECoolDown()
-        {
-            electricCooldown = 0;
-            coolDownEState = false;
+            //ulti 
+            if (ultiOn &&  GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
+                EndUlti();
         }
         private void EndElectric()
         {
@@ -159,9 +140,8 @@ namespace scripts
         {
             ChangeTypeATK("electric");
             lightning.SetActive(true);
-            electricCooldown = electricCooldownMax;
+            startCooldownActif = GameManager.GetTime();
             electricState = true;
-            coolDownEState = true;
         }
     }
 }
