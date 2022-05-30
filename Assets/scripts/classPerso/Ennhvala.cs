@@ -14,11 +14,9 @@ namespace scripts
         [SerializeField]
         GameObject knife;
 
-        public int actifCooldown;
-        private int actifCooldownMax = 7000;
         public bool actifState;
-
-
+        public bool ultiState;
+        int maxCooldownUltiON = 10;
 
         public float malus = 0f;
         public float bonus = 1f;
@@ -26,6 +24,11 @@ namespace scripts
         public float vitesse;
         private void Start()
         {
+
+            startCooldownActif = GameManager.GetTime();
+            startCooldownUlti = GameManager.GetTime();
+
+
             maxHealth = 1150f;
             maxGuard = 230f;
             health = maxHealth;
@@ -34,9 +37,6 @@ namespace scripts
             atk = 4;
 
 
-            //actif
-            actifCooldown = actifCooldownMax;
-            actifState = false;
             personnage = "Ennhvala";
         }
 
@@ -57,36 +57,24 @@ namespace scripts
         }
         private void CoolDown()
         {
-            if (actifCooldown <= 0 && actifState)
-                EndActifCoolDown();
-            if (actifCooldown > 0)
-                actifCooldown -= 1;
-        }
-        void EndActifCoolDown()
-        {
-            actifState = false;
-            actifCooldown = 0;
+            //ulti 
+            if (ultiOn && GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
+                EndUlti();
         }
         public new void Actif()
         {
-            if (actifCooldown == 0|| true ) 
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true )
             {
-                SpawnKnife();
-                actifState = true;
-                actifCooldown = actifCooldownMax;
+                Cmd_SpawnK(arm.transform.position, cam.transform.forward);
+                startCooldownActif = GameManager.GetTime();
             }
             
         }
 
-        private void SpawnKnife()
-        {
-            Cmd_SpawnK(arm.transform.position, cam.transform.forward);
-        }
         [Command]
         private void Cmd_SpawnK(Vector3 pos, Vector3 forward)
         {
-            GameObject kn = Instantiate(knife, pos + forward.normalized * 2, new Quaternion(forward.x,forward.y,forward.z,0));
-            kn.GetComponent<Knife>().rotate = forward;
+            GameObject kn = Instantiate(knife, pos + forward.normalized * 2, camHolder.transform.rotation);
             Rigidbody rb = kn.GetComponent<Rigidbody>();
             rb.AddForce(forward.normalized * 5, ForceMode.Impulse);
             NetworkServer.Spawn(kn);
@@ -96,10 +84,32 @@ namespace scripts
         public bool ultiOn;
         public new void Ulti()
         {
-            ultiOn = true;
-            malus = 0.01f;
-            vitesse *= 1.25f;
-            bonus *= 1.5f;
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
+            {
+                startCooldownUlti = GameManager.GetTime();
+                ultiOn = true;
+                TakeDamage(125f, "normal");
+                vitesse *= 1.25f;
+                bonus = 2f;
+
+                smokeVFX.SetBool("Loop", true);
+                SetVFX(true);
+            }
+        }
+
+
+        [ClientRpc] void SetVFX(bool state)
+        {
+            smokeVFX.SetBool("Loop", state);
+        }
+
+        void EndUlti()
+        {
+            ultiOn = false;
+            vitesse *= (4f / 5f);
+            bonus = 1;
+            smokeVFX.SetBool("Loop", false);
+            SetVFX(false);
         }
         [SerializeField]
         VisualEffect smokeVFX;

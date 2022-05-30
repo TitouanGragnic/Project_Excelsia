@@ -37,7 +37,7 @@ namespace scripts
 
             //passif
             atk = 7;
-            grapple.maxGrappleCooldown = 100;
+            grapple.maxGrappleCooldown = 2500;
             //actif
             electricState = false;
             personnage = "Idriss";

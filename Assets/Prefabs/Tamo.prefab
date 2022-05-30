@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.047902584, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -842,7 +842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 72197354655179258, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 72197354655179258, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.g
@@ -850,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 72197354655179258, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.r
-      value: 0.047902584
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 227892654295556963, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
@@ -1175,17 +1175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9688e9bc51a2ef40af82eb166065f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8709801472805403276 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2534374921440115602, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 6626069227908743454}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8709801474423681151 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2534374922002084193, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1284,7 +1273,6 @@ MonoBehaviour:
   health_object: {fileID: 3003395344967837007}
   healthSystem: {fileID: 2763260870473681043}
   posture: {fileID: 2437975864008391631}
-  slider: {fileID: 8709801472805403276}
   health: 0
   maxHealth: 0
   armor: 0
@@ -1296,9 +1284,12 @@ MonoBehaviour:
   blur: {fileID: 8363560584437706216}
   ended: {fileID: 7214728217789914498}
   blood: {fileID: 6700938093044136142}
+  sliderAc: {fileID: 1888462956097515588}
+  sliderUl: {fileID: 0}
+  startCooldownUlti: 0
+  maxCooldownUlti: 60
+  startCooldownActif: 0
+  maxCooldownActif: 20
   maxBloodC: 100
   mine: {fileID: 3922566111894429469, guid: 8be68b816ab0fdf428ece20b70ae5d6b, type: 3}
   attackSystem: {fileID: 8684438095728236673}
-  sliderAc: {fileID: 1888462956097515588}
-  actifCooldown: 0
-  actifState: 0

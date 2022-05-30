@@ -119,9 +119,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 7000
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 7000
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6745098, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -701,11 +701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 72197354655179258, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.g
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 72197354655179258, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 227892654295556963, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
@@ -1007,6 +1007,14 @@ PrefabInstance:
       propertyPath: groundMask.m_Bits
       value: 8388608
       objectReference: {fileID: 0}
+    - target: {fileID: 9058812181248579003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058812181248579003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5818428227407732611, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
     - {fileID: 7483932309222031153, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1029,6 +1037,11 @@ Camera:
 --- !u!81 &8931854197280092593 stripped
 AudioListener:
   m_CorrespondingSourceObject: {fileID: 9158515635215114207, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &754497436151436034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1050820890101710188, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 355159175873801838}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3100754399448154776 stripped
@@ -1062,6 +1075,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 355159175873801838}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8744471833411075029 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9058812181248579003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 355159175873801838}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6840012810158573936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6485566139432838942, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1159,7 +1183,7 @@ MonoBehaviour:
   camHolder: {fileID: 6840012809597923543}
   movement: {fileID: 6840012810158573939}
   body: {fileID: 1031509818720488544}
-  arm: {fileID: 0}
+  arm: {fileID: 754497436151436034}
   health_object: {fileID: 8554435346980850239}
   healthSystem: {fileID: 8737074157270493155}
   posture: {fileID: 9136730078728311999}
@@ -1175,15 +1199,15 @@ MonoBehaviour:
   ended: {fileID: 4253259169275228914}
   blood: {fileID: 281406849801983934}
   sliderAc: {fileID: 8072479271512895424}
-  sliderUl: {fileID: 0}
+  sliderUl: {fileID: 8744471833411075029}
   startCooldownUlti: 0
   maxCooldownUlti: 60
   startCooldownActif: 0
   maxCooldownActif: 20
   maxBloodC: 100
   knife: {fileID: 8723991220544333805, guid: a991f954776a1f24ba67cfb5b951b985, type: 3}
-  actifCooldown: 0
   actifState: 0
+  ultiState: 0
   malus: 0
   bonus: 1
   vitesse: 0
@@ -1200,7 +1224,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 368019854564382426}
     m_Modifications:
     - target: {fileID: 6359330583828642724, guid: d8ebc72193371d24ab9c4096743e29d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359330583828642724, guid: d8ebc72193371d24ab9c4096743e29d1, type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359330583828642724, guid: d8ebc72193371d24ab9c4096743e29d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6359330585254244932, guid: d8ebc72193371d24ab9c4096743e29d1, type: 3}

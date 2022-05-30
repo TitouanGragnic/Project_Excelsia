@@ -788,9 +788,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 200
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 200
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   joint: {fileID: 0}
   grappleHole: {fileID: 2639596340234615233, guid: 47180cfd21654da49af2f9c2ea6dc5a3, type: 3}
   slider: {fileID: 2563937017575700068}
-  grappleCooldown: 0
+  startGrappleCooldown: 0
   maxGrappleCooldown: 0
   grapple_Sync: {fileID: 4779195447659867005}
 --- !u!114 &4779195447659867005

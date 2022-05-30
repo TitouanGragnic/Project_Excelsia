@@ -37,7 +37,7 @@ namespace scripts
             else
             {
                 foreach (KeyValuePair<string, Perso> ex in GameManager.players)
-                    if (ex.Value.GetType() != typeof(Tamo) || true)
+                    if (ex.Value.GetType() != typeof(Tamo))
                         target = ex.Value.transform;
             }
                        
