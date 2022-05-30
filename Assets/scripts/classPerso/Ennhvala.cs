@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.UI;
 using Mirror;
 
@@ -11,7 +13,6 @@ namespace scripts
     {
         [SerializeField]
         GameObject knife;
-        [SerializeField] Slider sliderAc;
 
         public int actifCooldown;
         private int actifCooldownMax = 7000;
@@ -43,8 +44,16 @@ namespace scripts
         {
             CoolDown();
             //this.health -= malus;
-            sliderAc.value = actifCooldownMax - actifCooldown;
-            this.atk = atk * (maxHealth / health) * bonus;
+            this.atk = GetATK(health) * bonus;
+            if (ultiOn)
+                SetVFXSmoke();
+        }
+
+        float GetATK(float life)
+        {
+            if (life < 100)
+                return 50f;
+            return 0.00001f * life * life - 0.05f * life + 49.14f +(float) Math.Sqrt(life * 0.39f);
         }
         private void CoolDown()
         {
@@ -84,11 +93,26 @@ namespace scripts
 
         }
 
-        private void Ulti()
+        public bool ultiOn;
+        public new void Ulti()
         {
+            ultiOn = true;
             malus = 0.01f;
             vitesse *= 1.25f;
-            bonus *= 1.25f;
+            bonus *= 1.5f;
+        }
+        [SerializeField]
+        VisualEffect smokeVFX;
+        [SerializeField] LayerMask mask;
+        void SetVFXSmoke()
+        {
+            smokeVFX.SetVector3("position", new Vector3(transform.position.x, cam.transform.position.y - 1, transform.position.z));
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 50f, mask))
+                smokeVFX.SetFloat("Ground", hit.point.y) ;
+            else
+                smokeVFX.SetFloat("Ground", 0);
         }
     }
 }

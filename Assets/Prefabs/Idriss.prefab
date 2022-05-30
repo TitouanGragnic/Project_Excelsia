@@ -686,9 +686,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1221692145423585110, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221692145423585110, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1724422852677049705, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2534374920594948630, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.b
@@ -746,6 +754,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 8922506184662280199}
+    - target: {fileID: 2643050571351438924, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2946217035984152591, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -801,6 +813,10 @@ PrefabInstance:
     - target: {fileID: 5155161729422037007, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AssetId
       value: 7a9fab3ccf112614c82a498c214c120d
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679581122195621458, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6264136679664425721, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1066,6 +1082,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7805618687536743219, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2260078679767359823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3451394286161751286, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 3510759613686107577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4819427440369019368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8240095265415717969, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1093,11 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2260078679767359823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3451394286161751286, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
-  m_PrefabInstance: {fileID: 3510759613686107577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4013477127502361705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 507223862793124304, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1141,13 +1157,14 @@ MonoBehaviour:
   blur: {fileID: 2260078679767359823}
   ended: {fileID: 1104475412067733797}
   blood: {fileID: 4013477127502361705}
+  sliderAc: {fileID: 2327494368872088303}
+  startCooldownUlti: 0
+  maxCooldownUlti: 60
+  startCooldownActif: 0
+  maxCooldownActif: 20
   maxBloodC: 100
   grapple: {fileID: 2895716605792403831}
-  sliderAc: {fileID: 2327494368872088303}
   lightning: {fileID: 678482844647416436}
-  electricCooldown: 0
-  electricState: 0
-  coolDownEState: 0
   laserVFX: {fileID: 9002507192393978559}
   mask:
     serializedVersion: 2
