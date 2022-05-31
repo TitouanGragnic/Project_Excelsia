@@ -78,7 +78,7 @@ namespace scripts
             laserVFX.SetBool("Loop", true);
             ultiOn = true;
             RpcLightning(true);
-            arms.Play("ulti");
+            arms.SetBool("ulti", true);
         }
         void EndUlti()
         {
@@ -88,7 +88,7 @@ namespace scripts
             laserVFX.SetBool("Loop", false);
             ultiOn = false;
             RpcLightning(false);
-
+            arms.SetBool("ulti", false);
         }
         [ClientRpc]void RpcLightning(bool state)
         {
