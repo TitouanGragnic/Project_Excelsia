@@ -47,7 +47,7 @@ namespace scripts
             {
                 Canvas.SetActive(true);
                 Network.SetActive(true);
-                Trailer.SetActive(false);
+                //Video.SetActive(false);
             }
         }
     }

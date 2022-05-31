@@ -68,7 +68,7 @@ namespace scripts
                 if (!lecteur.isPlaying)
                     lecteur.Play();
             }
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (lecteur.clip != soundBoard[5] && lecteur.clip != soundBoard[6])
                     lecteur.Stop();
