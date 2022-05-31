@@ -12,6 +12,7 @@ namespace scripts
         [SerializeField] GameObject Canvas;
         [SerializeField] GameObject Trailer;
         [SerializeField] GameObject Network;
+        [SerializeField] GameObject text;
         [SerializeField] VideoPlayer Video;
 
         public bool start;
@@ -22,6 +23,7 @@ namespace scripts
             Canvas.SetActive(false);
             Network.SetActive(false);
             Trailer.SetActive(true);
+            text.SetActive(true);
         }
 
         // Update is called once per frame
@@ -47,6 +49,7 @@ namespace scripts
             {
                 Canvas.SetActive(true);
                 Network.SetActive(true);
+                text.SetActive(false);
                 //Video.SetActive(false);
             }
         }
