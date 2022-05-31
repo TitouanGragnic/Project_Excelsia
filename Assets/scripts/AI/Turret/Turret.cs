@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 namespace scripts
 {
@@ -56,9 +57,11 @@ namespace scripts
         List<int[]> Index;
 
         Quaternion start;
+        Vector3 forward;
         void Start()
         {
             start = new Quaternion(head.transform.rotation.x, head.transform.rotation.y, head.transform.rotation.z, head.transform.rotation.w);
+            forward = head.transform.forward;
             on = true;
             activ = true;
             disolve = 0;
@@ -148,13 +151,12 @@ namespace scripts
             else if (target != null)
                 Shoot();
         }
+        [SerializeField] Transform spawn;
         void Shoot()
         {
             cooldown = maxCooldown;
             shootState = true;
-            GameObject rk = Instantiate(rocket);
-            rk.transform.position = head.transform.position + head.transform.forward.normalized * 2;
-            rk.transform.forward = head.transform.forward;
+            GameObject rk = Instantiate(rocket, spawn.position, spawn.rotation);
             Rigidbody rb = rk.GetComponent<Rigidbody>();
             rb.AddForce(head.transform.forward.normalized *2, ForceMode.Impulse);
             rk.GetComponent<Rocket>().target = target.transform;
@@ -168,7 +170,7 @@ namespace scripts
             if (target != null && Vector3.Distance(transform.position, target.transform.position) > range)
                 target = null;
 
-            if (target != null)
+            if (target != null &&  Math.Abs(Vector3.Angle(forward,target.transform.position-head.transform.position)) > 90)
                 FollowTarget();
             else
                 ResetLr();
@@ -177,19 +179,12 @@ namespace scripts
         private void FollowTarget()
         {
 
-            RaycastHit hit;
             head.transform.LookAt(target.transform.position + Vector3.up*1.5f);
             head.transform.Rotate(Vector3.right * 180);
-
-
-            if (Physics.Raycast(head.transform.position + head.transform.forward *2, head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11 && hit.collider.gameObject.layer != 0 && hit.collider.gameObject.layer != 7)
-            {
-                lr.SetPosition(0, head.transform.position);
-                lr.SetPosition(1, target.transform.position + Vector3.up * 1.5f);
-            }
-            else
-                ResetLr();
-
+            lr.SetPosition(0, head.transform.position);
+            lr.SetPosition(1, target.transform.position + Vector3.up );
+            
+            
         }
         private void ResetLr()
         {
