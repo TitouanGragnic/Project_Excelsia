@@ -990,6 +990,14 @@ PrefabInstance:
       propertyPath: groundMask.m_Bits
       value: 8388608
       objectReference: {fileID: 0}
+    - target: {fileID: 9058812181248579003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058812181248579003, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5818428227407732611, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
     - {fileID: 7483932309222031153, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1879,6 +1887,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 500fd87af3285b944a883e28b4f320b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1129535794289285062, guid: 500fd87af3285b944a883e28b4f320b7, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.18582118
@@ -2470,6 +2482,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2053c8cb15d4abe4aa043788b58fc5d9, type: 3}
       propertyPath: m_Layer
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2053c8cb15d4abe4aa043788b58fc5d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1214394226244547983, guid: 2053c8cb15d4abe4aa043788b58fc5d9, type: 3}
       propertyPath: m_Layer
