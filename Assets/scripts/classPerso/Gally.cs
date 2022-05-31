@@ -10,8 +10,10 @@ namespace scripts
     {
         [SerializeField]
         AttackSystem attackSystem;
+        [SerializeField] Animator arms;
+        [SerializeField] Animator sword;
 
-        
+
         public bool actifState;
         public bool ultiState;
         void Start()
@@ -63,6 +65,8 @@ namespace scripts
             startCooldownActif = GameManager.GetTime();
             actifState = true;
             attackSystem.stateDash = true;
+            arms.Play("actif");
+            sword.Play("actif");
         }
 
         [SerializeField]
@@ -73,6 +77,8 @@ namespace scripts
         {
             startCooldownUlti = GameManager.GetTime();
             Cmd_SpawnSlash(cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0)).GetPoint(1000));
+            arms.Play("ulti");
+            sword.Play("ulti");
         }
 
         [Command]
