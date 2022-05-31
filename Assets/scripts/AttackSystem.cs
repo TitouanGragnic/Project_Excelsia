@@ -40,26 +40,21 @@ namespace scripts
             index = comboStep;
             if (testBlood && Input.GetMouseButtonDown(1))
                 player.TakeDamage(0f,"normal");
-            if (anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.7 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
+            if (anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
             {
                 ComboReset();
                 comboPossible = true;
             }
-            if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1)
+            if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
             {
                 Combo();
             }
             if (Input.GetMouseButtonDown(0))
             {
-                if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible)
+                if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
                 {
                     comboStep += 1;
                     comboPossible = false;
-                }
-                else if(comboPossible || comboStep == 0 || comboStep > 5)
-                {
-                    ComboReset();
-                    Attack();
                 }
                 else if (anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm"))
                 {
