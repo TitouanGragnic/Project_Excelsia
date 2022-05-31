@@ -196,9 +196,15 @@ public class Movement : MonoBehaviour
             animator.SetBool("Jumping", false);
 
         if (isSliding)
+        {
             animator.SetBool("Sliding", true);
+            arm.SetBool("slide", true);
+        }
         else
+        {
             animator.SetBool("Sliding", false);
+            arm.SetBool("slide", false);
+        }
 
         
         if (isGrounded && isCrouching && rb.velocity.magnitude > slideMinSpeed)
