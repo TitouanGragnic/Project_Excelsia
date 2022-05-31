@@ -17,11 +17,28 @@ namespace scripts
         LineRenderer lr;
         [SerializeField]
         GameObject rocket;
+        
         [SerializeField]
-        Material colorBase;
+        Material[] colorBases;
         [SerializeField]
-        GameObject[] parts;
-        Material color;
+        GameObject[] parts0;
+        [SerializeField] int[] index0;
+        [SerializeField]
+        GameObject[] parts1;
+        [SerializeField] int[] index1;
+        [SerializeField]
+        GameObject[] parts2;
+        [SerializeField] int[] index2;
+        [SerializeField]
+        GameObject[] parts3;
+        [SerializeField] int[] index3;
+        [SerializeField]
+        GameObject[] parts4;
+        [SerializeField] int[] index4;
+        [SerializeField]
+        GameObject[] parts5;
+        [SerializeField] int[] index5;
+        List<Material> colors;
 
         public bool isServer;
 
@@ -33,8 +50,15 @@ namespace scripts
         public int maxCooldown = 50;
         private int cooldown;
         private bool shootState;
+
+
+        List<GameObject[]> Parts;
+        List<int[]> Index;
+
+        Quaternion start;
         void Start()
         {
+            start = new Quaternion(head.transform.rotation.x, head.transform.rotation.y, head.transform.rotation.z, head.transform.rotation.w);
             on = true;
             activ = true;
             disolve = 0;
@@ -42,18 +66,31 @@ namespace scripts
             lr.positionCount = 2;
             shootState = true;
             cooldown = maxCooldown;
-            color = new Material(colorBase);
 
-            foreach (GameObject part in parts)
-                part.GetComponent<MeshRenderer>().material = color ;
+            Parts = new List<GameObject[]>();
+            Parts.Add(parts0); Parts.Add(parts1); Parts.Add(parts2); Parts.Add(parts3); Parts.Add(parts4); Parts.Add(parts5);
+
+            Index = new List<int[]>();
+            Index.Add(index0);Index.Add(index1);Index.Add(index2);Index.Add(index3);Index.Add(index4);Index.Add(index5);
+
+
+            colors = new List<Material>();
+            foreach (Material m in colorBases)
+                colors.Add( new Material(m));
+
+            for (int i = 0; i < colors.Count; i++)
+                for (int j = 0; j < Parts[i].Length; j++)
+                    Parts[i][j].GetComponent<MeshRenderer>().materials[Index[i][j]] = colors[i];
+
         }
 
         void Update()
         {
 
             lr.gameObject.SetActive(activ || on);
-            foreach (GameObject part in parts)
-                part.SetActive(activ || on);
+            foreach (GameObject[] parts in Parts)
+                foreach(GameObject part in parts)
+                    part.SetActive(activ || on);
 
             FindTaget();
             if (activ && on && isServer)
@@ -69,29 +106,35 @@ namespace scripts
             disolve -= 0.01f;
             if (disolve <= 0)
             {
-                color.SetFloat("_Dissolve", 0);
+                foreach(Material color in colors)
+                    color.SetFloat("_Dissolve", 0);
                 on = true;
                 lr.gameObject.SetActive(true);
-                foreach (GameObject part in parts)
-                    part.SetActive(true);
+                foreach(GameObject[] parts in Parts)
+                    foreach (GameObject part in parts)
+                        part.SetActive(true);
             }
             else
-                color.SetFloat("_Dissolve", disolve);
+                foreach(Material color in colors)
+                    color.SetFloat("_Dissolve", disolve);
         }
         void Desactivate()
         {
             disolve += 0.01f;
             if (disolve >= 1)
             {
-                color.SetFloat("_Dissolve", 1);
+                foreach(Material color in colors)
+                    color.SetFloat("_Dissolve", 1);
                 on = false;
 
                 lr.gameObject.SetActive(false);
-                foreach (GameObject part in parts)
-                    part.SetActive(false);
+                foreach(GameObject[] parts in Parts)
+                    foreach (GameObject part in parts)
+                        part.SetActive(false);
             }
             else
-                color.SetFloat("_Dissolve", disolve);
+                foreach(Material color in colors)
+                    color.SetFloat("_Dissolve", disolve);
         }
         void Attack()
         {
@@ -136,9 +179,10 @@ namespace scripts
 
             RaycastHit hit;
             head.transform.LookAt(target.transform.position + Vector3.up*1.5f);
+            head.transform.Rotate(Vector3.right * 180);
 
 
-            if (Physics.Raycast(head.transform.position + head.transform.forward *1.5f, head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11 && hit.collider.gameObject.layer != 0 && hit.collider.gameObject.layer != 7)
+            if (Physics.Raycast(head.transform.position + head.transform.forward *2, head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11 && hit.collider.gameObject.layer != 0 && hit.collider.gameObject.layer != 7)
             {
                 lr.SetPosition(0, head.transform.position);
                 lr.SetPosition(1, target.transform.position + Vector3.up * 1.5f);
@@ -149,11 +193,12 @@ namespace scripts
         }
         private void ResetLr()
         {
+            head.transform.rotation.Set(start.x,start.y,start.z,start.w);
             target = null;
             lr.SetPosition(0, head.transform.position);
             lr.SetPosition(1, head.transform.position);
         }
-
+        
         
     }
 }
