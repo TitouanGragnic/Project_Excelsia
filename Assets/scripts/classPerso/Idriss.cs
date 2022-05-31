@@ -64,21 +64,32 @@ namespace scripts
         }
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
-                Lightning();
+            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti||true)
+                PreUlti();
         }
+
+        int startPreUlti;
+        bool ultiWait;
+        int timeBeforeUlti = 1700;
+        void PreUlti()
+        {
+            startPreUlti = GameManager.GetTimeMili();
+            ultiWait = true;
+            arms.SetBool("ulti", true);
+        }
+
         [SerializeField] POVcam povcam;
 
         [Command]
         void Lightning()
         {
+            ultiWait = false;
             povcam.multiplier /= 10;
             startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
             laserVFX.SetBool("Loop", true);
             ultiOn = true;
             RpcLightning(true);
-            arms.SetBool("ulti", true);
         }
         void EndUlti()
         {
@@ -100,7 +111,6 @@ namespace scripts
             float lenght = 200f;
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 200f, mask))
             {
-                Debug.Log(hit.collider.gameObject.layer);
                 lenght = hit.distance;
                 if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                     CmdPlayerAttack(hit.collider.name, hit.point, 0.5f);
@@ -130,6 +140,9 @@ namespace scripts
             //ulti 
             if (ultiOn &&  GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
                 EndUlti();
+            if (ultiWait && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
+                Lightning();
+
         }
         private void EndElectric()
         {

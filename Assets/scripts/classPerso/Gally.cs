@@ -26,6 +26,9 @@ namespace scripts
             //Actif
             actifState = false;
             personnage = "Gally";
+
+
+            ultiWait = false;
         }
 
         // Update is called once per frame
@@ -42,14 +45,26 @@ namespace scripts
         public new void Ulti()
         {
             Debug.Log("Gally Ulti");
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti || true)
-                Slash();
+            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti || true)
+                PreUlti();
+        }
+        int startPreUlti;
+        bool ultiWait;
+        int timeBeforeUlti = 1810;
+        void PreUlti()
+        {
+            arms.Play("ulti");
+            sword.Play("ulti");
+            startPreUlti = GameManager.GetTimeMili();
+            ultiWait = true;
         }
 
         private void CoolDown()
         {
-            if (startCooldownActif <= 4 * maxCooldownActif / 5 && actifState)
+            if ( GameManager.GetTime()- startCooldownActif <= 4 * maxCooldownActif / 5 && actifState)
                 EndDash();
+            if (ultiWait && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
+                Slash();
         }
 
         private void EndDash()
@@ -75,10 +90,10 @@ namespace scripts
 
         void Slash()
         {
+            ultiWait = false;
             startCooldownUlti = GameManager.GetTime();
             Cmd_SpawnSlash(cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0)).GetPoint(1000));
-            arms.Play("ulti");
-            sword.Play("ulti");
+
         }
 
         [Command]
