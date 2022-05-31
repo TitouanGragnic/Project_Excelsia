@@ -15,6 +15,7 @@ namespace scripts
 
         [SerializeField]
         Perso perso;
+        [SerializeField] Animator arm;
         [SyncVar]
         public bool state;
         private int maxCooldown;
@@ -43,8 +44,11 @@ namespace scripts
             CmdPostureSystem(input);
 
             GraphicGuard(input);
-            
 
+            if (state)
+                arm.SetBool("block", true);
+            else
+                arm.SetBool("block", false);
 
         }
         [Command(requiresAuthority = false)]
