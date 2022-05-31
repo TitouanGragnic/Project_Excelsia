@@ -82,7 +82,7 @@ namespace scripts
 
         void OnCollisionEnter(Collision col)
         {
-            if (isServer && col.gameObject.layer != 21)
+            if (isServer && col.gameObject.layer != 21 && col.gameObject.layer != 0)
             {
                 if ((col.gameObject.layer == 9 || col.gameObject.layer == 8) && !touche)// layer client
                 {

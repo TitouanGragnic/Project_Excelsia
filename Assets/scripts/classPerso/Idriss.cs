@@ -14,7 +14,7 @@ namespace scripts
         Grapple grapple;
 
         [SerializeField] GameObject lightning;
-
+        [SerializeField] Animator arms;
 
         //[ACTIF]
         int maxCooldownActifON = 10;
@@ -78,6 +78,7 @@ namespace scripts
             laserVFX.SetBool("Loop", true);
             ultiOn = true;
             RpcLightning(true);
+            arms.Play("ulti");
         }
         void EndUlti()
         {
@@ -142,6 +143,7 @@ namespace scripts
             lightning.SetActive(true);
             startCooldownActif = GameManager.GetTime();
             electricState = true;
+            arms.Play("actif");
         }
     }
 }
