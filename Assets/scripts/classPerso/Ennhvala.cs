@@ -14,6 +14,8 @@ namespace scripts
         [SerializeField]
         GameObject knife;
 
+        [SerializeField] Animator arms;
+
         public bool actifState;
         public bool ultiState;
         int maxCooldownUltiON = 10;
@@ -67,6 +69,7 @@ namespace scripts
             {
                 Cmd_SpawnK(arm.transform.position, cam.transform.forward);
                 startCooldownActif = GameManager.GetTime();
+                arms.Play("actif");
             }
             
         }
@@ -94,6 +97,7 @@ namespace scripts
 
                 smokeVFX.SetBool("Loop", true);
                 SetVFX(true);
+                arms.Play("ulti");
             }
         }
 
