@@ -31,6 +31,7 @@ namespace scripts
         {
             if (start)
             {
+                Video.Play();
                 if (Video.isPlaying)
                 {
                     start = false;
