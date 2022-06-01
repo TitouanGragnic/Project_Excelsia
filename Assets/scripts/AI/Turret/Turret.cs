@@ -10,6 +10,7 @@ namespace scripts
     {
         [SerializeField]
         GameObject head;
+        [SerializeField] GameObject support;
         [SerializeField]
         GameObject target;
         [SerializeField]
@@ -89,7 +90,8 @@ namespace scripts
 
         void Update()
         {
-
+            head.SetActive(activ || on);
+            support.SetActive(activ || on);
             lr.gameObject.SetActive(activ || on);
             foreach (GameObject[] parts in Parts)
                 foreach(GameObject part in parts)

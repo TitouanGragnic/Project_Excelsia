@@ -58,6 +58,7 @@ namespace scripts
         {
             if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
             {
+                ChangeTypeATK("ultiTamo");
                 attack = false;
                 startCooldownUltiOn = GameManager.GetTimeMili();
                 ultiOn = true;
@@ -72,17 +73,29 @@ namespace scripts
         void AttackUlti()
         {
 
-            RaycastHit hit;
-            if (Physics.Raycast(cam.transform.position, camHolder.transform.forward, out hit, 200, layerMask))
+            bool touche = false;
+            float k = 1;
+
+            while (!touche && k >= 0)
             {
-                Debug.DrawRay(transform.position, camHolder.transform.forward * hit.distance, Color.yellow);
-                Debug.Log("Hit");
+                RaycastHit hit;
+
+                for (int i = -1; i < 2; i += 2)
+                {
+                    Vector3 dir = new Vector3(i *k, 0, 0) + camHolder.transform.forward;
+                    if (!touche && Physics.Raycast(cam.transform.position, dir, out hit, attackSystem.range+5, layerMask))
+                    {
+                        touche = true;
+                        CmdPlayerAttack(hit.collider.name, hit.point, 90);
+                    }
+                }
+                k-=0.1f;
+
             }
-            else
-            {
-                Debug.DrawRay(transform.position, camHolder.transform.forward * 1000, Color.white);
-                Debug.Log("No Hit");
-            }
+
+
+
+            
         }
 
         void EndUlti()
@@ -90,6 +103,7 @@ namespace scripts
             foreach(var e in ultiEffect)
                 e.Active(false);
             ultiOn = false;
+            ChangeTypeATK("normal");
         }
         private void SpawnMine()
         {
