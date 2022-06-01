@@ -10,6 +10,7 @@ namespace scripts
         [SerializeField] AudioClip[] soundBoard;
         [SerializeField] Movement movement;
         [SerializeField] Perso player;
+        [SerializeField] Animator arms;
 
         public float life;
 
@@ -65,17 +66,6 @@ namespace scripts
                 if (lecteur.clip != soundBoard[4])
                     lecteur.Stop();
                 lecteur.clip = soundBoard[4];
-                if (!lecteur.isPlaying)
-                    lecteur.Play();
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (lecteur.clip != soundBoard[5] && lecteur.clip != soundBoard[6])
-                    lecteur.Stop();
-                if (lecteur.clip == soundBoard[5])
-                    lecteur.clip = soundBoard[6];
-                else
-                    lecteur.clip = soundBoard[5];
                 if (!lecteur.isPlaying)
                     lecteur.Play();
             }

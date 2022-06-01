@@ -19,6 +19,9 @@ namespace scripts
         [SerializeField] Animator anim;
         [SerializeField] Animator arm;
 
+        [SerializeField] AudioSource lecteur;
+        [SerializeField] AudioClip[] sound;
+
         bool comboPossible = false;
         int comboStep = 0;
         float lastTime = 0;
@@ -62,7 +65,14 @@ namespace scripts
                     Attack();
                 }
             }
-            
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm")){
+                if(lecteur.clip != sound[0])
+                {
+                    lecteur.clip = sound[0];
+                    lecteur.loop = true;
+                    lecteur.Play();
+                }
+            }
         }
 
         [Client]
