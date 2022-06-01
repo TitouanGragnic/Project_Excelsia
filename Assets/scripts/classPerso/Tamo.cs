@@ -49,6 +49,7 @@ namespace scripts
         bool ultiOn;
         int startCooldownUltiOn;
         int endCooldownUlti = 2000;
+        [SerializeField] UltiTamo[] ultiEffect;
         public new void Ulti()
         {
             if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
@@ -56,12 +57,15 @@ namespace scripts
                 startCooldownUltiOn = GameManager.GetTimeMili();
                 ultiOn = true;
                 armInator.Play("ulti");
+                foreach(var e in ultiEffect)
+                    e.Active(true);
             }
         }
 
         void EndUlti()
         {
-
+            foreach(var e in ultiEffect)
+                e.Active(false);
             ultiOn = false;
         }
         private void SpawnMine()
