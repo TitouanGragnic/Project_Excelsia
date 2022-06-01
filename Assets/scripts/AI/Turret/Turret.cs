@@ -109,8 +109,10 @@ namespace scripts
             disolve -= 0.01f;
             if (disolve <= 0)
             {
-                foreach(Material color in colors)
-                    color.SetFloat("_Dissolve", 0);
+                foreach (GameObject[] parts in Parts)
+                    foreach (GameObject part in parts)
+                        for (int i = 0; i < part.GetComponents<MeshRenderer>()[0].materials.Length; i++)
+                            part.GetComponents<MeshRenderer>()[0].materials[i].SetFloat("_Dissolve", 0);
                 on = true;
                 lr.gameObject.SetActive(true);
                 foreach(GameObject[] parts in Parts)
@@ -118,26 +120,33 @@ namespace scripts
                         part.SetActive(true);
             }
             else
-                foreach(Material color in colors)
-                    color.SetFloat("_Dissolve", disolve);
+                foreach(GameObject[] parts in Parts)
+                    foreach (GameObject part in parts)
+                        for (int i = 0; i < part.GetComponents<MeshRenderer>()[0].materials.Length; i++)
+                            part.GetComponents<MeshRenderer>()[0].materials[i].SetFloat("_Dissolve", disolve);
         }
         void Desactivate()
         {
             disolve += 0.01f;
             if (disolve >= 1)
             {
-                foreach(Material color in colors)
-                    color.SetFloat("_Dissolve", 1);
+                foreach (GameObject[] parts in Parts)
+                    foreach (GameObject part in parts)
+                        for (int i = 0; i < part.GetComponents<MeshRenderer>()[0].materials.Length; i++)
+                            part.GetComponents<MeshRenderer>()[0].materials[i].SetFloat("_Dissolve", 1);
                 on = false;
 
                 lr.gameObject.SetActive(false);
-                foreach(GameObject[] parts in Parts)
+                foreach (GameObject[] parts in Parts)
                     foreach (GameObject part in parts)
                         part.SetActive(false);
             }
             else
-                foreach(Material color in colors)
-                    color.SetFloat("_Dissolve", disolve);
+                foreach (GameObject[] parts in Parts)
+                    foreach (GameObject part in parts)
+                        for (int i = 0; i < part.GetComponents<MeshRenderer>()[0].materials.Length; i++)
+                            part.GetComponents<MeshRenderer>()[0].materials[i].SetFloat("_Dissolve", disolve);
+
         }
         void Attack()
         {
