@@ -241,6 +241,7 @@ MonoBehaviour:
   Network: {fileID: 3790208292056949619}
   text: {fileID: 922402677}
   Video: {fileID: 1813242061}
+  Audio: {fileID: 1961247990}
   start: 0
 --- !u!1 &384374689
 GameObject:
@@ -2235,7 +2236,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961247985}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ea958f2f21dbb2745be64dea13acc595, type: 3}
