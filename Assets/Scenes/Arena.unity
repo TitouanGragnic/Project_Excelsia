@@ -47101,7 +47101,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52132
+  m_Name: pb_Mesh36824
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -47598,7 +47598,7 @@ PrefabInstance:
     - target: {fileID: -2924687451411248273, guid: 51d01da5818532147951aaa26e829615, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 08727efa66b86f946bacfb83bac79d8d, type: 2}
+      objectReference: {fileID: 2100000, guid: 7994d4b1ee2c98d4197354d232c714f3, type: 2}
     - target: {fileID: -2701114346260339781, guid: 51d01da5818532147951aaa26e829615, type: 3}
       propertyPath: m_Intensity
       value: 5000
@@ -47618,11 +47618,11 @@ PrefabInstance:
     - target: {fileID: -1526509560930016547, guid: 51d01da5818532147951aaa26e829615, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 08727efa66b86f946bacfb83bac79d8d, type: 2}
+      objectReference: {fileID: 2100000, guid: 5e9eaffef4334234089d0064c179a5ba, type: 2}
     - target: {fileID: -1526509560930016547, guid: 51d01da5818532147951aaa26e829615, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 08727efa66b86f946bacfb83bac79d8d, type: 2}
+      objectReference: {fileID: 2100000, guid: c91b77a072ed1c641a166f9025100e17, type: 2}
     - target: {fileID: -1338892424699173356, guid: 51d01da5818532147951aaa26e829615, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -47998,6 +47998,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   song: {fileID: 680482295}
+--- !u!1 &680482300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8256134651489076907, guid: 51d01da5818532147951aaa26e829615, type: 3}
+  m_PrefabInstance: {fileID: 680482294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &680482301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680482300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ea13b809800774cbd059aa36ef343f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diff:
+  - {fileID: 2800000, guid: 3cf863e3816d1de4292fdf84838ac427, type: 3}
+  - {fileID: 2800000, guid: ee6f109e44279ba43aa3e2211ae589f8, type: 3}
+  - {fileID: 2800000, guid: 3235ffeea40a3b1488affcabe4133f63, type: 3}
+  - {fileID: 2800000, guid: 41afa72bb31be7a4c91c6f0ad48e1f50, type: 3}
+  screen: {fileID: 680482300}
+  yes: 1
 --- !u!1001 &701024384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93644,7 +93668,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51674
+  m_Name: pb_Mesh36366
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
