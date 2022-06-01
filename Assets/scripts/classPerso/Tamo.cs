@@ -24,6 +24,8 @@ namespace scripts
             startCooldownActif = GameManager.GetTime();
             startCooldownUlti = GameManager.GetTime();
             personnage = "Tamo";
+
+            ultiOn = false;
         }
         private void Update()
         {
@@ -31,6 +33,8 @@ namespace scripts
         }
         private void CoolDown()
         {
+            if (ultiOn && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti)
+                EndUlti();
         }
         public new void Actif()
         {
@@ -40,6 +44,29 @@ namespace scripts
                 startCooldownActif = GameManager.GetTime();
             }
 
+        }
+        [SerializeField] Animator armInator;
+        bool ultiOn;
+        int startCooldownUltiOn;
+        int endCooldownUlti = 2000;
+        [SerializeField] UltiTamo[] ultiEffect;
+        public new void Ulti()
+        {
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
+            {
+                startCooldownUltiOn = GameManager.GetTimeMili();
+                ultiOn = true;
+                armInator.Play("ulti");
+                foreach(var e in ultiEffect)
+                    e.Active(true);
+            }
+        }
+
+        void EndUlti()
+        {
+            foreach(var e in ultiEffect)
+                e.Active(false);
+            ultiOn = false;
         }
         private void SpawnMine()
         {
