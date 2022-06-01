@@ -29,7 +29,11 @@ namespace scripts
                     start = false;
                 }
             }
-
+            else
+            {
+                if (lecteur.clip != null && !lecteur.isPlaying)
+                    secteur.SetActive(false);
+            }
             if (Input.GetKey(KeyCode.Space))
             {
                 secteur.SetActive(false);
