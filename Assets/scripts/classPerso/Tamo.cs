@@ -34,7 +34,9 @@ namespace scripts
         private void CoolDown()
         {
             if (ultiOn && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti)
-                EndUlti();
+                EndUlti(); 
+            if (ultiOn && !attack && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti/2)
+                AttackUlti();
         }
         public new void Actif()
         {
@@ -47,6 +49,7 @@ namespace scripts
         }
         [SerializeField] Animator armInator;
         bool ultiOn;
+        bool attack;
         int startCooldownUltiOn;
         int endCooldownUlti = 2000;
         [SerializeField] UltiTamo[] ultiEffect;
@@ -54,11 +57,30 @@ namespace scripts
         {
             if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
             {
+                attack = false;
                 startCooldownUltiOn = GameManager.GetTimeMili();
                 ultiOn = true;
                 armInator.Play("ulti");
                 foreach(var e in ultiEffect)
                     e.Active(true);
+            }
+        }
+
+        [SerializeField] LayerMask layerMask;
+
+        void AttackUlti()
+        {
+
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, camHolder.transform.forward, out hit, 200, layerMask))
+            {
+                Debug.DrawRay(transform.position, camHolder.transform.forward * hit.distance, Color.yellow);
+                Debug.Log("Hit");
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, camHolder.transform.forward * 1000, Color.white);
+                Debug.Log("No Hit");
             }
         }
 

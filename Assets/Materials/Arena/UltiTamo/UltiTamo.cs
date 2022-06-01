@@ -13,7 +13,7 @@ public class UltiTamo : MonoBehaviour
     private void Start()
     {
         if (arm)
-            smokeVFX.SetFloat("Size", 50);
+            transform.localScale /= 10 ;
 
     }
     void Update()
