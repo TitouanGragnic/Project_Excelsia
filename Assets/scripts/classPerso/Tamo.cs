@@ -13,7 +13,7 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
 
-
+        [SerializeField] Animator arms;
 
         void Start()
         {
@@ -44,6 +44,7 @@ namespace scripts
             {
                 SpawnMine();
                 startCooldownActif = GameManager.GetTime();
+                arms.Play("actif");
             }
 
         }
