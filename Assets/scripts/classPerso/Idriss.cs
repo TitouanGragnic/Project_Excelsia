@@ -61,12 +61,12 @@ namespace scripts
             if (!ultiOn && ! ultiWait)
                 SetSensibility(true);
 
+            if (ultiOn && gameObject.layer == 8)
+                MajLaser();
 
         }
         void ServerUpdate()
         {
-            if (ultiOn)
-                MajLaser();
         }
 
         public new void Actif()
