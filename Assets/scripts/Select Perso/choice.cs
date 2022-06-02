@@ -156,7 +156,6 @@ namespace scripts {
             script.Place(Pnb);
             NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
             NetworkServer.Destroy(oldPlayer);
-            
         }
     } 
 }
