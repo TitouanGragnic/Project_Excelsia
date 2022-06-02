@@ -35,7 +35,7 @@ namespace scripts
         {
             if (ultiOn && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti)
                 EndUlti(); 
-            if (ultiOn && attack  && !attack && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti/2)
+            if (ultiOn && !attack  && !attack && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti/2)
                 AttackUlti();
         }
         public new void Actif()
