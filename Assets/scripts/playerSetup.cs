@@ -55,7 +55,8 @@ namespace scripts
 
         private void SetLayerRecursively(GameObject obj,string layer)
         {
-            obj.layer = LayerMask.NameToLayer(layer);
+            if (obj.layer != 0)
+                obj.layer = LayerMask.NameToLayer(layer);
 
             foreach (Transform child in obj.transform)
             {
