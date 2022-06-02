@@ -81,7 +81,6 @@ namespace Mirror.Discovery
         {
             string _id = string.Empty;
             _id += (char)UnityEngine.Random.Range(64, 90);
-            int x = 0;
             for (int i = 8; i < ip.Length; i++)
             {
                 if (ip[i] == '.')
