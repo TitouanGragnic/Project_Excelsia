@@ -17,6 +17,7 @@ namespace scripts {
         private GameObject grappleHole;
 
         [SerializeField] public Slider slider;
+        [SerializeField] public Animator arm;
 
         public int startGrappleCooldown;
         public int maxGrappleCooldown;
@@ -54,7 +55,7 @@ namespace scripts {
                     joint.maxDistance = grapple_Sync.distanceFromPoint + 1000;
                     joint.minDistance = 0;
                     grapple_Sync.Cmd_jointSync(hit.normal, hit.point);
-
+                    arm.Play("grapple");
                 }
             }
             if (Input.GetKeyUp("e") || (grapple_Sync.distanceFromPoint <= 5))
