@@ -208,7 +208,8 @@ GameObject:
   - component: {fileID: 2293174555886194704}
   - component: {fileID: 6840492453360562926}
   - component: {fileID: 3057167619237878389}
-  - component: {fileID: 2526530276852583275}
+  - component: {fileID: 9151157016607283443}
+  - component: {fileID: 5483415873718664451}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -256,7 +257,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 26.991467
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -332,7 +333,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6876293045112725752}
   m_Enabled: 1
---- !u!114 &2526530276852583275
+--- !u!114 &9151157016607283443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,6 +395,23 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &5483415873718664451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876293045112725752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 1ac175fb9caa3274795fc880d225a856, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &8353708885769833057
 GameObject:
   m_ObjectHideFlags: 0
