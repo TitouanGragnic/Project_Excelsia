@@ -87,7 +87,7 @@ namespace scripts
                     if (!touche && Physics.Raycast(cam.transform.position, dir, out hit, attackSystem.range + 5, layerMask))
                     { 
                         touche = true;
-                        CmdPlayerAttack(hit.collider.name, hit.point, 90);
+                        CmdPlayerAttack(hit.collider.name, hit.point, 125);
                     }
                 }
                 k-=0.1f;

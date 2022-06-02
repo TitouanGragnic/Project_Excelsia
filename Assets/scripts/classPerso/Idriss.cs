@@ -109,22 +109,25 @@ namespace scripts
             ultiWait = false;
             startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
-            laserVFX.SetBool("Loop", true);
             ultiOn = true;
             RpcLightning(true);
         }
+        [Command]
         void EndUlti()
         {
             
-            laserVFX.SetFloat("Lenght", 10);
             ChangeTypeATK("normal");
-            laserVFX.SetBool("Loop", false);
             ultiOn = false;
             RpcLightning(false);
-            arms.SetBool("ulti", false);
         }
         [ClientRpc]void RpcLightning(bool state)
         {
+
+            if (!state)
+            {
+                arms.SetBool("ulti", state);
+                laserVFX.SetFloat("Lenght", 10);
+            }
             laserVFX.SetBool("Loop", state);
         }
         void MajLaser()
@@ -168,7 +171,7 @@ namespace scripts
             //ulti 
             if (ultiOn &&  GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
                 EndUlti();
-            if (ultiWait && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
+            if (ultiWait && !ultiOn && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
                 Lightning();
 
         }
