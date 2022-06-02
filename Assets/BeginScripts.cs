@@ -20,6 +20,10 @@ public class BeginScripts : MonoBehaviour
         beginning.Play("move");
         begin.transform.position = new Vector3(32, 1389, -300);
         time = Time.time;
+        for(int i = 0; i<beginSetup.Length; i++)
+        {
+            beginSetup[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +32,10 @@ public class BeginScripts : MonoBehaviour
         if (Time.time-time > 4)
         {
             cam.SetActive(true);
+            for (int i = 0; i < beginSetup.Length; i++)
+            {
+                beginSetup[i].enabled = true;
+            }
             begin.SetActive(false);
         }
     }
