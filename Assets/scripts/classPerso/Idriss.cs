@@ -103,7 +103,6 @@ namespace scripts
         }
         
 
-        [Command]
         void Lightning()
         {
             ultiWait = false;
@@ -112,7 +111,6 @@ namespace scripts
             ultiOn = true;
             RpcLightning(true);
         }
-        [Command]
         void EndUlti()
         {
             
