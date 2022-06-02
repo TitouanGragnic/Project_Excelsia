@@ -35,7 +35,7 @@ namespace scripts
         {
             if (ultiOn && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti)
                 EndUlti(); 
-            if (ultiOn && !attack && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti/2)
+            if (ultiOn && !attack  && !attack && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti/2)
                 AttackUlti();
         }
         public new void Actif()
@@ -53,6 +53,7 @@ namespace scripts
         bool attack;
         int startCooldownUltiOn;
         int endCooldownUlti = 2000;
+
         [SerializeField] UltiTamo[] ultiEffect;
         public new void Ulti()
         {
@@ -72,7 +73,7 @@ namespace scripts
 
         void AttackUlti()
         {
-
+            attack = true;
             bool touche = false;
             float k = 1;
 
@@ -83,8 +84,9 @@ namespace scripts
                 for (int i = -1; i < 2; i += 2)
                 {
                     Vector3 dir = new Vector3(i *k, 0, 0) + camHolder.transform.forward;
-                    if (!touche && Physics.Raycast(cam.transform.position, dir, out hit, attackSystem.range+5, layerMask))
-                    {
+                    if (!touche && Physics.Raycast(cam.transform.position, dir, out hit, attackSystem.range + 5, layerMask))
+                    { 
+                        Debug.Log("touche");
                         touche = true;
                         CmdPlayerAttack(hit.collider.name, hit.point, 90);
                     }
