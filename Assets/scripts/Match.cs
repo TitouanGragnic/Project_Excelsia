@@ -15,7 +15,13 @@ namespace Mirror.Discovery
         [SerializeField] NetworkManager networkManager;
         private string ip_local;
         private string name;
+        public GameObject setting;
+        public GameObject menu;
 
+        public void doExitGame()
+        {
+            Application.Quit();
+        }
         public static string GetLocalIPAddress()
         {
             var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
@@ -88,6 +94,12 @@ namespace Mirror.Discovery
                 }
             }
             return _id;
+        }
+
+        public void Quit()
+        {
+            setting.SetActive(false);
+            menu.SetActive(true);
         }
     }
 }
