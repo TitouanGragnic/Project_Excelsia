@@ -16,6 +16,8 @@ namespace scripts
         Tamo tamo;
 
 
+        public GameObject setting;
+        public GameObject visu;
         void Update()
         {
             if (gally != null)
@@ -27,6 +29,13 @@ namespace scripts
             else if (tamo != null)
                 UpT();
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                visu.SetActive(false);
+                setting.SetActive(true);
+            }
 
         }
 

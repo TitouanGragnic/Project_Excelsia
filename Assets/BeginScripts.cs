@@ -9,10 +9,12 @@ public class BeginScripts : MonoBehaviour
     public GameObject cam;
     public GameObject begin;
     public Animator beginning;
-    float time = Time.time;
+    float time;
+
     // Start is called before the first frame update
     void Start()
     {
+        time = Time.time;
         cam.SetActive(false);
         begin.SetActive(true);
         beginning.Play("move");
