@@ -5,6 +5,7 @@ using UnityEngine.VFX;
 using UnityEngine.UI;
 using Mirror;
 using System;
+using System.Threading;
 
 namespace scripts
 {
@@ -42,6 +43,10 @@ namespace scripts
             electricState = false;
             personnage = "Idriss";
             ultiOn = false;
+
+
+            multiplier = povcam.multiplier;
+            tempMult = multiplier / 10;
         }
 
         
@@ -50,6 +55,13 @@ namespace scripts
             CoolDown();
             if(isServer)
                 ServerUpdate();
+
+            if (ultiWait)
+                SetSensibility(false);
+            if (!ultiOn && ! ultiWait)
+                SetSensibility(true);
+
+
         }
         void ServerUpdate()
         {
@@ -68,6 +80,8 @@ namespace scripts
                 PreUlti();
         }
 
+        float multiplier;
+        float tempMult;
         int startPreUlti;
         bool ultiWait;
         int timeBeforeUlti = 1700;
@@ -80,11 +94,19 @@ namespace scripts
 
         [SerializeField] POVcam povcam;
 
+        void SetSensibility(bool end)
+        {
+            if (!end)
+                povcam.multiplier =Mathf.Lerp(povcam.multiplier, tempMult,0.1f);
+            else
+                povcam.multiplier = Mathf.Lerp(povcam.multiplier, multiplier, 0.01f);
+        }
+        
+
         [Command]
         void Lightning()
         {
             ultiWait = false;
-            povcam.multiplier /= 10;
             startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
             laserVFX.SetBool("Loop", true);
@@ -93,7 +115,7 @@ namespace scripts
         }
         void EndUlti()
         {
-            povcam.multiplier *= 10;
+            
             laserVFX.SetFloat("Lenght", 10);
             ChangeTypeATK("normal");
             laserVFX.SetBool("Loop", false);
