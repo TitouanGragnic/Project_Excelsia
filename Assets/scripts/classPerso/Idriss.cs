@@ -109,22 +109,25 @@ namespace scripts
             ultiWait = false;
             startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
-            laserVFX.SetBool("Loop", true);
             ultiOn = true;
             RpcLightning(true);
         }
+        [Command]
         void EndUlti()
         {
             
-            laserVFX.SetFloat("Lenght", 10);
             ChangeTypeATK("normal");
-            laserVFX.SetBool("Loop", false);
             ultiOn = false;
             RpcLightning(false);
-            arms.SetBool("ulti", false);
         }
         [ClientRpc]void RpcLightning(bool state)
         {
+
+            if (!state)
+            {
+                arms.SetBool("ulti", state);
+                laserVFX.SetFloat("Lenght", 10);
+            }
             laserVFX.SetBool("Loop", state);
         }
         void MajLaser()
@@ -134,8 +137,12 @@ namespace scripts
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 200f, mask))
             {
                 lenght = hit.distance;
-                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 1000 > predSpawn / 1000)
-                    CmdPlayerAttack(hit.collider.name, hit.point, 0.01f);
+                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 100 > predSpawn / 100)
+                {
+                    CmdPlayerAttack(hit.collider.name, hit.point, 1f - atk);
+                    Debug.Log("touche");
+
+                }
                 else if ((hit.collider.gameObject.layer == 7 || hit.collider.gameObject.layer == 11 || hit.collider.gameObject.layer == 23) && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                     SpawnDebris(hit.point, hit.collider.gameObject.layer.Equals(11) );
             }
@@ -164,7 +171,7 @@ namespace scripts
             //ulti 
             if (ultiOn &&  GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
                 EndUlti();
-            if (ultiWait && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
+            if (ultiWait && !ultiOn && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
                 Lightning();
 
         }

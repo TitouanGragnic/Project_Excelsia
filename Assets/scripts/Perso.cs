@@ -161,7 +161,7 @@ namespace scripts
             {
                 Perso player = GameManager.GetPlayer(playerId);
 
-                player.TakeDamage(atk, typeAtk);
+                //player.TakeDamage(atk, typeAtk);
 
                 player.TakeDamage(damage+atk, typeAtk);
             }
