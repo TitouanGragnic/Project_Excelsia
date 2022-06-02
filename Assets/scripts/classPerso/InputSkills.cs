@@ -32,7 +32,7 @@ namespace scripts
 
         void UpG()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.A))
                 gally.Actif();
             if (Input.GetKeyDown(KeyCode.V))
                 gally.Ulti();
@@ -40,21 +40,21 @@ namespace scripts
 
         void UpI()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.A))
                 idriss.Actif();
             if (Input.GetKeyDown(KeyCode.V))
                 idriss.Ulti();
         }
         void UpE()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.A))
                 ennhvala.Actif();
             if (Input.GetKeyDown(KeyCode.V))
                 ennhvala.Ulti();
         }
         void UpT()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.A))
                 tamo.Actif();
             if (Input.GetKeyDown(KeyCode.V))
                 tamo.Ulti();

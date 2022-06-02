@@ -42,7 +42,7 @@ namespace scripts
             state = true;
             ip_local = GetLocalIPAddress();
             string a = GetRandomMatchID(ip_local);
-            txt.text = "ip_local : " + a;
+            txt.text = "room ID : " + a;
         }
 
         // Update is called once per frame
