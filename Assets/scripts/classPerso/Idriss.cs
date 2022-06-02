@@ -121,8 +121,10 @@ namespace scripts
         }
         [ClientRpc]void RpcLightning(bool state)
         {
+            Debug.Log("yes"+state.ToString());
             ultiOn = state;
-            startCooldownUlti = GameManager.GetTime();
+            if(state)
+                startCooldownUlti = GameManager.GetTime();
 
             if (!state)
             {
