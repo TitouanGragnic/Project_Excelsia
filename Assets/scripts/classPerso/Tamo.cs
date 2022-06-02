@@ -86,7 +86,6 @@ namespace scripts
                     Vector3 dir = new Vector3(i *k, 0, 0) + camHolder.transform.forward;
                     if (!touche && Physics.Raycast(cam.transform.position, dir, out hit, attackSystem.range + 5, layerMask))
                     { 
-                        Debug.Log("touche");
                         touche = true;
                         CmdPlayerAttack(hit.collider.name, hit.point, 90);
                     }

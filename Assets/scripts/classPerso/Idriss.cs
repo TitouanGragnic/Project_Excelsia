@@ -134,8 +134,12 @@ namespace scripts
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 200f, mask))
             {
                 lenght = hit.distance;
-                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 1000 > predSpawn / 1000)
+                if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 100 > predSpawn / 100)
+                {
                     CmdPlayerAttack(hit.collider.name, hit.point, 0.01f);
+                    Debug.Log("touche");
+
+                }
                 else if ((hit.collider.gameObject.layer == 7 || hit.collider.gameObject.layer == 11 || hit.collider.gameObject.layer == 23) && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                     SpawnDebris(hit.point, hit.collider.gameObject.layer.Equals(11) );
             }
