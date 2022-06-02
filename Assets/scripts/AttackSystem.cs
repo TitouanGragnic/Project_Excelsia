@@ -43,7 +43,6 @@ namespace scripts
         void Update()
         {
             index = comboStep;
-            Debug.Log(otherStep);
             if (testBlood && Input.GetMouseButtonDown(1))
                 player.TakeDamage(0f,"normal");
             if (anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
