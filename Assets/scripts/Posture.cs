@@ -39,7 +39,7 @@ namespace scripts
 
         void Update()
         {
-            bool input = Input.GetMouseButtonDown(1);
+            bool input = Input.GetMouseButton(1);
            
             CmdPostureSystem(input);
 
