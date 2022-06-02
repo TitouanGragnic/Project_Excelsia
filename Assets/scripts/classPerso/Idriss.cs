@@ -109,14 +109,16 @@ namespace scripts
             startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
             ultiOn = true;
-            RpcLightning(true);
+            CmdLighning(true);
         }
+
+        [Command] void CmdLighning(bool state) {RpcLightning(state); }
         void EndUlti()
         {
             
             ChangeTypeATK("normal");
             ultiOn = false;
-            RpcLightning(false);
+            CmdLighning(false);
         }
         [ClientRpc]void RpcLightning(bool state)
         {
