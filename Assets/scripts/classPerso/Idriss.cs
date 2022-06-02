@@ -61,12 +61,12 @@ namespace scripts
             if (!ultiOn && ! ultiWait)
                 SetSensibility(true);
 
+            if (ultiOn && gameObject.layer == 8)
+                MajLaser();
 
         }
         void ServerUpdate()
         {
-            if (ultiOn)
-                MajLaser();
         }
 
         public new void Actif()
@@ -106,22 +106,25 @@ namespace scripts
         void Lightning()
         {
             ultiWait = false;
-            startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
-            ultiOn = true;
             CmdLighning(true);
         }
 
-        [Command] void CmdLighning(bool state) {RpcLightning(state); }
-        void EndUlti()
+        [Command] void CmdLighning(bool state) 
         {
-            
+            RpcLightning(state); 
+        }
+        void EndUlti()
+        {            
             ChangeTypeATK("normal");
-            ultiOn = false;
             CmdLighning(false);
         }
         [ClientRpc]void RpcLightning(bool state)
         {
+            Debug.Log("yes"+state.ToString());
+            ultiOn = state;
+            if(state)
+                startCooldownUlti = GameManager.GetTime();
 
             if (!state)
             {
@@ -139,7 +142,7 @@ namespace scripts
                 lenght = hit.distance;
                 if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                 {
-                    CmdPlayerAttack(hit.collider.name, hit.point, 1f - atk);
+                    CmdPlayerAttack(hit.collider.name, hit.point, 0.5f - atk);
                     Debug.Log("touche");
 
                 }

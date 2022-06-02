@@ -63,10 +63,17 @@ namespace scripts
                 attack = false;
                 startCooldownUltiOn = GameManager.GetTimeMili();
                 ultiOn = true;
-                armInator.Play("ulti");
-                foreach(var e in ultiEffect)
-                    e.Active(true);
+                CmdSetULti(true);
             }
+        }
+        [Command] void CmdSetULti(bool state) { RpcSetUlti(state);}
+        [ClientRpc]
+        void RpcSetUlti(bool state)
+        {
+            if(state)
+                armInator.Play("ulti");
+            foreach (var e in ultiEffect)
+                e.Active(state);
         }
 
         [SerializeField] LayerMask layerMask;
@@ -87,7 +94,7 @@ namespace scripts
                     if (!touche && Physics.Raycast(cam.transform.position, dir, out hit, attackSystem.range + 5, layerMask))
                     { 
                         touche = true;
-                        CmdPlayerAttack(hit.collider.name, hit.point, 125);
+                        CmdPlayerAttack(hit.collider.name, hit.point, 200);
                     }
                 }
                 k-=0.1f;
@@ -101,8 +108,7 @@ namespace scripts
 
         void EndUlti()
         {
-            foreach(var e in ultiEffect)
-                e.Active(false);
+            CmdSetULti(false);
             ultiOn = false;
             ChangeTypeATK("normal");
         }
