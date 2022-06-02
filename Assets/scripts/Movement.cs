@@ -152,14 +152,25 @@ public class Movement : MonoBehaviour
         }
 
         if (isGrounded && isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") > 0)
+        {
+            arm.SetBool("running", true);
             animator.SetBool("Running", true);
+        }
         else
+        {
+            arm.SetBool("running", false);
             animator.SetBool("Running", false);
-
+        }
         if (isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") > 0)
+        {
+            arm.SetBool("walking", true);
             animator.SetBool("Walking", true);
+        }
         else
+        {
+            arm.SetBool("walking", false);
             animator.SetBool("Walking", false);
+        }
 
         if (isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") < 0)
             animator.SetBool("Back", true);
@@ -361,11 +372,15 @@ public class Movement : MonoBehaviour
     void StartWallRun()
     {
         if (wallLeft)
+        {
+            arm.SetBool("lwr", true);
             tilt = Mathf.Lerp(tilt, -camTilt, camTiltTime * Time.deltaTime);
+        } 
         else if (wallright)
+        {
+            arm.SetBool("rwr", true);
             tilt = Mathf.Lerp(tilt, camTilt, camTiltTime * Time.deltaTime);
-
-
+        }     
 
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Runfov, RunfovTime * Time.deltaTime);
 
@@ -395,6 +410,8 @@ public class Movement : MonoBehaviour
 
     void StopWallRun()
     {
+        arm.SetBool("rwr", false);
+        arm.SetBool("lwr", false);
         tilt = Mathf.Lerp(tilt, 0, camTiltTime * Time.deltaTime);
         rb.useGravity = true;
         firstTouch = false;
