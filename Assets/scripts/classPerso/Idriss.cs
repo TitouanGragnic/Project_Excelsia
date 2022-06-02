@@ -106,22 +106,23 @@ namespace scripts
         void Lightning()
         {
             ultiWait = false;
-            startCooldownUlti = GameManager.GetTime();
             ChangeTypeATK("electric");
-            ultiOn = true;
             CmdLighning(true);
         }
 
-        [Command] void CmdLighning(bool state) {RpcLightning(state); }
-        void EndUlti()
+        [Command] void CmdLighning(bool state) 
         {
-            
+            RpcLightning(state); 
+        }
+        void EndUlti()
+        {            
             ChangeTypeATK("normal");
-            ultiOn = false;
             CmdLighning(false);
         }
         [ClientRpc]void RpcLightning(bool state)
         {
+            ultiOn = state;
+            startCooldownUlti = GameManager.GetTime();
 
             if (!state)
             {
