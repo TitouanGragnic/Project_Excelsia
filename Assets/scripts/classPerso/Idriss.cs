@@ -142,7 +142,7 @@ namespace scripts
                 lenght = hit.distance;
                 if ((hit.collider.gameObject.layer == 9 || hit.collider.gameObject.layer == 8)&&hit.collider.gameObject.GetComponent<Idriss>()==null && GameManager.GetTimeMili() / 100 > predSpawn / 100)
                 {
-                    CmdPlayerAttack(hit.collider.name, hit.point, 1f - atk);
+                    CmdPlayerAttack(hit.collider.name, hit.point, 0.5f - atk);
                     Debug.Log("touche");
 
                 }
