@@ -55,11 +55,12 @@ namespace scripts {
                     joint.maxDistance = grapple_Sync.distanceFromPoint + 1000;
                     joint.minDistance = 0;
                     grapple_Sync.Cmd_jointSync(hit.normal, hit.point);
-                    arm.Play("grapple");
+                    arm.SetBool("grap", true);
                 }
             }
             if (Input.GetKeyUp("e") || (grapple_Sync.distanceFromPoint <= 5))
             {
+                arm.SetBool("grap", false);
                 Destroy(joint);
                 if (grapple_Sync.state)
                     startGrappleCooldown = GameManager.GetTimeMili();

@@ -1330,7 +1330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 842161816062840243, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1221692145423585110, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_MaxValue
@@ -1348,6 +1348,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1771919809437011150, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7690429962515278503}
     - target: {fileID: 1936186094602835888, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
       value: 
@@ -1452,6 +1456,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2749871190002263269, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749871190002263269, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.44
+      objectReference: {fileID: 0}
     - target: {fileID: 2946217035984152591, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1524,6 +1536,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: d0ab47a174fa96c4dbbbe5a6e5f98aaa, type: 2}
+    - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Height
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Name
       value: Idriss

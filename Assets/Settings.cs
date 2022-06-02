@@ -71,7 +71,7 @@ namespace scripts
         {
             setting.SetActive(false);
             menu.SetActive(true);
-            perso.health = 0;
+            perso.TakeDamage(15000, "normal");
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
