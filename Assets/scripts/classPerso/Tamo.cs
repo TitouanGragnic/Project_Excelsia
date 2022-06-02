@@ -64,9 +64,15 @@ namespace scripts
                 startCooldownUltiOn = GameManager.GetTimeMili();
                 ultiOn = true;
                 armInator.Play("ulti");
-                foreach(var e in ultiEffect)
-                    e.Active(true);
+                CmdSetULti(true);
             }
+        }
+        [Command] void CmdSetULti(bool state) { RpcSetUlti(state);}
+        [ClientRpc]
+        void RpcSetUlti(bool state)
+        {
+            foreach (var e in ultiEffect)
+                e.Active(state);
         }
 
         [SerializeField] LayerMask layerMask;
@@ -101,8 +107,7 @@ namespace scripts
 
         void EndUlti()
         {
-            foreach(var e in ultiEffect)
-                e.Active(false);
+            CmdSetULti(false);
             ultiOn = false;
             ChangeTypeATK("normal");
         }
