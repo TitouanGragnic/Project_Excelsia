@@ -26,6 +26,7 @@ namespace scripts
             personnage = "Tamo";
 
             ultiOn = false;
+            preActifState = false;
         }
         private void Update()
         {
@@ -37,12 +38,21 @@ namespace scripts
                 EndUlti(); 
             if (ultiOn && !attack  && !attack && GameManager.GetTimeMili() - startCooldownUltiOn > endCooldownUlti/2)
                 AttackUlti();
+            if (preActifState && GameManager.GetTimeMili() - preActif > cooldownPreActif)
+            {
+                SpawnMine();
+                preActifState = false;
+            }
         }
+        int preActif;
+        bool preActifState;
+        public int cooldownPreActif = 900;
         public new void Actif()
         {
             if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true)
             {
-                SpawnMine();
+                preActifState = true;
+                preActif = GameManager.GetTimeMili();
                 startCooldownActif = GameManager.GetTime();
                 arms.Play("actif");
             }
@@ -112,9 +122,11 @@ namespace scripts
             ultiOn = false;
             ChangeTypeATK("normal");
         }
+
+        [SerializeField] Transform spawnMine;
         private void SpawnMine()
         {
-            Cmd_SpawnM(arm.transform.position, cam.transform.forward);
+            Cmd_SpawnM(spawnMine.position, cam.transform.forward);
         }
 
         [Command]
@@ -123,7 +135,7 @@ namespace scripts
             GameObject mi = Instantiate(mine, pos + forward.normalized * 2, new Quaternion(0,0,0, 0));
             mi.GetComponent<Mine>().rotate = forward;
             Rigidbody rb = mi.GetComponent<Rigidbody>();
-            rb.AddForce(forward.normalized * 5, ForceMode.Impulse);
+            rb.AddForce(forward.normalized * 10, ForceMode.Impulse);
             NetworkServer.Spawn(mi);
 
         }

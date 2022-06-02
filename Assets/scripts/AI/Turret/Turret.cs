@@ -62,7 +62,7 @@ namespace scripts
         void Start()
         {
             start = new Quaternion(head.transform.rotation.x, head.transform.rotation.y, head.transform.rotation.z, head.transform.rotation.w);
-            forward = head.transform.forward;
+            forward = -head.transform.forward;
             on = true;
             activ = true;
             disolve = 0;
@@ -181,7 +181,7 @@ namespace scripts
             if (target != null && Vector3.Distance(transform.position, target.transform.position) > range)
                 target = null;
 
-            if (target != null &&  Math.Abs(Vector3.Angle(forward,target.transform.position-head.transform.position)) > 90)
+            if (target != null &&  Math.Abs(Vector3.Angle(forward,target.transform.position-head.transform.position)) < 90)
                 FollowTarget();
             else
                 ResetLr();
@@ -189,9 +189,19 @@ namespace scripts
         }
         private void FollowTarget()
         {
+            /*
+            Vector3 direction = target.transform.position + Vector3.up- head.transform.position;
+            //Quaternion toRotation =Quaternion.FromToRotation(-head.transform.forward, direction);
+            //head.transform.rotation = Quaternion.Lerp(head.transform.rotation, toRotation, Time.deltaTime);
 
-            head.transform.LookAt(target.transform.position + Vector3.up*1.5f);
-            head.transform.Rotate(Vector3.right * 180);
+            if (Math.Abs(Vector3.Angle(-head.transform.forward, target.transform.position - head.transform.position)) > 5)
+                head.transform.rotation = Quaternion.LookRotation(-head.transform.forward, (target.transform.position - head.transform.position).normalized);
+            */
+
+            head.transform.LookAt(target.transform.position);
+            head.transform.Rotate(Vector3.up * 180);
+
+            
             lr.SetPosition(0, head.transform.position);
             lr.SetPosition(1, target.transform.position + Vector3.up );
             
@@ -199,7 +209,7 @@ namespace scripts
         }
         private void ResetLr()
         {
-            head.transform.rotation.Set(start.x,start.y,start.z,start.w);
+            head.transform.rotation = Quaternion.Lerp(head.transform.rotation, start, 0.1f);
             target = null;
             lr.SetPosition(0, head.transform.position);
             lr.SetPosition(1, head.transform.position);

@@ -29,6 +29,7 @@ namespace scripts
 
         [SerializeField]
         VisualEffect fogVFX;
+        [SerializeField] Transform effect;
 
         void Start()
         {
@@ -46,6 +47,8 @@ namespace scripts
         {
             if (isServer)
                 ServerUpdate();
+
+            effect.rotation = Quaternion.Inverse(transform.rotation);
         }
 
         void ServerUpdate()
