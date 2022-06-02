@@ -63,7 +63,6 @@ namespace scripts
                 attack = false;
                 startCooldownUltiOn = GameManager.GetTimeMili();
                 ultiOn = true;
-                armInator.Play("ulti");
                 CmdSetULti(true);
             }
         }
@@ -71,6 +70,8 @@ namespace scripts
         [ClientRpc]
         void RpcSetUlti(bool state)
         {
+            if(state)
+                armInator.Play("ulti");
             foreach (var e in ultiEffect)
                 e.Active(state);
         }
