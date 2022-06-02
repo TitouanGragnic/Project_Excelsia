@@ -12,7 +12,19 @@ namespace scripts
         GameObject PlayerPrefab;
         [SerializeField]
         Perso perso;
+        public GameObject setting;
+        public GameObject visu;
 
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                visu.SetActive(false);
+                setting.SetActive(true);
+            }
+        }
         public void Cmd_ReplacePlayer()
         {
             GameObject oldPlayer = connectionToClient.identity.gameObject;

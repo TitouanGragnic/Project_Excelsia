@@ -95,12 +95,6 @@ namespace Mirror.Discovery
             }
             return _id;
         }
-
-        public void Quit()
-        {
-            setting.SetActive(false);
-            menu.SetActive(true);
-        }
     }
 }
 
