@@ -21,6 +21,9 @@ namespace scripts {
         GameObject Enhvala;
         [SerializeField]
         GameObject image;
+
+        public GameObject wait;
+        public GameObject play;
         [SerializeField]
         Camera cam;
 
@@ -37,10 +40,11 @@ namespace scripts {
         public bool spawn;
         [SyncVar]
         public bool minchoice;
+        public bool maybe = false;
+        public bool one = true;
 
         private void Start()
         {
-            image.SetActive(false);
             minchoice = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -55,15 +59,22 @@ namespace scripts {
             {
                 UpdateChoice();
             }
-                
             else
                 stateStart = (Input.GetKeyDown(KeyCode.B) || GameManager.GetStateStart());
-                 
-           
+            if(stateStart && one)
+            {
+                wait.SetActive(true);
+                image.SetActive(false);
+                play.SetActive(false);
+                one = false;
+            }
         }
         public void Close()
         {
             image.SetActive(false);
+            if (maybe)
+                play.SetActive(true);
+            wait.SetActive(true);
         }
 
         void UpdateChoice()
@@ -72,10 +83,16 @@ namespace scripts {
             {
                 Cmd_ReplacePlayer();
                 image.SetActive(false);
+                wait.SetActive(false);
             }
 
             if (Input.GetKeyDown(KeyCode.B)&& minchoice)
+            {
+                wait.SetActive(false);
+                play.SetActive(true);
                 stateSpawn = true;
+                maybe = true;
+            }
             if (Input.GetKeyDown(KeyCode.N))
                 stateSpawn = false;
 
@@ -89,6 +106,8 @@ namespace scripts {
                     if(hit.collider.name == "jukebox")
                     {
                         image.SetActive(true);
+                        wait.SetActive(false);
+                        play.SetActive(false);
                     }
                     else
                     {
