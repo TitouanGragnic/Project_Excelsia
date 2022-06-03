@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4058073417026094205}
-  m_Layer: 0
+  - component: {fileID: 7312160386121822861}
+  m_Layer: 7
   m_Name: Vent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7312160386121822861
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682533723875286727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.73, y: 2, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3771754469481812466
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +58,7 @@ GameObject:
   - component: {fileID: 873850986445594392}
   - component: {fileID: 8493185570630773126}
   - component: {fileID: 61879058144163161}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +140,7 @@ GameObject:
   - component: {fileID: 2577581573817407532}
   - component: {fileID: 3266551124497962334}
   - component: {fileID: 5787448457117101163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmokeVente (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +249,7 @@ GameObject:
   - component: {fileID: 5249100375426125822}
   - component: {fileID: 3116464997605503556}
   - component: {fileID: 2201772558663072821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
