@@ -29,7 +29,7 @@ namespace scripts
         int otherStep = 0;
 
         public float range;
-        public bool stateDash =false;
+        [SerializeField] public bool stateDash;
 
         public bool testBlood;
 
@@ -38,6 +38,7 @@ namespace scripts
 
         void Awake()
         {
+            stateDash = false;
             range = 2f;
         }
         void Update()
@@ -98,8 +99,8 @@ namespace scripts
 
         void OnCollisionEnter(Collision col)
         {
-            Debug.Log($"layer :{col.gameObject.layer},  stateDash :{stateDash}");
-            if ((col.gameObject.layer == 9 || col.gameObject.layer == 8) && stateDash)
+            //Debug.Log($"layer :{col.gameObject.layer},  stateDash :{stateDash}");
+            if ((col.gameObject.layer == 9 ) && stateDash)
             {
                 player.CmdPlayerAttack(col.gameObject.name, transform.position + new Vector3(0, 1.6f, 0), 50);
                 Debug.Log("dash colision");

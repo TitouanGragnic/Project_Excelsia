@@ -61,7 +61,7 @@ namespace scripts
 
         private void CoolDown()
         {
-            if ( GameManager.GetTime()- startCooldownActif <= 4 * maxCooldownActif / 5 && actifState)
+            if ( GameManager.GetTime()- startCooldownActif > 2 && actifState)
                 EndDash();
             if (ultiWait && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
                 Slash();
