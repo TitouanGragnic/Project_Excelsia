@@ -32,7 +32,7 @@ namespace scripts {
         }
 
 
-
+        public int multiplier = 2;
 
         void Update()
         {
@@ -71,7 +71,7 @@ namespace scripts {
             if (grapple_Sync.IsGrappling())
             {
                 Debug.Log("grapple");
-                player.GetComponent<Rigidbody>().AddForce((grapple_Sync.grapplePoint - player.position).normalized * grappleSpeed * 2, ForceMode.Acceleration);
+                player.GetComponent<Rigidbody>().AddForce((grapple_Sync.grapplePoint - player.position).normalized * grappleSpeed * multiplier, ForceMode.Acceleration);
                 player.GetComponent<Rigidbody>().useGravity = false;
                 grapple_Sync.Cmd_Changed_dt(Vector3.Distance(player.position, grapple_Sync.grapplePoint));
 
