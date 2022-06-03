@@ -180,12 +180,15 @@ namespace scripts
         }
         private void EndElectric()
         {
+            elecVFX.SetBool("Loop", false);
             electricState = false;
             lightning.SetActive(false);
             ChangeTypeATK("normal");
         }
+        [SerializeField] VisualEffect elecVFX;
         private void StartElectric()
         {
+            elecVFX.SetBool("Loop",true); ;
             ChangeTypeATK("electric");
             lightning.SetActive(true);
             startCooldownActif = GameManager.GetTime();
