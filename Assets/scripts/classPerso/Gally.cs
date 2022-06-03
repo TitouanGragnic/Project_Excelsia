@@ -101,7 +101,7 @@ namespace scripts
         {
             GameObject sl = Instantiate(SlashObj, transform.position, transform.rotation);
             Slash Slash = sl.GetComponent<Slash>();
-            sl.GetComponent<Rigidbody>().velocity= cam.transform.forward * Slash.speed;
+            sl.GetComponent<Rigidbody>().velocity= camHolder.transform.forward * Slash.speed;
             RotateDestination(sl, destination, true);
             NetworkServer.Spawn(sl);
 
