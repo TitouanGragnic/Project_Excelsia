@@ -3599,7 +3599,7 @@ PrefabInstance:
       objectReference: {fileID: 5876439812261263881}
     - target: {fileID: 1771919809437011150, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: multiplier
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1936186094602835888, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
@@ -3911,11 +3911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Center.x
-      value: -0.0121643245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Center.y
-      value: 0.79999995
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Name
@@ -3932,6 +3932,14 @@ PrefabInstance:
     - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: armAnimator
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: crouchHeight
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: normalHeight
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838942, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
@@ -4397,6 +4405,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2534374922002084193, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 7866648446065145458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4330451886841851692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3975182171344580197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e6105740ba704409465ac17b13af08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 3562347682902530081}
 --- !u!114 &8049342609815884313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,16 +4468,3 @@ MonoBehaviour:
   actifState: 0
   ultiState: 0
   SlashObj: {fileID: 5587236633171304277, guid: 746cf1afcd9defb4f8c832e2af6f4fe8, type: 3}
---- !u!114 &4330451886841851692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3975182171344580197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e6105740ba704409465ac17b13af08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 3562347682902530081}
