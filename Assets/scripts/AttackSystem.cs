@@ -54,7 +54,18 @@ namespace scripts
             {
                 ComboReset1();
                 otherCombo = true;
+                arm.SetBool("hit5", false);
             }
+            /*if (arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && otherCombo)
+            {
+                arm.SetBool("hit1", false);
+                arm.SetBool("hit2", false);
+                arm.SetBool("hit3", false);
+                arm.SetBool("hit4", false);
+                arm.SetBool("hit5", false);
+                ComboReset1();
+                otherCombo = true;
+            }*/
 
             if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
             {
@@ -169,32 +180,33 @@ namespace scripts
 
         public void Attack1()
         {
-            if (otherStep == 0)
-            {
-                arm.Play("hit1");
-                otherStep = 1;
-                otherCombo = true;
-                return;
-            }
+            arm.Play("hit1");
+            otherStep = 1;
+            otherCombo = true;
+            return;
         }
         public void Combo1()
         {
             otherCombo = true;
             if (otherStep == 2)
             {
-                arm.Play("hit2");
+                arm.SetBool("hit1", false);
+                arm.SetBool("hit2", true);
             }
             if (otherStep == 3)
             {
-                arm.Play("hit3");
+                arm.SetBool("hit2", false);
+                arm.SetBool("hit3", true);
             }
             if (otherStep == 4)
             {
-                arm.Play("hit4");
+                arm.SetBool("hit3", false);
+                arm.SetBool("hit4", true);
             }
             if (otherStep == 5)
             {
-                arm.Play("hit5");
+                arm.SetBool("hit4", false);
+                arm.SetBool("hit5", true);
             }
         }
         public void ComboReset1()
