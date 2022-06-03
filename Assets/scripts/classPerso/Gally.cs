@@ -61,7 +61,7 @@ namespace scripts
 
         private void CoolDown()
         {
-            if ( GameManager.GetTime()- startCooldownActif <= 4 * maxCooldownActif / 5 && actifState)
+            if ( GameManager.GetTime()- startCooldownActif > 2 && actifState)
                 EndDash();
             if (ultiWait && GameManager.GetTimeMili() - startPreUlti > timeBeforeUlti)
                 Slash();
@@ -101,7 +101,7 @@ namespace scripts
         {
             GameObject sl = Instantiate(SlashObj, transform.position, transform.rotation);
             Slash Slash = sl.GetComponent<Slash>();
-            sl.GetComponent<Rigidbody>().velocity= cam.transform.forward * Slash.speed;
+            sl.GetComponent<Rigidbody>().velocity= camHolder.transform.forward * Slash.speed;
             RotateDestination(sl, destination, true);
             NetworkServer.Spawn(sl);
 
