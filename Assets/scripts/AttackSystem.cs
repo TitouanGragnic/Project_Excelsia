@@ -50,34 +50,18 @@ namespace scripts
                 ComboReset();
                 comboPossible = true;
             }
-            if (arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && arm.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
-            {
-                ComboReset1();
-                otherCombo = true;
-                arm.SetBool("hit5", false);
-            }
-            /*if (arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && otherCombo)
-            {
-                arm.SetBool("hit1", false);
-                arm.SetBool("hit2", false);
-                arm.SetBool("hit3", false);
-                arm.SetBool("hit4", false);
-                arm.SetBool("hit5", false);
-                ComboReset1();
-                otherCombo = true;
-            }*/
 
             if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
             {
                 Combo();
             }
-            if (!otherCombo && arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
-            {
-                Combo1();
-            }
 
             if (Input.GetMouseButtonDown(0))
             {
+                if (!arm.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+                {
+                    arm.Play("hit1");
+                }
                 if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
                 {
                     comboStep += 1;
@@ -87,17 +71,6 @@ namespace scripts
                 {
                     ComboReset();
                     Attack();
-                }
-
-                if (arm.GetCurrentAnimatorStateInfo(0).length > arm.GetCurrentAnimatorStateInfo(0).normalizedTime && otherCombo && otherStep < 5)
-                {
-                    otherStep += 1;
-                    otherCombo = false;
-                }
-                else if (arm.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                {
-                    ComboReset1();
-                    Attack1();
                 }
             }
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm")){
@@ -175,44 +148,6 @@ namespace scripts
         {
             comboPossible = false;
             comboStep = 0;
-        }
-
-
-        public void Attack1()
-        {
-            arm.Play("hit1");
-            otherStep = 1;
-            otherCombo = true;
-            return;
-        }
-        public void Combo1()
-        {
-            otherCombo = true;
-            if (otherStep == 2)
-            {
-                arm.SetBool("hit1", false);
-                arm.SetBool("hit2", true);
-            }
-            if (otherStep == 3)
-            {
-                arm.SetBool("hit2", false);
-                arm.SetBool("hit3", true);
-            }
-            if (otherStep == 4)
-            {
-                arm.SetBool("hit3", false);
-                arm.SetBool("hit4", true);
-            }
-            if (otherStep == 5)
-            {
-                arm.SetBool("hit4", false);
-                arm.SetBool("hit5", true);
-            }
-        }
-        public void ComboReset1()
-        {
-            otherCombo = false;
-            otherStep = 0;
         }
     }
 }

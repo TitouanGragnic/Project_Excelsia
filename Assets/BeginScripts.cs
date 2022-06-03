@@ -8,6 +8,7 @@ public class BeginScripts : MonoBehaviour
     public Behaviour[] beginSetup;
     public GameObject cam;
     public GameObject begin;
+    public GameObject canvas;
     public Animator beginning;
     float time;
 
@@ -17,6 +18,7 @@ public class BeginScripts : MonoBehaviour
         time = Time.time;
         cam.SetActive(false);
         begin.SetActive(true);
+        canvas.SetActive(false);
         beginning.Play("move");
         begin.transform.position = new Vector3(32, 1389, -300);
         time = Time.time;
@@ -32,6 +34,7 @@ public class BeginScripts : MonoBehaviour
         if (Time.time-time > 4)
         {
             cam.SetActive(true);
+            canvas.SetActive(true);
             for (int i = 0; i < beginSetup.Length; i++)
             {
                 beginSetup[i].enabled = true;
