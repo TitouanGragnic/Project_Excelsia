@@ -43,6 +43,9 @@ namespace scripts
             ip_local = GetLocalIPAddress();
             string a = GetRandomMatchID(ip_local);
             txt.text = "room ID : " + a;
+
+
+            Debug.Log(GetRandomMatchID("192.168.18.141"));
         }
 
         // Update is called once per frame
