@@ -29,7 +29,7 @@ namespace scripts
         int otherStep = 0;
 
         public float range;
-        public bool stateDash;
+        public bool stateDash =false;
 
         public bool testBlood;
 
@@ -114,9 +114,12 @@ namespace scripts
 
         void OnCollisionEnter(Collision col)
         {
-            
-            if (col.gameObject.layer == 9 && stateDash)
-                player.CmdPlayerAttack(col.gameObject.name,transform.position + new Vector3(0,1.6f,0),50);
+
+            if (col.gameObject.layer == 9 || col.gameObject.layer == 8 && stateDash)
+            {
+                player.CmdPlayerAttack(col.gameObject.name, transform.position + new Vector3(0, 1.6f, 0), 50);
+                Debug.Log("dash colision");
+            }
         }
 
         public void Attack()

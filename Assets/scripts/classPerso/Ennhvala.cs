@@ -130,15 +130,21 @@ namespace scripts
         [SerializeField]
         VisualEffect smokeVFX;
         [SerializeField] LayerMask mask;
-        void SetVFXSmoke()
+        [Command]void SetVFXSmoke()
         {
             smokeVFX.SetVector3("position", new Vector3(transform.position.x, cam.transform.position.y - 1, transform.position.z));
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 50f, mask))
-                smokeVFX.SetFloat("Ground", hit.point.y) ;
+                ClientSetSmokeVFX( hit.point.y);
             else
-                smokeVFX.SetFloat("Ground", 0);
+                ClientSetSmokeVFX(0);
+        }
+
+        [ClientRpc] void ClientSetSmokeVFX(float y)
+        {
+                smokeVFX.SetFloat("Ground", y);
+
         }
     }
 }

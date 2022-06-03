@@ -182,18 +182,22 @@ namespace scripts
         {
             elecVFX.SetBool("Loop", false);
             electricState = false;
-            lightning.SetActive(false);
             ChangeTypeATK("normal");
+            SetEffectLightActif(false);
         }
         [SerializeField] VisualEffect elecVFX;
         private void StartElectric()
         {
             elecVFX.SetBool("Loop",true); ;
             ChangeTypeATK("electric");
-            lightning.SetActive(true);
             startCooldownActif = GameManager.GetTime();
             electricState = true;
             arms.Play("actif");
+            SetEffectLightActif(true);
         }
+
+
+        [Command]void SetEffectLightActif(bool state) { ClientSetEffectLightActif(state); }
+        [ClientRpc] void ClientSetEffectLightActif(bool state) { lightning.SetActive(state);}
     }
 }
