@@ -20,6 +20,11 @@ namespace scripts
         }
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                lecteur.clip = soundBoard[8];
+                lecteur.Play();
+            }
             if(player.health < life)
             {
                 life = player.health;
