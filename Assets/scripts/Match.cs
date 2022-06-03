@@ -13,11 +13,49 @@ namespace Mirror.Discovery
 
         [SerializeField] InputField room;
         [SerializeField] NetworkManager networkManager;
+        public NetworkDiscovery networkDiscovery;
+
         private string ip_local;
         private string name;
         public GameObject setting;
         public GameObject menu;
 
+        void OnGUI()
+        {
+            if (NetworkServer.active || NetworkClient.active)
+                StopButtons();
+        }
+        void StopButtons()
+        {
+            GUILayout.BeginArea(new Rect(10, 40, 100, 25));
+
+            // stop host if host mode
+            if (NetworkServer.active && NetworkClient.isConnected)
+            {
+                if (GUILayout.Button("Stop Host"))
+                {
+                    NetworkManager.singleton.StopHost();
+                }
+            }
+            // stop client if client-only
+            else if (NetworkClient.isConnected)
+            {
+                if (GUILayout.Button("Stop Client"))
+                {
+                    NetworkManager.singleton.StopClient();
+                }
+            }
+            // stop server if server-only
+            else if (NetworkServer.active)
+            {
+                if (GUILayout.Button("Stop Server"))
+                {
+                    NetworkManager.singleton.StopServer();
+                }
+            }
+
+            GUILayout.EndArea();
+        }
         public void doExitGame()
         {
             Application.Quit();
@@ -46,7 +84,6 @@ namespace Mirror.Discovery
             Debug.Log($"{a}");
             networkManager.networkAddress = a;
             networkManager.StartClient();
-
         }
         public static string Decrypt(string ip, string name)
         {

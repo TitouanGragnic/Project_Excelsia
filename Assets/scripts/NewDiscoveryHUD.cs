@@ -19,6 +19,7 @@ namespace Mirror.Discovery
 
         public GUIContent Start;
         public GUIStyle Start1;
+        public GameObject screen;
 
 #if UNITY_EDITOR
         void OnValidate()
@@ -37,11 +38,11 @@ namespace Mirror.Discovery
             if (NetworkManager.singleton == null)
                 return;
 
-            if (!NetworkClient.isConnected && !NetworkServer.active && !NetworkClient.active)
+            if (!NetworkClient.isConnected && !NetworkServer.active && !NetworkClient.active && screen.activeSelf)
                 DrawGUI();
 
-            if (NetworkServer.active || NetworkClient.active)
-                StopButtons();
+            //if (NetworkServer.active || NetworkClient.active)
+                //StopButtons();
         }
 
         void DrawGUI()
