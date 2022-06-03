@@ -11,6 +11,7 @@ namespace scripts
         [SerializeField] Movement movement;
         [SerializeField] Perso player;
         [SerializeField] Animator arms;
+        public Grapple coucou;
 
         public float life;
 
@@ -20,7 +21,7 @@ namespace scripts
         }
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && GameManager.GetTimeMili() - coucou.startGrappleCooldown > coucou.maxGrappleCooldown)
             {
                 lecteur.clip = soundBoard[8];
                 lecteur.Play();
