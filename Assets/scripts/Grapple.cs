@@ -70,7 +70,8 @@ namespace scripts {
 
             if (grapple_Sync.IsGrappling())
             {
-                player.GetComponent<Rigidbody>().AddForce((grapple_Sync.grapplePoint - player.position).normalized * grappleSpeed * 0.5f, ForceMode.Acceleration);
+                Debug.Log("grapple");
+                player.GetComponent<Rigidbody>().AddForce((grapple_Sync.grapplePoint - player.position).normalized * grappleSpeed * 2, ForceMode.Acceleration);
                 player.GetComponent<Rigidbody>().useGravity = false;
                 grapple_Sync.Cmd_Changed_dt(Vector3.Distance(player.position, grapple_Sync.grapplePoint));
 
