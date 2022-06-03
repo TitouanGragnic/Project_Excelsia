@@ -43,25 +43,22 @@ namespace scripts
                     }
                     if (player.Value.personnage == "Ennhvala" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[0];
+                        screen1.GetComponent<MeshRenderer>().material = diff[4];
                         yes = false;
                     }
                     if (player.Value.personnage == "Gally" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[1];
+                        screen1.GetComponent<MeshRenderer>().material = diff[5];
                         yes = false;
                     }
                     if (player.Value.personnage == "Idriss" && yes)
                     {
-                        Debug.Log(player.Value.personnage);
-                        screen1.GetComponent<MeshRenderer>().material = diff[2];
-                        Debug.Log(screen.GetComponent<MeshRenderer>().materials[0]);
-                        Debug.Log(diff[2]);
+                        screen1.GetComponent<MeshRenderer>().material = diff[6];
                         yes = false;
                     }
                     if (player.Value.personnage == "Tamo" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[3];
+                        screen1.GetComponent<MeshRenderer>().material = diff[7];
                         yes = false;
                     }
                 }
