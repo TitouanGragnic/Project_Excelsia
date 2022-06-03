@@ -45,7 +45,7 @@ namespace scripts
 
         private void FixedUpdate()
         {
-            if (!stopped)
+            if (!stopped && isServer)
             {
                 RaycastHit hit;
                 Vector3 distance = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
@@ -58,7 +58,7 @@ namespace scripts
 
                 transform.position = new Vector3(transform.position.x, y, transform.position.z);
 
-
+                CLientFixPos(transform.position);
             }
         }
 
@@ -88,7 +88,11 @@ namespace scripts
                 Explosion();
             touche = true;
         }
-
+        [ClientRpc]
+        void CLientFixPos(Vector3 pos)
+        {
+            transform.position = pos;
+        }
 
     }
 }

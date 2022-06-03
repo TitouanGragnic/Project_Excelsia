@@ -38,6 +38,7 @@ namespace scripts
             armor = 0.1f;
             atk = 4;
 
+            preActifState = false;
 
             personnage = "Ennhvala";
         }
@@ -57,17 +58,28 @@ namespace scripts
                 return 50f;
             return 0.00001f * life * life - 0.05f * life + 49.14f +(float) Math.Sqrt(life * 0.39f);
         }
+
+        [SerializeField] Transform spawnK;
         private void CoolDown()
         {
             //ulti 
             if (ultiOn && GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
-                EndUlti();
+                EndUlti(); 
+            if (preActifState && GameManager.GetTimeMili() - preActif > cooldownPreActif)
+            {
+                Cmd_SpawnK(spawnK.position, cam.transform.forward);
+                preActifState = false;
+            }
         }
+        int preActif;
+        bool preActifState;
+        public int cooldownPreActif = 900;
         public new void Actif()
         {
             if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true )
             {
-                Cmd_SpawnK(arm.transform.position, cam.transform.forward);
+                preActif = GameManager.GetTimeMili();
+                preActifState = true;
                 startCooldownActif = GameManager.GetTime();
                 arms.Play("actif");
             }
