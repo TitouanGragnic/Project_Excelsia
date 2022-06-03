@@ -1515,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 8804994043483825188}
     - target: {fileID: 1771919809437011150, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: multiplier
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1936186094602835888, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: perso
@@ -1655,7 +1655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Center.y
-      value: 1
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Name
@@ -1669,6 +1669,14 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 5981651692876799368}
+    - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: crouchHeight
+      value: 0.895
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: normalHeight
+      value: 1.79
+      objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838942, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
       value: 0

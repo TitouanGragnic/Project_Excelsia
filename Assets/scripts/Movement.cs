@@ -112,7 +112,7 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);
-        isCrouching = Input.GetKey(crouchKey);
+        isCrouching = Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C);
 
         MyInput();
         ControlDrag();
@@ -250,9 +250,9 @@ public class Movement : MonoBehaviour
         {
             moveSpeed = Mathf.Lerp(moveSpeed, crouchSpeed, acceleration * Time.deltaTime);
             if (isSliding)
-                camTranslate = Mathf.Lerp(camTranslate, 1.4f, camAcceleration * Time.deltaTime);
+                camTranslate = Mathf.Lerp(camTranslate, 0.8f, camAcceleration * Time.deltaTime);
             else
-                camTranslate = Mathf.Lerp(camTranslate, 1, camAcceleration * Time.deltaTime);
+                camTranslate = Mathf.Lerp(camTranslate, 0.7f, camAcceleration * Time.deltaTime);
         }
         else
         {
