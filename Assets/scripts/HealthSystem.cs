@@ -144,7 +144,7 @@ namespace scripts
             TakeDamage(damage, type);
         }
 
-
+        [Command]
         public void TakeDamage(float damage, string type)
         {
             switch (type)
@@ -169,12 +169,12 @@ namespace scripts
                     Damage(damage, 0);
                     break;
                 case "bleeding":
-                    if(posture.State)
+                    if (posture.State)
                         QuardDamage(damage, posture);
                     else
                     {
                         TakeBleeding();
-                        Damage(damage,perso.armor);
+                        Damage(damage, perso.armor);
                     }
                     break;
                 case "actifTamo":
@@ -182,7 +182,7 @@ namespace scripts
                         QuardDamage(damage, posture);
                     else
                     {
-                        TakePoison(poinsonMaxCooldown*2);
+                        TakePoison(poinsonMaxCooldown * 2);
                         Damage(damage, perso.armor);
                     }
                     break;
@@ -191,7 +191,7 @@ namespace scripts
                         QuardDamage(damage, posture);
                     else
                     {
-                        TakePoison(poinsonMaxCooldown*3);
+                        TakePoison(poinsonMaxCooldown * 3);
                         Damage(damage, perso.armor);
                     }
                     break;
@@ -205,20 +205,22 @@ namespace scripts
                 default:
                     break;
             }
-
         }
+
+       
 
         void Damage(float damage,float armor)
         {
             perso.health -= damage * (1f - armor);
-            RpcHealth(perso.health);
+            RpcHealth(perso.health,perso.guard);
 
         }
 
         [ClientRpc]
-        void RpcHealth(float newHealth)
+        void RpcHealth(float newHealth,float newQuard)
         {
             perso.health = newHealth;
+            perso.guard =newQuard;
         }
 
         void QuardDamage(float damage,Posture posture)

@@ -108,11 +108,12 @@ namespace scripts
                 bonus = 2f;
 
                 smokeVFX.SetBool("Loop", true);
-                SetVFX(true);
+                CmdSetVFX(true);
                 arms.Play("ulti");
             }
         }
 
+        [Command] void CmdSetVFX(bool state) { SetVFX(state); }
 
         [ClientRpc] void SetVFX(bool state)
         {
@@ -125,7 +126,7 @@ namespace scripts
             vitesse *= (4f / 5f);
             bonus = 1;
             smokeVFX.SetBool("Loop", false);
-            SetVFX(false);
+            CmdSetVFX(false);
         }
         [SerializeField]
         VisualEffect smokeVFX;
