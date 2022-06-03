@@ -99,7 +99,7 @@ namespace scripts
         void OnCollisionEnter(Collision col)
         {
 
-            if (col.gameObject.layer == 9 || col.gameObject.layer == 8 && stateDash)
+            if ((col.gameObject.layer == 9 || col.gameObject.layer == 8) && stateDash)
             {
                 player.CmdPlayerAttack(col.gameObject.name, transform.position + new Vector3(0, 1.6f, 0), 50);
                 Debug.Log("dash colision");
