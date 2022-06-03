@@ -99,7 +99,7 @@ namespace scripts
         public bool ultiOn;
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
             {
                 startCooldownUlti = GameManager.GetTime();
                 ultiOn = true;
@@ -133,18 +133,18 @@ namespace scripts
         [SerializeField] LayerMask mask;
         [Command]void SetVFXSmoke()
         {
-            smokeVFX.SetVector3("position", new Vector3(transform.position.x, cam.transform.position.y - 1, transform.position.z));
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 50f, mask))
-                ClientSetSmokeVFX( hit.point.y);
+                ClientSetSmokeVFX( hit.point.y, new Vector3(transform.position.x, cam.transform.position.y - 1, transform.position.z));
             else
-                ClientSetSmokeVFX(0);
+                ClientSetSmokeVFX(0, new Vector3(transform.position.x, cam.transform.position.y - 1, transform.position.z));
         }
 
-        [ClientRpc] void ClientSetSmokeVFX(float y)
+        [ClientRpc] void ClientSetSmokeVFX(float y,Vector3 pos)
         {
                 smokeVFX.SetFloat("Ground", y);
+            smokeVFX.SetVector3("position",pos);
 
         }
     }
