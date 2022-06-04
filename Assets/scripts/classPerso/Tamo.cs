@@ -14,6 +14,7 @@ namespace scripts
         AttackSystem attackSystem;
 
         [SerializeField] Animator arms;
+        [SerializeField] Animator body;
 
         void Start()
         {
@@ -55,6 +56,7 @@ namespace scripts
                 preActif = GameManager.GetTimeMili();
                 startCooldownActif = GameManager.GetTime();
                 arms.Play("actif");
+                body.Play("actif");
             }
 
         }
@@ -80,8 +82,11 @@ namespace scripts
         [ClientRpc]
         void RpcSetUlti(bool state)
         {
-            if(state)
+            if (state)
+            {
                 armInator.Play("ulti");
+                body.Play("ulti");
+            }    
             foreach (var e in ultiEffect)
                 e.Active(state);
         }
