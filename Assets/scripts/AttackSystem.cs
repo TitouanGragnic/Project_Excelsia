@@ -99,7 +99,7 @@ namespace scripts
         [Client]
         private void Taper()
         {
-                Debug.Log("taper");
+            Debug.Log("taper");
             RaycastHit hit;
             //animator.SetBool("Attack", true);
             //arm.SetBool("Attack", true);
