@@ -311,6 +311,7 @@ public class Movement : MonoBehaviour
 
     void MovePlayer()
     {
+
         if (isGrounded && !onSlope())
             rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Acceleration);
         else if (!isGrounded)
@@ -323,7 +324,7 @@ public class Movement : MonoBehaviour
     //Actif dash Gally
     public void Dash()
     {
-        rb.AddForce(cam.transform.forward.normalized * 50, ForceMode.Impulse) ;
+        rb.AddForce(cam.transform.forward.normalized * 75, ForceMode.Impulse) ;
     }
 
 
@@ -383,6 +384,8 @@ public class Movement : MonoBehaviour
         }     
 
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Runfov, RunfovTime * Time.deltaTime);
+
+        rb.AddForce(orientation.forward * 5, ForceMode.Acceleration);
 
         rb.useGravity = false;
         rb.AddForce(Vector3.down * wallrunGravity, ForceMode.Force);

@@ -99,11 +99,12 @@ namespace scripts
         [Command]
         private void Cmd_SpawnSlash(Vector3 destination)
         {
-            GameObject sl = Instantiate(SlashObj, transform.position, transform.rotation);
+            GameObject sl = Instantiate(SlashObj, transform.position+Vector3.up, transform.rotation);
             Slash Slash = sl.GetComponent<Slash>();
+            NetworkServer.Spawn(sl);
             sl.GetComponent<Rigidbody>().velocity= camHolder.transform.forward * Slash.speed;
             RotateDestination(sl, destination, true);
-            NetworkServer.Spawn(sl);
+            
 
         }
 
