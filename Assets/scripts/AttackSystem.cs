@@ -59,10 +59,6 @@ namespace scripts
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (!arm.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
-                {
-                    arm.Play("hit1");
-                }
                 if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
                 {
                     comboStep += 1;
@@ -117,6 +113,7 @@ namespace scripts
                 lecteur.clip = sound[1];
                 lecteur.Play();
                 anim.Play("hit1");
+                arm.Play("hit1");
                 comboStep = 1;
                 comboPossible = true;
                 return;
@@ -136,24 +133,28 @@ namespace scripts
                 lecteur.clip = sound[2];
                 lecteur.Play();
                 anim.Play("hit2");
+                arm.Play("hit2");
             }
             if (comboStep == 3)
             {
                 lecteur.clip = sound[3];
                 lecteur.Play();
                 anim.Play("hit3");
+                arm.Play("hit3");
             }
             if (comboStep == 4)
             {
                 lecteur.clip = sound[1];
                 lecteur.Play();
                 anim.Play("hit4");
+                arm.Play("hit4");
             }
             if (comboStep == 5)
             {
                 lecteur.clip = sound[2];
                 lecteur.Play();
                 anim.Play("hit5");
+                arm.Play("hit4");
             }
         }
         public void ComboReset()
