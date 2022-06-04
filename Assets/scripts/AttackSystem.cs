@@ -11,6 +11,8 @@ namespace scripts
         [SerializeField]
         private Camera cam;
 
+
+        [SerializeField] Movement mvt;
         [SerializeField]
         private Perso player;
         [SerializeField]
@@ -41,6 +43,8 @@ namespace scripts
             stateDash = false;
             range = 2f;
         }
+
+
         void Update()
         {
             index = comboStep;
@@ -57,7 +61,7 @@ namespace scripts
                 Combo();
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !mvt.isSliding && !mvt.isSprinting && !player.posture.state )
             {
                 if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
                 {
@@ -83,6 +87,7 @@ namespace scripts
         [Client]
         private void Taper()
         {
+                Debug.Log("taper");
             RaycastHit hit;
             //animator.SetBool("Attack", true);
             //arm.SetBool("Attack", true);

@@ -27,7 +27,7 @@ namespace scripts
         [SerializeField]
         public HealthSystem healthSystem;
         [SerializeField]
-        private Posture posture;/*
+        public Posture posture;/*
         [SerializeField]
         public Slider slider;*/
 
