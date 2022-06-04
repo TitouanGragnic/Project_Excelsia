@@ -3280,8 +3280,7 @@ Animator:
     'forearm.R'\n\tTransform 'thumb.02.L'\n\tTransform 'shoulder.R'\n\tTransform
     'f_middle.02.R'\n\tTransform 'f_index.02.R'\n\tTransform 'thigh.L'\n\tTransform
     'toe.L'\n\tTransform 'f_ring.03.L'\n\tand more ...\n\tFrom animation clip 'back
-    1'\n\tFrom animation clip 'mixamo.com'\n\tFrom animation clip 'back 1'\n\tFrom
-    animation clip 'mixamo.com'"
+    1'\n\tFrom animation clip 'mixamo.com'\n\tFrom animation clip 'back 1'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3298,6 +3297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 4872530625928966109}
+  pos: {x: 0, y: -0.87, z: 0}
 --- !u!1001 &7866648446065145458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3780,7 +3780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Center.y
-      value: 0.86
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838940, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Name
@@ -4337,3 +4337,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 3562347682902530081}
+  pos: {x: 0, y: 1.14, z: 0}
