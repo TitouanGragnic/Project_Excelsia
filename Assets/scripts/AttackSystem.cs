@@ -96,7 +96,7 @@ namespace scripts
             }
         }
 
-        [Client]
+        //[Client]
         private void Taper()
         {
             Debug.Log("taper");
