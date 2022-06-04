@@ -15,6 +15,7 @@ namespace scripts
         GameObject knife;
 
         [SerializeField] Animator arms;
+        [SerializeField] Animator bodyAnim;
 
         public bool actifState;
         public bool ultiState;
@@ -76,12 +77,13 @@ namespace scripts
         public int cooldownPreActif = 900;
         public new void Actif()
         {
-            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true )
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif  )
             {
                 preActif = GameManager.GetTimeMili();
                 preActifState = true;
                 startCooldownActif = GameManager.GetTime();
                 arms.Play("actif");
+                bodyAnim.Play("actif");
             }
             
         }
@@ -99,7 +101,7 @@ namespace scripts
         public bool ultiOn;
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
             {
                 startCooldownUlti = GameManager.GetTime();
                 ultiOn = true;

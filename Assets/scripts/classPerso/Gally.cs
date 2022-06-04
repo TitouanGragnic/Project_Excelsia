@@ -11,7 +11,7 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
         [SerializeField] Animator arms;
-        [SerializeField] Animator sword;
+        [SerializeField] Animator anim;
 
 
         public bool actifState;
@@ -39,13 +39,13 @@ namespace scripts
         public new void Actif() 
         {
             Debug.Log("Gally actif");
-            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true)
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif )
                 Dash();
         }
         public new void Ulti()
         {
             Debug.Log("Gally Ulti");
-            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti || true)
+            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti )
                 PreUlti();
         }
         int startPreUlti;
@@ -54,7 +54,7 @@ namespace scripts
         void PreUlti()
         {
             arms.Play("ulti");
-            sword.Play("ulti");
+            anim.Play("ulti");
             startPreUlti = GameManager.GetTimeMili();
             ultiWait = true;
         }
@@ -72,6 +72,7 @@ namespace scripts
             attackSystem.stateDash = false;
             actifState = false;
             ChangeTypeATK("normal");
+            anim.SetBool("actif", false);
         }
         private void Dash()
         {
@@ -81,7 +82,7 @@ namespace scripts
             actifState = true;
             attackSystem.stateDash = true;
             arms.Play("actif");
-            sword.Play("actif");
+            anim.SetBool("actif", true);
         }
 
         [SerializeField]

@@ -16,6 +16,7 @@ namespace scripts
 
         [SerializeField] GameObject lightning;
         [SerializeField] Animator arms;
+        [SerializeField] Animator bodyAnim;
 
         //[ACTIF]
         int maxCooldownActifON = 10;
@@ -76,7 +77,7 @@ namespace scripts
         }
         public new void Ulti()
         {
-            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti||true)
+            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
                 PreUlti();
         }
 
@@ -90,6 +91,7 @@ namespace scripts
             startPreUlti = GameManager.GetTimeMili();
             ultiWait = true;
             arms.SetBool("ulti", true);
+            bodyAnim.SetBool("ulti", true);
         }
 
         [SerializeField] POVcam povcam;
@@ -129,6 +131,7 @@ namespace scripts
             if (!state)
             {
                 arms.SetBool("ulti", state);
+                bodyAnim.SetBool("ulti", state);
                 laserVFX.SetFloat("Lenght", 10);
             }
             laserVFX.SetBool("Loop", state);
@@ -193,6 +196,7 @@ namespace scripts
             startCooldownActif = GameManager.GetTime();
             electricState = true;
             arms.Play("actif");
+            bodyAnim.Play("actif");
             SetEffectLightActif(true);
         }
 
