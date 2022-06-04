@@ -14,7 +14,7 @@ namespace scripts
         AttackSystem attackSystem;
 
         [SerializeField] Animator arms;
-        [SerializeField] Animator body;
+        [SerializeField] Animator bodyAnim;
 
         void Start()
         {
@@ -56,11 +56,10 @@ namespace scripts
                 preActif = GameManager.GetTimeMili();
                 startCooldownActif = GameManager.GetTime();
                 arms.Play("actif");
-                body.Play("actif");
+                bodyAnim.Play("actif");
             }
 
         }
-        [SerializeField] Animator armInator;
         bool ultiOn;
         bool attack;
         int startCooldownUltiOn;
@@ -69,6 +68,7 @@ namespace scripts
         [SerializeField] UltiTamo[] ultiEffect;
         public new void Ulti()
         {
+            Debug.Log("ultiTamo");
             if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
             {
                 ChangeTypeATK("ultiTamo");
@@ -84,8 +84,8 @@ namespace scripts
         {
             if (state)
             {
-                armInator.Play("ulti");
-                body.Play("ulti");
+                arms.Play("ulti");
+                bodyAnim.Play("ulti");
             }    
             foreach (var e in ultiEffect)
                 e.Active(state);
