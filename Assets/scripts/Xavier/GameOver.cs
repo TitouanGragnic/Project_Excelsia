@@ -23,11 +23,12 @@ namespace scripts
         void Update()
         {
             Rotatearound();
+            /*
             if (Input.GetKeyDown(KeyCode.E))
                 NetworkManager.singleton.StopHost(); 
 
             if (Input.GetKeyDown(KeyCode.V))
-                Cmd_ReplacePlayer();
+                Cmd_ReplacePlayer();*/
             if (again)
             {
                 Cmd_ReplacePlayer();
@@ -61,6 +62,7 @@ namespace scripts
             transform.LookAt(new Vector3(0f, 0f, 0f));
             transform.RotateAround(new Vector3(0,0,0), Vector3.up, 20 * Time.deltaTime); // on vas faire tourner les nouveaux prefab autour du nouveau game object qui est un prefab en (0,0,0)
         }
+        [Command]
         public void change()
         {
             start = true;
