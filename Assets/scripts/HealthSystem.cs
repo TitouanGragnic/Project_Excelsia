@@ -235,6 +235,7 @@ namespace scripts
             {
                 posture.Break();
             }
+            RpcHealth(perso.health, perso.guard);
 
         }
     }

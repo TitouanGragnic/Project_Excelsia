@@ -156,7 +156,7 @@ namespace scripts
             //Debug.Log(transform.name + " a pv = " + health);
             CmdSpawnBlood(true);
         }
-        [Command][Client]
+        [Command(requiresAuthority = false)]//[Client]
         public void CmdPlayerAttack(string playerId,Vector3 pos,float damage)
         {
             Debug.Log(playerId + "tapé");
