@@ -49,7 +49,7 @@ namespace scripts
         public int cooldownPreActif = 900;
         public new void Actif()
         {
-            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true)
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif )
             {
                 preActifState = true;
                 preActif = GameManager.GetTimeMili();
@@ -67,7 +67,7 @@ namespace scripts
         [SerializeField] UltiTamo[] ultiEffect;
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
             {
                 ChangeTypeATK("ultiTamo");
                 attack = false;
@@ -93,6 +93,7 @@ namespace scripts
             attack = true;
             bool touche = false;
             float k = 1;
+            startCooldownUlti = GameManager.GetTime();
 
             while (!touche && k >= 0)
             {
@@ -135,7 +136,7 @@ namespace scripts
             GameObject mi = Instantiate(mine, pos + forward.normalized * 2, new Quaternion(0,0,0, 0));
             mi.GetComponent<Mine>().rotate = forward;
             Rigidbody rb = mi.GetComponent<Rigidbody>();
-            rb.AddForce(forward.normalized * 10, ForceMode.Impulse);
+            rb.AddForce(forward.normalized * 10 + GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
             NetworkServer.Spawn(mi);
 
         }

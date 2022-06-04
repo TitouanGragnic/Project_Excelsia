@@ -39,13 +39,13 @@ namespace scripts
         public new void Actif() 
         {
             Debug.Log("Gally actif");
-            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif || true)
+            if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif )
                 Dash();
         }
         public new void Ulti()
         {
             Debug.Log("Gally Ulti");
-            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti || true)
+            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti )
                 PreUlti();
         }
         int startPreUlti;
