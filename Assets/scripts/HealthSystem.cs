@@ -152,6 +152,7 @@ namespace scripts
 
         public void TakeDamage(float damage, string type)
         {
+            Debug.Log("TakeDamage");
             switch (type)
             {
                 case "normal":

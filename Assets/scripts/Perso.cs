@@ -153,7 +153,7 @@ namespace scripts
                 healthSystem.CmdTakeDamage(damage, type);
             else
                 healthSystem.TakeDamage(damage, type);
-            //Debug.Log(transform.name + " a pv = " + health);
+            Debug.Log(transform.name + " a pv = " + health);
             CmdSpawnBlood(true);
         }
         [Command(requiresAuthority = false)]//[Client]
