@@ -72,6 +72,7 @@ namespace scripts
             attackSystem.stateDash = false;
             actifState = false;
             ChangeTypeATK("normal");
+            anim.SetBool("actif", false);
         }
         private void Dash()
         {
@@ -81,6 +82,7 @@ namespace scripts
             actifState = true;
             attackSystem.stateDash = true;
             arms.Play("actif");
+            anim.SetBool("actif", true);
         }
 
         [SerializeField]
