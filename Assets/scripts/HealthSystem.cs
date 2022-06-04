@@ -144,7 +144,7 @@ namespace scripts
             TakeDamage(damage, type);
         }
 
-        [Command(requiresAuthority = false)]
+        [Command][Client]
         public void TakeDamage(float damage, string type)
         {
             switch (type)
