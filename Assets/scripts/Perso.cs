@@ -149,7 +149,10 @@ namespace scripts
         
         public void TakeDamage(float damage, string type)
         {
-            healthSystem.TakeDamage(damage, type);
+            if (!isServer)
+                healthSystem.CmdTakeDamage(damage, type);
+            else
+                healthSystem.TakeDamage(damage, type);
             //Debug.Log(transform.name + " a pv = " + health);
             CmdSpawnBlood(true);
         }

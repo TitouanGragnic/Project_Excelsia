@@ -139,12 +139,17 @@ namespace scripts
 
         }
         [Command]
-        public void CmdTakeDamage(int damage,string type)
+        public void CmdTakeDamage(float damage,string type)
         {
             TakeDamage(damage, type);
         }
 
-        [Command][Client]
+
+
+
+
+
+
         public void TakeDamage(float damage, string type)
         {
             switch (type)
