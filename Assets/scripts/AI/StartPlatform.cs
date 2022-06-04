@@ -16,9 +16,11 @@ namespace scripts
         public AudioClip[] lect;
 
         public bool begin = true;
-        Vector3 start;
-        public int move = 0;
+        public Vector3 start;
+        public Vector3 end;
 
+
+        
         private void Update()
         {
             if (isServer)
@@ -27,12 +29,11 @@ namespace scripts
         }
         void ServerUpdate()
         {
-            start = transform.position;
-            if (move <= 10000 && GameManager.players.Count > 0)
+            if (transform.localPosition != end &&  GameManager.players.Count > 0)
                 Translate();
-            if (transform.position != start && GameManager.players.Count == 0)
+            if (transform.localPosition != start && GameManager.players.Count == 0)
                 Restart();
-            if(move == 4000)
+            if(transform.localPosition == end)
             {
                 sound.clip = lect[1];
                 sound.Play();
@@ -51,13 +52,14 @@ namespace scripts
                 sound.loop = true;
                 begin = false;
             }
-            gameObject.transform.Translate(Vector3.forward * dir*0.001f);
-            move += 1;
+            transform.localPosition = Vector3.Lerp(transform.localPosition, end, Time.deltaTime*0.1f);
+            if (Mathf.Abs(transform.localPosition.z - end.z) <= 0.1f)
+                transform.localPosition = end;
         }
         public void Restart()
         {
-            transform.position = start;
-            move = 0;
+            transform.localPosition = start;
+            begin = true;
         }
 
         [ClientRpc]
