@@ -113,6 +113,9 @@ namespace scripts
             Taper();
             if(comboStep == 0)
             {
+                lecteur.loop = false;
+                lecteur.clip = sound[1];
+                lecteur.Play();
                 anim.Play("hit1");
                 comboStep = 1;
                 comboPossible = true;
@@ -130,18 +133,26 @@ namespace scripts
             comboPossible = true;
             if (comboStep == 2)
             {
+                lecteur.clip = sound[2];
+                lecteur.Play();
                 anim.Play("hit2");
             }
             if (comboStep == 3)
             {
+                lecteur.clip = sound[3];
+                lecteur.Play();
                 anim.Play("hit3");
             }
             if (comboStep == 4)
             {
+                lecteur.clip = sound[1];
+                lecteur.Play();
                 anim.Play("hit4");
             }
             if (comboStep == 5)
             {
+                lecteur.clip = sound[2];
+                lecteur.Play();
                 anim.Play("hit5");
             }
         }
