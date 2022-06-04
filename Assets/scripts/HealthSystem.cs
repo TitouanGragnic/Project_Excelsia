@@ -143,13 +143,6 @@ namespace scripts
         {
             TakeDamage(damage, type);
         }
-
-
-
-
-
-
-
         public void TakeDamage(float damage, string type)
         {
             Debug.Log("TakeDamage");
