@@ -908,7 +908,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.size
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
@@ -922,6 +922,14 @@ PrefabInstance:
       propertyPath: componentsToDisable.Array.data[12]
       value: 
       objectReference: {fileID: 2895716605792403831}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[13]
+      value: 
+      objectReference: {fileID: 8638576363762438702}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[14]
+      value: 
+      objectReference: {fileID: 4795151954556589502}
     - target: {fileID: 72197354655179258, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1560,65 +1568,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 361047965013232204, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8451367018467903897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690429962515278501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700f0b6b114a34042add8bba10e8090e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  personnage: 
-  povCam: {fileID: 7690429962515278502}
-  cam: {fileID: 6695614130663657098}
-  perso_object: {fileID: 7690429962515278501}
-  orientation: {fileID: 7690429961980646067}
-  camHolder: {fileID: 7690429962319647488}
-  movement: {fileID: 7690429962515278500}
-  body: {fileID: 5375645869913929724}
-  arm: {fileID: 2590817241719477275}
-  health_object: {fileID: 4819427440369019368}
-  healthSystem: {fileID: 5554394646475146292}
-  posture: {fileID: 5375417506898622312}
-  health: 0
-  maxHealth: 0
-  armor: 0
-  guard: 0
-  maxGuard: 0
-  atk: 0
-  end: 0
-  typeAtk: 
-  blur: {fileID: 2260078679767359823}
-  ended: {fileID: 1104475412067733797}
-  blood: {fileID: 4013477127502361705}
-  sliderAc: {fileID: 1551915878997654099}
-  sliderUl: {fileID: 5552908561253783554}
-  startCooldownUlti: 0
-  maxCooldownUlti: 60
-  startCooldownActif: 0
-  maxCooldownActif: 20
-  maxBloodC: 100
-  grapple: {fileID: 2895716605792403831}
-  lightning: {fileID: 0}
-  arms: {fileID: 7532527510470978317}
-  bodyAnim: {fileID: 2748747831915594853}
-  lecteur: {fileID: 1714601438077009597}
-  sound:
-  - {fileID: 8300000, guid: 321808504d539cf43b3f32cee83ff8ea, type: 3}
-  - {fileID: 8300000, guid: 0f3a3acfe46e8b141862bc3b00d5dc5d, type: 3}
-  laserVFX: {fileID: 9002507192393978559}
-  mask:
-    serializedVersion: 2
-    m_Bits: 12585600
-  debris: {fileID: 1852304551861187470, guid: e96e5fd21d16deb4faaf016c5cc4407d, type: 3}
-  povcam: {fileID: 7690429962515278502}
-  elecVFX: {fileID: 5503003194361077949}
 --- !u!82 &1714601438077009597
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1715,6 +1664,65 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8451367018467903897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690429962515278501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700f0b6b114a34042add8bba10e8090e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  personnage: 
+  povCam: {fileID: 7690429962515278502}
+  cam: {fileID: 6695614130663657098}
+  perso_object: {fileID: 7690429962515278501}
+  orientation: {fileID: 7690429961980646067}
+  camHolder: {fileID: 7690429962319647488}
+  movement: {fileID: 7690429962515278500}
+  body: {fileID: 5375645869913929724}
+  arm: {fileID: 2590817241719477275}
+  health_object: {fileID: 4819427440369019368}
+  healthSystem: {fileID: 5554394646475146292}
+  posture: {fileID: 5375417506898622312}
+  health: 0
+  maxHealth: 0
+  armor: 0
+  guard: 0
+  maxGuard: 0
+  atk: 0
+  end: 0
+  typeAtk: 
+  blur: {fileID: 2260078679767359823}
+  ended: {fileID: 1104475412067733797}
+  blood: {fileID: 4013477127502361705}
+  sliderAc: {fileID: 1551915878997654099}
+  sliderUl: {fileID: 5552908561253783554}
+  startCooldownUlti: 0
+  maxCooldownUlti: 60
+  startCooldownActif: 0
+  maxCooldownActif: 20
+  maxBloodC: 100
+  grapple: {fileID: 2895716605792403831}
+  lightning: {fileID: 0}
+  arms: {fileID: 7532527510470978317}
+  bodyAnim: {fileID: 2748747831915594853}
+  lecteur: {fileID: 1714601438077009597}
+  sound:
+  - {fileID: 8300000, guid: 321808504d539cf43b3f32cee83ff8ea, type: 3}
+  - {fileID: 8300000, guid: 0f3a3acfe46e8b141862bc3b00d5dc5d, type: 3}
+  laserVFX: {fileID: 9002507192393978559}
+  mask:
+    serializedVersion: 2
+    m_Bits: 12585600
+  debris: {fileID: 1852304551861187470, guid: e96e5fd21d16deb4faaf016c5cc4407d, type: 3}
+  povcam: {fileID: 7690429962515278502}
+  elecVFX: {fileID: 5503003194361077949}
 --- !u!114 &8638576363762438702
 MonoBehaviour:
   m_ObjectHideFlags: 0

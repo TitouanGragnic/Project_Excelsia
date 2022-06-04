@@ -1443,9 +1443,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
       value: 
       objectReference: {fileID: 7214728217789914498}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[11]
+      value: 
+      objectReference: {fileID: 3670644001761553495}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[12]
+      value: 
+      objectReference: {fileID: 7083704579961726548}
     - target: {fileID: -3461759766805281484, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AssetId
       value: 9bdfac433fa375f4a9e9648cb48af93b
