@@ -92,16 +92,16 @@ namespace scripts
         {
             ultiWait = false;
             startCooldownUlti = GameManager.GetTime();
-            Cmd_SpawnSlash(cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0)).GetPoint(1000));
+            Cmd_SpawnSlash(cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0)).GetPoint(1000),camHolder.transform.forward);
 
         }
 
         [Command]
-        private void Cmd_SpawnSlash(Vector3 destination)
+        private void Cmd_SpawnSlash(Vector3 destination,Vector3 forward)
         {
             GameObject sl = Instantiate(SlashObj, transform.position+Vector3.up, transform.rotation);
             Slash Slash = sl.GetComponent<Slash>();
-            sl.GetComponent<Rigidbody>().velocity= camHolder.transform.forward * Slash.speed;
+            sl.GetComponent<Rigidbody>().velocity= forward * Slash.speed;
             RotateDestination(sl, destination, true);
             NetworkServer.Spawn(sl);
 
