@@ -23,7 +23,6 @@ namespace scripts
 
         public static Dictionary<string, choice> choices = new Dictionary<string, choice>();
 
-
         public static Dictionary<string, GameOver> ends = new Dictionary<string, GameOver>();
         static int Pnb=1;
         void Awake()

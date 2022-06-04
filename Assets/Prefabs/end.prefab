@@ -428,9 +428,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2841376174848863401}
-        m_TargetAssemblyTypeName: scripts.exitButton, Assembly-CSharp
-        m_MethodName: exitGame
+      - m_Target: {fileID: 8234152293016816135}
+        m_TargetAssemblyTypeName: scripts.GameOver, Assembly-CSharp
+        m_MethodName: change
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -883,6 +883,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   PlayerPrefab: {fileID: 4531504580044698355, guid: 24c908370eb10054fad60a976daf20e5, type: 3}
+  again: 0
+  start: 0
 --- !u!114 &2161948151863569002
 MonoBehaviour:
   m_ObjectHideFlags: 0
