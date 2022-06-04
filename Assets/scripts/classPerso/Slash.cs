@@ -20,7 +20,7 @@ namespace scripts
         LayerMask mask;
         [SerializeField]
         VisualEffect slashVFX;
-        private bool stopped;
+        public bool stopped;
         float y = 0;
         bool touche = false;
         void Start()
@@ -91,7 +91,8 @@ namespace scripts
         [ClientRpc]
         void CLientFixPos(Vector3 pos)
         {
-            transform.position = pos;
+            if(!isServer)
+                transform.position = pos;
         }
 
     }

@@ -1699,7 +1699,7 @@ PrefabInstance:
     - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: arm
       value: 
-      objectReference: {fileID: 7532527510470978317}
+      objectReference: {fileID: 8922506184662280199}
     - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: anim
       value: 
@@ -1712,6 +1712,26 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 8922506184662280199}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: sound.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: sound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 429f59e7aed5318409971d5cc48cc2ef, type: 3}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: sound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c796f3bfc560664493b2a2856895ff1, type: 3}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: sound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a5bc52630c7b58419f206b70e262307, type: 3}
+    - target: {fileID: 2554056335996328351, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: sound.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6db4c6a0703b0ae4db343bcd0c119714, type: 3}
     - target: {fileID: 2563937017575700068, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Value
       value: 1
@@ -2162,19 +2182,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 361047965013232204, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 3510759613686107577}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8638576363762438702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690429962174502318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e6105740ba704409465ac17b13af08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 2936274532624092833}
 --- !u!114 &8451367018467903897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,6 +2236,19 @@ MonoBehaviour:
   debris: {fileID: 1852304551861187470, guid: e96e5fd21d16deb4faaf016c5cc4407d, type: 3}
   povcam: {fileID: 7690429962515278502}
   elecVFX: {fileID: 5503003194361077949}
+--- !u!114 &8638576363762438702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690429962174502318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e6105740ba704409465ac17b13af08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 2936274532624092833}
 --- !u!1001 &5275348610533005485
 PrefabInstance:
   m_ObjectHideFlags: 0

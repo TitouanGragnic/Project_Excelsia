@@ -29,7 +29,7 @@ namespace scripts
         int otherStep = 0;
 
         public float range;
-        public bool stateDash =false;
+        [SerializeField] public bool stateDash;
 
         public bool testBlood;
 
@@ -38,6 +38,7 @@ namespace scripts
 
         void Awake()
         {
+            stateDash = false;
             range = 2f;
         }
         void Update()
@@ -50,34 +51,18 @@ namespace scripts
                 ComboReset();
                 comboPossible = true;
             }
-            if (arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && arm.GetCurrentAnimatorStateInfo(0).IsName("hit5"))
-            {
-                ComboReset1();
-                otherCombo = true;
-                arm.SetBool("hit5", false);
-            }
-            /*if (arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1 && otherCombo)
-            {
-                arm.SetBool("hit1", false);
-                arm.SetBool("hit2", false);
-                arm.SetBool("hit3", false);
-                arm.SetBool("hit4", false);
-                arm.SetBool("hit5", false);
-                ComboReset1();
-                otherCombo = true;
-            }*/
 
             if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
             {
                 Combo();
             }
-            if (!otherCombo && arm.GetCurrentAnimatorStateInfo(0).length - arm.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
-            {
-                Combo1();
-            }
 
             if (Input.GetMouseButtonDown(0))
             {
+                if (!arm.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
+                {
+                    arm.Play("hit1");
+                }
                 if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
                 {
                     comboStep += 1;
@@ -87,17 +72,6 @@ namespace scripts
                 {
                     ComboReset();
                     Attack();
-                }
-
-                if (arm.GetCurrentAnimatorStateInfo(0).length > arm.GetCurrentAnimatorStateInfo(0).normalizedTime && otherCombo && otherStep < 5)
-                {
-                    otherStep += 1;
-                    otherCombo = false;
-                }
-                else if (arm.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-                {
-                    ComboReset1();
-                    Attack1();
                 }
             }
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm")){
@@ -125,8 +99,8 @@ namespace scripts
 
         void OnCollisionEnter(Collision col)
         {
-
-            if (col.gameObject.layer == 9 || col.gameObject.layer == 8 && stateDash)
+            //Debug.Log($"layer :{col.gameObject.layer},  stateDash :{stateDash}");
+            if ((col.gameObject.layer == 9 ) && stateDash)
             {
                 player.CmdPlayerAttack(col.gameObject.name, transform.position + new Vector3(0, 1.6f, 0), 50);
                 Debug.Log("dash colision");
@@ -139,6 +113,9 @@ namespace scripts
             Taper();
             if(comboStep == 0)
             {
+                lecteur.loop = false;
+                lecteur.clip = sound[1];
+                lecteur.Play();
                 anim.Play("hit1");
                 comboStep = 1;
                 comboPossible = true;
@@ -156,18 +133,26 @@ namespace scripts
             comboPossible = true;
             if (comboStep == 2)
             {
+                lecteur.clip = sound[2];
+                lecteur.Play();
                 anim.Play("hit2");
             }
             if (comboStep == 3)
             {
+                lecteur.clip = sound[3];
+                lecteur.Play();
                 anim.Play("hit3");
             }
             if (comboStep == 4)
             {
+                lecteur.clip = sound[1];
+                lecteur.Play();
                 anim.Play("hit4");
             }
             if (comboStep == 5)
             {
+                lecteur.clip = sound[2];
+                lecteur.Play();
                 anim.Play("hit5");
             }
         }
@@ -175,44 +160,6 @@ namespace scripts
         {
             comboPossible = false;
             comboStep = 0;
-        }
-
-
-        public void Attack1()
-        {
-            arm.Play("hit1");
-            otherStep = 1;
-            otherCombo = true;
-            return;
-        }
-        public void Combo1()
-        {
-            otherCombo = true;
-            if (otherStep == 2)
-            {
-                arm.SetBool("hit1", false);
-                arm.SetBool("hit2", true);
-            }
-            if (otherStep == 3)
-            {
-                arm.SetBool("hit2", false);
-                arm.SetBool("hit3", true);
-            }
-            if (otherStep == 4)
-            {
-                arm.SetBool("hit3", false);
-                arm.SetBool("hit4", true);
-            }
-            if (otherStep == 5)
-            {
-                arm.SetBool("hit4", false);
-                arm.SetBool("hit5", true);
-            }
-        }
-        public void ComboReset1()
-        {
-            otherCombo = false;
-            otherStep = 0;
         }
     }
 }
