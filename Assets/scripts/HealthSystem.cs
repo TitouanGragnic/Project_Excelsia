@@ -139,14 +139,13 @@ namespace scripts
 
         }
         [Command]
-        public void CmdTakeDamage(int damage,string type)
+        public void CmdTakeDamage(float damage,string type)
         {
             TakeDamage(damage, type);
         }
-
-        [Command]
         public void TakeDamage(float damage, string type)
         {
+            Debug.Log("TakeDamage");
             switch (type)
             {
                 case "normal":
@@ -230,6 +229,7 @@ namespace scripts
             {
                 posture.Break();
             }
+            RpcHealth(perso.health, perso.guard);
 
         }
     }

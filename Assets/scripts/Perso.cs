@@ -149,11 +149,14 @@ namespace scripts
         
         public void TakeDamage(float damage, string type)
         {
-            healthSystem.TakeDamage(damage, type);
-            //Debug.Log(transform.name + " a pv = " + health);
+            if (!isServer)
+                healthSystem.CmdTakeDamage(damage, type);
+            else
+                healthSystem.TakeDamage(damage, type);
+            Debug.Log(transform.name + " a pv = " + health);
             CmdSpawnBlood(true);
         }
-        [Command][Client]
+        [Command(requiresAuthority = false)]//[Client]
         public void CmdPlayerAttack(string playerId,Vector3 pos,float damage)
         {
             Debug.Log(playerId + "tapé");
