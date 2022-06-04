@@ -11,7 +11,7 @@ namespace scripts
         [SerializeField]
         AttackSystem attackSystem;
         [SerializeField] Animator arms;
-        [SerializeField] Animator sword;
+        [SerializeField] Animator anim;
 
 
         public bool actifState;
@@ -54,7 +54,7 @@ namespace scripts
         void PreUlti()
         {
             arms.Play("ulti");
-            sword.Play("ulti");
+            anim.Play("ulti");
             startPreUlti = GameManager.GetTimeMili();
             ultiWait = true;
         }
@@ -81,7 +81,6 @@ namespace scripts
             actifState = true;
             attackSystem.stateDash = true;
             arms.Play("actif");
-            sword.Play("actif");
         }
 
         [SerializeField]
