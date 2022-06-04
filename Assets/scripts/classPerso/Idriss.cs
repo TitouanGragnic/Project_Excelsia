@@ -77,7 +77,7 @@ namespace scripts
         }
         public new void Ulti()
         {
-            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti||true)
+            if (!ultiWait && GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
                 PreUlti();
         }
 
