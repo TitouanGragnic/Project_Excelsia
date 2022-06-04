@@ -379,7 +379,9 @@ public class Movement : MonoBehaviour
         } 
         else if (wallright)
         {
+            animator.SetBool("Jumping", false);
             arm.SetBool("rwr", true);
+            animator.SetBool("rwr", true);
             tilt = Mathf.Lerp(tilt, camTilt, camTiltTime * Time.deltaTime);
         }     
 
@@ -414,6 +416,7 @@ public class Movement : MonoBehaviour
     void StopWallRun()
     {
         arm.SetBool("rwr", false);
+        animator.SetBool("rwr", false);
         arm.SetBool("lwr", false);
         tilt = Mathf.Lerp(tilt, 0, camTiltTime * Time.deltaTime);
         rb.useGravity = true;
