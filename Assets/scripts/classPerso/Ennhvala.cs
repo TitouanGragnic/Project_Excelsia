@@ -16,6 +16,8 @@ namespace scripts
 
         [SerializeField] Animator arms;
         [SerializeField] Animator bodyAnim;
+        public AudioSource lecteur;
+        public AudioClip sound;
 
         public bool actifState;
         public bool ultiState;
@@ -103,6 +105,8 @@ namespace scripts
         {
             if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
             {
+                lecteur.clip = sound;
+                lecteur.Play();
                 startCooldownUlti = GameManager.GetTime();
                 ultiOn = true;
                 TakeDamage(125f, "normal");
