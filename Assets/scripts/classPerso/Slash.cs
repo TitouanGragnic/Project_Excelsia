@@ -45,14 +45,14 @@ namespace scripts
 
         private void FixedUpdate()
         {
-            if (!stopped && isServer)
+            if (isServer)
             {
                 RaycastHit hit;
                 Vector3 distance = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
                 if (Physics.Raycast(distance, transform.TransformDirection(Vector3.forward), out hit, detectingDistance, mask))
                     y = hit.point.y + 1f;
                 else if (Physics.Raycast(distance, transform.TransformDirection(Vector3.down), out hit, 200f, mask))
-                    y = hit.point.y;
+                    y = Mathf.Lerp(transform.position.y, hit.point.y, Time.deltaTime);
 
 
 
@@ -69,7 +69,7 @@ namespace scripts
             {
                 rb.velocity = Vector3.Lerp(Vector3.zero, rb.velocity, t);
                 t -= slowDownRate;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.3f);
             }
             stopped = true;
         }
