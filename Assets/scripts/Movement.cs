@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Animator arm;
@@ -110,6 +111,7 @@ public class Movement : MonoBehaviour
     
     private void Update()
     {
+        if (!hasAuthority) { return; }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);
         isCrouching = Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C);
