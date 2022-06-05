@@ -7,13 +7,17 @@ public class BeginScripts : MonoBehaviour
 
     float time;
     public GameObject begin;
+    public Transform start;
 
     // Start is called before the first frame update
     void Start()
     {       
         begin.SetActive(true);
         time = Time.time;
-        begin.transform.position = new Vector3(32, 1389, -300);
+        if(transform.position.z < 0)
+            begin.transform.position = new Vector3(32, 1389, -300);
+        else
+            begin.transform.position = new Vector3(32, 1389, 300);
     }
     
     public BeginDesactive desScript;
