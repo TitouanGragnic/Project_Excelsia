@@ -188,8 +188,11 @@ namespace scripts
 
         public static void RePlay()
         {
+            List<string> list = new List<string>();
             foreach (KeyValuePair<string, GameOver> end in ends)
-                end.Value.Cmd_ReplacePlayer();
+                list.Add(end.Key);
+            foreach(string name in list)
+                ends[name].Cmd_ReplacePlayer();
             Pnb = 1;
         }
     } 
