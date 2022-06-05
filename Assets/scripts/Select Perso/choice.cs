@@ -50,7 +50,7 @@ namespace scripts {
             Cursor.visible = true;
             stateSpawn = false;
             spawn = false;
-            GameManager.CmdAtributPnb(name);
+            Pnb = isServer ? 1 : 2;
             transform.rotation = Quaternion.Euler(0,-40,0);
         }
         void Update()
