@@ -167,19 +167,29 @@ public class Movement : NetworkBehaviour
         {
             arm.SetBool("walking", true);
             animator.SetBool("Walking", true);
+            
         }
         else
         {
             arm.SetBool("walking", false);
             animator.SetBool("Walking", false);
         }
+        if (Input.GetAxisRaw("Horizontal") > 0)
+            animator.SetBool("right", true);
+        else
+            animator.SetBool("right", false);
 
-        if (isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") < 0)
+        if (isGrounded && !isCrouching && Input.GetAxisRaw("Horizontal") < 0)
+            animator.SetBool("left", true);
+        else
+            animator.SetBool("left", false);
+
+        if (isGrounded && !isCrouching && isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") < 0)
             animator.SetBool("Back", true);
         else
             animator.SetBool("Back", false);
 
-        if (isGrounded && isCrouching && !isSliding && Input.GetAxisRaw("Vertical") > 0)
+        if (isGrounded && isCrouching && !isSliding && (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0))
         {
             animator.SetBool("CrouchWalk", true);
             PlayerHeight.height = crouchHeight;
