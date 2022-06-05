@@ -428,9 +428,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8234152293016816135}
-        m_TargetAssemblyTypeName: scripts.GameOver, Assembly-CSharp
-        m_MethodName: change
+      - m_Target: {fileID: 2841376174848863401}
+        m_TargetAssemblyTypeName: scripts.exitButton, Assembly-CSharp
+        m_MethodName: exitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
