@@ -110,7 +110,7 @@ namespace scripts
         int maxTrail = 4835;
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
             {
                 startTrail = GameManager.GetTimeMili();
                 trailOn = true;
