@@ -1449,7 +1449,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
@@ -1463,6 +1463,10 @@ PrefabInstance:
       propertyPath: componentsToDisable.Array.data[12]
       value: 
       objectReference: {fileID: 7083704579961726548}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[13]
+      value: 
+      objectReference: {fileID: 5981651692876799368}
     - target: {fileID: -3461759766805281484, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AssetId
       value: 9bdfac433fa375f4a9e9648cb48af93b
@@ -2046,61 +2050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1368b9573f714d8499aba38aca5cfda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5722261126902313348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141259556907378178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8f3ef1c4b23394894fe4b1cfdef122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  personnage: 
-  povCam: {fileID: 141259556907378177}
-  cam: {fileID: 4010356564075643437}
-  perso_object: {fileID: 141259556907378178}
-  orientation: {fileID: 141259557447474708}
-  camHolder: {fileID: 141259557488615335}
-  movement: {fileID: 141259556907378179}
-  body: {fileID: 1388565753928128755}
-  arm: {fileID: 6152412777722395762}
-  health_object: {fileID: 3003395344967837007}
-  healthSystem: {fileID: 2763260870473681043}
-  posture: {fileID: 2437975864008391631}
-  health: 0
-  maxHealth: 0
-  armor: 0
-  guard: 0
-  maxGuard: 0
-  atk: 0
-  end: 0
-  typeAtk: 
-  blur: {fileID: 8363560584437706216}
-  ended: {fileID: 7214728217789914498}
-  blood: {fileID: 6700938093044136142}
-  sliderAc: {fileID: 1888462956097515588}
-  sliderUl: {fileID: 2757288696144745637}
-  startCooldownUlti: 0
-  maxCooldownUlti: 60
-  startCooldownActif: 0
-  maxCooldownActif: 20
-  maxBloodC: 100
-  mine: {fileID: 4229332465773866259, guid: 677dfc397b34ce544a19f86cd1ad2156, type: 3}
-  attackSystem: {fileID: 8684438095728236673}
-  arms: {fileID: 1752050925053183899}
-  bodyAnim: {fileID: 5981651692876799368}
-  cooldownPreActif: 843
-  ultiEffect:
-  - {fileID: 7819842517510032848}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  spawnMine: {fileID: 4098883629820060767}
 --- !u!114 &3583871355203835422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,6 +2132,61 @@ MonoBehaviour:
     localScale: {x: 0, y: 0, z: 0}
     movementSpeed: 0
   target: {fileID: 141259557447474709}
+--- !u!114 &5722261126902313348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141259556907378178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f3ef1c4b23394894fe4b1cfdef122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  personnage: 
+  povCam: {fileID: 141259556907378177}
+  cam: {fileID: 4010356564075643437}
+  perso_object: {fileID: 141259556907378178}
+  orientation: {fileID: 141259557447474708}
+  camHolder: {fileID: 141259557488615335}
+  movement: {fileID: 141259556907378179}
+  body: {fileID: 1388565753928128755}
+  arm: {fileID: 6152412777722395762}
+  health_object: {fileID: 3003395344967837007}
+  healthSystem: {fileID: 2763260870473681043}
+  posture: {fileID: 2437975864008391631}
+  health: 0
+  maxHealth: 0
+  armor: 0
+  guard: 0
+  maxGuard: 0
+  atk: 0
+  end: 0
+  typeAtk: 
+  blur: {fileID: 8363560584437706216}
+  ended: {fileID: 7214728217789914498}
+  blood: {fileID: 6700938093044136142}
+  sliderAc: {fileID: 1888462956097515588}
+  sliderUl: {fileID: 2757288696144745637}
+  startCooldownUlti: 0
+  maxCooldownUlti: 60
+  startCooldownActif: 0
+  maxCooldownActif: 20
+  maxBloodC: 100
+  mine: {fileID: 4229332465773866259, guid: 677dfc397b34ce544a19f86cd1ad2156, type: 3}
+  attackSystem: {fileID: 8684438095728236673}
+  arms: {fileID: 1752050925053183899}
+  bodyAnim: {fileID: 5981651692876799368}
+  cooldownPreActif: 843
+  ultiEffect:
+  - {fileID: 7819842517510032848}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  spawnMine: {fileID: 4098883629820060767}
 --- !u!114 &8752172003678436778
 MonoBehaviour:
   m_ObjectHideFlags: 0
