@@ -185,5 +185,11 @@ namespace scripts
 
         public static int GetTime() { return DateTime.Now.Second + 60 * DateTime.Now.Minute + 60 * 60 * DateTime.Now.Hour + DateTime.Now.Day*3600*24; }
         public static int GetTimeMili() { return DateTime.Now.Millisecond+(DateTime.Now.Second + 60 * DateTime.Now.Minute + 3600 * DateTime.Now.Hour + DateTime.Now.Day * 3600 * 24) *1000; }
+
+        public static void RePlay()
+        {
+            foreach (KeyValuePair<string, GameOver> end in ends)
+                end.Value.Cmd_ReplacePlayer();
+        }
     } 
 }

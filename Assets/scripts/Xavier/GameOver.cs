@@ -30,18 +30,22 @@ namespace scripts
 
             if (Input.GetKeyDown(KeyCode.V))
                 Cmd_ReplacePlayer();*/
-            if (again)
+            if (isServer)
             {
-                Cmd_ReplacePlayer();
-            }
-            else
-            {
-                bool state = true;
-                foreach(KeyValuePair<string, GameOver> end in GameManager.ends)
+                if (again)
                 {
-                    state &= end.Value.start;
+                    GameManager.RePlay();
+                    //Cmd_ReplacePlayer();
                 }
-                again = state;
+                else
+                {
+                    bool state = true;
+                    foreach (KeyValuePair<string, GameOver> end in GameManager.ends)
+                    {
+                        state &= end.Value.start;
+                    }
+                    again = state;
+                }
             }
         }
 
