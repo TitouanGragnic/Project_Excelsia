@@ -27,38 +27,38 @@ namespace scripts
                 {
                     if (player.Value.personnage == "Ennhvala" && !yes)
                     {
-                        screen.GetComponent<MeshRenderer>().material = diff[0];
+                        screen.GetComponent<MeshRenderer>().material = diff[4];
                     }
                     if (player.Value.personnage == "Gally" && !yes)
                     {
-                        screen.GetComponent<MeshRenderer>().material = diff[1];
+                        screen.GetComponent<MeshRenderer>().material = diff[5];
                     }
                     if (player.Value.personnage == "Idriss" && !yes)
                     {
-                        screen.GetComponent<MeshRenderer>().material = diff[2];
+                        screen.GetComponent<MeshRenderer>().material = diff[6];
                     }
                     if (player.Value.personnage == "Tamo" && !yes)
                     {
-                        screen.GetComponent<MeshRenderer>().material = diff[3];
+                        screen.GetComponent<MeshRenderer>().material = diff[7];
                     }
                     if (player.Value.personnage == "Ennhvala" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[4];
+                        screen1.GetComponent<MeshRenderer>().material = diff[0];
                         yes = false;
                     }
                     if (player.Value.personnage == "Gally" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[5];
+                        screen1.GetComponent<MeshRenderer>().material = diff[1];
                         yes = false;
                     }
                     if (player.Value.personnage == "Idriss" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[6];
+                        screen1.GetComponent<MeshRenderer>().material = diff[2];
                         yes = false;
                     }
                     if (player.Value.personnage == "Tamo" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[7];
+                        screen1.GetComponent<MeshRenderer>().material = diff[3];
                         yes = false;
                     }
                 }
