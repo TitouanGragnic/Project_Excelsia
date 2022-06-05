@@ -15,8 +15,8 @@ public class BeginScripts : MonoBehaviour
         time = Time.time;
         begin.transform.position = new Vector3(32, 1389, -300);
     }
-
-    BeginDesactive desScript;
+    
+    public BeginDesactive desScript;
     // Update is called once per frame
     void Update()
     {
