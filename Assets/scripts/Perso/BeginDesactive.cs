@@ -13,7 +13,7 @@ public class BeginDesactive : MonoBehaviour
     public Transform start;
 
     private void Start()
-    { 
+    {
         cam.SetActive(false);
         canvas.SetActive(false);
         beginning.Play("move");
@@ -23,6 +23,7 @@ public class BeginDesactive : MonoBehaviour
         }
         
     }
+
     public void Desactivate()
     {
         cam.SetActive(true);
@@ -32,12 +33,13 @@ public class BeginDesactive : MonoBehaviour
             beginSetup[i].enabled = true;
         }
     }
+
+    public Transform surBegin;
+
     public void place()
     {
-        if (start.position.z > 0)
-            begin.transform.position = new Vector3(32, 1389, -300);
-        else
-            begin.transform.position = new Vector3(32, 1389, 300);
+        if (start.position.z < 0)
+            surBegin.position += new Vector3(0, 0, 600);
     }
     public void place1()
     {
