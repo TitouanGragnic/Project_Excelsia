@@ -190,6 +190,7 @@ namespace scripts
         {
             foreach (KeyValuePair<string, GameOver> end in ends)
                 end.Value.Cmd_ReplacePlayer();
+            Pnb = 1;
         }
     } 
 }
