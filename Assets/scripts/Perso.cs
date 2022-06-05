@@ -97,15 +97,15 @@ namespace scripts
         public void Place(int pnb)
         {
             povCam.place = true;
-            if (pnb == 1|| true)
+            if (pnb == 1)
             {
-                perso_object.transform.position = new Vector3(0, 23.5f, 296);
+                perso_object.transform.position = new Vector3(0, 23.5f, 298);
                 povCam.yRotation = 180;
             }
 
             else
             {
-                perso_object.transform.position = new Vector3(0, 23.5f, -296);
+                perso_object.transform.position = new Vector3(0, 23.5f, -298);
                 povCam.yRotation = 0;
             }
 
