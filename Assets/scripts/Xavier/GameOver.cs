@@ -11,10 +11,7 @@ namespace scripts
 
         [SerializeField]
         GameObject PlayerPrefab;
-        [SerializeField]
-        choice choice;
 
-        [SyncVar][SerializeField]
         public bool again;
 
         public bool start = false;
@@ -33,9 +30,9 @@ namespace scripts
 
             if (Input.GetKeyDown(KeyCode.V))
                 Cmd_ReplacePlayer();*/
-            if (again && isServer)
+            if (again)
             {
-                choice.Cmd_ReplacePlayer();
+                Cmd_ReplacePlayer();
             }
             else
             {
@@ -51,14 +48,18 @@ namespace scripts
         [Command][Client]
         public void Cmd_ReplacePlayer()
         {
+            GameObject oldPlayer = connectionToClient.identity.gameObject;
             GameObject SnewPlayer = Instantiate(PlayerPrefab);
-            string netId = GetComponent<NetworkIdentity>().netId.ToString();
+            SnewPlayer.transform.position = new Vector3(995.27f, 1.84f, -13.88f);// la camera dans le menu choice de titouan
+            NetworkServer.ReplacePlayerForConnection(connectionToClient, SnewPlayer, true);
+            NetworkServer.Destroy(oldPlayer);
+            /*string netId = GetComponent<NetworkIdentity>().netId.ToString();
             GameManager.RegisterChoice(netId, SnewPlayer.GetComponent<choice>());
 
             SnewPlayer.transform.position = new Vector3(995.27f, 1.84f, -13.88f);// la camera dans le menu choice de titouan
             GameObject SoldPlayer = connectionToClient.identity.gameObject;
             NetworkServer.ReplacePlayerForConnection(connectionToClient, SnewPlayer, true);
-            NetworkServer.Destroy(SoldPlayer);
+            NetworkServer.Destroy(SoldPlayer);*/
         }
 
         public void Rotatearound()
