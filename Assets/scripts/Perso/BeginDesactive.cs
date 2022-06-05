@@ -39,4 +39,11 @@ public class BeginDesactive : MonoBehaviour
         else
             begin.transform.position = new Vector3(32, 1389, 300);
     }
+    public void place1()
+    {
+        if (start.position.z > 0)
+            begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, -300);
+        else
+            begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, 300);
+    }
 }

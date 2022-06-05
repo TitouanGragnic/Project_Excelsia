@@ -22,6 +22,7 @@ public class BeginScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        desScript.place1();
         /*if(start.position.z > 0)
             begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, -300);
         else
