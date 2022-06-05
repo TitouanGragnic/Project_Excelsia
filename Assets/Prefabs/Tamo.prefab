@@ -1019,6 +1019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 8449246615919106225}
   pos: {x: 0, y: 0, z: 0}
+  normalPos: {x: 0, y: 0, z: 0}
+  crouchPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &4492035085543370780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1406,11 +1408,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -6378321791924919347, guid: dd5a4e5fa16940d45b6475e25855c63a, type: 3}
   m_PrefabInstance: {fileID: 4492035085543370780}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3645527342763887949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dd5a4e5fa16940d45b6475e25855c63a, type: 3}
-  m_PrefabInstance: {fileID: 4492035085543370780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1821469440635848272 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2815245449453319756, guid: dd5a4e5fa16940d45b6475e25855c63a, type: 3}
@@ -1419,6 +1416,11 @@ Transform:
 --- !u!4 &4169299032035432439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd5a4e5fa16940d45b6475e25855c63a, type: 3}
+  m_PrefabInstance: {fileID: 4492035085543370780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3645527342763887949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dd5a4e5fa16940d45b6475e25855c63a, type: 3}
   m_PrefabInstance: {fileID: 4492035085543370780}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1752050925053183899
@@ -1449,7 +1451,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.size
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[10]
@@ -1466,7 +1468,15 @@ PrefabInstance:
     - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: componentsToDisable.Array.data[13]
       value: 
-      objectReference: {fileID: 5981651692876799368}
+      objectReference: {fileID: 5631370422820226637}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[14]
+      value: 
+      objectReference: {fileID: 3513717653138073904}
+    - target: {fileID: -8904628844495933883, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: componentsToDisable.Array.data[15]
+      value: 
+      objectReference: {fileID: 6836265046236189583}
     - target: {fileID: -3461759766805281484, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_AssetId
       value: 9bdfac433fa375f4a9e9648cb48af93b
@@ -1933,6 +1943,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c716c54e3f10142bd07aed4a3dd686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &5631370422820226637 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1572358025076967251, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8363560584437706216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3451394286161751286, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -2023,6 +2038,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cba93d4acc79261449663f3ebbe6605a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!81 &3513717653138073904 stripped
+AudioListener:
+  m_CorrespondingSourceObject: {fileID: 7725851828330801198, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6836265046236189583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 372615754118730385, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b5000f332c61a4bb306c9283e1124c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8684438095728236673 stripped
@@ -2250,6 +2281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 4169299032035432439}
   pos: {x: 0, y: 2.35, z: 0}
+  normalPos: {x: 0, y: 0, z: 0}
+  crouchPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &6991462090174888671
 PrefabInstance:
   m_ObjectHideFlags: 0
