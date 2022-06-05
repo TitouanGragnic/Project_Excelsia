@@ -102,7 +102,6 @@ namespace scripts
                 perso_object.transform.position = new Vector3(0, 23.5f, 298);
                 povCam.yRotation = 180;
             }
-
             else
             {
                 perso_object.transform.position = new Vector3(0, 23.5f, -298);
