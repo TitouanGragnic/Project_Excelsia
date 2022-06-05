@@ -1880,10 +1880,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7622864556315524014}
-        m_TargetAssemblyTypeName: Mirror.Discovery.NetworkDiscoveryBase`2[[Mirror.Discovery.ServerRequest,
-          Mirror.Components
-        m_MethodName: StartDiscovery
+      - m_Target: {fileID: 3790208292056949622}
+        m_TargetAssemblyTypeName: Mirror.Discovery.NewDiscoveryHUD, Assembly-CSharp
+        m_MethodName: search
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7383,6 +7382,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   screen: {fileID: 980938646}
+  ok: 0
 --- !u!1001 &7622864556315524013
 PrefabInstance:
   m_ObjectHideFlags: 0

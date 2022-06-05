@@ -176,5 +176,11 @@ namespace scripts {
             NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
             NetworkServer.Destroy(oldPlayer);
         }
+
+        public void quit()
+        {
+            NetworkManager.singleton.StopHost();
+            NetworkManager.singleton.StopClient();
+        }
     } 
 }
