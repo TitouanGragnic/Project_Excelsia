@@ -9,9 +9,6 @@ public class BeginDesactive : MonoBehaviour
     public GameObject canvas;
     public Animator beginning;
 
-    public GameObject begin;
-    public Transform start;
-
     private void Start()
     {
         cam.SetActive(false);
@@ -33,6 +30,7 @@ public class BeginDesactive : MonoBehaviour
             beginSetup[i].enabled = true;
         }
     }
+<<<<<<< HEAD
 
     public Transform surBegin;
 
@@ -48,4 +46,6 @@ public class BeginDesactive : MonoBehaviour
         else
             begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, 300);
     }
+=======
+>>>>>>> 1127f9eb0f0336ba7847793eff04f5d5524681ad
 }

@@ -20,6 +20,7 @@ namespace Mirror.Discovery
         public GUIContent Start;
         public GUIStyle Start1;
         public GameObject screen;
+        public Canvas canva;
         public bool ok = false;
 
 #if UNITY_EDITOR
@@ -50,7 +51,9 @@ namespace Mirror.Discovery
         {
             if (ok)
             {
-                GUILayout.BeginArea(new Rect(1000, 500, 900, 1500));
+                Resolution resolution = Screen.currentResolution;
+                Debug.Log(resolution.width);
+                GUILayout.BeginArea(new Rect(resolution.width/4*3, resolution.height/2, 900, 1500));
                 GUILayout.BeginHorizontal();
 
                 /*if (GUILayout.Button("Find Servers"))

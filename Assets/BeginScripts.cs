@@ -15,18 +15,13 @@ public class BeginScripts : MonoBehaviour
     {       
         begin.SetActive(true);
         time = Time.time;
-        desScript.place();
+        begin.transform.position = new Vector3(32, 1389, -300);
     }
     
     
     // Update is called once per frame
     void Update()
     {
-        desScript.place1();
-        /*if(start.position.z > 0)
-            begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, -300);
-        else
-           begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, 300);*/
         if (Time.time-time > 4)
         {
             if (desScript.enabled)
