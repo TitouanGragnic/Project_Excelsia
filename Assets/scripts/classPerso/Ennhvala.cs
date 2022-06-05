@@ -67,7 +67,9 @@ namespace scripts
         {
             //ulti 
             if (ultiOn && GameManager.GetTime() - startCooldownUlti > maxCooldownUltiON)
-                EndUlti(); 
+                EndUlti();
+            if (trailOn && GameManager.GetTimeMili() - startTrail > maxTrail)
+                EndTrail();
             if (preActifState && GameManager.GetTimeMili() - preActif > cooldownPreActif)
             {
                 Cmd_SpawnK(spawnK.position, cam.transform.forward);
@@ -90,7 +92,6 @@ namespace scripts
             
         }
 
-        [Command]
         private void Cmd_SpawnK(Vector3 pos, Vector3 forward)
         {
             GameObject kn = Instantiate(knife, pos + forward.normalized * 2, camHolder.transform.rotation);
@@ -100,11 +101,18 @@ namespace scripts
 
         }
 
+        [SerializeField] TrailRenderer trail;
+        bool trailOn = false;
         public bool ultiOn;
+        int startTrail;
+        int maxTrail = 4835;
         public new void Ulti()
         {
-            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti)
+            if (GameManager.GetTime() - startCooldownUlti > this.maxCooldownUlti|| true)
             {
+                startTrail = GameManager.GetTimeMili();
+                trailOn = true;
+                trail.enabled = true;
                 lecteur.clip = sound;
                 lecteur.Play();
                 startCooldownUlti = GameManager.GetTime();
@@ -126,6 +134,12 @@ namespace scripts
             smokeVFX.SetBool("Loop", state);
         }
 
+
+        void EndTrail()
+        {
+            trailOn = false;
+            trail.enabled = false; 
+        }
         void EndUlti()
         {
             ultiOn = false;
