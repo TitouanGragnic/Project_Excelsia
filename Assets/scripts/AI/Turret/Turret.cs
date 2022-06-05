@@ -198,12 +198,25 @@ namespace scripts
                 head.transform.rotation = Quaternion.LookRotation(-head.transform.forward, (target.transform.position - head.transform.position).normalized);
             */
 
+
+            
+
             head.transform.LookAt(target.transform.position);
             head.transform.Rotate(Vector3.up * 180);
 
-            
-            lr.SetPosition(0, head.transform.position);
-            lr.SetPosition(1, target.transform.position + Vector3.up );
+            RaycastHit hit;
+            if (Physics.Raycast(head.transform.position - head.transform.forward * 2, -head.transform.forward, out hit, range, mask) && hit.collider.gameObject.layer != 11 && hit.collider.gameObject.layer != 7)
+            {
+                lr.SetPosition(0, head.transform.position);
+                lr.SetPosition(1, target.transform.position + Vector3.up );
+            }
+            else
+            {
+                lr.SetPosition(0, head.transform.position);
+                lr.SetPosition(1, hit.point);
+                target = null;
+            }
+
             
             
         }

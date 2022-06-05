@@ -50,9 +50,16 @@ namespace scripts {
             Cursor.visible = true;
             stateSpawn = false;
             spawn = false;
-            GameManager.CmdAtributPnb(name);
             transform.rotation = Quaternion.Euler(0,-40,0);
+            CmdGetPnb();
         }
+
+
+        [Command(requiresAuthority = false)]
+        void CmdGetPnb() { RpcGetPnb(isLocalPlayer ? 1 : 2); }
+        [ClientRpc]
+        void RpcGetPnb(int pnb) { this.Pnb = pnb; }
+
         void Update()
         {
             if (stateStart)
@@ -175,6 +182,12 @@ namespace scripts {
             script.Place(Pnb);
             NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
             NetworkServer.Destroy(oldPlayer);
+        }
+
+        public void quit()
+        {
+            NetworkManager.singleton.StopHost();
+            NetworkManager.singleton.StopClient();
         }
     } 
 }

@@ -20,6 +20,7 @@ namespace Mirror.Discovery
         public GUIContent Start;
         public GUIStyle Start1;
         public GameObject screen;
+        public bool ok = false;
 
 #if UNITY_EDITOR
         void OnValidate()
@@ -47,36 +48,39 @@ namespace Mirror.Discovery
 
         void DrawGUI()
         {
-            GUILayout.BeginArea(new Rect(1000, 500, 900, 1500));
-            GUILayout.BeginHorizontal();
-
-            /*if (GUILayout.Button("Find Servers"))
+            if (ok)
             {
-                discoveredServers.Clear();
-                networkDiscovery.StartDiscovery();
-            }*/
+                GUILayout.BeginArea(new Rect(1000, 500, 900, 1500));
+                GUILayout.BeginHorizontal();
 
-            GUILayout.EndHorizontal();
-
-            // show list of found server
-            Start.text = $"Discovered Servers [{discoveredServers.Count}]:";
-            GUILayout.Label(Start, Start1, GUILayout.Width(400), GUILayout.Height(75));
-
-            // servers
-            scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);
-
-            foreach (ServerResponse info in discoveredServers.Values)
-            {
-                Image.text = GetRandomMatchID(info.EndPoint.Address.ToString());
-                if (GUILayout.Button(Image, Image1, GUILayout.Width(500), GUILayout.Height(100)))
+                /*if (GUILayout.Button("Find Servers"))
                 {
-                    Connect(info);
-                }
-            }
-                
+                    discoveredServers.Clear();
+                    networkDiscovery.StartDiscovery();
+                }*/
 
-            GUILayout.EndScrollView();
-            GUILayout.EndArea();
+                GUILayout.EndHorizontal();
+
+                // show list of found server
+                Start.text = $"Discovered Servers [{discoveredServers.Count}]:";
+                GUILayout.Label(Start, Start1, GUILayout.Width(400), GUILayout.Height(75));
+
+                // servers
+                scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);
+
+                foreach (ServerResponse info in discoveredServers.Values)
+                {
+                    Image.text = GetRandomMatchID(info.EndPoint.Address.ToString());
+                    if (GUILayout.Button(Image, Image1, GUILayout.Width(500), GUILayout.Height(100)))
+                    {
+                        Connect(info);
+                    }
+                }
+
+
+                GUILayout.EndScrollView();
+                GUILayout.EndArea();
+            }
         }
 
         public static string GetRandomMatchID(string ip)
@@ -151,6 +155,12 @@ namespace Mirror.Discovery
         {
             // Note that you can check the versioning to decide if you can connect to the server or not using this method
             discoveredServers[info.serverId] = info;
+        }
+
+        public void search()
+        {
+            ok = true;
+            networkDiscovery.StartDiscovery();
         }
     }
 }

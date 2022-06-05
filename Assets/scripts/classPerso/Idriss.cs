@@ -17,6 +17,8 @@ namespace scripts
         [SerializeField] GameObject lightning;
         [SerializeField] Animator arms;
         [SerializeField] Animator bodyAnim;
+        public AudioSource lecteur;
+        public AudioClip[] sound;
 
         //[ACTIF]
         int maxCooldownActifON = 10;
@@ -92,6 +94,8 @@ namespace scripts
             ultiWait = true;
             arms.SetBool("ulti", true);
             bodyAnim.SetBool("ulti", true);
+            lecteur.clip = sound[1];
+            lecteur.Play();
         }
 
         [SerializeField] POVcam povcam;
@@ -191,6 +195,8 @@ namespace scripts
         [SerializeField] VisualEffect elecVFX;
         private void StartElectric()
         {
+            lecteur.clip = sound[0];
+            lecteur.Play();
             elecVFX.SetBool("Loop",true); ;
             ChangeTypeATK("electric");
             startCooldownActif = GameManager.GetTime();

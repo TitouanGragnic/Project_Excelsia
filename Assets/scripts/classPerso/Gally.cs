@@ -12,7 +12,8 @@ namespace scripts
         AttackSystem attackSystem;
         [SerializeField] Animator arms;
         [SerializeField] Animator anim;
-
+        public AudioClip sound;
+        public AudioSource lecteur;
 
         public bool actifState;
         public bool ultiState;
@@ -38,6 +39,8 @@ namespace scripts
         }
         public new void Actif() 
         {
+            lecteur.clip = sound;
+            lecteur.Play();
             Debug.Log("Gally actif");
             if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif )
                 Dash();

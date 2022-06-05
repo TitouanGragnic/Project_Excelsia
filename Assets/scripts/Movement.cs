@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Animator arm;
@@ -110,6 +111,7 @@ public class Movement : MonoBehaviour
     
     private void Update()
     {
+        if (!hasAuthority) { return; }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isSprinting = Input.GetKey(sprintKey);
         isCrouching = Input.GetKey(crouchKey) || Input.GetKey(KeyCode.C);
@@ -165,19 +167,29 @@ public class Movement : MonoBehaviour
         {
             arm.SetBool("walking", true);
             animator.SetBool("Walking", true);
+            
         }
         else
         {
             arm.SetBool("walking", false);
             animator.SetBool("Walking", false);
         }
+        if (Input.GetAxisRaw("Horizontal") > 0)
+            animator.SetBool("right", true);
+        else
+            animator.SetBool("right", false);
 
-        if (isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") < 0)
+        if (isGrounded && !isCrouching && Input.GetAxisRaw("Horizontal") < 0)
+            animator.SetBool("left", true);
+        else
+            animator.SetBool("left", false);
+
+        if (isGrounded && !isCrouching && isGrounded && !isSprinting && !isCrouching && Input.GetAxisRaw("Vertical") < 0)
             animator.SetBool("Back", true);
         else
             animator.SetBool("Back", false);
 
-        if (isGrounded && isCrouching && !isSliding && Input.GetAxisRaw("Vertical") > 0)
+        if (isGrounded && isCrouching && !isSliding && (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0))
         {
             animator.SetBool("CrouchWalk", true);
             PlayerHeight.height = crouchHeight;

@@ -54,16 +54,28 @@ namespace scripts
             {
                 ComboReset();
                 comboPossible = true;
+                anim.SetBool("hit", false);
+                arm.SetBool("hit", false);
+                arm.SetBool("walking", true);
+                anim.SetBool("Walking", true);
             }
-
-            if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("idla arm"))
+            {
+                anim.SetBool("hit", false);
+                arm.SetBool("hit", false);
+                arm.SetBool("walking", true);
+                anim.SetBool("Walking", true);
+            }
+                if (!comboPossible && anim.GetCurrentAnimatorStateInfo(0).length - anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.001)
             {
                 Combo();
             }
 
             if (Input.GetMouseButtonDown(0) && !mvt.isSliding && !mvt.isSprinting && !player.posture.state )
             {
-                if(anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
+                anim.SetBool("hit", true);
+                arm.SetBool("hit", true);
+                if (anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime && comboPossible && comboStep<5)
                 {
                     comboStep += 1;
                     comboPossible = false;
@@ -84,10 +96,9 @@ namespace scripts
             }
         }
 
-        [Client]
+        //[Client]
         private void Taper()
         {
-                Debug.Log("taper");
             RaycastHit hit;
             //animator.SetBool("Attack", true);
             //arm.SetBool("Attack", true);
@@ -110,6 +121,8 @@ namespace scripts
 
         public void Attack()
         {
+            arm.SetBool("walking", false);
+            anim.SetBool("Walking", false);
             index = 0;
             Taper();
             if(comboStep == 0)
@@ -130,6 +143,8 @@ namespace scripts
         }
         public void Combo()
         {
+            arm.SetBool("walking", false);
+            anim.SetBool("Walking", false);
             index = comboStep - 1;
             Taper();
             comboPossible = true;
