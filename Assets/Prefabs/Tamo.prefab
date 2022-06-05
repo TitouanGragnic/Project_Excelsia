@@ -793,6 +793,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.187
       objectReference: {fileID: 0}
+    - target: {fileID: 372615754118730385, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: begin
+      value: 
+      objectReference: {fileID: 3513717653138073919}
+    - target: {fileID: 372615754118730385, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: start
+      value: 
+      objectReference: {fileID: 141259556907378176}
     - target: {fileID: 548405150881312680, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: animator
       value: 
@@ -1351,6 +1359,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 507223862793124304, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3513717653138073919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725851828330801185, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+  m_PrefabInstance: {fileID: 6626069227908743454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!81 &3513717653138073904 stripped
 AudioListener:
   m_CorrespondingSourceObject: {fileID: 7725851828330801198, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
@@ -1361,7 +1374,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 372615754118730385, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
   m_PrefabInstance: {fileID: 6626069227908743454}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3513717653138073919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2b5000f332c61a4bb306c9283e1124c, type: 3}
