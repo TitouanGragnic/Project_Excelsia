@@ -1353,6 +1353,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2748747831915594853}
     - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: bodyRotation
+      value: 
+      objectReference: {fileID: 4795151954556589502}
+    - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: crouchHeight
       value: 0.99
       objectReference: {fileID: 0}
@@ -2500,4 +2504,4 @@ MonoBehaviour:
   camera: {fileID: 2165666926010700822}
   pos: {x: 0, y: 1, z: 0}
   normalPos: {x: 0, y: 0, z: 0}
-  crouchPos: {x: 0, y: 0, z: 0}
+  crouchPos: {x: 0, y: 0.3, z: 0}

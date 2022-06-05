@@ -21,19 +21,28 @@ public class selectMusic : MonoBehaviour
     private void Start()
     {
         song = 0;
-        jukebox.clip = selection[song];
-        jukebox.Play();
+        if (jukebox != null)
+        {
+            jukebox.clip = selection[song];
+            jukebox.Play();
+        }
     }
     void Update()
     {
-        time.maxValue = selection[song].length;
-        texte.text = ((int)jukebox.time / 60).ToString() +" : "+ ((int)jukebox.time%60).ToString();
-        time.value = jukebox.time;
-        if (!jukebox.isPlaying)
+        if (jukebox != null)
         {
-            song = (song + 1) % selection.Length;
-            jukebox.clip = selection[song];
-            jukebox.Play();
+            if(time != null)
+                time.maxValue = selection[song].length;
+            if(texte != null)
+                texte.text = ((int)jukebox.time / 60).ToString() + " : " + ((int)jukebox.time % 60).ToString();
+            if(time != null)
+                time.value = jukebox.time;
+            if (!jukebox.isPlaying)
+            {
+                song = (song + 1) % selection.Length;
+                jukebox.clip = selection[song];
+                jukebox.Play();
+            }
         }
     }
     public void right()
