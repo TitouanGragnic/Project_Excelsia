@@ -32,6 +32,8 @@ namespace scripts
         private void Update()
         {
             CoolDown();
+            if(GameManager.GetTimeMili() - startCooldownUltiOn > 2)
+                bodyAnim.SetBool("actif", false);
         }
         private void CoolDown()
         {
@@ -57,6 +59,7 @@ namespace scripts
                 startCooldownActif = GameManager.GetTime();
                 arms.Play("actif");
                 bodyAnim.Play("actif");
+                bodyAnim.SetBool("actif", true);
             }
 
         }
@@ -86,6 +89,7 @@ namespace scripts
             {
                 arms.Play("ulti");
                 bodyAnim.Play("ulti");
+                bodyAnim.SetBool("actif", true);
             }    
             foreach (var e in ultiEffect)
                 e.Active(state);
