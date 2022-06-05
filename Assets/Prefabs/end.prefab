@@ -883,7 +883,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   PlayerPrefab: {fileID: 4531504580044698355, guid: 24c908370eb10054fad60a976daf20e5, type: 3}
-  choice: {fileID: 1508526231346885255, guid: 24c908370eb10054fad60a976daf20e5, type: 3}
   again: 0
   start: 0
 --- !u!114 &2161948151863569002
@@ -902,9 +901,10 @@ MonoBehaviour:
   syncInterval: 0.1
   componentsToDisable:
   - {fileID: 9003304735610185175}
-  - {fileID: 8234152293016816135}
+  - {fileID: 2841376174848863401}
   - {fileID: 8287559561006627751}
   - {fileID: 5761200251522472485}
+  - {fileID: 1121736210264858477}
   name_layer: client
   nameHP_layer: HP_client
   body_layer: body_client
@@ -1141,7 +1141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: 0}
+  m_AnchoredPosition: {x: -2.0000305, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5627780730823145468

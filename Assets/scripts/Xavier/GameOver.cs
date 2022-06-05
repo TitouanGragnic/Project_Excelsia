@@ -30,27 +30,30 @@ namespace scripts
 
             if (Input.GetKeyDown(KeyCode.V))
                 Cmd_ReplacePlayer();*/
-            if (again)
+            if (isServer)
             {
-                Cmd_ReplacePlayer();
-            }
-            else
-            {
-                bool state = true;
-                foreach(KeyValuePair<string, GameOver> end in GameManager.ends)
+                if (again)
                 {
-                    state &= end.Value.start;
+                    GameManager.RePlay();
+                    //Cmd_ReplacePlayer();
                 }
-                again = state;
+                else
+                {
+                    bool state = true;
+                    foreach (KeyValuePair<string, GameOver> end in GameManager.ends)
+                    {
+                        state &= end.Value.start;
+                    }
+                    again = state;
+                }
             }
         }
 
-        [Command][Client]
+        [Command(requiresAuthority = false)]
         public void Cmd_ReplacePlayer()
         {
             GameObject oldPlayer = connectionToClient.identity.gameObject;
-            GameObject SnewPlayer = Instantiate(PlayerPrefab);
-            SnewPlayer.transform.position = new Vector3(995.27f, 1.84f, -13.88f);// la camera dans le menu choice de titouan
+            GameObject SnewPlayer = Instantiate(PlayerPrefab,new Vector3(995.27f, 1.84f, -13.88f),  Quaternion.Euler(0,-40,0));
             NetworkServer.ReplacePlayerForConnection(connectionToClient, SnewPlayer, true);
             NetworkServer.Destroy(oldPlayer);
             /*string netId = GetComponent<NetworkIdentity>().netId.ToString();
