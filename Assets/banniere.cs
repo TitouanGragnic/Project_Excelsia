@@ -11,7 +11,7 @@ namespace scripts
         [SerializeField] GameObject screen;
         [SerializeField] GameObject screen1;
 
-        public bool yes = true;
+        public bool yes = false;
 
         // Update is called once per frame
         void Update()
@@ -25,41 +25,41 @@ namespace scripts
             {
                 foreach (KeyValuePair<string, Perso> player in GameManager.players)
                 {
-                    if (player.Value.personnage == "Ennhvala" && !yes)
-                    {
-                        screen.GetComponent<MeshRenderer>().material = diff[4];
-                    }
-                    if (player.Value.personnage == "Gally" && !yes)
-                    {
-                        screen.GetComponent<MeshRenderer>().material = diff[5];
-                    }
-                    if (player.Value.personnage == "Idriss" && !yes)
-                    {
-                        screen.GetComponent<MeshRenderer>().material = diff[6];
-                    }
-                    if (player.Value.personnage == "Tamo" && !yes)
-                    {
-                        screen.GetComponent<MeshRenderer>().material = diff[7];
-                    }
                     if (player.Value.personnage == "Ennhvala" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[0];
-                        yes = false;
+                        screen1.GetComponent<MeshRenderer>().material = diff[4];
                     }
                     if (player.Value.personnage == "Gally" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[1];
-                        yes = false;
+                        screen1.GetComponent<MeshRenderer>().material = diff[5];
                     }
                     if (player.Value.personnage == "Idriss" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[2];
-                        yes = false;
+                        screen1.GetComponent<MeshRenderer>().material = diff[6];
                     }
                     if (player.Value.personnage == "Tamo" && yes)
                     {
-                        screen1.GetComponent<MeshRenderer>().material = diff[3];
-                        yes = false;
+                        screen1.GetComponent<MeshRenderer>().material = diff[7];
+                    }
+                    if (player.Value.personnage == "Ennhvala" && !yes)
+                    {
+                        screen.GetComponent<MeshRenderer>().material = diff[0];
+                        yes = true;
+                    }
+                    if (player.Value.personnage == "Gally" && !yes)
+                    {
+                        screen.GetComponent<MeshRenderer>().material = diff[1];
+                        yes = true;
+                    }
+                    if (player.Value.personnage == "Idriss" && !yes)
+                    {
+                        screen.GetComponent<MeshRenderer>().material = diff[2];
+                        yes = true;
+                    }
+                    if (player.Value.personnage == "Tamo" && !yes)
+                    {
+                        screen.GetComponent<MeshRenderer>().material = diff[3];
+                        yes = true;
                     }
                 }
             }
