@@ -41,26 +41,24 @@ namespace scripts
                     {
                         screen1.GetComponent<MeshRenderer>().material = diff[7];
                     }
+                    yes = false;
                     if (player.Value.personnage == "Ennhvala" && !yes)
                     {
                         screen.GetComponent<MeshRenderer>().material = diff[0];
-                        yes = true;
                     }
                     if (player.Value.personnage == "Gally" && !yes)
                     {
                         screen.GetComponent<MeshRenderer>().material = diff[1];
-                        yes = true;
                     }
                     if (player.Value.personnage == "Idriss" && !yes)
                     {
                         screen.GetComponent<MeshRenderer>().material = diff[2];
-                        yes = true;
                     }
                     if (player.Value.personnage == "Tamo" && !yes)
                     {
                         screen.GetComponent<MeshRenderer>().material = diff[3];
-                        yes = true;
                     }
+                    yes = true;
                 }
             }
         }
