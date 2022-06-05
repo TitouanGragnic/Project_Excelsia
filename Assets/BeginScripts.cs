@@ -14,20 +14,13 @@ public class BeginScripts : MonoBehaviour
     {       
         begin.SetActive(true);
         time = Time.time;
-        if(transform.position.z > 0)
-            begin.transform.position = new Vector3(32, 1389, -300);
-        else
-            begin.transform.position = new Vector3(32, 1389, 300);
+        begin.transform.position = new Vector3(32, 1389, -300);
     }
     
     public BeginDesactive desScript;
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z > 0)
-            begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, -300);
-        else
-            begin.transform.position = new Vector3(begin.transform.position.x, begin.transform.position.y, 300);
         if (Time.time-time > 4)
         {
             if (desScript.enabled)
