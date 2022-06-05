@@ -87,6 +87,11 @@ namespace scripts
             }
             return _id;
         }
+        public void quit()
+        {
+            NetworkManager.singleton.StopHost();
+            NetworkManager.singleton.StopClient();
+        }
     }
     public static class MatchExtensions
     {
