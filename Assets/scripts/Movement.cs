@@ -395,6 +395,7 @@ public class Movement : NetworkBehaviour
         if (wallLeft)
         {
             arm.SetBool("lwr", true);
+            animator.SetBool("lwr", true);
             tilt = Mathf.Lerp(tilt, -camTilt, camTiltTime * Time.deltaTime);
         } 
         else if (wallright)
@@ -437,6 +438,7 @@ public class Movement : NetworkBehaviour
     {
         arm.SetBool("rwr", false);
         animator.SetBool("rwr", false);
+        animator.SetBool("lwr", false);
         arm.SetBool("lwr", false);
         tilt = Mathf.Lerp(tilt, 0, camTiltTime * Time.deltaTime);
         rb.useGravity = true;
