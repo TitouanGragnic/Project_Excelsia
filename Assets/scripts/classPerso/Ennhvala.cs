@@ -48,6 +48,8 @@ namespace scripts
 
         private void Update()
         {
+            if (GameManager.GetTimeMili() - startCooldownUlti > 2 && GameManager.GetTimeMili() - startCooldownActif > 2)
+                bodyAnim.SetBool("actif", false);
             CoolDown();
             //this.health -= malus;
             this.atk = GetATK(health) * bonus;
@@ -124,6 +126,8 @@ namespace scripts
                 smokeVFX.SetBool("Loop", true);
                 CmdSetVFX(true);
                 arms.Play("ulti");
+                bodyAnim.Play("ulti");
+                bodyAnim.SetBool("actif", true);
             }
         }
 
@@ -138,6 +142,7 @@ namespace scripts
         void EndTrail()
         {
             trailOn = false;
+            bodyAnim.SetBool("actif", false);
             trail.enabled = false; 
         }
         void EndUlti()

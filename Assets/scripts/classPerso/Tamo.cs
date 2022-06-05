@@ -32,7 +32,7 @@ namespace scripts
         private void Update()
         {
             CoolDown();
-            if(GameManager.GetTimeMili() - startCooldownUltiOn > 2)
+            if(GameManager.GetTimeMili() - startCooldownUltiOn > 2 && GameManager.GetTimeMili() - startCooldownActif > 2)
                 bodyAnim.SetBool("actif", false);
         }
         private void CoolDown()
