@@ -49,7 +49,7 @@ namespace scripts
             }
         }
 
-        [Command][Client]
+        [Command(requiresAuthority = false)]
         public void Cmd_ReplacePlayer()
         {
             GameObject oldPlayer = connectionToClient.identity.gameObject;
