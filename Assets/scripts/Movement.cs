@@ -79,7 +79,7 @@ public class Movement : NetworkBehaviour
 
     RaycastHit slopeHit;
 
-
+    [SerializeField] AnimRotation bodyRotation;
 
     private bool onSlope()
     {
@@ -193,22 +193,30 @@ public class Movement : NetworkBehaviour
         {
             animator.SetBool("CrouchWalk", true);
             PlayerHeight.height = crouchHeight;
+            if(bodyRotation != null)
+                bodyRotation.Crouch(true);
         }
         else
         {
             animator.SetBool("CrouchWalk", false);
             PlayerHeight.height = normalHeight;
+            if(bodyRotation != null)
+                bodyRotation.Crouch(false);
         }
             
 
         if (isGrounded &&  isCrouching && !isSliding)
         {
             animator.SetBool("Crouched", true);
+            if (bodyRotation != null)
+                bodyRotation.Crouch(true);
             PlayerHeight.height = crouchHeight;
         }
         else
         {
             animator.SetBool("Crouched", false);
+            if (bodyRotation != null)
+                bodyRotation.Crouch(false);
             PlayerHeight.height = normalHeight;
         }
         if (!isGrounded)
