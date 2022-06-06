@@ -16,6 +16,7 @@ public class BeginScripts : MonoBehaviour
         begin.SetActive(true);
         time = Time.time;
         begin.transform.position = new Vector3(32, 1389, -300);
+        desScript.place();
     }
     
     
