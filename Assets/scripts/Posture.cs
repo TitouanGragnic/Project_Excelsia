@@ -22,7 +22,7 @@ namespace scripts
         [SyncVar]
         public int cooldown;
 
-
+        public GameObject Canvas;
         public bool State
         {
             get => state;
@@ -44,7 +44,10 @@ namespace scripts
             CmdPostureSystem(input);
 
             GraphicGuard(input);
-
+            if (Input.GetKeyDown(KeyCode.P))
+                Canvas.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.M))
+                Canvas.SetActive(true);
             if (state)
                 arm.SetBool("block", true);
             else
