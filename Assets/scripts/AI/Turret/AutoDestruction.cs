@@ -7,10 +7,12 @@ public class AutoDestruction : NetworkBehaviour
 {
     public int maxCooldown;
     public int cooldown;
+    public AudioSource EXPLOSION;
     // Start is called before the first frame update
     void Start()
     {
         cooldown = maxCooldown;
+        EXPLOSION.Play();
     }
 
     // Update is called once per frame

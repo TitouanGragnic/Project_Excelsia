@@ -19,6 +19,8 @@ namespace scripts
         LineRenderer lr;
         [SerializeField]
         GameObject rocket;
+
+        public AudioSource sound;
         
         [SerializeField]
         Material[] colorBases;
@@ -165,6 +167,7 @@ namespace scripts
         [SerializeField] Transform spawn;
         void Shoot()
         {
+            sound.Play();
             cooldown = maxCooldown;
             shootState = true;
             GameObject rk = Instantiate(rocket, spawn.position, spawn.rotation);
