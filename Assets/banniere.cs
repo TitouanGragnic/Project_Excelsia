@@ -16,7 +16,8 @@ namespace scripts
         // Update is called once per frame
         void Update()
         {
-            CheckBan();
+            if(!yes)
+                CheckBan();
         }
 
         public void CheckBan()
@@ -41,7 +42,6 @@ namespace scripts
                     {
                         screen1.GetComponent<MeshRenderer>().material = diff[7];
                     }
-                    yes = false;
                     if (player.Value.personnage == "Ennhvala" && !yes)
                     {
                         screen.GetComponent<MeshRenderer>().material = diff[0];
