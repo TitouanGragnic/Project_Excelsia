@@ -3937,11 +3937,11 @@ PrefabInstance:
       objectReference: {fileID: 4795779142048501286}
     - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: crouchHeight
-      value: 0.64
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838941, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: normalHeight
-      value: 1.7
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838942, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
@@ -4653,8 +4653,8 @@ MonoBehaviour:
   camera: {fileID: 4872530625928966109}
   target: {fileID: 4823232294448483767}
   pos: {x: 0, y: -1.11, z: 0}
-  normalPos: {x: 0, y: -1.11, z: 0}
-  crouchPos: {x: 0, y: -0.71, z: 0}
+  normalPos: {x: 0, y: -1.47, z: 0}
+  crouchPos: {x: 0, y: -1.02, z: 0}
 --- !u!114 &5312855301582292143
 MonoBehaviour:
   m_ObjectHideFlags: 0
