@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5987552229130613864}
+  - component: {fileID: 1995742307604671419}
   m_Layer: 7
   m_Name: "pipe Assembl\xE9 1"
   m_TagString: Untagged
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1995742307604671419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387851641476963685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48.2, y: 4.87, z: 4.62}
+  m_Center: {x: -16.5, y: 0.51, z: 0.51}
 --- !u!1001 &3677274919590853872
 PrefabInstance:
   m_ObjectHideFlags: 0
