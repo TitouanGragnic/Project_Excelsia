@@ -108,7 +108,10 @@ namespace Mirror.Discovery
                 }
                 else
                 {
-                    _id += (char)((int)name[i] - name.Length + i - 20);
+                    if (name[i] > 'Z')
+                        _id += (char)((int)name[i] - 32 - name.Length + i - 20);
+                    else
+                        _id += (char)((int)name[i] - name.Length + i - 20);
                 }
 
             }
