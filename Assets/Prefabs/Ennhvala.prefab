@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: perso
       value: 
       objectReference: {fileID: 7461131345155107785}
+    - target: {fileID: 1963388582797521388, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2350555623801663102, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -550,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3365675310021499311, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3365675310021499311, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_LocalPosition.z
@@ -597,8 +601,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485566138751721146, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566138751721146, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_LocalPosition.y
       value: -6.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485566138751721146, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485566139432838913, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_Height
@@ -714,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 7461131345155107785}
     - target: {fileID: 7725851828330801196, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7842149352322506864, guid: 7df100a0d27ef5f44b9ad74da75c1214, type: 3}
       propertyPath: player
@@ -1101,7 +1113,7 @@ MonoBehaviour:
   syncInterval: 0.1
   camera: {fileID: 5834794311970793722}
   target: {fileID: 6840012809415128694}
-  pos: {x: 0, y: 2.36, z: 0}
+  pos: {x: 0, y: 3.24, z: 0}
   normalPos: {x: 0, y: 0, z: 0}
   crouchPos: {x: 0, y: 0, z: 0}
 --- !u!114 &5194235043723583539
@@ -1784,25 +1796,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98fe9dab4d07f2a4fb15d2636e0d79a2, type: 3}
   m_PrefabInstance: {fileID: 6301630984768999185}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &219989628157212772
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6607495540538962496}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 34f8fec439522cf42b6dd91fb3003392, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &641028205084811167
 TrailRenderer:
   serializedVersion: 2
@@ -1901,6 +1894,25 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!95 &219989628157212772
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607495540538962496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34f8fec439522cf42b6dd91fb3003392, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9045535470361470891
 PrefabInstance:
   m_ObjectHideFlags: 0
