@@ -67,7 +67,7 @@ namespace scripts {
                 UpdateChoice();
             }
             else
-                stateStart = (Input.GetKeyDown(KeyCode.B) || GameManager.GetStateStart());
+                stateStart = (GameManager.GetStateStart());
             if(stateStart && one)
             {
                 wait.SetActive(true);
