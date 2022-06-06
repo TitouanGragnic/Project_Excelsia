@@ -30,7 +30,7 @@ namespace scripts
         // Update is called once per frame
         void Update()
         {
-            Text_statewin.text = "Vainqueur: " + winner;//Whowinner(netId);
+            Text_statewin.text = winner;//Whowinner(netId);
             Text_stateloose.text = "Perdant: " + looser;//Whoolooser(netId);
             //Debug.Log(Whoolooser(netId));
             //Debug.Log("Vainqueur: " + Whowinner(netId));
