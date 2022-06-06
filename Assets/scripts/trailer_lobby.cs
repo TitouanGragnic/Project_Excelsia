@@ -14,7 +14,6 @@ namespace scripts
         [SerializeField] GameObject Network;
         [SerializeField] GameObject text;
         [SerializeField] VideoPlayer Video;
-        [SerializeField] AudioSource Audio;
 
         public bool start;
         // Start is called before the first frame update
@@ -35,7 +34,6 @@ namespace scripts
                 if (Video.isPlaying)
                 {
                     start = false;
-                    Audio.Play();
                 }
             }
             else
