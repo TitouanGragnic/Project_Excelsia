@@ -4717,7 +4717,9 @@ MonoBehaviour:
   attackSystem: {fileID: 5645868658458816493}
   arms: {fileID: 2605048611085658584}
   anim: {fileID: 7179028855331894526}
-  sound: {fileID: 8300000, guid: eb184e7adeb278a48ab60ffae4fe07b4, type: 3}
+  sound:
+  - {fileID: 8300000, guid: eb184e7adeb278a48ab60ffae4fe07b4, type: 3}
+  - {fileID: 8300000, guid: 92eb59ec6e4a513408959a468c568980, type: 3}
   lecteur: {fileID: 8597428109260086670}
   actifState: 0
   ultiState: 0

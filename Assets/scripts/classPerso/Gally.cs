@@ -12,7 +12,7 @@ namespace scripts
         AttackSystem attackSystem;
         [SerializeField] Animator arms;
         [SerializeField] Animator anim;
-        public AudioClip sound;
+        public AudioClip[] sound;
         public AudioSource lecteur;
 
         public bool actifState;
@@ -39,7 +39,7 @@ namespace scripts
         }
         public new void Actif() 
         {
-            lecteur.clip = sound;
+            lecteur.clip = sound[0];
             lecteur.Play();
             Debug.Log("Gally actif");
             if (GameManager.GetTime() - startCooldownActif > this.maxCooldownActif )
@@ -103,6 +103,8 @@ namespace scripts
         [Command]
         private void Cmd_SpawnSlash(Vector3 destination,Vector3 forward)
         {
+            lecteur.clip = sound[1];
+            lecteur.Play();
             GameObject sl = Instantiate(SlashObj, transform.position+Vector3.up, transform.rotation);
             Slash Slash = sl.GetComponent<Slash>();
             sl.GetComponent<Rigidbody>().velocity= forward * Slash.speed;
